@@ -34,6 +34,20 @@
     pointer-events: none; z-index: 0; opacity: 0.4;
   }
 
+  /* HERO BG IMAGE */
+  .hero-bg-img { position: absolute; inset: 0; z-index: 0; background: url("assets/hero-bg.png") center center / cover no-repeat; opacity: 0.18; mix-blend-mode: screen; }
+
+  /* HEATMAP ASSET */
+  .heatmap-asset-wrap { position: relative; border-radius: 16px; overflow: hidden; background: var(--surface); border: 1px solid var(--border); margin-bottom: 48px; }
+  .heatmap-asset-wrap img { width: 100%; display: block; border-radius: 16px; opacity: 0.92; }
+  .heatmap-asset-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, var(--bg) 100%); border-radius: 16px; }
+  .heatmap-asset-label { position: absolute; top: 20px; left: 24px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); background: rgba(20,24,32,0.7); padding: 6px 12px; border-radius: 6px; backdrop-filter: blur(8px); }
+
+  /* HEALTH SCORE ASSET */
+  .score-img-wrap { display: flex; align-items: center; justify-content: center; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+  .score-img-wrap::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--green), transparent); }
+  .score-img-wrap img { width: 85%; max-width: 320px; object-fit: contain; filter: drop-shadow(0 0 24px rgba(34,197,94,0.3)); animation: logoFloat 5s ease-in-out infinite; }
+
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -67,7 +81,7 @@
   .hero-content { position: relative; z-index: 1; max-width: 820px; }
 
   .hero-lockup { display: flex; flex-direction: column; align-items: center; margin-bottom: 36px; opacity: 0; animation: fadeUp 0.7s 0.15s ease forwards; }
-  .hero-lockup img { height: 160px; object-fit: contain; mix-blend-mode: screen; filter: drop-shadow(0 0 32px rgba(26,115,232,0.5)) drop-shadow(0 0 64px rgba(26,115,232,0.2)); animation: logoFloat 6s ease-in-out infinite; }
+  .hero-lockup img { height: 120px; object-fit: contain; mix-blend-mode: screen; filter: drop-shadow(0 0 24px rgba(26,115,232,0.5)) drop-shadow(0 0 48px rgba(26,115,232,0.2)); animation: logoFloat 6s ease-in-out infinite; }
   @keyframes logoFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
   .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--blue-dim); border: 1px solid rgba(26,115,232,0.3); border-radius: 100px; padding: 6px 16px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.6s 0.4s ease forwards; }
@@ -235,6 +249,7 @@
 <section id="home">
   <div class="hero-mesh"></div>
   <div class="hero-grid"></div>
+  <div class="hero-bg-img"></div>
   <div class="hero-content">
     <div class="hero-lockup">
       <img src="assets/fvLogo.png" alt="FalqenView">
@@ -260,37 +275,25 @@
     <p class="section-label reveal">What's inside</p>
     <h2 class="section-title reveal">Built for investors who<br>do their own homework.</h2>
     <p class="section-sub reveal">No fluff. No subscriptions. Just the data you need to make confident decisions.</p>
-    <div class="heatmap-demo reveal">
-      <div class="heatmap-label">📊 Live Portfolio Heatmap — hover to explore</div>
-      <div class="heatmap-grid">
-        <div class="hmap-cell hmap-g3"><div class="hmap-ticker">VOO</div><div class="hmap-gain">+38.2%</div></div>
-        <div class="hmap-cell hmap-g3"><div class="hmap-ticker">NVDA</div><div class="hmap-gain">+82.4%</div></div>
-        <div class="hmap-cell hmap-g2"><div class="hmap-ticker">AAPL</div><div class="hmap-gain">+21.7%</div></div>
-        <div class="hmap-cell hmap-g2"><div class="hmap-ticker">MSFT</div><div class="hmap-gain">+18.3%</div></div>
-        <div class="hmap-cell hmap-g1"><div class="hmap-ticker">VTI</div><div class="hmap-gain">+9.4%</div></div>
-        <div class="hmap-cell hmap-g1"><div class="hmap-ticker">QQQ</div><div class="hmap-gain">+6.1%</div></div>
-        <div class="hmap-cell hmap-r1"><div class="hmap-ticker">BOND</div><div class="hmap-gain">−2.8%</div></div>
-        <div class="hmap-cell hmap-r1"><div class="hmap-ticker">JEPI</div><div class="hmap-gain">−1.2%</div></div>
-        <div class="hmap-cell hmap-g1"><div class="hmap-ticker">IBIT</div><div class="hmap-gain">+11.5%</div></div>
-        <div class="hmap-cell hmap-r2"><div class="hmap-ticker">ARKK</div><div class="hmap-gain">−9.3%</div></div>
-      </div>
+
+    <!-- HEATMAP ASSET -->
+    <div class="heatmap-asset-wrap reveal">
+      <img src="assets/heatmap-tiles.png" alt="Portfolio heatmap — gains and losses at a glance">
+      <div class="heatmap-asset-overlay"></div>
+      <div class="heatmap-asset-label">📊 Portfolio Heatmap — gains &amp; losses at a glance</div>
     </div>
+
     <div class="features-grid">
       <div class="feat-card reveal"><div class="feat-icon">⚡</div><div class="feat-title">Ticker Auto-Fill</div><div class="feat-desc">Type any ticker — position name, live price, and sector populate instantly. 300+ tickers pre-mapped out of the box.</div></div>
       <div class="feat-card reveal"><div class="feat-icon">🎯</div><div class="feat-title">Drift Alerts</div><div class="feat-desc">Set your target allocation per position. FalqenView flags when any position drifts beyond your threshold — so you always know what to rebalance.</div></div>
       <div class="feat-card reveal"><div class="feat-icon">🏆</div><div class="feat-title">Portfolio Health Score</div><div class="feat-desc">An A–F grade computed from your gain, diversification, and drift exposure. Know your portfolio's real health at a glance.</div></div>
       <div class="feat-card reveal"><div class="feat-icon">🥧</div><div class="feat-title">Sector Concentration</div><div class="feat-desc">See exactly how much of your portfolio is in Tech, Bonds, Crypto, and more — across all accounts, in one unified view.</div></div>
     </div>
+
+    <!-- HEALTH SCORE + COPY -->
     <div class="score-demo">
-      <div class="score-visual reveal">
-        <div class="score-grade">A</div>
-        <div class="score-label">Portfolio Health Score</div>
-        <div class="score-bars">
-          <div class="score-bar-row"><span class="score-bar-label">Gain</span><div class="score-bar-track"><div class="score-bar-fill" style="width:78%;animation-delay:0.1s"></div></div><span class="score-pct">78%</span></div>
-          <div class="score-bar-row"><span class="score-bar-label">Diversity</span><div class="score-bar-track"><div class="score-bar-fill" style="width:65%;animation-delay:0.25s"></div></div><span class="score-pct">65%</span></div>
-          <div class="score-bar-row"><span class="score-bar-label">Drift</span><div class="score-bar-track"><div class="score-bar-fill" style="width:90%;animation-delay:0.4s;background:linear-gradient(90deg,var(--green),#86efac)"></div></div><span class="score-pct">90%</span></div>
-          <div class="score-bar-row"><span class="score-bar-label">Completion</span><div class="score-bar-track"><div class="score-bar-fill" style="width:100%;animation-delay:0.55s"></div></div><span class="score-pct">100%</span></div>
-        </div>
+      <div class="score-img-wrap reveal">
+        <img src="assets/health-score.png" alt="Portfolio health score A grade">
       </div>
       <div class="score-copy reveal">
         <h3>Know exactly where you stand — every time you open the sheet.</h3>
