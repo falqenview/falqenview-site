@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FalqenView — See further. Act smarter.</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #141820;
+    --surface:   #1c2230;
+    --surface2:  #232b3e;
+    --border:    rgba(255,255,255,0.07);
+    --blue:      #1A73E8;
+    --blue-glow: rgba(26,115,232,0.25);
+    --blue-dim:  rgba(26,115,232,0.12);
+    --cyan:      #38bdf8;
+    --green:     #22c55e;
+    --red:       #ef4444;
+    --amber:     #f59e0b;
+    --text:      #e8ecf4;
+    --muted:     #7a8499;
+    --nav-h:     64px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lexend', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: var(--nav-h);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    background: rgba(20,24,32,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800; font-size: 1.25rem;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--blue); }
+
+  .nav-links {
+    display: flex; align-items: center; gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em;
+    color: var(--muted); text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 1px; background: var(--blue);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .nav-cta {
+    background: var(--blue); color: #fff !important;
+    padding: 8px 20px; border-radius: 6px;
+    font-weight: 600 !important;
+    transition: background 0.2s, transform 0.15s !important;
+  }
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover { background: #1557b0 !important; transform: translateY(-1px); }
+
+  /* ── SECTIONS ── */
+  section { position: relative; z-index: 1; }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: calc(var(--nav-h) + 60px) 24px 80px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  /* animated mesh background */
+  .hero-mesh {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(26,115,232,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 80% 80%, rgba(56,189,248,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 30% 30% at 10% 70%, rgba(26,115,232,0.06) 0%, transparent 60%);
+    animation: meshPulse 8s ease-in-out infinite alternate;
+  }
+  @keyframes meshPulse {
+    from { opacity: 0.7; }
+    to   { opacity: 1; }
+  }
+
+  /* grid lines */
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 780px; }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--blue-dim);
+    border: 1px solid rgba(26,115,232,0.3);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 28px;
+    opacity: 0; animation: fadeUp 0.6s 0.2s ease forwards;
+  }
+  .pulse-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 0 0 rgba(34,197,94,0.5);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+    70%  { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+    100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+  }
+
+  h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; font-size: clamp(2.6rem, 6vw, 4.4rem);
+    line-height: 1.05; letter-spacing: -0.03em;
+    color: var(--text);
+    opacity: 0; animation: fadeUp 0.7s 0.35s ease forwards;
+  }
+  h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--cyan) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    margin-top: 24px;
+    font-size: 1.05rem; font-weight: 300; line-height: 1.7;
+    color: var(--muted); max-width: 560px; margin-left: auto; margin-right: auto;
+    opacity: 0; animation: fadeUp 0.7s 0.5s ease forwards;
+  }
+
+  .hero-actions {
+    margin-top: 40px;
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.7s 0.65s ease forwards;
+  }
+
+  .btn-primary {
+    background: var(--blue);
+    color: #fff; font-family: 'Lexend', sans-serif;
+    font-size: 0.9rem; font-weight: 600;
+    padding: 14px 32px; border-radius: 8px;
+    border: none; cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 24px rgba(26,115,232,0.35);
+  }
+  .btn-primary:hover {
+    background: #1557b0; transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(26,115,232,0.5);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--muted); font-family: 'Lexend', sans-serif;
+    font-size: 0.9rem; font-weight: 500;
+    padding: 14px 28px; border-radius: 8px;
+    border: 1px solid var(--border); cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: color 0.2s, border-color 0.2s, transform 0.15s;
+  }
+  .btn-ghost:hover {
+    color: var(--text); border-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+  }
+
+  /* ── STATS STRIP ── */
+  .stats-strip {
+    display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+    margin-top: 64px; padding-top: 48px;
+    border-top: 1px solid var(--border);
+    opacity: 0; animation: fadeUp 0.7s 0.85s ease forwards;
+  }
+  .stat { text-align: center; }
+  .stat-val {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem; font-weight: 800;
+    color: var(--text); letter-spacing: -0.03em;
+  }
+  .stat-val span { color: var(--blue); }
+  .stat-label { font-size: 0.75rem; color: var(--muted); margin-top: 4px; letter-spacing: 0.04em; }
+
+  /* ── FEATURE CARDS ── */
+  #products {
+    padding: 100px 24px;
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  .section-label {
+    text-align: center;
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--blue); margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800; font-size: clamp(1.8rem, 4vw, 2.8rem);
+    letter-spacing: -0.03em; text-align: center;
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    text-align: center; color: var(--muted);
+    font-size: 1rem; font-weight: 300; max-width: 500px;
+    margin: 0 auto 64px;
+  }
+
+  /* heatmap demo */
+  .heatmap-demo {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 48px;
+    position: relative; overflow: hidden;
+  }
+  .heatmap-demo::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--blue), transparent);
+  }
+  .heatmap-label {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 16px;
+  }
+  .heatmap-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;
+  }
+  .hmap-cell {
+    border-radius: 8px; padding: 12px 8px;
+    text-align: center; cursor: default;
+    transition: transform 0.2s, filter 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .hmap-cell:hover { transform: scale(1.04); filter: brightness(1.15); }
+  .hmap-cell .hmap-ticker {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem; font-weight: 700;
+  }
+  .hmap-cell .hmap-gain {
+    font-size: 0.7rem; font-weight: 500; margin-top: 3px;
+  }
+  .hmap-g3  { background: rgba(34,197,94,0.22);  color: #4ade80; }
+  .hmap-g2  { background: rgba(34,197,94,0.14);  color: #86efac; }
+  .hmap-g1  { background: rgba(34,197,94,0.07);  color: #bbf7d0; }
+  .hmap-r1  { background: rgba(239,68,68,0.10);  color: #fca5a5; }
+  .hmap-r2  { background: rgba(239,68,68,0.20);  color: #f87171; }
+
+  /* feature cards grid */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .feat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px; padding: 28px;
+    position: relative; overflow: hidden;
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    cursor: default;
+  }
+  .feat-card::before {
+    content: ''; position: absolute;
+    inset: 0; border-radius: 14px;
+    background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(26,115,232,0.1) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  .feat-card:hover { transform: translateY(-4px); border-color: rgba(26,115,232,0.3); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
+  .feat-card:hover::before { opacity: 1; }
+
+  .feat-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: var(--blue-dim); border: 1px solid rgba(26,115,232,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; margin-bottom: 20px;
+  }
+  .feat-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; font-size: 1rem; margin-bottom: 10px;
+  }
+  .feat-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; font-weight: 300; }
+
+  /* ── PRICING ── */
+  #pricing {
+    padding: 100px 24px;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 50%, var(--bg) 100%);
+  }
+  .pricing-inner { max-width: 1000px; margin: 0 auto; }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; margin-top: 0;
+  }
+
+  .price-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 36px 28px;
+    position: relative; overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .price-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+
+  .price-card.featured {
+    border-color: var(--blue);
+    background: linear-gradient(145deg, var(--surface2), rgba(26,115,232,0.08));
+    box-shadow: 0 0 0 1px rgba(26,115,232,0.3), 0 8px 40px rgba(26,115,232,0.15);
+  }
+  .price-card.featured::before {
+    content: 'MOST POPULAR';
+    position: absolute; top: 16px; right: 16px;
+    background: var(--blue); color: #fff;
+    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em;
+    padding: 4px 10px; border-radius: 100px;
+  }
+
+  .price-tier {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 12px;
+  }
+  .price-val {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8rem; font-weight: 900;
+    letter-spacing: -0.04em; color: var(--text);
+    margin-bottom: 6px;
+  }
+  .price-val sup { font-size: 1.4rem; vertical-align: super; }
+  .price-once { font-size: 0.75rem; color: var(--muted); margin-bottom: 24px; }
+
+  .price-features { list-style: none; margin-bottom: 32px; }
+  .price-features li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 0.83rem; color: var(--muted);
+    padding: 7px 0; border-bottom: 1px solid var(--border);
+    font-weight: 300;
+  }
+  .price-features li:last-child { border-bottom: none; }
+  .price-features li .chk { color: var(--green); flex-shrink: 0; margin-top: 1px; }
+  .price-features li .lck { color: var(--muted); flex-shrink: 0; margin-top: 1px; opacity: 0.4; }
+
+  .btn-price {
+    width: 100%; padding: 13px;
+    border-radius: 8px; border: none; cursor: pointer;
+    font-family: 'Lexend', sans-serif; font-size: 0.88rem; font-weight: 600;
+    text-decoration: none; display: block; text-align: center;
+    transition: all 0.2s;
+  }
+  .btn-price-ghost {
+    background: transparent; color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  .btn-price-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+  .btn-price-solid {
+    background: var(--blue); color: #fff;
+    box-shadow: 0 4px 20px rgba(26,115,232,0.35);
+  }
+  .btn-price-solid:hover { background: #1557b0; box-shadow: 0 8px 28px rgba(26,115,232,0.5); }
+
+  /* ── HEALTH SCORE DEMO ── */
+  .score-demo {
+    max-width: 1100px; margin: 0 auto 0;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+    align-items: center; padding: 0 24px;
+  }
+  .score-visual {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 32px;
+    position: relative; overflow: hidden;
+  }
+  .score-visual::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--green), transparent);
+  }
+  .score-grade {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 5rem; font-weight: 900;
+    color: var(--green); line-height: 1;
+    text-shadow: 0 0 40px rgba(34,197,94,0.4);
+  }
+  .score-label { font-size: 0.8rem; color: var(--muted); margin-top: 8px; }
+  .score-bars { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
+  .score-bar-row { display: flex; align-items: center; gap: 12px; }
+  .score-bar-label { font-size: 0.72rem; color: var(--muted); width: 80px; flex-shrink: 0; }
+  .score-bar-track {
+    flex: 1; height: 6px; background: var(--surface2); border-radius: 3px; overflow: hidden;
+  }
+  .score-bar-fill {
+    height: 100%; border-radius: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--cyan));
+    animation: barGrow 1.5s ease forwards;
+    transform-origin: left;
+  }
+  @keyframes barGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .score-pct { font-size: 0.72rem; color: var(--muted); width: 32px; text-align: right; }
+
+  .score-copy { padding: 20px 0; }
+  .score-copy h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem; font-weight: 800; letter-spacing: -0.03em;
+    margin-bottom: 16px;
+  }
+  .score-copy p { color: var(--muted); font-size: 0.92rem; line-height: 1.75; font-weight: 300; }
+
+  /* ── ALERT STRIP ── */
+  .alert-strip {
+    max-width: 1100px; margin: 64px auto;
+    padding: 0 24px;
+  }
+  .alert-cards { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .alert-pill {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 100px; padding: 10px 18px;
+    font-size: 0.8rem; font-weight: 500;
+    transition: transform 0.2s, border-color 0.2s;
+    cursor: default;
+  }
+  .alert-pill:hover { transform: scale(1.03); }
+  .alert-pill.drift  { border-color: rgba(245,158,11,0.35); }
+  .alert-pill.cap    { border-color: rgba(239,68,68,0.35);  }
+  .alert-pill.ok     { border-color: rgba(34,197,94,0.35);  }
+  .adot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .adot.amber { background: var(--amber); box-shadow: 0 0 6px var(--amber); }
+  .adot.red   { background: var(--red);   box-shadow: 0 0 6px var(--red); }
+  .adot.green { background: var(--green); box-shadow: 0 0 6px var(--green); }
+
+  /* ── SUPPORT ── */
+  #support {
+    padding: 100px 24px;
+    max-width: 700px; margin: 0 auto;
+  }
+
+  .form-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 48px;
+    position: relative; overflow: hidden;
+  }
+  .form-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--blue), transparent);
+  }
+
+  .form-group { margin-bottom: 20px; }
+  label {
+    display: block; font-size: 0.78rem; font-weight: 500;
+    letter-spacing: 0.04em; color: var(--muted);
+    margin-bottom: 8px; text-transform: uppercase;
+  }
+  input, select, textarea {
+    width: 100%; padding: 12px 16px;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--text);
+    font-family: 'Lexend', sans-serif; font-size: 0.88rem;
+    outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px var(--blue-dim);
+  }
+  select option { background: var(--surface2); }
+  textarea { resize: vertical; min-height: 120px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  /* ── ABOUT ── */
+  #about {
+    padding: 100px 24px;
+    max-width: 800px; margin: 0 auto; text-align: center;
+  }
+  .about-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 56px 48px;
+    position: relative; overflow: hidden;
+  }
+  .about-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  }
+  .about-tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem; font-weight: 800;
+    letter-spacing: -0.02em; margin-bottom: 20px;
+  }
+  .about-body {
+    font-size: 0.92rem; color: var(--muted); line-height: 1.85;
+    font-weight: 300; margin-bottom: 32px;
+  }
+  .about-chips { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .chip {
+    background: var(--blue-dim); border: 1px solid rgba(26,115,232,0.2);
+    border-radius: 100px; padding: 6px 16px;
+    font-size: 0.75rem; font-weight: 500; color: var(--blue);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+    position: relative; z-index: 1;
+  }
+  .footer-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800; font-size: 1rem; color: var(--text);
+    text-decoration: none;
+  }
+  .footer-logo span { color: var(--blue); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--text); }
+  .footer-legal { font-size: 0.72rem; color: var(--muted); opacity: 0.6; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── SECTOR DONUT DEMO ── */
+  .sector-demo {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px;
+    display: flex; align-items: center; gap: 28px;
+  }
+  .donut-wrap { position: relative; flex-shrink: 0; }
+  .donut-center {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .donut-center-val {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem; font-weight: 800; color: var(--text);
+  }
+  .donut-center-label { font-size: 0.62rem; color: var(--muted); }
+  .sector-legend { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+  .legend-row { display: flex; align-items: center; gap: 10px; }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .legend-name { font-size: 0.78rem; color: var(--muted); flex: 1; }
+  .legend-pct  { font-size: 0.78rem; color: var(--text); font-weight: 500; font-family: 'Montserrat', sans-serif; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 20px; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .score-demo { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .about-card { padding: 36px 24px; }
+    footer { flex-direction: column; text-align: center; }
+    .heatmap-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">Falqen<span>View</span></a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#support">Support</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#pricing" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-mesh"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="pulse-dot"></span>
+      Now available — Silver v1.2
+    </div>
+    <h1>Your portfolio.<br><em>Finally under control.</em></h1>
+    <p class="hero-sub">
+      FalqenView turns your investment accounts into a live, intelligent dashboard — without the advisor fees, without the complexity.
+    </p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn-primary">See Pricing →</a>
+      <a href="#products" class="btn-ghost">Explore Features</a>
+    </div>
+    <div class="stats-strip">
+      <div class="stat">
+        <div class="stat-val"><span>5</span> Accounts</div>
+        <div class="stat-label">tracked simultaneously</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val"><span>300+</span></div>
+        <div class="stat-label">pre-mapped tickers</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val"><span>$0</span></div>
+        <div class="stat-label">advisor fees. ever.</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val"><span>1</span> Sheet</div>
+        <div class="stat-label">total clarity</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS / FEATURES -->
+<section id="products" style="padding: 100px 24px;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <p class="section-label reveal">What's inside</p>
+    <h2 class="section-title reveal">Built for investors who<br>do their own homework.</h2>
+    <p class="section-sub reveal">No fluff. No subscriptions. Just the data you need to make confident decisions.</p>
+
+    <!-- HEATMAP DEMO -->
+    <div class="heatmap-demo reveal">
+      <div class="heatmap-label">📊 Live Portfolio Heatmap — hover to explore</div>
+      <div class="heatmap-grid">
+        <div class="hmap-cell hmap-g3"><div class="hmap-ticker">VOO</div><div class="hmap-gain">+38.2%</div></div>
+        <div class="hmap-cell hmap-g3"><div class="hmap-ticker">NVDA</div><div class="hmap-gain">+82.4%</div></div>
+        <div class="hmap-cell hmap-g2"><div class="hmap-ticker">AAPL</div><div class="hmap-gain">+21.7%</div></div>
+        <div class="hmap-cell hmap-g2"><div class="hmap-ticker">MSFT</div><div class="hmap-gain">+18.3%</div></div>
+        <div class="hmap-cell hmap-g1"><div class="hmap-ticker">VTI</div><div class="hmap-gain">+9.4%</div></div>
+        <div class="hmap-cell hmap-g1"><div class="hmap-ticker">QQQ</div><div class="hmap-gain">+6.1%</div></div>
+        <div class="hmap-cell hmap-r1"><div class="hmap-ticker">BOND</div><div class="hmap-gain">−2.8%</div></div>
+        <div class="hmap-cell hmap-r1"><div class="hmap-ticker">JEPI</div><div class="hmap-gain">−1.2%</div></div>
+        <div class="hmap-cell hmap-g1"><div class="hmap-ticker">IBIT</div><div class="hmap-gain">+11.5%</div></div>
+        <div class="hmap-cell hmap-r2"><div class="hmap-ticker">ARKK</div><div class="hmap-gain">−9.3%</div></div>
+      </div>
+    </div>
+
+    <!-- FEATURE CARDS -->
+    <div class="features-grid">
+      <div class="feat-card reveal" id="fc1">
+        <div class="feat-icon">⚡</div>
+        <div class="feat-title">Ticker Auto-Fill</div>
+        <div class="feat-desc">Type any ticker — position name, live price, and sector populate instantly. 300+ tickers pre-mapped out of the box.</div>
+      </div>
+      <div class="feat-card reveal" id="fc2">
+        <div class="feat-icon">🎯</div>
+        <div class="feat-title">Drift Alerts</div>
+        <div class="feat-desc">Set your target allocation per position. FalqenView flags when any position drifts beyond your threshold — so you always know what to rebalance.</div>
+      </div>
+      <div class="feat-card reveal" id="fc3">
+        <div class="feat-icon">🏆</div>
+        <div class="feat-title">Portfolio Health Score</div>
+        <div class="feat-desc">An A–F grade computed from your gain, diversification, and drift exposure. Know your portfolio's real health at a glance.</div>
+      </div>
+      <div class="feat-card reveal" id="fc4">
+        <div class="feat-icon">🥧</div>
+        <div class="feat-title">Sector Concentration</div>
+        <div class="feat-desc">See exactly how much of your portfolio is in Tech, Bonds, Crypto, and more — across all accounts, in one unified view.</div>
+      </div>
+    </div>
+
+    <!-- HEALTH SCORE + SECTOR DEMO -->
+    <div class="score-demo" style="margin-top: 64px;">
+      <div class="score-visual reveal">
+        <div class="score-grade">A</div>
+        <div class="score-label">Portfolio Health Score</div>
+        <div class="score-bars">
+          <div class="score-bar-row">
+            <span class="score-bar-label">Gain</span>
+            <div class="score-bar-track"><div class="score-bar-fill" style="width:78%; animation-delay:0.1s;"></div></div>
+            <span class="score-pct">78%</span>
+          </div>
+          <div class="score-bar-row">
+            <span class="score-bar-label">Diversity</span>
+            <div class="score-bar-track"><div class="score-bar-fill" style="width:65%; animation-delay:0.25s;"></div></div>
+            <span class="score-pct">65%</span>
+          </div>
+          <div class="score-bar-row">
+            <span class="score-bar-label">Drift</span>
+            <div class="score-bar-track"><div class="score-bar-fill" style="width:90%; animation-delay:0.4s; background: linear-gradient(90deg,var(--green),#86efac);"></div></div>
+            <span class="score-pct">90%</span>
+          </div>
+          <div class="score-bar-row">
+            <span class="score-bar-label">Completion</span>
+            <div class="score-bar-track"><div class="score-bar-fill" style="width:100%; animation-delay:0.55s;"></div></div>
+            <span class="score-pct">100%</span>
+          </div>
+        </div>
+      </div>
+      <div class="score-copy reveal">
+        <h3>Know exactly where you stand — every time you open the sheet.</h3>
+        <p>The health score pulls from your gain performance, portfolio diversity, drift exposure, and data completeness. No interpretation needed. One letter tells the story.</p>
+      </div>
+    </div>
+
+    <!-- ALERT STRIP -->
+    <div class="alert-strip reveal" style="margin-top: 64px; text-align: center;">
+      <p class="section-label" style="margin-bottom:20px;">Smart alerts built in</p>
+      <div class="alert-cards">
+        <div class="alert-pill drift"><span class="adot amber"></span>VOO drifted +8.2% above target</div>
+        <div class="alert-pill cap"><span class="adot red"></span>NVDA exceeds 25% position cap</div>
+        <div class="alert-pill ok"><span class="adot green"></span>AAPL — within target range</div>
+        <div class="alert-pill drift"><span class="adot amber"></span>Cash drag alert — IRA 12%</div>
+        <div class="alert-pill ok"><span class="adot green"></span>Portfolio health: A grade</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="pricing-inner">
+    <p class="section-label reveal" style="text-align:center;">Simple pricing</p>
+    <h2 class="section-title reveal">One-time. No subscription.<br>Yours forever.</h2>
+    <p class="section-sub reveal">Pay once. Use it for every trade, every rebalance, every decision — for as long as you invest.</p>
+
+    <div class="pricing-grid">
+      <!-- SILVER -->
+      <div class="price-card reveal">
+        <div class="price-tier">Silver</div>
+        <div class="price-val"><sup>$</sup>19</div>
+        <div class="price-once">one-time purchase</div>
+        <ul class="price-features">
+          <li><span class="chk">✓</span> 5 accounts, 5 positions each</li>
+          <li><span class="chk">✓</span> Ticker auto-fill (name, price, sector)</li>
+          <li><span class="chk">✓</span> Gain / loss tracking</li>
+          <li><span class="chk">✓</span> Drift alerts</li>
+          <li><span class="chk">✓</span> Portfolio health score</li>
+          <li><span class="chk">✓</span> Sector concentration</li>
+          <li><span class="chk">✓</span> Cash drag monitor</li>
+          <li><span class="chk">✓</span> 300+ ticker database</li>
+          <li><span class="lck">○</span> Visual dashboard</li>
+          <li><span class="lck">○</span> Rebalance calculator</li>
+        </ul>
+        <a href="#" class="btn-price btn-price-ghost">Get Silver</a>
+      </div>
+
+      <!-- GOLD -->
+      <div class="price-card featured reveal">
+        <div class="price-tier">Gold</div>
+        <div class="price-val"><sup>$</sup>79</div>
+        <div class="price-once">one-time purchase</div>
+        <ul class="price-features">
+          <li><span class="chk">✓</span> Everything in Silver</li>
+          <li><span class="chk">✓</span> Visual dashboard (charts + KPIs)</li>
+          <li><span class="chk">✓</span> What-If rebalance calculator</li>
+          <li><span class="chk">✓</span> Tax-loss harvest scanner</li>
+          <li><span class="chk">✓</span> LTCG calendar timeline</li>
+          <li><span class="chk">✓</span> Net worth tracker</li>
+          <li><span class="chk">✓</span> Benchmark vs S&P 500</li>
+          <li><span class="chk">✓</span> Dividend income forecaster</li>
+          <li><span class="lck">○</span> Email alerts</li>
+          <li><span class="lck">○</span> Mobile dashboard</li>
+        </ul>
+        <a href="#" class="btn-price btn-price-solid">Get Gold</a>
+      </div>
+
+      <!-- PLATINUM -->
+      <div class="price-card reveal">
+        <div class="price-tier">Platinum</div>
+        <div class="price-val"><sup>$</sup>149</div>
+        <div class="price-once">one-time purchase</div>
+        <ul class="price-features">
+          <li><span class="chk">✓</span> Everything in Gold</li>
+          <li><span class="chk">✓</span> Email alerts & notifications</li>
+          <li><span class="chk">✓</span> Portfolio snapshots + sparkline</li>
+          <li><span class="chk">✓</span> Mobile dashboard</li>
+          <li><span class="chk">✓</span> Annual performance report</li>
+          <li><span class="chk">✓</span> Multi-year contribution tracker</li>
+          <li><span class="chk">✓</span> Priority support</li>
+          <li><span class="chk">✓</span> All future updates included</li>
+          <li><span class="chk">✓</span> White-label ready</li>
+          <li><span class="chk">✓</span> First access to new products</li>
+        </ul>
+        <a href="#" class="btn-price btn-price-ghost">Get Platinum</a>
+      </div>
+    </div>
+
+    <p style="text-align:center; margin-top:28px; font-size:0.78rem; color:var(--muted);">
+      Already a buyer? <a href="#support" style="color:var(--blue); text-decoration:none;">Email us</a> with your order # to claim upgrade pricing.
+    </p>
+  </div>
+</section>
+
+<!-- SUPPORT -->
+<section id="support">
+  <p class="section-label reveal" style="text-align:center;">We're here</p>
+  <h2 class="section-title reveal">Support</h2>
+  <p class="section-sub reveal">Have a question or need help? Fill out the form below or email us directly at <a href="mailto:hello@falqenview.com" style="color:var(--blue); text-decoration:none;">hello@falqenview.com</a>.<br>We also have a full support page at <a href="https://falqenview.com/support" style="color:var(--blue); text-decoration:none;">falqenview.com/support</a>.</p>
+  <div class="form-card reveal">
+    <div class="form-row">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" placeholder="Alex">
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" placeholder="Chen">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" placeholder="you@email.com">
+    </div>
+    <div class="form-group">
+      <label>Package</label>
+      <select>
+        <option value="">Select your package</option>
+        <option>Silver — $19</option>
+        <option>Gold — $79</option>
+        <option>Platinum — $149</option>
+        <option>Not yet a customer</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Message</label>
+      <textarea placeholder="Describe your question or issue..."></textarea>
+    </div>
+    <button class="btn-primary" style="width:100%; justify-content:center; border:none;">Send Message →</button>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label reveal" style="text-align:center;">Our story</p>
+  <h2 class="section-title reveal">About FalqenView</h2>
+  <div class="about-card reveal">
+    <div class="about-tagline">Built by investors, for investors.</div>
+    <p class="about-body">
+      FalqenView was built out of frustration. Managing multiple investment accounts — IRAs, 401ks, HSAs, taxable brokerage — shouldn't require a financial advisor or a Bloomberg terminal. It should be clear, fast, and entirely under your control.<br><br>
+      We built the tools we wished existed. No monthly fees. No data sharing. No fluff. Just a powerful, private tracker that lives in your own Google account and gives you the clarity to invest with confidence.
+    </p>
+    <div class="about-chips">
+      <span class="chip">Self-directed</span>
+      <span class="chip">No AUM fees</span>
+      <span class="chip">Privacy-first</span>
+      <span class="chip">One-time purchase</span>
+      <span class="chip">Your data stays yours</span>
+    </div>
+    <p style="margin-top:32px; font-size:0.8rem; color:var(--muted);">
+      Questions? <a href="mailto:hello@falqenview.com" style="color:var(--blue); text-decoration:none;">hello@falqenview.com</a> · <a href="https://falqenview.com/support" style="color:var(--blue); text-decoration:none;">falqenview.com/support</a>
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#home" class="footer-logo">Falqen<span>View</span></a>
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#support">Support</a>
+    <a href="#about">About</a>
+  </div>
+  <div class="footer-legal">© 2026 FalqenView · For informational purposes only. Not financial advice.</div>
+</footer>
+
+<script>
+  // ── SCROLL REVEAL ──
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+
+  // ── CARD MOUSE GLOW ──
+  document.querySelectorAll('.feat-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width * 100).toFixed(1);
+      const y = ((e.clientY - r.top) / r.height * 100).toFixed(1);
+      card.style.setProperty('--mx', x + '%');
+      card.style.setProperty('--my', y + '%');
+    });
+  });
+
+  // ── ANIMATED COUNTER ──
+  function animateCount(el, target, suffix='') {
+    let start = 0, duration = 1400;
+    const step = timestamp => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(ease * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  // ── HEATMAP PULSE ──
+  const cells = document.querySelectorAll('.hmap-cell');
+  setInterval(() => {
+    const idx = Math.floor(Math.random() * cells.length);
+    cells[idx].style.filter = 'brightness(1.3)';
+    setTimeout(() => cells[idx].style.filter = '', 400);
+  }, 1200);
+
+  // ── SMOOTH NAV HIGHLIGHT ──
+  const sections = document.querySelectorAll('section[id], #home');
+  const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'var(--text)' : '';
+    });
+  });
+
+  // ── SUPPORT FORM SUBMIT ──
+  document.querySelector('.btn-primary[style]').addEventListener('click', function() {
+    this.textContent = '✓ Message sent!';
+    this.style.background = 'var(--green)';
+    setTimeout(() => {
+      this.textContent = 'Send Message →';
+      this.style.background = '';
+    }, 3000);
+  });
+</script>
+</body>
+</html>
