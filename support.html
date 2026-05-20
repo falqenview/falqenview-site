@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — FalqenView</title>
+<meta name="description" content="FalqenView support — get help with your portfolio tracker.">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #141820;
+    --surface:  #1c2230;
+    --surface2: #232b3e;
+    --border:   rgba(255,255,255,0.07);
+    --blue:     #1A73E8;
+    --blue-dim: rgba(26,115,232,0.12);
+    --cyan:     #38bdf8;
+    --green:    #22c55e;
+    --amber:    #f59e0b;
+    --text:     #e8ecf4;
+    --muted:    #7a8499;
+    --nav-h:    64px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Lexend', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; opacity: 0.4; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; background: rgba(20,24,32,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo img { height: 36px; width: 36px; object-fit: contain; filter: drop-shadow(0 0 8px rgba(26,115,232,0.4)); }
+  .nav-logo-text { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.2rem; letter-spacing: -0.02em; color: var(--text); }
+  .nav-logo-text span { color: var(--blue); }
+  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em; color: var(--muted); text-decoration: none; text-transform: uppercase; transition: color 0.2s; position: relative; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-links a.active { color: var(--text); }
+  .nav-links a.active::after { transform: scaleX(1); }
+  .nav-cta { background: var(--blue) !important; color: #fff !important; padding: 8px 20px; border-radius: 6px; font-weight: 600 !important; }
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover { background: #1557b0 !important; }
+
+  .page-wrap { position: relative; z-index: 1; padding: calc(var(--nav-h) + 60px) 24px 80px; max-width: 1100px; margin: 0 auto; }
+
+  .page-hero { text-align: center; margin-bottom: 64px; }
+  .page-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--blue-dim); border: 1px solid rgba(26,115,232,0.3); border-radius: 100px; padding: 6px 16px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 20px; }
+  .page-hero h1 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.03em; margin-bottom: 16px; }
+  .page-hero p { color: var(--muted); font-size: 1rem; font-weight: 300; max-width: 500px; margin: 0 auto; line-height: 1.7; }
+  .page-hero a { color: var(--blue); text-decoration: none; }
+
+  .support-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+
+  /* FORM */
+  .form-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 40px; position: relative; overflow: hidden; }
+  .form-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--blue), transparent); }
+  .form-card h2 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.3rem; letter-spacing: -0.02em; margin-bottom: 24px; }
+  .form-group { margin-bottom: 18px; }
+  label { display: block; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 8px; text-transform: uppercase; }
+  input, select, textarea { width: 100%; padding: 11px 14px; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: 'Lexend', sans-serif; font-size: 0.88rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s; -webkit-appearance: none; }
+  input:focus, select:focus, textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-dim); }
+  select option { background: var(--surface2); }
+  textarea { resize: vertical; min-height: 130px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .btn-submit { width: 100%; padding: 13px; background: var(--blue); color: #fff; font-family: 'Lexend', sans-serif; font-size: 0.9rem; font-weight: 600; border: none; border-radius: 8px; cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(26,115,232,0.35); margin-top: 4px; }
+  .btn-submit:hover { background: #1557b0; transform: translateY(-1px); box-shadow: 0 8px 28px rgba(26,115,232,0.5); }
+
+  /* FAQ */
+  .faq-col h2 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.3rem; letter-spacing: -0.02em; margin-bottom: 24px; }
+  .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden; transition: border-color 0.2s; }
+  .faq-item:hover { border-color: rgba(26,115,232,0.25); }
+  .faq-q { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px; cursor: pointer; font-size: 0.88rem; font-weight: 500; gap: 12px; }
+  .faq-q .arrow { font-size: 0.7rem; color: var(--muted); transition: transform 0.25s; flex-shrink: 0; }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.2s; font-size: 0.84rem; color: var(--muted); line-height: 1.75; font-weight: 300; padding: 0 20px; }
+  .faq-item.open .faq-a { max-height: 300px; padding: 0 20px 18px; }
+  .faq-item.open .arrow { transform: rotate(180deg); }
+  .faq-a a { color: var(--blue); text-decoration: none; }
+  .faq-a code { background: var(--surface2); padding: 2px 6px; border-radius: 4px; font-size: 0.82rem; color: var(--cyan); }
+
+  /* CONTACT STRIP */
+  .contact-strip { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px 40px; margin-top: 32px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; position: relative; overflow: hidden; }
+  .contact-strip::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--amber), transparent); }
+  .contact-strip-text h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+  .contact-strip-text p { font-size: 0.83rem; color: var(--muted); font-weight: 300; }
+  .contact-strip-text a { color: var(--blue); text-decoration: none; }
+  .btn-email { background: transparent; color: var(--blue); border: 1px solid rgba(26,115,232,0.35); border-radius: 8px; padding: 10px 22px; font-family: 'Lexend', sans-serif; font-size: 0.85rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block; }
+  .btn-email:hover { background: var(--blue-dim); border-color: var(--blue); }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 40px 48px; position: relative; z-index: 1; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { display: flex; flex-direction: column; gap: 6px; }
+  .footer-lockup { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .footer-lockup img { height: 32px; width: 32px; object-fit: contain; filter: drop-shadow(0 0 8px rgba(26,115,232,0.35)); }
+  .footer-lockup-text { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; color: var(--text); }
+  .footer-lockup-text span { color: var(--blue); }
+  .footer-motto { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; padding-left: 42px; }
+  .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--text); }
+  .footer-bottom { max-width: 1100px; margin: 20px auto 0; padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .footer-legal { font-size: 0.7rem; color: var(--muted); opacity: 0.6; }
+  .footer-contact a { font-size: 0.72rem; color: var(--blue); text-decoration: none; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 20px; }
+    .support-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { padding: 32px 20px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .contact-strip { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 480px) { .nav-links { display: none; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="assets/fvIcon.png" alt="FalqenView icon">
+    <span class="nav-logo-text">Falqen<span>V</span>iew</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#products">Products</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="support.html" class="active">Support</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#pricing" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-hero reveal">
+    <div class="page-eyebrow">🛟 Support</div>
+    <h1>How can we help?</h1>
+    <p>Fill out the form and we'll get back to you. Or email us directly at <a href="mailto:hello@falqenview.com">hello@falqenview.com</a>.</p>
+  </div>
+
+  <div class="support-grid">
+    <!-- FORM -->
+    <div class="form-card reveal">
+      <h2>Send us a message</h2>
+      <div class="form-row">
+        <div class="form-group"><label>First Name</label><input type="text" placeholder="Alex"></div>
+        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Chen"></div>
+      </div>
+      <div class="form-group"><label>Email</label><input type="email" placeholder="you@email.com"></div>
+      <div class="form-group">
+        <label>Package</label>
+        <select>
+          <option value="">Select your package</option>
+          <option>Silver — $19</option>
+          <option>Gold — $79</option>
+          <option>Platinum — $149</option>
+          <option>Not yet a customer</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Topic</label>
+        <select>
+          <option value="">Select a topic</option>
+          <option>Getting started / setup</option>
+          <option>Formula or calculation issue</option>
+          <option>Ticker not found</option>
+          <option>Upgrade pricing</option>
+          <option>Billing or order question</option>
+          <option>Feature request</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Message</label><textarea placeholder="Describe your question or issue in as much detail as possible..."></textarea></div>
+      <button class="btn-submit" id="submitBtn">Send Message →</button>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-col reveal">
+      <h2>Frequently asked questions</h2>
+
+      <div class="faq-item open">
+        <div class="faq-q">"Authorization Required" — what do I do? <span class="arrow">▼</span></div>
+        <div class="faq-a">This is normal. When you open FalqenView for the first time and click any menu item, Google asks for permission before running any script. Click <strong>Review Permissions</strong>, sign in with your Google account, and approve. You'll only see this once. The script runs entirely within your own Google account and does not access any external data or other files.<br><br>If you see a "Google hasn't verified this app" warning on the next screen — click <strong>Advanced</strong> → <strong>Go to FalqenView (unsafe)</strong>. This is expected for independently published tools and is safe to proceed.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Why isn't my ticker auto-filling? <span class="arrow">▼</span></div>
+        <div class="faq-a">Make sure you're <strong>typing</strong> the ticker — not pasting. The auto-fill only triggers when you type directly into the Ticker cell on the Portfolio tab. If the ticker isn't in our database, the name and sector won't fill in but the price formula will still be set. You can manually type the position name and sector in those cells.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Prices aren't updating — how do I refresh? <span class="arrow">▼</span></div>
+        <div class="faq-a">Go to <strong>FalqenView menu → Refresh Prices</strong>. This forces Google to recalculate all live prices. Note that Google Finance data is delayed 15–20 minutes by Google — this is a platform limitation, not a FalqenView issue. Prices update automatically when the sheet is open.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How do I claim upgrade pricing? <span class="arrow">▼</span></div>
+        <div class="faq-a">Email us at <a href="mailto:hello@falqenview.com">hello@falqenview.com</a> with your original Gumroad order number. We'll send you a one-time coupon code within 24 hours. Coupons expire in 30 days and cannot be stacked with other offers.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Can I add more than 5 positions per account? <span class="arrow">▼</span></div>
+        <div class="faq-a">Yes — copy and paste any existing position row downward to add more rows. The formulas will carry over automatically. Make sure to update your target % so all positions still sum to 100%.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">My health score shows "—" — why? <span class="arrow">▼</span></div>
+        <div class="faq-a">The health score requires at least one position with Shares, Total Paid, and Target % filled in. Once you add your first position on the Portfolio tab, the score will calculate automatically on the Summary tab.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Is my data private? <span class="arrow">▼</span></div>
+        <div class="faq-a">Yes — completely. FalqenView lives entirely in your own Google account. We have no access to your data, no server connection, and nothing is transmitted outside your Google Drive. Your portfolio data is as private as your Google account.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT STRIP -->
+  <div class="contact-strip reveal">
+    <div class="contact-strip-text">
+      <h3>Still need help?</h3>
+      <p>Email us directly at <a href="mailto:hello@falqenview.com">hello@falqenview.com</a> — we typically respond within 24 hours.</p>
+    </div>
+    <a href="mailto:hello@falqenview.com" class="btn-email">Email Support →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-lockup">
+        <img src="assets/fvIcon.png" alt="FalqenView">
+        <span class="footer-lockup-text">Falqen<span>V</span>iew</span>
+      </a>
+      <div class="footer-motto">See further. Act smarter.</div>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="support.html">Support</a>
+      <a href="index.html#about">About</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-legal">© 2026 FalqenView · For informational purposes only. Not financial advice.</div>
+    <div class="footer-contact"><a href="mailto:hello@falqenview.com">hello@falqenview.com</a></div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e,i) => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*100); io.unobserve(e.target); } });
+  }, {threshold:0.08});
+  reveals.forEach(el=>io.observe(el));
+
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    item.querySelector('.faq-q').addEventListener('click',()=>{
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+
+  document.getElementById('submitBtn').addEventListener('click', function(){
+    this.textContent = '✓ Message sent!';
+    this.style.background = 'var(--green)';
+    setTimeout(()=>{ this.textContent = 'Send Message →'; this.style.background = ''; }, 3000);
+  });
+</script>
+</body>
+</html>
