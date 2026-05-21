@@ -81,8 +81,8 @@
   .hero-bg-img { position: absolute; inset: 0; z-index: 0; background: url("assets/hero-bg.png") center center / cover no-repeat; opacity: 0.18; mix-blend-mode: screen; }
 
   /* HEATMAP ASSET */
-  .heatmap-asset-wrap { position: relative; border-radius: 16px; overflow: hidden; background: var(--surface); border: 1px solid var(--border); margin-bottom: 48px; }
-  .heatmap-asset-wrap img { width: 100%; display: block; border-radius: 16px; opacity: 0.92; }
+  .heatmap-asset-wrap { position: relative; border-radius: 16px; overflow: hidden; background: var(--surface); border: 1px solid var(--border); margin-bottom: 48px; max-height: 420px; box-shadow: 0 8px 40px rgba(0,0,0,0.4); }
+  .heatmap-asset-wrap img { width: 100%; display: block; border-radius: 16px; opacity: 0.92; object-fit: cover; object-position: top; }
   .heatmap-asset-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, var(--bg) 100%); border-radius: 16px; }
   .heatmap-asset-label { position: absolute; top: 20px; left: 24px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); background: rgba(20,24,32,0.7); padding: 6px 12px; border-radius: 6px; backdrop-filter: blur(8px); }
 
@@ -311,10 +311,10 @@
       <a href="#products" class="btn-ghost">Explore Features</a>
     </div>
     <div class="stats-strip">
-      <div class="stat"><div class="stat-val"><span>5</span> Accounts</div><div class="stat-label">tracked simultaneously</div></div>
+      <div class="stat"><div class="stat-val"><span>Multi</span>-Account</div><div class="stat-label">IRA, 401k, HSA, taxable &amp; more</div></div>
       <div class="stat"><div class="stat-val"><span>300+</span></div><div class="stat-label">pre-mapped tickers</div></div>
       <div class="stat"><div class="stat-val"><span>$0</span></div><div class="stat-label">advisor fees. ever.</div></div>
-      <div class="stat"><div class="stat-val"><span>1</span> Sheet</div><div class="stat-label">total clarity</div></div>
+      <div class="stat"><div class="stat-val"><span>1</span> Sheet</div><div class="stat-label">See Further.</div></div>
     </div>
   </div>
 </section>
@@ -366,7 +366,7 @@
 <div style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:20px 0;">
   <div class="trust-strip">
     <div class="trust-badge"><span class="ticon">🔒</span><span><strong>SSL Secured</strong> — 256-bit encryption</span></div>
-    <div class="trust-badge"><span class="ticon">🛡️</span><span><strong>Privacy First</strong> — your data never leaves Google Drive</span></div>
+    <div class="trust-badge"><span class="ticon">🛡️</span><span><strong>Privacy First</strong> — your data never leaves your Google Drive</span></div>
     <div class="trust-badge"><span class="ticon">✅</span><span><strong>No Subscription</strong> — one-time purchase, yours forever</span></div>
     <div class="trust-badge"><span class="ticon">📊</span><span><strong>No Account Required</strong> — works in your existing Google account</span></div>
     <div class="trust-badge"><span class="ticon">💳</span><span><strong>Secure Checkout</strong> — via Stripe &amp; Gumroad</span></div>
