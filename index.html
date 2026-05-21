@@ -127,7 +127,7 @@
   .hero-lockup img { height: 120px; object-fit: contain; mix-blend-mode: screen; filter: drop-shadow(0 0 24px rgba(26,115,232,0.5)) drop-shadow(0 0 48px rgba(26,115,232,0.2)); animation: logoFloat 6s ease-in-out infinite; }
   @keyframes logoFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--blue-dim); border: 1px solid rgba(26,115,232,0.3); border-radius: 100px; padding: 6px 16px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.6s 0.4s ease forwards; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--blue-dim); border: 1px solid rgba(56,189,248,0.3); border-radius: 100px; padding: 6px 16px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #38bdf8; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.6s 0.4s ease forwards; }
   .pulse-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgba(34,197,94,0.5); animation: pulse 2s infinite; }
   @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); } 70% { box-shadow: 0 0 0 8px rgba(34,197,94,0); } 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); } }
 
@@ -169,7 +169,7 @@
   .hmap-r2 { background: rgba(239,68,68,0.20); color: #f87171; }
 
   .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-  .feat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px 22px; position: relative; overflow: hidden; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s; cursor: default; }
+  .feat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; position: relative; overflow: hidden; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s; cursor: default; }
   .feat-gold { border-color: rgba(245,158,11,0.25); }
   .feat-gold:hover { border-color: rgba(245,158,11,0.5); }
   .feat-platinum { border-color: rgba(139,92,246,0.25); }
@@ -320,7 +320,7 @@
       <div class="stat"><div class="stat-val"><span>Multi</span>-Account</div><div class="stat-label">IRA, 401k, HSA, taxable &amp; more</div></div>
       <div class="stat"><div class="stat-val"><span>300+</span></div><div class="stat-label">pre-mapped tickers</div></div>
       <div class="stat"><div class="stat-val"><span>$0</span></div><div class="stat-label">advisor fees. ever.</div></div>
-      <div class="stat"><div class="stat-val"><span>1</span> Sheet</div><div class="stat-label">See Further.</div></div>
+      <div class="stat"><div class="stat-val"><span>1</span> Sheet</div><div class="stat-label">See further.</div></div>
     </div>
   </div>
 </section>
@@ -339,7 +339,6 @@
     </div>
 
     <div class="features-grid">
-      <div class="feat-card reveal"><div class="feat-icon">⚡</div><div class="feat-title">Ticker Auto-Fill</div><div class="feat-desc">Type any ticker — position name, live price, and sector populate instantly. 300+ tickers pre-mapped out of the box.</div></div>
       <div class="feat-card reveal"><div class="feat-icon">🎯</div><div class="feat-title">Drift Alerts</div><div class="feat-desc">Set your target allocation per position. FalqenView flags when any position drifts beyond your threshold — so you always know what to rebalance.</div></div>
       <div class="feat-card reveal"><div class="feat-icon">🏆</div><div class="feat-title">Portfolio Health Score</div><div class="feat-desc">An A–F grade computed from your gain, diversification, and drift exposure. Know your portfolio's real health at a glance.</div></div>
       <div class="feat-card reveal"><div class="feat-icon">💸</div><div class="feat-title">Cash Drag Monitor</div><div class="feat-desc">Idle cash is a silent drag on returns. FalqenView flags accounts sitting too heavy in cash so every dollar stays working.</div></div>
@@ -347,9 +346,8 @@
       <div class="feat-card reveal feat-gold"><div class="feat-icon">🧮</div><div class="feat-title">What-If Rebalance Calculator <span class="feat-tier">Gold</span></div><div class="feat-desc">Model any rebalance before you execute it. See exactly how your allocations shift before moving a single dollar.</div></div>
       <div class="feat-card reveal feat-gold"><div class="feat-icon">📉</div><div class="feat-title">Tax-Loss Harvest Scanner <span class="feat-tier">Gold</span></div><div class="feat-desc">Automatically surface positions sitting at a loss that could offset gains before year-end. Stop leaving money on the table.</div></div>
       <div class="feat-card reveal feat-gold"><div class="feat-icon">📊</div><div class="feat-title">Visual Dashboard <span class="feat-tier">Gold</span></div><div class="feat-desc">Live donut charts, KPI cards, bar charts, and sparklines — all your data visualized in one stunning, always-current view.</div></div>
-      <div class="feat-card reveal feat-platinum"><div class="feat-icon">📱</div><div class="feat-title">Mobile Dashboard <span class="feat-tier feat-tier-plat">Platinum</span></div><div class="feat-desc">Your entire portfolio in the palm of your hand. Visually stunning, brutally fast, and built for investors who demand clarity on the go. Live values, alerts, and account breakdowns in an interface so clean it's hard to put down. This is what portfolio tracking looks like when it's done right.</div></div>
+      <div class="feat-card reveal feat-platinum"><div class="feat-icon">📱</div><div class="feat-title">Mobile Dashboard <span class="feat-tier feat-tier-plat">Platinum</span></div><div class="feat-desc">Your entire portfolio in the palm of your hand. Visually stunning, brutally fast — it takes the portfolio tracking experience to a whole new level. Live values, alerts, and account breakdowns in an interface so clean it's hard to put down.</div></div>
       <div class="feat-card reveal feat-platinum"><div class="feat-icon">🔔</div><div class="feat-title">Email Alerts <span class="feat-tier feat-tier-plat">Platinum</span></div><div class="feat-desc">Get notified the moment something needs your attention — drift breaches, portfolio drops, LTCG windows opening. Stay ahead without staring at a screen.</div></div>
-      <div class="feat-card reveal feat-platinum"><div class="feat-icon">📈</div><div class="feat-title">Portfolio Snapshots <span class="feat-tier feat-tier-plat">Platinum</span></div><div class="feat-desc">Daily snapshots capture your portfolio value over time and render a live sparkline — so you can see exactly how far you've come.</div></div>
     </div>
 
     <!-- HEALTH SCORE + COPY -->
