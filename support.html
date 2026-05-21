@@ -153,7 +153,6 @@
   }
   @media (max-width: 480px) { .nav-links { display: none; } }
 </style>
-<script src="https://web3forms.com/client/script.js" async defer></script>
 </head>
 <body>
 
@@ -222,7 +221,7 @@
         </div>
         <div class="h-captcha" data-captcha="true" data-theme="dark" style="display:flex;justify-content:center;margin:8px 0;"></div>
         <div id="formError" style="display:none;color:#ef4444;font-size:0.8rem;margin-bottom:12px;padding:10px 14px;background:rgba(239,68,68,0.08);border-radius:6px;border:1px solid rgba(239,68,68,0.2);"></div>
-        <div id="formSuccess" style="display:none;color:var(--green);font-size:0.88rem;margin-bottom:12px;padding:12px 16px;background:rgba(34,197,94,0.08);border-radius:8px;border:1px solid rgba(34,197,94,0.25);font-weight:500;">✓ Message sent! We'll get back to you within 48 hours.</div>
+        <div id="formSuccess" style="display:none;color:var(--green);font-size:0.88rem;margin-bottom:12px;padding:12px 16px;background:rgba(34,197,94,0.08);border-radius:8px;border:1px solid rgba(34,197,94,0.25);font-weight:500;">✓ Message sent!</div>
         <button type="submit" class="btn-submit" id="submitBtn">Send Message →</button>
       </form>
     </div>
@@ -268,14 +267,6 @@
     </div>
   </div>
 
-  <!-- CONTACT STRIP -->
-  <div class="contact-strip reveal">
-    <div class="contact-strip-text">
-      <h3>Still need help?</h3>
-      <p>Reach us at <a href="support.html">hello@falqenview.com</a> — we typically respond within 48 hours.</p>
-    </div>
-    <a href="support.html" class="btn-email">Contact Support →</a>
-  </div>
 </div>
 
 <footer>
@@ -388,6 +379,20 @@
       btn.disabled = false;
     }
   });
+
+  // Client-side hCaptcha validation
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    const hCaptcha = this.querySelector('textarea[name=h-captcha-response]');
+    if (!hCaptcha || !hCaptcha.value) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      const errBox = document.getElementById('formError');
+      errBox.innerHTML = '• Please complete the captcha challenge.';
+      errBox.style.display = 'block';
+      errBox.scrollIntoView({behavior:'smooth', block:'nearest'});
+    }
+  }, true);
 </script>
+<script src="https://web3forms.com/client/script.js" async defer></script>
 </body>
 </html>
