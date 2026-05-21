@@ -43,9 +43,9 @@
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web",
   "offers": [
-    {"@type": "Offer", "name": "Silver", "price": "19.00", "priceCurrency": "USD"},
-    {"@type": "Offer", "name": "Gold", "price": "79.00", "priceCurrency": "USD"},
-    {"@type": "Offer", "name": "Platinum", "price": "149.00", "priceCurrency": "USD"}
+    {"@type": "Offer", "name": "FalqenView VuePoint", "price": "19.00", "priceCurrency": "USD"},
+    {"@type": "Offer", "name": "FalqenView Updraft", "price": "79.00", "priceCurrency": "USD"},
+    {"@type": "Offer", "name": "FalqenView Apex", "price": "149.00", "priceCurrency": "USD"}
   ],
   "publisher": {"@type": "Organization", "name": "FalqenView", "url": "https://falqenview.com", "email": "hello@falqenview.com"}
 }
@@ -170,12 +170,12 @@
 
   .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
   .feat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; position: relative; overflow: hidden; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s, max-height 0.4s ease; cursor: default; }
-  .feat-gold { border-color: rgba(245,158,11,0.25); }
-  .feat-gold:hover { border-color: rgba(245,158,11,0.5); }
-  .feat-platinum { border-color: rgba(139,92,246,0.25); }
-  .feat-platinum:hover { border-color: rgba(139,92,246,0.5); }
-  .feat-tier { display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; background: rgba(245,158,11,0.15); color: #f59e0b; margin-left: 8px; vertical-align: middle; }
-  .feat-tier-plat { background: rgba(139,92,246,0.15); color: #a78bfa; }
+  .feat-gold { border-color: rgba(26,115,232,0.3); }
+  .feat-gold:hover { border-color: rgba(26,115,232,0.6); }
+  .feat-platinum { border-color: rgba(245,158,11,0.3); }
+  .feat-platinum:hover { border-color: rgba(245,158,11,0.6); }
+  .feat-tier { display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; background: rgba(26,115,232,0.15); color: #60a5fa; margin-left: 8px; vertical-align: middle; }
+  .feat-tier-plat { background: rgba(245,158,11,0.15); color: #fbbf24; }
   .feat-card::before { content: ''; position: absolute; inset: 0; border-radius: 14px; background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(26,115,232,0.1) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s; pointer-events: none; }
   .feat-card:hover { transform: translateY(-4px); border-color: rgba(26,115,232,0.3); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
   .feat-card:hover::before { opacity: 1; }
@@ -199,7 +199,7 @@
   .score-copy h3 { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; }
   .score-copy p { color: var(--muted); font-size: 0.92rem; line-height: 1.75; font-weight: 300; }
 
-  .alert-strip { max-width: 1100px; margin: 64px auto; padding: 0 24px; }
+  .alert-strip { max-width: 1400px; margin: 64px auto; padding: 0 24px; }
   .alert-cards { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
   .alert-scroll-wrap { overflow: hidden; width: 100%; margin-bottom: 12px; }
   .alert-scroll-wrap:hover .alert-track { animation-play-state: paused; }
@@ -256,7 +256,7 @@
   .about-tagline { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 20px; }
   .about-body { font-size: 0.92rem; color: var(--muted); line-height: 1.85; font-weight: 300; margin-bottom: 32px; }
   .about-chips { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 28px; }
-  .chip { background: var(--blue-dim); border: 1px solid rgba(26,115,232,0.2); border-radius: 100px; padding: 6px 16px; font-size: 0.75rem; font-weight: 500; color: var(--blue); }
+  .chip { background: rgba(56,189,248,0.12); border: 1px solid rgba(56,189,248,0.45); border-radius: 100px; padding: 6px 16px; font-size: 0.78rem; font-weight: 600; color: #7dd3fc; }
 
   /* FOOTER */
   footer { border-top: 1px solid var(--border); padding: 40px 48px; position: relative; z-index: 1; }
@@ -271,8 +271,8 @@
   .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: var(--text); }
   .footer-bottom { max-width: 1100px; margin: 20px auto 0; padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-  .footer-legal { font-size: 0.7rem; color: var(--muted); opacity: 0.6; }
-  .footer-contact a { font-size: 0.72rem; color: var(--blue); text-decoration: none; }
+  .footer-legal { font-size: 0.72rem; color: var(--muted); opacity: 0.85; }
+  .footer-contact a { font-size: 0.78rem; color: #7dd3fc; text-decoration: none; font-weight: 500; }
 
   /* ANIMATIONS */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -288,8 +288,23 @@
     footer { padding: 32px 20px; }
     .footer-inner { flex-direction: column; align-items: flex-start; }
     .heatmap-grid { grid-template-columns: repeat(3, 1fr); }
+    .hero-inner { padding: 0 16px; }
+    .hero-eyebrow { font-size: 0.62rem; padding: 5px 12px; letter-spacing: 0.08em; }
+    .hero-lockup img { height: 80px !important; }
+    .hero-title { font-size: 2rem !important; line-height: 1.15 !important; padding: 0 8px; }
+    .hero-sub { font-size: 0.95rem !important; padding: 0 8px; }
+    .stats-strip { gap: 24px; }
+    .stat-val { font-size: 1.4rem; }
+    .stat-label { font-size: 0.7rem; }
   }
-  @media (max-width: 480px) { .nav-links { display: none; } }
+  @media (max-width: 480px) {
+    .nav-links { display: none; }
+    .hero-eyebrow { font-size: 0.58rem; padding: 4px 10px; letter-spacing: 0.06em; }
+    .stats-strip { gap: 16px; }
+    .stat { min-width: 0; flex: 1 1 40%; text-align: center; }
+    .stat-val { font-size: 1.2rem; word-break: break-word; }
+    .stat-label { font-size: 0.65rem; }
+  }
 </style>
 </head>
 <body>
@@ -317,7 +332,7 @@
     <div class="hero-lockup">
       <img src="assets/fvLogo.png" alt="FalqenView">
     </div>
-    <div class="hero-eyebrow"><span class="pulse-dot"></span>Silver v1.2 Live &nbsp;·&nbsp; Platinum — Mid June</div>
+    <div class="hero-eyebrow"><span class="pulse-dot"></span>VuePoint v1.2 Live &nbsp;·&nbsp; More coming soon</div>
     <h1>Your portfolio.<br><em>Finally under control.</em></h1>
     <p class="hero-sub">FalqenView turns your investment accounts into a live, intelligent tracker — without the advisor fees, without the complexity.</p>
     <div class="hero-actions">
@@ -347,15 +362,17 @@
     </div>
 
     <div class="features-grid">
+      <div class="feat-card reveal"><div class="feat-icon">🧭</div><div class="feat-title">Buy / Sell Decision Helper</div><div class="feat-desc">Stop guessing what to do next. FalqenView reads your drift, gain, and target — and tells you. Each position gets a clear signal: TRIM, BUY, HOLD, or REVIEW. No guesswork. No spreadsheet math. Just the next move, every time you open the sheet.</div></div>
+      <div class="feat-card reveal"><div class="feat-icon">📈</div><div class="feat-title">Annual Return (CAGR)</div><div class="feat-desc">Gain % lies. CAGR doesn't. See your true annualized return on every position — the same metric professionals use to compare performance. Find out which holdings are actually pulling their weight and which ones aren't.</div></div>
       <div class="feat-card reveal"><div class="feat-icon">🎯</div><div class="feat-title">Drift Alerts</div><div class="feat-desc">Set your target. FalqenView watches every position and fires when something drifts. Set your target allocation per position. FalqenView flags the moment anything drifts beyond your threshold — so you always know exactly what to trim and what to buy. No spreadsheet math. No second-guessing. Just a clear signal.</div></div>
       <div class="feat-card reveal"><div class="feat-icon">🏆</div><div class="feat-title">Portfolio Health Score</div><div class="feat-desc">One letter. A–F. Your entire portfolio's health at a glance. Computed from gain performance, diversification, drift exposure, and data completeness. No interpretation needed — one letter tells the whole story. Open the sheet and know instantly whether your portfolio needs attention or if you're in the clear.</div></div>
       <div class="feat-card reveal"><div class="feat-icon">💸</div><div class="feat-title">Cash Drag Monitor</div><div class="feat-desc">Idle cash is quietly costing you. FalqenView catches it before it adds up. Every dollar sitting uninvested is a dollar not compounding. FalqenView monitors cash levels across all your accounts and alerts you when drag exceeds your threshold — so you can put your money back to work before it matters.</div></div>
       <div class="feat-card reveal"><div class="feat-icon">🥧</div><div class="feat-title">Sector Concentration</div><div class="feat-desc">See exactly how exposed you are — across every account, in one view. Tech-heavy without realizing it? Crypto creeping up? FalqenView breaks down your sector exposure across all accounts in a single unified view — so you can spot concentration risk before it becomes a real problem.</div></div>
-      <div class="feat-card reveal feat-gold"><div class="feat-icon">🧮</div><div class="feat-title">What-If Rebalance Calculator <span class="feat-tier">Gold</span></div><div class="feat-desc">Model any rebalance before you move a single dollar. See exactly how your allocations shift before you execute anything. Stress-test your rebalance, compare scenarios, and walk into every trade knowing precisely what you're doing. Stop guessing. Start deciding.</div></div>
-      <div class="feat-card reveal feat-gold"><div class="feat-icon">📉</div><div class="feat-title">Tax-Loss Harvest Scanner <span class="feat-tier">Gold</span></div><div class="feat-desc">Losses you haven't harvested yet are money you're leaving behind. FalqenView automatically surfaces positions sitting at a loss that could offset your gains before year-end. One scan, instant visibility — the kind of tax move that used to require a financial advisor.</div></div>
-      <div class="feat-card reveal feat-gold"><div class="feat-icon">📊</div><div class="feat-title">Visual Dashboard <span class="feat-tier">Gold</span></div><div class="feat-desc">Every chart, KPI, and sparkline — live, all in one place. Donut charts, bar charts, account breakdowns, and sparklines — all your portfolio data visualized and updated in real time. Stop reading rows of numbers and start seeing your portfolio clearly at a glance.</div></div>
-      <div class="feat-card reveal feat-platinum"><div class="feat-icon">📱</div><div class="feat-title">Mobile Dashboard <span class="feat-tier feat-tier-plat">Platinum</span></div><div class="feat-desc">Your entire portfolio in the palm of your hand — stunning, fast, and built for clarity. Visually stunning, brutally fast — it takes the portfolio tracking experience to a whole new level. Live values, alerts, and account breakdowns in an interface so clean it's hard to put down. This is what portfolio tracking looks like when it's done right.</div></div>
-      <div class="feat-card reveal feat-platinum"><div class="feat-icon">🔔</div><div class="feat-title">Email Alerts <span class="feat-tier feat-tier-plat">Platinum</span></div><div class="feat-desc">Get notified by email when drift, drops, or LTCG windows trigger — without opening the sheet. Configure your alert thresholds once in Settings. FalqenView monitors your portfolio daily and sends a branded email notification when a condition is met — drift breach, portfolio drop, or an LTCG window opening. No app required, no manual checking.</div></div>
+      <div class="feat-card reveal feat-gold"><div class="feat-icon">🧮</div><div class="feat-title">What-If Rebalance Calculator <span class="feat-tier">Updraft</span></div><div class="feat-desc">Model any rebalance before you move a single dollar. See exactly how your allocations shift before you execute anything. Stress-test your rebalance, compare scenarios, and walk into every trade knowing precisely what you're doing. Stop guessing. Start deciding.</div></div>
+      <div class="feat-card reveal feat-gold"><div class="feat-icon">📉</div><div class="feat-title">Tax-Loss Harvest Scanner <span class="feat-tier">Updraft</span></div><div class="feat-desc">Losses you haven't harvested yet are money you're leaving behind. FalqenView automatically surfaces positions sitting at a loss that could offset your gains before year-end. One scan, instant visibility — the kind of tax move that used to require a financial advisor.</div></div>
+      <div class="feat-card reveal feat-gold"><div class="feat-icon">📊</div><div class="feat-title">Visual Dashboard <span class="feat-tier">Updraft</span></div><div class="feat-desc">Every chart, KPI, and sparkline — live, all in one place. Donut charts, bar charts, account breakdowns, and sparklines — all your portfolio data visualized and updated in real time. Stop reading rows of numbers and start seeing your portfolio clearly at a glance.</div></div>
+      <div class="feat-card reveal feat-platinum"><div class="feat-icon">📱</div><div class="feat-title">Mobile Dashboard <span class="feat-tier feat-tier-plat">Apex</span></div><div class="feat-desc">Your entire portfolio in the palm of your hand — stunning, fast, and built for clarity. Visually stunning, brutally fast — it takes the portfolio tracking experience to a whole new level. Live values, alerts, and account breakdowns in an interface so clean it's hard to put down. This is what portfolio tracking looks like when it's done right.</div></div>
+      <div class="feat-card reveal feat-platinum"><div class="feat-icon">🔔</div><div class="feat-title">Email Alerts <span class="feat-tier feat-tier-plat">Apex</span></div><div class="feat-desc">Get notified by email when drift, drops, or LTCG windows trigger — without opening the sheet. Configure your alert thresholds once in Settings. FalqenView monitors your portfolio daily and sends a branded email notification when a condition is met — drift breach, portfolio drop, or an LTCG window opening. No app required, no manual checking.</div></div>
     </div>
 
     <!-- HEALTH SCORE + COPY -->
@@ -428,7 +445,7 @@
     <p class="section-sub reveal">Pay once. Use it for every trade, every rebalance, every decision.</p>
     <div class="pricing-grid">
       <div class="price-card reveal">
-        <div class="price-tier">Silver</div>
+        <div class="price-tier">VuePoint</div>
         <div class="price-val"><sup>$</sup>19</div>
         <div class="price-once">one-time purchase</div>
         <ul class="price-features">
@@ -439,37 +456,37 @@
           <li><span class="chk">✓</span> Portfolio health score</li>
           <li><span class="chk">✓</span> Sector concentration</li>
           <li><span class="chk">✓</span> Cash drag monitor</li>
+          <li><span class="chk">✓</span> Buy / Sell decision helper</li>
+          <li><span class="chk">✓</span> Annual return (CAGR) per position</li>
           <li><span class="chk">✓</span> 300+ ticker database</li>
-          <li><span class="lck">○</span> Visual dashboard</li>
-          <li><span class="lck">○</span> Rebalance calculator</li>
         </ul>
-        <a href="https://buy.stripe.com/cNi00k0ek16fbjB5QN8bS00" class="btn-price btn-price-ghost">Get Silver →</a>
+        <a href="https://buy.stripe.com/cNi00k0ek16fbjB5QN8bS00" class="btn-price btn-price-ghost">Get VuePoint →</a>
       </div>
       <div class="price-card featured reveal">
-        <div class="price-tier">Gold</div>
+        <div class="price-tier">Updraft</div>
         <div class="price-val"><sup>$</sup>79</div>
         <div class="price-once">one-time purchase</div>
         <ul class="price-features">
-          <li><span class="chk">✓</span> Everything in Silver</li>
+          <li><span class="chk">✓</span> Everything in VuePoint</li>
           <li><span class="chk">✓</span> Visual dashboard (charts + KPIs)</li>
           <li><span class="chk">✓</span> What-If rebalance calculator</li>
           <li><span class="chk">✓</span> Tax-loss harvest scanner</li>
           <li><span class="chk">✓</span> LTCG calendar timeline</li>
           <li><span class="chk">✓</span> Net worth tracker</li>
-          <li><span class="chk">✓</span> Benchmark vs S&P 500</li>
+          <li><span class="chk">✓</span> Benchmark vs S&amp;P 500</li>
           <li><span class="chk">✓</span> Dividend income forecaster</li>
           <li><span class="lck">○</span> Email alerts</li>
           <li><span class="lck">○</span> Mobile dashboard</li>
         </ul>
-        <a href="#" class="btn-price btn-price-solid" style="opacity:0.45;cursor:not-allowed;pointer-events:none;">Coming Soon</a>
+        <a href="#" class="btn-price btn-price-solid" style="opacity:0.45;cursor:not-allowed;pointer-events:none;">Updraft · Coming Soon</a>
       </div>
       <div class="price-card reveal">
-        <div class="price-tier">Platinum</div>
+        <div class="price-tier">Apex</div>
         <div class="price-val"><sup>$</sup>149</div>
         <div class="price-once">one-time purchase</div>
         <ul class="price-features">
-          <li><span class="chk">✓</span> Everything in Gold</li>
-          <li><span class="chk">✓</span> Email alerts & notifications</li>
+          <li><span class="chk">✓</span> Everything in Updraft</li>
+          <li><span class="chk">✓</span> Email alerts &amp; notifications</li>
           <li><span class="chk">✓</span> Portfolio snapshots + sparkline</li>
           <li><span class="chk">✓</span> Mobile dashboard</li>
           <li><span class="chk">✓</span> Annual performance report</li>
@@ -479,7 +496,7 @@
           <li><span class="chk">✓</span> White-label ready</li>
           <li><span class="chk">✓</span> First access to new products</li>
         </ul>
-        <a href="#" class="btn-price btn-price-ghost" style="opacity:0.45;cursor:not-allowed;pointer-events:none;">Coming Soon</a>
+        <a href="#" class="btn-price btn-price-ghost" style="opacity:0.45;cursor:not-allowed;pointer-events:none;">Apex · Coming Soon</a>
       </div>
     </div>
     <p style="text-align:center;margin-top:28px;font-size:0.78rem;color:var(--muted);">Already a buyer? <a href="support.html" style="color:var(--blue);text-decoration:none;">Contact us</a> with your order # to claim upgrade pricing.</p>
@@ -500,7 +517,7 @@
       <span class="chip">One-time purchase</span>
       <span class="chip">Your data stays yours</span>
     </div>
-    <p style="font-size:0.8rem;color:var(--muted);">Questions? <a href="support.html" style="color:var(--blue);text-decoration:none;">hello@falqenview.com</a> · <a href="support.html" style="color:var(--blue);text-decoration:none;">Visit Support</a></p>
+    <p style="font-size:0.85rem;color:var(--text);"><span style="opacity:0.75;">Questions?</span> <a href="support.html" style="color:#7dd3fc;text-decoration:none;font-weight:500;">hello@falqenview.com</a> · <a href="support.html" style="color:#7dd3fc;text-decoration:none;font-weight:500;">Visit Support</a></p>
   </div>
 </section>
 
