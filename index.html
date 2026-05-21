@@ -82,7 +82,7 @@
 
   /* HEATMAP ASSET */
   .heatmap-asset-wrap { position: relative; border-radius: 16px; overflow: hidden; background: var(--surface); border: 1px solid var(--border); margin-bottom: 48px; max-height: 420px; box-shadow: 0 8px 40px rgba(0,0,0,0.4); }
-  .heatmap-asset-wrap img { width: 100%; display: block; border-radius: 16px; opacity: 0.92; object-fit: cover; object-position: top; }
+  .heatmap-asset-wrap img { width: 100%; display: block; border-radius: 16px; opacity: 0.92; object-fit: cover; object-position: top; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%); -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%); }
   .heatmap-asset-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, var(--bg) 100%); border-radius: 16px; }
   .heatmap-asset-label { position: absolute; top: 20px; left: 24px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); background: rgba(20,24,32,0.7); padding: 6px 12px; border-radius: 6px; backdrop-filter: blur(8px); }
 
