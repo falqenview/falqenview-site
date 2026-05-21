@@ -201,6 +201,13 @@
 
   .alert-strip { max-width: 1100px; margin: 64px auto; padding: 0 24px; }
   .alert-cards { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .alert-scroll-wrap { overflow: hidden; width: 100%; margin-bottom: 12px; }
+  .alert-scroll-wrap:hover .alert-track { animation-play-state: paused; }
+  .alert-track { display: flex; gap: 12px; width: max-content; }
+  .alert-track-left { animation: scrollLeft 28s linear infinite; }
+  .alert-track-right { animation: scrollRight 28s linear infinite; }
+  @keyframes scrollLeft  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes scrollRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
   .alert-pill { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 10px 18px; font-size: 0.8rem; font-weight: 500; transition: transform 0.2s; cursor: default; }
   .alert-pill:hover { transform: scale(1.03); }
   .alert-pill.drift { border-color: rgba(245,158,11,0.35); }
@@ -363,12 +370,41 @@
     </div>
     <div class="alert-strip reveal">
       <p class="section-label" style="margin-bottom:20px;">Smart alerts built in</p>
-      <div class="alert-cards">
-        <div class="alert-pill drift"><span class="adot amber"></span>VOO drifted +8.2% above target</div>
-        <div class="alert-pill cap"><span class="adot red"></span>NVDA exceeds 25% position cap</div>
-        <div class="alert-pill ok"><span class="adot green"></span>AAPL — within target range</div>
-        <div class="alert-pill drift"><span class="adot amber"></span>Cash drag alert — IRA 12%</div>
-        <div class="alert-pill ok"><span class="adot green"></span>Portfolio health: A grade</div>
+      <!-- Row 1: scrolls left -->
+      <div class="alert-scroll-wrap">
+        <div class="alert-track alert-track-left">
+          <div class="alert-pill drift"><span class="adot amber"></span>TSLA drifted +8.2% above target</div>
+          <div class="alert-pill cap"><span class="adot red"></span>MSFT exceeds 25% position cap</div>
+          <div class="alert-pill ok"><span class="adot green"></span>AAPL — within target range</div>
+          <div class="alert-pill drift"><span class="adot amber"></span>Cash drag alert — IRA 12%</div>
+          <div class="alert-pill ok"><span class="adot green"></span>Portfolio health: A grade</div>
+          <div class="alert-pill ok"><span class="adot green"></span>AMZN — LTCG window opens in 14 days</div>
+          <!-- duplicated for seamless loop -->
+          <div class="alert-pill drift"><span class="adot amber"></span>TSLA drifted +8.2% above target</div>
+          <div class="alert-pill cap"><span class="adot red"></span>MSFT exceeds 25% position cap</div>
+          <div class="alert-pill ok"><span class="adot green"></span>AAPL — within target range</div>
+          <div class="alert-pill drift"><span class="adot amber"></span>Cash drag alert — IRA 12%</div>
+          <div class="alert-pill ok"><span class="adot green"></span>Portfolio health: A grade</div>
+          <div class="alert-pill ok"><span class="adot green"></span>AMZN — LTCG window opens in 14 days</div>
+        </div>
+      </div>
+      <!-- Row 2: scrolls right -->
+      <div class="alert-scroll-wrap">
+        <div class="alert-track alert-track-right">
+          <div class="alert-pill drift"><span class="adot amber"></span>GOOGL drifted −9.1% below target</div>
+          <div class="alert-pill cap"><span class="adot red"></span>Sector cap: Tech at 64%</div>
+          <div class="alert-pill ok"><span class="adot green"></span>NVDA — LTCG cleared ✓</div>
+          <div class="alert-pill cap"><span class="adot red"></span>Portfolio down 2.3% today</div>
+          <div class="alert-pill ok"><span class="adot green"></span>META — within target range</div>
+          <div class="alert-pill cap"><span class="adot red"></span>Momentum reversal: NFLX −11% in 5 days</div>
+          <!-- duplicated for seamless loop -->
+          <div class="alert-pill drift"><span class="adot amber"></span>GOOGL drifted −9.1% below target</div>
+          <div class="alert-pill cap"><span class="adot red"></span>Sector cap: Tech at 64%</div>
+          <div class="alert-pill ok"><span class="adot green"></span>NVDA — LTCG cleared ✓</div>
+          <div class="alert-pill cap"><span class="adot red"></span>Portfolio down 2.3% today</div>
+          <div class="alert-pill ok"><span class="adot green"></span>META — within target range</div>
+          <div class="alert-pill cap"><span class="adot red"></span>Momentum reversal: NFLX −11% in 5 days</div>
+        </div>
       </div>
     </div>
   </div>
