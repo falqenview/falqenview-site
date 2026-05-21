@@ -169,7 +169,13 @@
   .hmap-r2 { background: rgba(239,68,68,0.20); color: #f87171; }
 
   .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-  .feat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 28px; position: relative; overflow: hidden; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s; cursor: default; }
+  .feat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px 22px; position: relative; overflow: hidden; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s; cursor: default; }
+  .feat-gold { border-color: rgba(245,158,11,0.25); }
+  .feat-gold:hover { border-color: rgba(245,158,11,0.5); }
+  .feat-platinum { border-color: rgba(139,92,246,0.25); }
+  .feat-platinum:hover { border-color: rgba(139,92,246,0.5); }
+  .feat-tier { display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; background: rgba(245,158,11,0.15); color: #f59e0b; margin-left: 8px; vertical-align: middle; }
+  .feat-tier-plat { background: rgba(139,92,246,0.15); color: #a78bfa; }
   .feat-card::before { content: ''; position: absolute; inset: 0; border-radius: 14px; background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(26,115,232,0.1) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s; pointer-events: none; }
   .feat-card:hover { transform: translateY(-4px); border-color: rgba(26,115,232,0.3); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
   .feat-card:hover::before { opacity: 1; }
@@ -336,7 +342,14 @@
       <div class="feat-card reveal"><div class="feat-icon">⚡</div><div class="feat-title">Ticker Auto-Fill</div><div class="feat-desc">Type any ticker — position name, live price, and sector populate instantly. 300+ tickers pre-mapped out of the box.</div></div>
       <div class="feat-card reveal"><div class="feat-icon">🎯</div><div class="feat-title">Drift Alerts</div><div class="feat-desc">Set your target allocation per position. FalqenView flags when any position drifts beyond your threshold — so you always know what to rebalance.</div></div>
       <div class="feat-card reveal"><div class="feat-icon">🏆</div><div class="feat-title">Portfolio Health Score</div><div class="feat-desc">An A–F grade computed from your gain, diversification, and drift exposure. Know your portfolio's real health at a glance.</div></div>
+      <div class="feat-card reveal"><div class="feat-icon">💸</div><div class="feat-title">Cash Drag Monitor</div><div class="feat-desc">Idle cash is a silent drag on returns. FalqenView flags accounts sitting too heavy in cash so every dollar stays working.</div></div>
       <div class="feat-card reveal"><div class="feat-icon">🥧</div><div class="feat-title">Sector Concentration</div><div class="feat-desc">See exactly how much of your portfolio is in Tech, Bonds, Crypto, and more — across all accounts, in one unified view.</div></div>
+      <div class="feat-card reveal feat-gold"><div class="feat-icon">🧮</div><div class="feat-title">What-If Rebalance Calculator <span class="feat-tier">Gold</span></div><div class="feat-desc">Model any rebalance before you execute it. See exactly how your allocations shift before moving a single dollar.</div></div>
+      <div class="feat-card reveal feat-gold"><div class="feat-icon">📉</div><div class="feat-title">Tax-Loss Harvest Scanner <span class="feat-tier">Gold</span></div><div class="feat-desc">Automatically surface positions sitting at a loss that could offset gains before year-end. Stop leaving money on the table.</div></div>
+      <div class="feat-card reveal feat-gold"><div class="feat-icon">📊</div><div class="feat-title">Visual Dashboard <span class="feat-tier">Gold</span></div><div class="feat-desc">Live donut charts, KPI cards, bar charts, and sparklines — all your data visualized in one stunning, always-current view.</div></div>
+      <div class="feat-card reveal feat-platinum"><div class="feat-icon">📱</div><div class="feat-title">Mobile Dashboard <span class="feat-tier feat-tier-plat">Platinum</span></div><div class="feat-desc">Your entire portfolio in the palm of your hand. Visually stunning, brutally fast, and built for investors who demand clarity on the go. Live values, alerts, and account breakdowns in an interface so clean it's hard to put down. This is what portfolio tracking looks like when it's done right.</div></div>
+      <div class="feat-card reveal feat-platinum"><div class="feat-icon">🔔</div><div class="feat-title">Email Alerts <span class="feat-tier feat-tier-plat">Platinum</span></div><div class="feat-desc">Get notified the moment something needs your attention — drift breaches, portfolio drops, LTCG windows opening. Stay ahead without staring at a screen.</div></div>
+      <div class="feat-card reveal feat-platinum"><div class="feat-icon">📈</div><div class="feat-title">Portfolio Snapshots <span class="feat-tier feat-tier-plat">Platinum</span></div><div class="feat-desc">Daily snapshots capture your portfolio value over time and render a live sparkline — so you can see exactly how far you've come.</div></div>
     </div>
 
     <!-- HEALTH SCORE + COPY -->
@@ -444,7 +457,7 @@
   <div class="about-card reveal">
     <div class="about-logo-wrap"><img src="assets/fvLogo.png" alt="FalqenView"></div>
     <div class="about-tagline">Built by investors, for investors.</div>
-    <p class="about-body">FalqenView was built out of frustration. Managing multiple investment accounts — IRAs, 401ks, HSAs, taxable brokerage — shouldn't require a financial advisor or a Bloomberg terminal. It should be clear, fast, and entirely under your control.<br><br>We built the tools we wished existed. No monthly fees. No data sharing. No fluff. Just a powerful, private tracker that lives in your own Google account and gives you the clarity to invest with confidence.</p>
+    <p class="about-body">FalqenView was built out of complete frustration. Managing multiple investment accounts — IRAs, 401ks, HSAs, taxable brokerage — shouldn't require a financial advisor or a Bloomberg terminal. It should be clear, fast, and entirely under your control.<br><br>We built the tools we wished existed. No monthly fees. No data sharing. No fluff. Just a powerful, private tracker that lives in your own Google account and gives you the clarity to invest with confidence.</p>
     <div class="about-chips">
       <span class="chip">Self-directed</span>
       <span class="chip">No AUM fees</span>
@@ -475,7 +488,7 @@
   </div>
   <div class="footer-bottom">
     <div class="footer-legal">© 2026 FalqenView · For informational purposes only. Not financial advice.</div>
-    <div class="footer-contact"><a href="mailto:hello@falqenview.com">hello@falqenview.com</a></div>
+    <div class="footer-contact"><a href="support.html">hello@falqenview.com</a></div>
   </div>
 </footer>
 

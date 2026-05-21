@@ -153,6 +153,7 @@
   }
   @media (max-width: 480px) { .nav-links { display: none; } }
 </style>
+<script src="https://web3forms.com/client/script.js" async defer></script>
 </head>
 <body>
 
@@ -175,7 +176,7 @@
   <div class="page-hero reveal">
     <div class="page-eyebrow">🛟 Support</div>
     <h1>How can we help?</h1>
-    <p>Fill out the form and we'll get back to you within 48 hours. Or reach us at <a href="mailto:hello@falqenview.com">hello@falqenview.com</a>.</p>
+    <p>Fill out the form and we'll get back to you within 48 hours. Or reach us at <a href="support.html">hello@falqenview.com</a>.</p>
   </div>
 
   <div class="support-grid">
@@ -219,11 +220,7 @@
           <label>Message <span id="charCount" style="float:right;font-size:0.7rem;color:var(--muted);">0 / 1000</span></label>
           <textarea id="messageField" name="message" placeholder="Describe your question or issue in as much detail as possible..." maxlength="1000"></textarea>
         </div>
-        <div class="form-group">
-          <label>Quick check — what is <span id="captchaQ" style="font-weight:700;color:var(--text);"></span>?</label>
-          <div id="captchaOptions" style="display:flex;gap:10px;margin-top:8px;"></div>
-          <input type="hidden" id="captchaPassed" value="false">
-        </div>
+        <div class="h-captcha" data-captcha="true"></div>
         <div id="formError" style="display:none;color:#ef4444;font-size:0.8rem;margin-bottom:12px;padding:10px 14px;background:rgba(239,68,68,0.08);border-radius:6px;border:1px solid rgba(239,68,68,0.2);"></div>
         <div id="formSuccess" style="display:none;color:var(--green);font-size:0.88rem;margin-bottom:12px;padding:12px 16px;background:rgba(34,197,94,0.08);border-radius:8px;border:1px solid rgba(34,197,94,0.25);font-weight:500;">✓ Message sent! We'll get back to you within 48 hours.</div>
         <button type="submit" class="btn-submit" id="submitBtn">Send Message →</button>
@@ -275,7 +272,7 @@
   <div class="contact-strip reveal">
     <div class="contact-strip-text">
       <h3>Still need help?</h3>
-      <p>Reach us at <a href="mailto:hello@falqenview.com">hello@falqenview.com</a> — we typically respond within 48 hours.</p>
+      <p>Reach us at <a href="support.html">hello@falqenview.com</a> — we typically respond within 48 hours.</p>
     </div>
     <a href="support.html" class="btn-email">Contact Support →</a>
   </div>
@@ -300,7 +297,7 @@
   </div>
   <div class="footer-bottom">
     <div class="footer-legal">© 2026 FalqenView · For informational purposes only. Not financial advice.</div>
-    <div class="footer-contact"><a href="mailto:hello@falqenview.com">hello@falqenview.com</a></div>
+    <div class="footer-contact"><a href="support.html">hello@falqenview.com</a></div>
   </div>
 </footer>
 
@@ -330,54 +327,6 @@
     counter.style.color = len > 900 ? '#f59e0b' : 'var(--muted)';
   });
 
-  // Clickable CAPTCHA
-  let captchaAnswer = 0;
-  function newCaptcha() {
-    const a = Math.floor(Math.random()*9)+1;
-    const b = Math.floor(Math.random()*9)+1;
-    captchaAnswer = a + b;
-    document.getElementById('captchaQ').textContent = a + ' + ' + b;
-    document.getElementById('captchaPassed').value = 'false';
-
-    // Generate 3 options: correct + 2 wrong
-    const wrong1 = captchaAnswer + (Math.random()>0.5 ? 2 : -2);
-    const wrong2 = captchaAnswer + (Math.random()>0.5 ? 3 : -3);
-    const options = [captchaAnswer, Math.abs(wrong1), Math.abs(wrong2)].sort(()=>Math.random()-0.5);
-
-    const container = document.getElementById('captchaOptions');
-    container.innerHTML = '';
-    options.forEach(opt => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.textContent = opt;
-      btn.style.cssText = 'padding:8px 20px;border-radius:8px;border:1px solid rgba(255,255,255,0.12);background:#232b3e;color:#e8ecf4;font-family:Lexend,sans-serif;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all 0.2s;min-width:56px;';
-      btn.addEventListener('click', ()=>{
-        // Reset all buttons
-        container.querySelectorAll('button').forEach(b=>{
-          b.style.background = '#232b3e';
-          b.style.borderColor = 'rgba(255,255,255,0.12)';
-          b.style.color = '#e8ecf4';
-        });
-        if(opt === captchaAnswer) {
-          btn.style.background = 'rgba(34,197,94,0.2)';
-          btn.style.borderColor = '#22c55e';
-          btn.style.color = '#22c55e';
-          document.getElementById('captchaPassed').value = 'true';
-        } else {
-          btn.style.background = 'rgba(239,68,68,0.15)';
-          btn.style.borderColor = '#ef4444';
-          btn.style.color = '#ef4444';
-          document.getElementById('captchaPassed').value = 'false';
-          setTimeout(newCaptcha, 800);
-        }
-      });
-      btn.addEventListener('mouseover',()=>{ if(btn.style.color!=='#22c55e'&&btn.style.color!=='#ef4444') btn.style.background='#2d3748'; });
-      btn.addEventListener('mouseout',()=>{ if(btn.style.color!=='#22c55e'&&btn.style.color!=='#ef4444') btn.style.background='#232b3e'; });
-      container.appendChild(btn);
-    });
-  }
-  newCaptcha();
-
   // Email validation
   function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
 
@@ -390,7 +339,6 @@
     const pkg     = document.getElementById('packageField').value;
     const topic   = document.getElementById('topicField').value;
     const message = document.getElementById('messageField').value.trim();
-    const captcha = document.getElementById('captchaPassed').value;
     const errBox  = document.getElementById('formError');
     const sucBox  = document.getElementById('formSuccess');
     const btn     = document.getElementById('submitBtn');
@@ -402,7 +350,6 @@
     if (!pkg)                 errors.push('Please select your package.');
     if (!topic)               errors.push('Please select a topic.');
     if (message.length < 10)  errors.push('Message must be at least 10 characters.');
-    if (captcha !== 'true')   errors.push('Please answer the quick check correctly.');
 
     if (errors.length > 0) {
       errBox.innerHTML = errors.map(e=>'• '+e).join('<br>');
@@ -428,14 +375,13 @@
         sucBox.style.display = 'block';
         this.reset();
         counter.textContent = '0 / 1000';
-        newCaptcha();
         sucBox.scrollIntoView({behavior:'smooth',block:'nearest'});
       } else {
         errBox.innerHTML = '• Submission failed: ' + (data.message || 'Please try again.');
         errBox.style.display = 'block';
       }
     } catch(err) {
-      errBox.innerHTML = '• Something went wrong. Please try again or email hello@falqenview.com directly.';
+      errBox.innerHTML = '• Something went wrong. Please try again or email us at <a href="support.html">hello@falqenview.com</a>.';
       errBox.style.display = 'block';
     } finally {
       btn.textContent = 'Send Message →';
