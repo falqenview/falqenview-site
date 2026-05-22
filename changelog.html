@@ -4,27 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Changelog — FalqenView</title>
-  <meta name="description" content="FalqenView product changelog — version history, new features, and improvements across VuePoint, Updraft, and Apex.">
-  <link rel="icon" type="image/png" href="fvIcon.png">
+  <meta name="description" content="FalqenView product changelog — new features, improvements, and fixes across VuePoint, Updraft, and Apex.">
+  <link rel="icon" type="image/png" href="assets/fvIcon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:       #0d1117;
-      --surface:  #161b22;
-      --surface2: #1c2333;
-      --border:   #21262d;
-      --text:     #e6edf3;
-      --muted:    #8b949e;
-      --blue:     #1A73E8;
-      --cyan:     #38bdf8;
-      --gold:     #f59e0b;
-      --green:    #22c55e;
+      --bg:      #0d1117;
+      --surface: #161b22;
+      --border:  #21262d;
+      --text:    #e6edf3;
+      --muted:   #8b949e;
+      --blue:    #1A73E8;
+      --cyan:    #38bdf8;
+      --gold:    #f59e0b;
+      --green:   #22c55e;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: 'Lexend', sans-serif; font-size: 15px; line-height: 1.7; }
+    body { background: var(--bg); color: var(--text); font-family: 'Lexend', sans-serif; font-size: 15px; line-height: 1.6; }
 
     /* NAV */
     nav { position: sticky; top: 0; z-index: 100; background: rgba(13,17,23,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
@@ -36,52 +35,80 @@
     .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
     .nav-cta { background: var(--blue); color: #fff !important; padding: 8px 18px; border-radius: 8px; font-weight: 600 !important; }
-    .nav-cta:hover { background: #1557b0 !important; }
+    .nav-cta:hover { background: #1557b0 !important; color: #fff !important; }
 
     /* HERO */
-    .cl-hero { padding: 80px 24px 48px; text-align: center; max-width: 720px; margin: 0 auto; }
-    .cl-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); margin-bottom: 16px; }
-    .cl-title { font-family: 'Montserrat', sans-serif; font-size: 2.4rem; font-weight: 900; letter-spacing: -0.04em; margin-bottom: 14px; }
-    .cl-sub { color: var(--muted); font-size: 0.98rem; font-weight: 300; }
+    .cl-hero { padding: 60px 24px 32px; text-align: center; max-width: 720px; margin: 0 auto; }
+    .cl-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); margin-bottom: 12px; }
+    .cl-title { font-family: 'Montserrat', sans-serif; font-size: 2.4rem; font-weight: 900; letter-spacing: -0.04em; margin-bottom: 10px; }
+    .cl-sub { color: var(--muted); font-size: 0.95rem; font-weight: 300; margin-bottom: 28px; }
+
+    /* JUMP BUTTONS */
+    .jump-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+    .jump-btn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 20px; border-radius: 100px; font-size: 0.82rem; font-weight: 600; text-decoration: none; border: 1px solid; transition: all 0.2s; cursor: pointer; }
+    .jump-btn.vuepoint { color: var(--cyan); border-color: var(--cyan); background: rgba(56,189,248,0.08); }
+    .jump-btn.vuepoint:hover { background: rgba(56,189,248,0.18); }
+    .jump-btn.updraft { color: #60a5fa; border-color: #60a5fa; background: rgba(96,165,250,0.08); }
+    .jump-btn.updraft:hover { background: rgba(96,165,250,0.18); }
+    .jump-btn.apex { color: var(--gold); border-color: var(--gold); background: rgba(245,158,11,0.08); }
+    .jump-btn.apex:hover { background: rgba(245,158,11,0.18); }
+    .jump-btn .dot { width: 7px; height: 7px; border-radius: 50%; }
+    .jump-btn.vuepoint .dot { background: var(--cyan); }
+    .jump-btn.updraft .dot { background: #60a5fa; }
+    .jump-btn.apex .dot { background: var(--gold); }
 
     /* TIMELINE */
-    .cl-wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 100px; }
-    .cl-entry { display: grid; grid-template-columns: 140px 1fr; gap: 0 32px; margin-bottom: 48px; position: relative; }
-    .cl-entry::before { content: ''; position: absolute; left: 139px; top: 8px; bottom: -48px; width: 1px; background: var(--border); }
+    .cl-wrap { max-width: 720px; margin: 0 auto; padding: 0 24px 80px; }
+
+    /* Product section header */
+    .product-section { margin-bottom: 40px; }
+    .product-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .product-header-name { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 900; letter-spacing: 0.04em; }
+    .product-header-name.vuepoint { color: var(--cyan); }
+    .product-header-name.updraft { color: #60a5fa; }
+    .product-header-name.apex { color: var(--gold); }
+    .product-header-price { font-size: 0.78rem; color: var(--muted); }
+    .coming-soon-tag { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; background: rgba(139,148,158,0.15); color: var(--muted); }
+
+    /* Entry */
+    .cl-entry { display: grid; grid-template-columns: 110px 1fr; gap: 0 24px; margin-bottom: 20px; position: relative; }
+    .cl-entry::before { content: ''; position: absolute; left: 109px; top: 8px; bottom: -20px; width: 1px; background: var(--border); }
     .cl-entry:last-child::before { display: none; }
     .cl-meta { text-align: right; padding-top: 2px; }
-    .cl-version { font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--text); letter-spacing: 0.04em; }
-    .cl-date { font-size: 0.75rem; color: var(--muted); margin-top: 3px; }
-    .cl-dot { position: absolute; left: 133px; top: 7px; width: 13px; height: 13px; border-radius: 50%; background: var(--blue); border: 2px solid var(--bg); z-index: 1; }
-    .cl-dot.latest { background: var(--cyan); box-shadow: 0 0 8px rgba(56,189,248,0.6); }
-    .cl-body { padding-left: 20px; }
-    .cl-badge { display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; margin-bottom: 10px; }
-    .cl-badge.vuepoint { background: rgba(56,189,248,0.15); color: var(--cyan); }
-    .cl-badge.updraft  { background: rgba(26,115,232,0.15); color: #60a5fa; }
-    .cl-badge.apex     { background: rgba(245,158,11,0.15);  color: var(--gold); }
-    .cl-badge.all      { background: rgba(34,197,94,0.15);   color: var(--green); }
-    .cl-heading { font-family: 'Montserrat', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+    .cl-version { font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text); }
+    .cl-date { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+    .cl-dot { position: absolute; left: 104px; top: 7px; width: 11px; height: 11px; border-radius: 50%; background: var(--blue); border: 2px solid var(--bg); z-index: 1; }
+    .cl-dot.latest { background: var(--cyan); box-shadow: 0 0 6px rgba(56,189,248,0.6); }
+    .cl-body { padding-left: 18px; }
+    .cl-heading { font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 6px; }
     .cl-items { list-style: none; }
-    .cl-items li { font-size: 0.85rem; color: rgba(255,255,255,0.72); padding: 5px 0; border-bottom: 1px solid var(--border); display: flex; gap: 10px; }
+    .cl-items li { font-size: 0.8rem; color: rgba(255,255,255,0.65); padding: 3px 0; border-bottom: 1px solid rgba(33,38,45,0.6); display: flex; gap: 8px; line-height: 1.5; }
     .cl-items li:last-child { border-bottom: none; }
-    .cl-items li::before { content: '→'; color: var(--cyan); flex-shrink: 0; }
+    .cl-items li::before { content: '→'; color: var(--cyan); flex-shrink: 0; font-size: 0.75rem; margin-top: 1px; }
+
+    /* Coming soon block */
+    .coming-soon-block { background: var(--surface); border: 1px dashed var(--border); border-radius: 10px; padding: 20px 24px; text-align: center; }
+    .coming-soon-block p { font-size: 0.82rem; color: var(--muted); }
 
     /* FOOTER */
-    footer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; }
-    .footer-inner { max-width: 760px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-    .footer-legal { font-size: 0.78rem; color: var(--muted); }
+    footer { border-top: 1px solid var(--border); padding: 28px 24px; }
+    .footer-inner { max-width: 720px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-legal { font-size: 0.75rem; color: var(--muted); }
     .footer-links { display: flex; gap: 20px; }
-    .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; }
+    .footer-links a { font-size: 0.75rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--text); }
+    .footer-links a.dimmed { opacity: 0.45; }
+    .footer-links a.dimmed:hover { opacity: 1; }
 
     @media (max-width: 600px) {
       .cl-entry { grid-template-columns: 1fr; }
       .cl-entry::before { display: none; }
-      .cl-meta { text-align: left; margin-bottom: 8px; }
+      .cl-meta { text-align: left; margin-bottom: 6px; display: flex; gap: 12px; align-items: baseline; }
       .cl-dot { display: none; }
       .cl-body { padding-left: 0; }
       .cl-title { font-size: 1.8rem; }
       .nav-links { display: none; }
+      .jump-btns { gap: 8px; }
     }
   </style>
 </head>
@@ -89,7 +116,7 @@
 
 <nav>
   <a href="index.html" class="nav-brand">
-    <img src="fvIcon.png" alt="FalqenView">
+    <img src="assets/fvIcon.png" alt="FalqenView">
     <span class="nav-brand-text">Falqen<span>V</span>iew</span>
   </a>
   <ul class="nav-links">
@@ -105,81 +132,106 @@
 <div class="cl-hero">
   <p class="cl-label">What's new</p>
   <h1 class="cl-title">Changelog</h1>
-  <p class="cl-sub">Every improvement, fix, and new feature — tracked here. Updated with every release.</p>
+  <p class="cl-sub">New features, improvements, and fixes — tracked with every release.</p>
+  <div class="jump-btns">
+    <a href="#vuepoint" class="jump-btn vuepoint"><span class="dot"></span> VuePoint</a>
+    <a href="#updraft" class="jump-btn updraft"><span class="dot"></span> Updraft</a>
+    <a href="#apex" class="jump-btn apex"><span class="dot"></span> Apex</a>
+  </div>
 </div>
 
 <div class="cl-wrap">
 
-  <!-- v1.2 -->
-  <div class="cl-entry">
-    <div class="cl-meta">
-      <div class="cl-version">v1.2</div>
-      <div class="cl-date">May 2026</div>
+  <!-- VUEPOINT -->
+  <div class="product-section" id="vuepoint">
+    <div class="product-header">
+      <span class="product-header-name vuepoint">VuePoint</span>
+      <span class="product-header-price">$19 · one-time</span>
     </div>
-    <div class="cl-dot latest"></div>
-    <div class="cl-body">
-      <span class="cl-badge vuepoint">VuePoint</span>
-      <div class="cl-heading">Buy/Sell Signal · CAGR · Visual Upgrade</div>
-      <ul class="cl-items">
-        <li>Buy / Sell Decision Helper — TRIM, BUY, HOLD, REVIEW signal per position</li>
-        <li>Annual Return (CAGR) column — true annualized return using purchase date</li>
-        <li>Drift conditional formatting — amber over threshold, cyan under, green within</li>
-        <li>Signal column color coding — green, amber, red, teal by action type</li>
-        <li>LTCG Date formula fix — no longer shows "365" on empty rows</li>
-        <li>Ticker not found — toast notification instead of silent blank</li>
-        <li>FalqenView menu expanded — Rebalance Plan, Drift Alerts, Tax-Loss Scanner, Validate Formulas, Export Summary</li>
-        <li>Locked upgrade menu — preview Updraft and Apex features from within the sheet</li>
-        <li>Reset to Factory Defaults — triple-confirmed wipe with typed RESET confirmation</li>
-        <li>About modal — branded with logo, version, support links</li>
-        <li>Changelog tab added to sheet</li>
-        <li>Gridlines removed across all tabs</li>
-      </ul>
+
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <div class="cl-version">v1.2</div>
+        <div class="cl-date">May 2026</div>
+      </div>
+      <div class="cl-dot latest"></div>
+      <div class="cl-body">
+        <div class="cl-heading">Buy/Sell Signal · CAGR · Visual Upgrade</div>
+        <ul class="cl-items">
+          <li>Buy / Sell Decision Helper — TRIM, BUY, HOLD, REVIEW signal per position based on drift and gain</li>
+          <li>Annual Return (CAGR) — true annualized return per position using your purchase date</li>
+          <li>Drift color coding — amber when over threshold, cyan when under, green when within range</li>
+          <li>Signal color coding — color per action type for instant visual scanning</li>
+          <li>LTCG Date fix — no longer shows "365" on empty rows</li>
+          <li>Ticker not found — notification when a ticker isn't in the database instead of silent blank</li>
+          <li>Ticker database expanded to 300+ pre-mapped tickers</li>
+          <li>Gridlines removed across all tabs for a cleaner app-like experience</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <div class="cl-version">v1.1</div>
+        <div class="cl-date">May 2026</div>
+      </div>
+      <div class="cl-dot"></div>
+      <div class="cl-body">
+        <div class="cl-heading">Full Visual Rebuild</div>
+        <ul class="cl-items">
+          <li>Complete visual redesign — dark theme, brand colors, modern typography</li>
+          <li>KPI banner — Total Value, Basis, Gain $, Gain % visible at a glance</li>
+          <li>Green / red conditional formatting on Gain $ and Gain %</li>
+          <li>Settings tab — configure drift threshold, cash drag threshold, LTCG warning days, account names</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <div class="cl-version">v1.0</div>
+        <div class="cl-date">May 2026</div>
+      </div>
+      <div class="cl-dot"></div>
+      <div class="cl-body">
+        <div class="cl-heading">Initial Launch</div>
+        <ul class="cl-items">
+          <li>Multi-account tracker — 5 accounts, 5 positions each</li>
+          <li>Ticker auto-fill — Position Name and Sector from 300+ ticker database</li>
+          <li>Gain / loss tracking with purchase date and LTCG date auto-calc</li>
+          <li>Target % and Drift alerts per position</li>
+          <li>Portfolio Health Score (A–F)</li>
+          <li>Top movers — best and worst performer</li>
+          <li>Sector concentration breakdown</li>
+          <li>Cash drag monitor</li>
+          <li>Watchlist tab — track tickers before buying</li>
+          <li>Sample Data tab — demo portfolio included</li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <!-- v1.1 -->
-  <div class="cl-entry">
-    <div class="cl-meta">
-      <div class="cl-version">v1.1</div>
-      <div class="cl-date">May 2026</div>
+  <!-- UPDRAFT -->
+  <div class="product-section" id="updraft">
+    <div class="product-header">
+      <span class="product-header-name updraft">Updraft</span>
+      <span class="product-header-price">$79 · one-time</span>
+      <span class="coming-soon-tag">Coming Soon</span>
     </div>
-    <div class="cl-dot"></div>
-    <div class="cl-body">
-      <span class="cl-badge vuepoint">VuePoint</span>
-      <div class="cl-heading">Full Visual Rebuild</div>
-      <ul class="cl-items">
-        <li>Complete visual redesign — dark theme, brand colors, Lexend + Montserrat fonts</li>
-        <li>KPI banner — Total Value, Basis, Gain $, Gain % at a glance</li>
-        <li>Conditional formatting — green/red on Gain $ and Gain %</li>
-        <li>Settings tab — drift threshold, cash drag threshold, LTCG warning days, account names</li>
-        <li>Tab colors applied across all sheets</li>
-      </ul>
+    <div class="coming-soon-block">
+      <p>Updraft is in development. Release notes will appear here at launch.</p>
     </div>
   </div>
 
-  <!-- v1.0 -->
-  <div class="cl-entry">
-    <div class="cl-meta">
-      <div class="cl-version">v1.0</div>
-      <div class="cl-date">May 2026</div>
+  <!-- APEX -->
+  <div class="product-section" id="apex">
+    <div class="product-header">
+      <span class="product-header-name apex">Apex</span>
+      <span class="product-header-price">$149 · one-time</span>
+      <span class="coming-soon-tag">Coming Soon</span>
     </div>
-    <div class="cl-dot"></div>
-    <div class="cl-body">
-      <span class="cl-badge all">All Tiers</span>
-      <div class="cl-heading">Initial Launch</div>
-      <ul class="cl-items">
-        <li>Multi-account portfolio tracker — 5 accounts, 5 positions each</li>
-        <li>Ticker auto-fill — Position Name and Sector from 300+ ticker database</li>
-        <li>Gain / loss tracking with purchase date and LTCG date auto-calc</li>
-        <li>Target % and Drift alerts</li>
-        <li>Portfolio Health Score (A–F)</li>
-        <li>Top movers — best and worst performer</li>
-        <li>Sector concentration breakdown</li>
-        <li>Cash drag monitor</li>
-        <li>Watchlist tab — track tickers before buying</li>
-        <li>FalqenView menu — Refresh Prices, About</li>
-        <li>Sample Data tab — Alex & Jordan Chen demo portfolio</li>
-      </ul>
+    <div class="coming-soon-block">
+      <p>Apex is in development. Release notes will appear here at launch.</p>
     </div>
   </div>
 
@@ -192,7 +244,7 @@
       <a href="index.html">Home</a>
       <a href="index.html#pricing">Pricing</a>
       <a href="support.html">Support</a>
-      <a href="changelog.html">Changelog</a>
+      <a href="changelog.html" class="dimmed">Changelog</a>
     </div>
   </div>
 </footer>
