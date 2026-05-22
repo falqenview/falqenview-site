@@ -147,6 +147,14 @@
   .stat-val span { color: var(--blue); }
   .stat-label { font-size: 0.75rem; color: var(--muted); margin-top: 4px; letter-spacing: 0.04em; }
 
+  /* VIDEO SECTION */
+  #video { padding: 80px 24px; max-width: 900px; margin: 0 auto; }
+  .video-label { text-align: center; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 16px; }
+  .video-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(1.6rem, 3.5vw, 2.4rem); letter-spacing: -0.03em; text-align: center; margin-bottom: 12px; }
+  .video-sub { text-align: center; color: var(--muted); font-size: 0.95rem; font-weight: 300; max-width: 480px; margin: 0 auto 40px; line-height: 1.7; }
+  .video-wrap { position: relative; width: 100%; padding-bottom: 56.25%; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 16px 64px rgba(0,0,0,0.5); background: #000; }
+  .video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
   /* SHARED */
   .section-label { text-align: center; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 16px; }
   .section-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(1.8rem, 4vw, 2.8rem); letter-spacing: -0.03em; text-align: center; margin-bottom: 16px; }
@@ -324,6 +332,7 @@
   <ul class="nav-links">
     <li><a href="#home">Home</a></li>
     <li><a href="#products">Products</a></li>
+    <li><a href="#video">Video</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="support.html">Support</a></li>
     <li><a href="#about">About</a></li>
@@ -447,6 +456,22 @@
   </div>
 </div>
 
+<!-- VIDEO -->
+<section id="video">
+  <p class="video-label reveal">See it in action</p>
+  <h2 class="video-title reveal">The Portfolio Tracker That<br>Thinks Like an Investor</h2>
+  <p class="video-sub reveal">From foundational clarity to automated intelligence — see how VuePoint, Updraft, and Apex work together.</p>
+  <div class="video-wrap reveal">
+    <iframe
+      src="https://www.youtube.com/embed/QZnKZUM66s4?rel=0&modestbranding=1&color=white"
+      title="FalqenView — The Portfolio Tracker That Thinks Like an Investor"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      loading="lazy">
+    </iframe>
+  </div>
+</section>
+
 <section id="pricing">
   <div class="pricing-inner">
     <p class="section-label reveal" style="text-align:center;">Simple pricing</p>
@@ -542,6 +567,7 @@
     <div class="footer-links">
       <a href="#home">Home</a>
       <a href="#products">Products</a>
+      <a href="#video">Video</a>
       <a href="#pricing">Pricing</a>
       <a href="support.html">Support</a>
       <a href="#about">About</a>
