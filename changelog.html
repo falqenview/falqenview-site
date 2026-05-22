@@ -72,17 +72,17 @@
 
     /* Entry */
     .cl-entry { display: grid; grid-template-columns: 120px 1fr; gap: 0 32px; margin-bottom: 20px; position: relative; }
-    .cl-entry::before { content: ''; position: absolute; left: 121px; top: 8px; bottom: -20px; width: 1px; background: var(--border); }
+    .cl-entry::before { content: ''; position: absolute; left: 128px; top: 8px; bottom: -20px; width: 1px; background: var(--border); }
     .cl-entry:last-child::before { display: none; }
-    .cl-meta { text-align: right; padding-top: 2px; }
+    .cl-meta { text-align: right; padding-top: 2px; padding-right: 14px; }
     .cl-version { font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text); }
     .cl-date { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
-    .cl-dot { position: absolute; left: 116px; top: 7px; width: 11px; height: 11px; border-radius: 50%; background: var(--blue); border: 2px solid var(--bg); z-index: 1; }
+    .cl-dot { position: absolute; left: 124px; top: 7px; width: 9px; height: 9px; border-radius: 50%; background: var(--blue); border: 2px solid var(--bg); z-index: 1; }
     .cl-dot.latest { background: var(--cyan); box-shadow: 0 0 6px rgba(56,189,248,0.6); }
     .cl-body { padding-left: 18px; }
     .cl-heading { font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 6px; }
     .cl-items { list-style: none; }
-    .cl-items li { font-size: 0.8rem; color: rgba(255,255,255,0.65); padding: 3px 0; border-bottom: 1px solid rgba(33,38,45,0.6); display: flex; gap: 8px; line-height: 1.5; }
+    .cl-items li { font-size: 0.8rem; color: rgba(255,255,255,0.65); padding: 2px 0; border-bottom: 1px solid rgba(33,38,45,0.6); display: flex; gap: 8px; line-height: 1.4; }
     .cl-items li:last-child { border-bottom: none; }
     .cl-items li::before { content: '→'; color: var(--cyan); flex-shrink: 0; font-size: 0.75rem; margin-top: 1px; }
 
@@ -146,7 +146,7 @@
   <div class="product-section" id="vuepoint">
     <div class="product-header">
       <span class="product-header-name vuepoint">VuePoint</span>
-      <span class="product-header-price">$19 · one-time</span>
+      
     </div>
 
     <div class="cl-entry">
@@ -215,7 +215,7 @@
   <div class="product-section" id="updraft">
     <div class="product-header">
       <span class="product-header-name updraft">Updraft</span>
-      <span class="product-header-price">$79 · one-time</span>
+      
       <span class="coming-soon-tag">Coming Soon</span>
     </div>
     <div class="coming-soon-block">
@@ -227,7 +227,7 @@
   <div class="product-section" id="apex">
     <div class="product-header">
       <span class="product-header-name apex">Apex</span>
-      <span class="product-header-price">$149 · one-time</span>
+      
       <span class="coming-soon-tag">Coming Soon</span>
     </div>
     <div class="coming-soon-block">
