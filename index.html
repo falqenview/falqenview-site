@@ -448,6 +448,37 @@ body[data-hero="constellation"] .hero-variant--constellation { display: block; }
 .es-val.pos { color: var(--green-2); }
 .es-val.warn { color: var(--amber); }
 .es-val.grade { color: var(--green-2); font-size: 1.45rem; }
+
+/* Cycling alert slot inside the editorial snapshot */
+.es-stat.alert-slot { position: relative; }
+.alert-stream {
+  display: flex; flex-direction: column;
+  height: 1.25rem;
+  overflow: hidden;
+}
+.alert-stream .es-val {
+  height: 1.25rem;
+  line-height: 1.25rem;
+  flex-shrink: 0;
+  font-size: 1.05rem;
+  animation: alertScroll 18s cubic-bezier(0.85, 0.02, 0.18, 1) infinite;
+}
+@keyframes alertScroll {
+  0%, 11% { transform: translateY(0); }
+  16.66%, 27.66% { transform: translateY(-1.25rem); }
+  33.33%, 44.33% { transform: translateY(-2.5rem); }
+  50%, 61% { transform: translateY(-3.75rem); }
+  66.66%, 77.66% { transform: translateY(-5rem); }
+  83.33%, 94.33% { transform: translateY(-6.25rem); }
+  100% { transform: translateY(-7.5rem); }
+}
+.es-stat.alert-slot .es-label { animation: slotPulse 3s infinite ease-in-out; }
+@keyframes slotPulse {
+  0%, 100% { opacity: 1; }
+  48% { opacity: 1; }
+  52% { opacity: 0.35; }
+  56% { opacity: 1; }
+}
 .es-label {
   font-family: var(--font-mono);
   font-size: 0.64rem;
@@ -1211,11 +1242,23 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
         <div class="es-divider"></div>
         <div class="es-stat"><span class="es-val grade">A</span><span class="es-label">health score</span></div>
         <div class="es-divider"></div>
-        <div class="es-stat"><span class="es-val warn">TSLA +8.2%</span><span class="es-label">drift alert</span></div>
+        <div class="es-stat alert-slot" aria-live="polite">
+          <div class="alert-stream">
+            <span class="es-val warn">TSLA +8.2%</span>
+            <span class="es-val warn">GOOGL −9.1%</span>
+            <span class="es-val warn">Tech sector 64%</span>
+            <span class="es-val warn">Cash drag 12%</span>
+            <span class="es-val warn">MSFT +11.8%</span>
+            <span class="es-val warn">NFLX −11% (5d)</span>
+            <!-- duplicate first for seamless loop -->
+            <span class="es-val warn">TSLA +8.2%</span>
+          </div>
+          <span class="es-label">live alert</span>
+        </div>
       </div>
 
       <div class="editorial-bottom">
-        <p class="editorial-sub">FalqenView is a Google Sheets portfolio tracker — built for the investor who wants <strong>drift alerts, CAGR, sector concentration, and a health score</strong> without the AUM fees, the slick logins, or the quarterly PDFs nobody reads.</p>
+        <p class="editorial-sub">FalqenView is a Google Sheets portfolio tracker — built for the investor who wants <strong>drift alerts, CAGR, buy/sell signals, sector concentration, a health score, cash drag monitoring, and more</strong> — without the AUM fees, the slick logins, or the quarterly PDFs nobody reads.</p>
         <div class="editorial-actions">
           <div class="row">
             <a href="#pricing" class="btn-primary">See pricing →</a>
@@ -1398,7 +1441,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
 <section id="video">
   <p class="section-label reveal">See it in action</p>
   <h2 class="section-title reveal">The portfolio tracker<br>that thinks like an investor.</h2>
-  <p class="section-sub reveal">From the foundational clarity of VuePoint to the automated intelligence of Apex — 90 seconds.</p>
+  <p class="section-sub reveal">From the foundational clarity of VuePoint to the automated intelligence of Apex. Six minutes — shorter than your last quarterly review, considerably more useful.</p>
   <div class="video-wrap reveal">
     <iframe
       src="https://www.youtube.com/embed/QZnKZUM66s4?rel=0&modestbranding=1&color=white"
@@ -1554,10 +1597,6 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
       <summary>Can I upgrade to Updraft or Apex later?<span class="hp-faq-arrow">+</span></summary>
       <p>Yes — at upgrade pricing. <a href="support.html">Reach out</a> with your original order number and we'll set you up. Joining the waitlist on this page also locks in launch pricing.</p>
     </details>
-    <details class="hp-faq reveal">
-      <summary>What if Google Finance is delayed or down?<span class="hp-faq-arrow">+</span></summary>
-      <p>Google Finance prices are delayed 15–20 minutes by Google — that's a platform limitation, not a FalqenView thing. If a price is missing entirely, you can override the cell manually. The rest of the sheet (drift, signals, CAGR, health) keeps working.</p>
-    </details>
   </div>
 </section>
 
@@ -1578,7 +1617,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
       <span class="chip">One-time purchase</span>
       <span class="chip">Your data, your Drive</span>
     </div>
-    <p class="about-contact">Questions? <a href="/cdn-cgi/l/email-protection#89e1ece5e5e6c9efe8e5f8ece7ffe0ecfea7eae6e4"><span class="__cf_email__" data-cfemail="4028252c2c2f0026212c31252e362925376e232f2d">[email&#160;protected]</span></a> · <a href="support.html">Visit Support</a></p>
+    <p class="about-contact">Questions? <a href="support.html"><span class="__cf_email__" data-cfemail="365e535a5a597650575a475358405f53411855595b">[email&#160;protected]</span></a> · <a href="support.html">Visit Support</a></p>
   </div>
 </section>
 
@@ -1604,7 +1643,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
   </div>
   <div class="footer-bottom">
     <div class="footer-legal">© 2026 FalqenView · For informational purposes only. Not financial advice.</div>
-    <div class="footer-contact"><a href="/cdn-cgi/l/email-protection#68000d040407280e0904190d061e010d1f460b0705"><span class="__cf_email__" data-cfemail="4c24292020230c2a2d203d29223a25293b622f2321">[email&#160;protected]</span></a></div>
+    <div class="footer-contact"><a href="support.html"><span class="__cf_email__" data-cfemail="caa2afa6a6a58aacaba6bbafa4bca3afbde4a9a5a7">[email&#160;protected]</span></a></div>
   </div>
 </footer>
 
@@ -1636,7 +1675,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ============ TWEAKS DEFAULTS ============ */
 const TWEAKS_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "hero": "editorial"
+  "hero": "dashboard"
 }/*EDITMODE-END*/;
 
 let tweaks = { ...TWEAKS_DEFAULTS };
