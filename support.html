@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Support — FalqenView Portfolio Tracker</title>
-<meta name="description" content="Get help with your FalqenView portfolio tracker. Browse FAQs or send us a message — we respond within 48 hours. Support for VuePoint, Updraft, and Apex tiers.">
+<meta name="description" content="Get help with your FalqenView portfolio tracker. Browse FAQs or send us a message — real humans on the other end. Support for VuePoint, Updraft, and Apex tiers.">
 <meta name="keywords" content="FalqenView support, portfolio tracker help, Google Sheets tracker support, investment spreadsheet help, FalqenView FAQ">
 <meta name="author" content="FalqenView">
 <meta name="robots" content="index, follow">
@@ -15,14 +15,14 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://falqenview.com/support.html">
 <meta property="og:title" content="Support — FalqenView Portfolio Tracker">
-<meta property="og:description" content="Get help with your FalqenView portfolio tracker. Browse FAQs or send us a message — we respond within 48 hours.">
+<meta property="og:description" content="Get help with your FalqenView portfolio tracker. Browse FAQs or send us a message — real humans on the other end.">
 <meta property="og:image" content="https://falqenview.com/assets/fvLogo.png">
 <meta property="og:site_name" content="FalqenView">
 <meta property="og:locale" content="en_US">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Support — FalqenView Portfolio Tracker">
-<meta name="twitter:description" content="Get help with your FalqenView portfolio tracker. We respond within 48 hours.">
+<meta name="twitter:description" content="Get help with your FalqenView portfolio tracker. Real humans on the other end.">
 <meta name="twitter:image" content="https://falqenview.com/assets/fvLogo.png">
 
 <!-- Favicon -->
@@ -115,6 +115,23 @@ window.addEventListener('error', function(e) {
   .nav-cta::after { display: none !important; }
   .nav-cta:hover { background: var(--blue-2); color: #fff !important; transform: translateY(-1px); }
   .menu-toggle { display: none; background: none; border: 1px solid var(--border); color: var(--text); padding: 8px 12px; border-radius: 8px; font-size: 1.1rem; cursor: pointer; }
+
+  /* Mobile menu (drops down from nav when hamburger is tapped). Hidden by default at every viewport. */
+  .mobile-menu {
+    position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 99;
+    background: rgba(20,24,32,0.98); backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 18px; display: none;
+  }
+  .mobile-menu.shown { display: flex; flex-direction: column; gap: 4px; }
+  .mobile-menu a {
+    color: var(--text); text-decoration: none;
+    padding: 12px 14px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 500;
+  }
+  .mobile-menu a:hover, .mobile-menu a:focus { background: var(--surface); }
+  .mobile-menu a.cta { background: var(--blue); color: #fff; text-align: center; margin-top: 8px; }
 
   .page-wrap { position: relative; z-index: 1; padding: calc(var(--nav-h) + 48px) 24px 64px; max-width: 1100px; margin: 0 auto; }
 
@@ -287,20 +304,6 @@ window.addEventListener('error', function(e) {
   }
   @media (max-width: 768px) {
     nav { padding: 0 18px; }
-    .mobile-menu {
-      position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 99;
-      background: rgba(20,24,32,0.98); backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 18px; display: none;
-    }
-    .mobile-menu.shown { display: flex; flex-direction: column; gap: 4px; }
-    .mobile-menu a {
-      color: var(--text); text-decoration: none;
-      padding: 12px 14px; border-radius: 8px;
-      font-size: 0.95rem; font-weight: 500;
-    }
-    .mobile-menu a:hover, .mobile-menu a:focus { background: var(--surface); }
-    .mobile-menu a.cta { background: var(--blue); color: #fff; text-align: center; margin-top: 8px; }
     .form-card { padding: 28px 20px; }
     .form-row { grid-template-columns: 1fr; }
     .contact-strip { flex-direction: column; align-items: flex-start; padding: 22px 22px; }
@@ -348,7 +351,7 @@ window.addEventListener('error', function(e) {
   <div class="page-hero reveal">
     <div class="page-eyebrow">Support</div>
     <h1>How can we help?</h1>
-    <p>Fill out the form and we'll get back to you within 48 hours. Real humans read every one.</p>
+    <p>Send us a message. Real humans read every one — and reply when life lets them. Faster than your last hold music, slower than instant ramen.</p>
   </div>
 
   <div class="support-grid">
@@ -356,7 +359,7 @@ window.addEventListener('error', function(e) {
     <!-- FORM -->
     <div class="form-card reveal">
       <h2>Send us a message</h2>
-      <p class="form-intro">Real humans read every one. Reply within 48 hours, often faster.</p>
+      <p class="form-intro">Real humans on the receiving end. We get back as soon as caffeine allows.</p>
       <form id="contactForm">
         <input type="hidden" name="access_key" value="dc74cd1c-ffcb-47c7-8794-e69242b0855f">
         <input type="hidden" name="subject" value="FalqenView Support Request">
@@ -399,7 +402,7 @@ window.addEventListener('error', function(e) {
           <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
         </div>
         <div id="formError" style="display:none;color:#fca5a5;font-size:0.82rem;margin-bottom:12px;padding:10px 14px;background:rgba(239,68,68,0.08);border-radius:8px;border:1px solid rgba(239,68,68,0.2);"></div>
-        <div id="formSuccess" style="display:none;color:var(--green-2);font-size:0.88rem;margin-bottom:12px;padding:12px 16px;background:rgba(34,197,94,0.08);border-radius:8px;border:1px solid rgba(34,197,94,0.25);font-weight:500;">✓ Message sent! We'll be in touch within 48 hours.</div>
+        <div id="formSuccess" style="display:none;color:var(--green-2);font-size:0.88rem;margin-bottom:12px;padding:12px 16px;background:rgba(34,197,94,0.08);border-radius:8px;border:1px solid rgba(34,197,94,0.25);font-weight:500;">✓ Message sent! We'll be back at you as soon as humanly possible.</div>
         <button type="submit" class="btn-submit" id="submitBtn">Send Message →</button>
       </form>
     </div>
@@ -426,7 +429,7 @@ window.addEventListener('error', function(e) {
 
       <div class="faq-item">
         <div class="faq-q">How do I claim upgrade pricing? <span class="arrow">▼</span></div>
-        <div class="faq-a">Fill out the form on this page with your original Gumroad or Stripe order number. We'll send you a one-time coupon within 48 hours. Coupons expire in 30 days and cannot be stacked with other offers.</div>
+        <div class="faq-a">Fill out the form on this page with your original Gumroad or Stripe order number. We'll send you a one-time coupon as soon as we can confirm. Coupons expire in 30 days and cannot be stacked with other offers.</div>
       </div>
 
       <div class="faq-item">
@@ -449,14 +452,6 @@ window.addEventListener('error', function(e) {
         <div class="faq-a">Google Finance prices are delayed 15–20 minutes by Google — that's a platform limitation, not a FalqenView thing. If a price is missing entirely, you can override the cell manually. The rest of the sheet (drift, signals, CAGR, health) keeps working.</div>
       </div>
     </div>
-  </div>
-
-  <div class="contact-strip reveal">
-    <div class="contact-strip-text">
-      <h3>Prefer plain email?</h3>
-      <p>No form, no fields. Just an inbox.</p>
-    </div>
-    <a href="/cdn-cgi/l/email-protection#69010c050506290f0805180c071f000c1e470a0604" class="btn-email"><span class="__cf_email__" data-cfemail="f69e939a9a99b690979a879398809f9381d895999b">[email&#160;protected]</span></a>
   </div>
 
 </div>
@@ -482,11 +477,11 @@ window.addEventListener('error', function(e) {
   </div>
   <div class="footer-bottom">
     <div class="footer-legal">© 2026 FalqenView · For informational purposes only. Not financial advice.</div>
-    <div class="footer-contact"><a href="support.html"><span class="__cf_email__" data-cfemail="cfa7aaa3a3a08fa9aea3beaaa1b9a6aab8e1aca0a2">[email&#160;protected]</span></a></div>
+    <div class="footer-contact"><a href="index.html">← Back to FalqenView</a></div>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Mobile menu
   const menuToggle = document.getElementById('menuToggle');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -580,7 +575,7 @@ window.addEventListener('error', function(e) {
         errBox.style.display = 'block';
       }
     } catch(err) {
-      errBox.innerHTML = '• Something went wrong. Please try again or email us at <a href="mailto:hello@falqenview.com">hello@falqenview.com</a>.';
+      errBox.innerHTML = '• Something went wrong on our end. Please try again in a moment.';
       errBox.style.display = 'block';
     } finally {
       btn.textContent = 'Send Message →';

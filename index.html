@@ -152,6 +152,23 @@ nav {
 
 .menu-toggle { display: none; background: none; border: 1px solid var(--border); color: var(--text); padding: 8px 12px; border-radius: 8px; font-size: 1.1rem; cursor: pointer; }
 
+/* Mobile menu (drops down from nav when hamburger is tapped). Hidden by default at every viewport. */
+.mobile-menu {
+  position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 99;
+  background: rgba(20,24,32,0.98); backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 18px; display: none;
+}
+.mobile-menu.shown { display: flex; flex-direction: column; gap: 4px; }
+.mobile-menu a {
+  color: var(--text); text-decoration: none;
+  padding: 12px 14px; border-radius: 8px;
+  font-size: 0.95rem; font-weight: 500;
+}
+.mobile-menu a:hover, .mobile-menu a:focus { background: var(--surface); }
+.mobile-menu a.cta { background: var(--blue); color: #fff; text-align: center; margin-top: 8px; }
+
 /* ============ HERO COMMON ============ */
 #home { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: calc(var(--nav-h) + 32px) 24px 64px; position: relative; overflow: hidden; }
 .hero-mesh { position: absolute; inset: 0; z-index: 0; background:
@@ -1030,20 +1047,6 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
 
 @media (max-width: 768px) {
   nav { padding: 0 18px; }
-  .mobile-menu {
-    position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 99;
-    background: rgba(20,24,32,0.98); backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 18px; display: none;
-  }
-  .mobile-menu.shown { display: flex; flex-direction: column; gap: 4px; }
-  .mobile-menu a {
-    color: var(--text); text-decoration: none;
-    padding: 12px 14px; border-radius: 8px;
-    font-size: 0.95rem; font-weight: 500;
-  }
-  .mobile-menu a:hover, .mobile-menu a:focus { background: var(--surface); }
-  .mobile-menu a.cta { background: var(--blue); color: #fff; text-align: center; margin-top: 8px; }
 
   #home { padding-top: calc(var(--nav-h) + 20px); }
 
@@ -1617,7 +1620,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
       <span class="chip">One-time purchase</span>
       <span class="chip">Your data, your Drive</span>
     </div>
-    <p class="about-contact">Questions? <a href="support.html"><span class="__cf_email__" data-cfemail="365e535a5a597650575a475358405f53411855595b">[email&#160;protected]</span></a> · <a href="support.html">Visit Support</a></p>
+    <p class="about-contact"><a href="support.html">Visit Support →</a></p>
   </div>
 </section>
 
@@ -1643,7 +1646,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
   </div>
   <div class="footer-bottom">
     <div class="footer-legal">© 2026 FalqenView · For informational purposes only. Not financial advice.</div>
-    <div class="footer-contact"><a href="support.html"><span class="__cf_email__" data-cfemail="f39b969f9f9cb395929f82969d859a9684dd909c9e">[email&#160;protected]</span></a></div>
+    <div class="footer-contact"><a href="support.html">Contact Support →</a></div>
   </div>
 </footer>
 
@@ -1672,7 +1675,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ============ TWEAKS DEFAULTS ============ */
 const TWEAKS_DEFAULTS = /*EDITMODE-BEGIN*/{
   "hero": "editorial"
@@ -1802,7 +1805,7 @@ document.querySelectorAll('form.waitlist').forEach(form => {
       btn.disabled = false;
       if (msg) {
         msg.style.color = 'var(--amber)';
-        msg.textContent = '⚠ Network error. Please try again or email hello@falqenview.com.';
+        msg.textContent = '⚠ Network error. Please try again in a moment.';
         msg.classList.add('shown');
       }
     }
