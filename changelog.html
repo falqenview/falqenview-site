@@ -188,20 +188,23 @@
     }
     .coming-soon-block p { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 14px; }
     .coming-soon-block .waitlist-mini {
-      display: inline-flex; gap: 6px;
+      display: flex; flex-direction: column; gap: 10px;
+      max-width: 380px; margin: 0 auto;
+    }
+    .coming-soon-block .waitlist-row {
+      display: flex; gap: 6px;
       background: rgba(0,0,0,0.25);
       border: 1px solid var(--border);
       border-radius: 10px; padding: 4px;
-      max-width: 360px; width: 100%;
     }
-    .coming-soon-block .waitlist-mini input {
+    .coming-soon-block .waitlist-row input {
       flex: 1; min-width: 0;
       background: transparent; border: none;
       color: var(--text); font-family: var(--font-body); font-size: 0.84rem;
       padding: 8px 10px; outline: none;
     }
-    .coming-soon-block .waitlist-mini input::placeholder { color: var(--muted); }
-    .coming-soon-block .waitlist-mini button {
+    .coming-soon-block .waitlist-row input::placeholder { color: var(--muted); }
+    .coming-soon-block .waitlist-row button {
       background: rgba(245,158,11,0.2); color: var(--gold);
       border: 1px solid rgba(245,158,11,0.35);
       border-radius: 7px; padding: 7px 14px;
@@ -209,8 +212,25 @@
       cursor: pointer; white-space: nowrap;
       transition: background 0.2s;
     }
-    .coming-soon-block .waitlist-mini button:hover { background: rgba(245,158,11,0.32); }
-    .waitlist-confirm { margin-top: 10px; font-size: 0.74rem; color: var(--green-2); font-family: var(--font-mono); display: none; letter-spacing: 0.04em; }
+    .coming-soon-block .waitlist-row button:hover { background: rgba(245,158,11,0.32); }
+    .coming-soon-block .waitlist-row button:disabled { opacity: 0.55; cursor: wait; }
+    .coming-soon-block .h-captcha {
+      display: flex; justify-content: center; align-items: center;
+      min-height: 78px;
+      background: rgba(255,255,255,0.02);
+      border: 1px dashed var(--border-2);
+      border-radius: 8px;
+      padding: 6px;
+    }
+    .coming-soon-block .h-captcha:empty::before {
+      content: 'Verification loading…';
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .waitlist-confirm { margin-top: 10px; font-size: 0.74rem; color: var(--green-2); font-family: var(--font-mono); display: none; letter-spacing: 0.04em; line-height: 1.5; }
     .waitlist-confirm.shown { display: block; }
 
     /* FOOTER */
@@ -379,8 +399,11 @@
         <input type="hidden" name="from_name" value="FalqenView Website Waitlist">
         <input type="hidden" name="tier" value="updraft">
         <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
-        <input type="email" name="email" placeholder="you@email.com" required aria-label="Updraft waitlist email" autocomplete="email">
-        <button type="submit">Notify me</button>
+        <div class="waitlist-row">
+          <input type="email" name="email" placeholder="you@email.com" required aria-label="Updraft waitlist email" autocomplete="email">
+          <button type="submit">Notify me</button>
+        </div>
+        <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
       </form>
       <div class="waitlist-confirm">✓ You're on the list.</div>
     </div>
@@ -400,8 +423,11 @@
         <input type="hidden" name="from_name" value="FalqenView Website Waitlist">
         <input type="hidden" name="tier" value="apex">
         <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
-        <input type="email" name="email" placeholder="you@email.com" required aria-label="Apex waitlist email" autocomplete="email">
-        <button type="submit">Notify me</button>
+        <div class="waitlist-row">
+          <input type="email" name="email" placeholder="you@email.com" required aria-label="Apex waitlist email" autocomplete="email">
+          <button type="submit">Notify me</button>
+        </div>
+        <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
       </form>
       <div class="waitlist-confirm">✓ You're on the list.</div>
     </div>
@@ -456,7 +482,7 @@
       const tier = form.dataset.tier;
       const emailInput = form.querySelector('input[type=email]');
       const email = emailInput.value.trim();
-      const btn = form.querySelector('button');
+      const btn = form.querySelector('button[type=submit]');
       const msg = form.nextElementSibling;
       const origBtn = btn.textContent;
 
@@ -467,6 +493,17 @@
         emailInput.setCustomValidity('Please enter a valid email address.');
         emailInput.reportValidity();
         setTimeout(() => emailInput.setCustomValidity(''), 1800);
+        return;
+      }
+
+      // Captcha must be solved before submission (Web3Forms account requires it)
+      const captchaInput = form.querySelector('textarea[name=h-captcha-response]');
+      if (!captchaInput || !captchaInput.value) {
+        if (msg) {
+          msg.style.color = 'var(--gold)';
+          msg.textContent = '⚠ Please complete the verification challenge.';
+          msg.classList.add('shown');
+        }
         return;
       }
 
@@ -504,6 +541,8 @@
     });
   });
 </script>
+<!-- Web3Forms client — renders the h-captcha widgets in the waitlist forms -->
+<script src="https://web3forms.com/client/script.js" async defer></script>
 
 </body>
 </html>
