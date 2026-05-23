@@ -844,20 +844,23 @@ body[data-hero="constellation"] .hero-variant--constellation { display: block; }
 
 /* WAITLIST */
 .waitlist {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.waitlist-row {
   display: flex; gap: 6px;
   background: rgba(0,0,0,0.25);
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 4px;
 }
-.waitlist input {
+.waitlist-row input {
   flex: 1; min-width: 0;
   background: transparent; border: none;
   color: var(--text); font-family: var(--font-body); font-size: 0.82rem;
   padding: 8px 10px; outline: none;
 }
-.waitlist input::placeholder { color: var(--muted); }
-.waitlist button {
+.waitlist-row input::placeholder { color: var(--muted); }
+.waitlist-row button {
   background: rgba(245,158,11,0.2); color: #fbbf24;
   border: 1px solid rgba(245,158,11,0.35);
   border-radius: 7px; padding: 7px 14px;
@@ -865,8 +868,27 @@ body[data-hero="constellation"] .hero-variant--constellation { display: block; }
   cursor: pointer; white-space: nowrap;
   transition: background 0.2s, color 0.2s;
 }
-.waitlist button:hover { background: rgba(245,158,11,0.32); color: #fde68a; }
-.waitlist-msg { margin-top: 10px; font-size: 0.74rem; color: var(--green-2); display: none; font-family: var(--font-mono); letter-spacing: 0.04em; }
+.waitlist-row button:hover { background: rgba(245,158,11,0.32); color: #fde68a; }
+.waitlist-row button:disabled { opacity: 0.55; cursor: wait; }
+.waitlist .h-captcha {
+  display: flex; justify-content: center; align-items: center;
+  min-height: 78px;
+  background: rgba(255,255,255,0.02);
+  border: 1px dashed var(--border-2);
+  border-radius: 8px;
+  padding: 6px;
+  transition: border-color 0.2s;
+}
+.waitlist .h-captcha:hover { border-color: rgba(56,189,248,0.3); }
+.waitlist .h-captcha:empty::before {
+  content: 'Verification loading…';
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.waitlist-msg { margin-top: 8px; font-size: 0.74rem; color: var(--green-2); display: none; font-family: var(--font-mono); letter-spacing: 0.04em; line-height: 1.5; }
 .waitlist-msg.shown { display: block; }
 
 .guarantee {
@@ -1523,8 +1545,11 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
           <input type="hidden" name="from_name" value="FalqenView Website Waitlist">
           <input type="hidden" name="tier" value="updraft">
           <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
-          <input type="email" name="email" placeholder="you@email.com" required aria-label="Email for Updraft waitlist" autocomplete="email">
-          <button type="submit">Join waitlist</button>
+          <div class="waitlist-row">
+            <input type="email" name="email" placeholder="you@email.com" required aria-label="Email for Updraft waitlist" autocomplete="email">
+            <button type="submit">Join waitlist</button>
+          </div>
+          <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
         </form>
         <div class="waitlist-msg">✓ You're on the Updraft list.</div>
       </div>
@@ -1556,8 +1581,11 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
           <input type="hidden" name="from_name" value="FalqenView Website Waitlist">
           <input type="hidden" name="tier" value="apex">
           <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
-          <input type="email" name="email" placeholder="you@email.com" required aria-label="Email for Apex waitlist" autocomplete="email">
-          <button type="submit">Join waitlist</button>
+          <div class="waitlist-row">
+            <input type="email" name="email" placeholder="you@email.com" required aria-label="Email for Apex waitlist" autocomplete="email">
+            <button type="submit">Join waitlist</button>
+          </div>
+          <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
         </form>
         <div class="waitlist-msg">✓ You're on the Apex list.</div>
       </div>
@@ -1762,7 +1790,7 @@ document.querySelectorAll('form.waitlist').forEach(form => {
     const tier = form.dataset.tier;
     const emailInput = form.querySelector('input[type=email]');
     const email = emailInput.value.trim();
-    const btn = form.querySelector('button');
+    const btn = form.querySelector('button[type=submit]');
     const msg = form.nextElementSibling;
     const origMsg = msg ? msg.textContent : '';
 
@@ -1774,6 +1802,17 @@ document.querySelectorAll('form.waitlist').forEach(form => {
       emailInput.setCustomValidity('Please enter a valid email address.');
       emailInput.reportValidity();
       setTimeout(() => emailInput.setCustomValidity(''), 1800);
+      return;
+    }
+
+    // Captcha must be solved before submission (Web3Forms account requires it)
+    const captchaInput = form.querySelector('textarea[name=h-captcha-response]');
+    if (!captchaInput || !captchaInput.value) {
+      if (msg) {
+        msg.style.color = 'var(--amber)';
+        msg.textContent = '⚠ Please complete the verification challenge.';
+        msg.classList.add('shown');
+      }
       return;
     }
 
@@ -1821,5 +1860,7 @@ window.addEventListener('scroll', () => {
   navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + c ? 'var(--text)' : ''; });
 });
 </script>
+<!-- Web3Forms client — renders the h-captcha widgets in the waitlist forms -->
+<script src="https://web3forms.com/client/script.js" async defer></script>
 </body>
 </html>
