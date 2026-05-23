@@ -5,119 +5,248 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Changelog — FalqenView</title>
   <meta name="description" content="FalqenView product changelog — new features, improvements, and fixes across VuePoint, Updraft, and Apex.">
+  <meta name="theme-color" content="#1A73E8">
+
   <link rel="icon" type="image/png" href="assets/fvIcon.png">
+  <link rel="apple-touch-icon" href="assets/fvIcon.png">
+
+  <script>
+  window.addEventListener('error', function(e) {
+    var t = e.target;
+    if (!t || t.tagName !== 'IMG') return;
+    var s = t.getAttribute('src') || '';
+    if (!/^assets\//.test(s) || t.dataset.fb) return;
+    t.dataset.fb = '1';
+    t.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%2338bdf8'/><stop offset='1' stop-color='%231A73E8'/></linearGradient></defs><path d='M4 6 L11 6 L16 22 L21 6 L28 6 L19 28 L13 28 Z' fill='url(%23g)'/><circle cx='16' cy='11' r='1.3' fill='%23fff' fill-opacity='0.85'/></svg>";
+  }, true);
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&family=Montserrat:wght@700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg:      #0d1117;
-      --surface: #161b22;
-      --border:  #21262d;
-      --text:    #e6edf3;
-      --muted:   #8b949e;
-      --blue:    #1A73E8;
-      --cyan:    #38bdf8;
-      --gold:    #f59e0b;
-      --green:   #22c55e;
+      --bg:        #141820;
+      --bg-deep:   #0e1118;
+      --surface:   #1c2230;
+      --surface2:  #232b3e;
+      --border:    rgba(255,255,255,0.07);
+      --border-2:  rgba(255,255,255,0.12);
+      --text:      #e8ecf4;
+      --text-dim:  rgba(232,236,244,0.78);
+      --muted:     #7a8499;
+      --blue:      #1A73E8;
+      --blue-2:    #1557b0;
+      --blue-dim:  rgba(26,115,232,0.12);
+      --cyan:      #38bdf8;
+      --gold:      #f59e0b;
+      --green:     #22c55e;
+      --green-2:   #4ade80;
+      --nav-h:     64px;
+      --font-display: 'Montserrat', sans-serif;
+      --font-body:    'Lexend', sans-serif;
+      --font-mono:    'JetBrains Mono', ui-monospace, monospace;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: 'Lexend', sans-serif; font-size: 15px; line-height: 1.6; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: var(--font-body); font-size: 15px; line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; opacity: 0.5;
+    }
 
     /* NAV */
-    nav { position: sticky; top: 0; z-index: 100; background: rgba(13,17,23,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(20,24,32,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px; height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+    }
     .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-brand img { height: 28px; }
-    .nav-brand-text { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 900; color: var(--text); letter-spacing: -0.02em; }
-    .nav-brand-text span { color: var(--cyan); }
-    .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+    .nav-brand img { height: 30px; width: 30px; object-fit: contain; filter: drop-shadow(0 0 8px rgba(26,115,232,0.4)); }
+    .nav-brand-text { font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
+    .nav-brand-text em { font-style: normal; color: var(--cyan); }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
-    .nav-cta { background: var(--blue); color: #fff !important; padding: 8px 18px; border-radius: 8px; font-weight: 600 !important; }
-    .nav-cta:hover { background: #1557b0 !important; color: #fff !important; }
+    .nav-cta { background: var(--blue); color: #fff !important; padding: 8px 18px; border-radius: 8px; font-weight: 600 !important; white-space: nowrap; box-shadow: 0 4px 16px rgba(26,115,232,0.3); transition: background 0.2s, transform 0.15s; }
+    .nav-cta:hover { background: var(--blue-2) !important; color: #fff !important; transform: translateY(-1px); }
+    .menu-toggle { display: none; background: none; border: 1px solid var(--border); color: var(--text); padding: 8px 12px; border-radius: 8px; font-size: 1.1rem; cursor: pointer; }
 
     /* HERO */
-    .cl-hero { padding: 60px 24px 32px; text-align: center; max-width: 720px; margin: 0 auto; }
-    .cl-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); margin-bottom: 12px; }
-    .cl-title { font-family: 'Montserrat', sans-serif; font-size: 2.4rem; font-weight: 900; letter-spacing: -0.04em; margin-bottom: 10px; }
-    .cl-sub { color: var(--muted); font-size: 0.95rem; font-weight: 300; margin-bottom: 28px; }
+    .cl-hero { padding: 60px 24px 32px; text-align: center; max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
+    .cl-label { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); margin-bottom: 12px; }
+    .cl-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -0.04em; margin-bottom: 12px; line-height: 1; }
+    .cl-sub { color: var(--text-dim); font-size: 0.95rem; font-weight: 300; margin-bottom: 32px; max-width: 460px; margin-left: auto; margin-right: auto; }
 
-    /* JUMP BUTTONS */
-    .jump-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
-    .jump-btn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 20px; border-radius: 100px; font-size: 0.82rem; font-weight: 600; text-decoration: none; border: 1px solid; transition: all 0.2s; cursor: pointer; }
-    .jump-btn.vuepoint { color: var(--cyan); border-color: var(--cyan); background: rgba(56,189,248,0.08); }
-    .jump-btn.vuepoint:hover { background: rgba(56,189,248,0.18); }
-    .jump-btn.updraft { color: #60a5fa; border-color: #60a5fa; background: rgba(96,165,250,0.08); }
-    .jump-btn.updraft:hover { background: rgba(96,165,250,0.18); }
-    .jump-btn.apex { color: var(--gold); border-color: var(--gold); background: rgba(245,158,11,0.08); }
-    .jump-btn.apex:hover { background: rgba(245,158,11,0.18); }
+    /* JUMP */
+    .jump-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 56px; }
+    .jump-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 20px; border-radius: 100px;
+      font-family: var(--font-body); font-size: 0.82rem; font-weight: 600;
+      text-decoration: none; border: 1px solid; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .jump-btn.vuepoint { color: var(--cyan); border-color: rgba(56,189,248,0.5); background: rgba(56,189,248,0.06); }
+    .jump-btn.vuepoint:hover { background: rgba(56,189,248,0.16); border-color: var(--cyan); }
+    .jump-btn.updraft { color: #93c5fd; border-color: rgba(96,165,250,0.5); background: rgba(96,165,250,0.06); }
+    .jump-btn.updraft:hover { background: rgba(96,165,250,0.16); border-color: #93c5fd; }
+    .jump-btn.apex { color: var(--gold); border-color: rgba(245,158,11,0.5); background: rgba(245,158,11,0.06); }
+    .jump-btn.apex:hover { background: rgba(245,158,11,0.16); border-color: var(--gold); }
     .jump-btn .dot { width: 7px; height: 7px; border-radius: 50%; }
     .jump-btn.vuepoint .dot { background: var(--cyan); }
-    .jump-btn.updraft .dot { background: #60a5fa; }
+    .jump-btn.updraft .dot { background: #93c5fd; }
     .jump-btn.apex .dot { background: var(--gold); }
 
     /* TIMELINE */
-    .cl-wrap { max-width: 720px; margin: 0 auto; padding: 0 24px 80px; }
+    .cl-wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; position: relative; z-index: 1; }
 
-    /* Product section header */
-    .product-section { margin-bottom: 40px; }
-    .product-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
-    .product-header-name { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 900; letter-spacing: 0.04em; }
+    .product-section { margin-bottom: 56px; }
+    .product-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 24px; padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .product-header-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 900; letter-spacing: 0.02em; }
     .product-header-name.vuepoint { color: var(--cyan); }
-    .product-header-name.updraft { color: #60a5fa; }
+    .product-header-name.updraft { color: #93c5fd; }
     .product-header-name.apex { color: var(--gold); }
-    .product-header-price { font-size: 0.78rem; color: var(--muted); }
-    .coming-soon-tag { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; background: rgba(139,148,158,0.15); color: var(--muted); }
+    .coming-soon-tag {
+      font-family: var(--font-mono); font-size: 0.66rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 100px;
+      background: rgba(245,158,11,0.14); color: var(--gold);
+      border: 1px solid rgba(245,158,11,0.3);
+    }
 
     /* Entry */
-    .cl-entry { display: grid; grid-template-columns: 120px 1fr; gap: 0 32px; margin-bottom: 20px; position: relative; }
-    .cl-entry::before { content: ''; position: absolute; left: 128px; top: 8px; bottom: -20px; width: 1px; background: var(--border); }
+    .cl-entry { display: grid; grid-template-columns: 120px 1fr; gap: 0 32px; margin-bottom: 22px; position: relative; }
+    .cl-entry::before { content: ''; position: absolute; left: 128px; top: 9px; bottom: -22px; width: 1px; background: var(--border); }
     .cl-entry:last-child::before { display: none; }
     .cl-meta { text-align: right; padding-top: 2px; padding-right: 14px; }
-    .cl-version { font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text); }
-    .cl-date { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
-    .cl-dot { position: absolute; left: 124px; top: 7px; width: 9px; height: 9px; border-radius: 50%; background: var(--blue); border: 2px solid var(--bg); z-index: 1; }
-    .cl-dot.latest { background: var(--cyan); box-shadow: 0 0 6px rgba(56,189,248,0.6); }
-    .cl-body { padding-left: 18px; }
-    .cl-heading { font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+    .cl-version { font-family: var(--font-display); font-size: 0.82rem; font-weight: 800; color: var(--text); letter-spacing: 0.02em; }
+    .cl-date { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); margin-top: 3px; }
+    .cl-dot {
+      position: absolute; left: 124px; top: 8px;
+      width: 9px; height: 9px; border-radius: 50%;
+      background: var(--blue); border: 2px solid var(--bg); z-index: 1;
+    }
+    .cl-dot.latest { background: var(--cyan); box-shadow: 0 0 0 4px rgba(56,189,248,0.18), 0 0 8px rgba(56,189,248,0.6); }
+    .cl-body {
+      padding-left: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 18px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .cl-body:hover { border-color: var(--border-2); transform: translateX(2px); }
+    .cl-heading { font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 10px; letter-spacing: -0.01em; }
     .cl-items { list-style: none; }
-    .cl-items li { font-size: 0.8rem; color: rgba(255,255,255,0.65); padding: 2px 0; border-bottom: 1px solid rgba(33,38,45,0.6); display: flex; gap: 8px; line-height: 1.4; }
+    .cl-items li {
+      font-size: 0.82rem; color: var(--text-dim); padding: 5px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      display: flex; gap: 10px; line-height: 1.5; font-weight: 300;
+    }
     .cl-items li:last-child { border-bottom: none; }
-    .cl-items li::before { content: '→'; color: var(--cyan); flex-shrink: 0; font-size: 0.75rem; margin-top: 1px; }
+    .cl-items li::before { content: '→'; color: var(--cyan); flex-shrink: 0; font-size: 0.78rem; font-family: var(--font-mono); margin-top: 1px; }
 
     /* Coming soon block */
-    .coming-soon-block { background: var(--surface); border: 1px dashed var(--border); border-radius: 10px; padding: 20px 24px; text-align: center; }
-    .coming-soon-block p { font-size: 0.82rem; color: var(--muted); }
+    .coming-soon-block {
+      background: var(--surface);
+      border: 1px dashed var(--border-2);
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .coming-soon-block p { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 14px; }
+    .coming-soon-block .waitlist-mini {
+      display: inline-flex; gap: 6px;
+      background: rgba(0,0,0,0.25);
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 4px;
+      max-width: 360px; width: 100%;
+    }
+    .coming-soon-block .waitlist-mini input {
+      flex: 1; min-width: 0;
+      background: transparent; border: none;
+      color: var(--text); font-family: var(--font-body); font-size: 0.84rem;
+      padding: 8px 10px; outline: none;
+    }
+    .coming-soon-block .waitlist-mini input::placeholder { color: var(--muted); }
+    .coming-soon-block .waitlist-mini button {
+      background: rgba(245,158,11,0.2); color: var(--gold);
+      border: 1px solid rgba(245,158,11,0.35);
+      border-radius: 7px; padding: 7px 14px;
+      font-family: var(--font-body); font-size: 0.78rem; font-weight: 600;
+      cursor: pointer; white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .coming-soon-block .waitlist-mini button:hover { background: rgba(245,158,11,0.32); }
+    .waitlist-confirm { margin-top: 10px; font-size: 0.74rem; color: var(--green-2); font-family: var(--font-mono); display: none; letter-spacing: 0.04em; }
+    .waitlist-confirm.shown { display: block; }
 
     /* FOOTER */
-    footer { border-top: 1px solid var(--border); padding: 28px 24px; }
-    .footer-inner { max-width: 720px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    footer { border-top: 1px solid var(--border); padding: 28px 24px; position: relative; z-index: 1; }
+    .footer-inner { max-width: 760px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
     .footer-legal { font-size: 0.75rem; color: var(--muted); }
-    .footer-links { display: flex; gap: 20px; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
     .footer-links a { font-size: 0.75rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--text); }
-    .footer-links a.dimmed { opacity: 0.45; }
-    .footer-links a.dimmed:hover { opacity: 1; }
 
-    @media (max-width: 600px) {
-      .cl-entry { grid-template-columns: 1fr; }
-      .cl-entry::before { display: none; }
-      .cl-meta { text-align: left; margin-bottom: 6px; display: flex; gap: 12px; align-items: baseline; }
-      .cl-dot { display: none; }
-      .cl-body { padding-left: 0; }
-      .cl-title { font-size: 1.8rem; }
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
       .nav-links { display: none; }
+      .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0 18px; }
+      .mobile-menu {
+        position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 99;
+        background: rgba(20,24,32,0.98); backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+        padding: 16px 18px; display: none;
+      }
+      .mobile-menu.shown { display: flex; flex-direction: column; gap: 4px; }
+      .mobile-menu a {
+        color: var(--text); text-decoration: none;
+        padding: 12px 14px; border-radius: 8px;
+        font-size: 0.95rem; font-weight: 500;
+      }
+      .mobile-menu a:hover { background: var(--surface); }
+      .mobile-menu a.cta { background: var(--blue); color: #fff; text-align: center; margin-top: 8px; }
+    }
+    @media (max-width: 600px) {
+      .cl-entry { grid-template-columns: 1fr; gap: 8px; }
+      .cl-entry::before { display: none; }
+      .cl-meta { text-align: left; display: flex; gap: 14px; align-items: baseline; padding-right: 0; }
+      .cl-dot { display: none; }
+      .cl-body { padding: 14px 16px; }
+      .cl-title { font-size: 1.8rem; }
       .jump-btns { gap: 8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.001ms !important; animation-duration: 0.001ms !important; }
     }
   </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-brand">
+  <a href="index.html" class="nav-brand" aria-label="FalqenView home">
     <img src="assets/fvIcon.png" alt="FalqenView">
-    <span class="nav-brand-text">Falqen<span>V</span>iew</span>
+    <span class="nav-brand-text">Falqen<em>V</em>iew</span>
   </a>
   <ul class="nav-links">
     <li><a href="index.html#home">Home</a></li>
@@ -128,12 +257,22 @@
     <li><a href="index.html#about">About</a></li>
     <li><a href="index.html#pricing" class="nav-cta">Get Started</a></li>
   </ul>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">≡</button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#home">Home</a>
+  <a href="index.html#products">Products</a>
+  <a href="index.html#video">Video</a>
+  <a href="index.html#pricing">Pricing</a>
+  <a href="support.html">Support</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#pricing" class="cta">Get Started →</a>
+</div>
 
 <div class="cl-hero">
   <p class="cl-label">What's new</p>
   <h1 class="cl-title">Changelog</h1>
-  <p class="cl-sub">New features, improvements, and fixes — tracked with every release.</p>
+  <p class="cl-sub">New features, fixes, and shipped intent. Tracked release-by-release.</p>
   <div class="jump-btns">
     <a href="#vuepoint" class="jump-btn vuepoint"><span class="dot"></span> VuePoint</a>
     <a href="#updraft" class="jump-btn updraft"><span class="dot"></span> Updraft</a>
@@ -147,7 +286,6 @@
   <div class="product-section" id="vuepoint">
     <div class="product-header">
       <span class="product-header-name vuepoint">VuePoint</span>
-      
     </div>
 
     <div class="cl-entry">
@@ -216,11 +354,20 @@
   <div class="product-section" id="updraft">
     <div class="product-header">
       <span class="product-header-name updraft">Updraft</span>
-      
-      <span class="coming-soon-tag">Coming Soon</span>
+      <span class="coming-soon-tag">Coming · Early Q3 2026</span>
     </div>
     <div class="coming-soon-block">
-      <p>Updraft is in development. Release notes will appear here at launch.</p>
+      <p>Updraft is in development. Release notes will appear here at launch.<br>Want to know the moment it ships?</p>
+      <form class="waitlist-mini" data-tier="updraft">
+        <input type="hidden" name="access_key" value="dc74cd1c-ffcb-47c7-8794-e69242b0855f">
+        <input type="hidden" name="subject" value="FalqenView Waitlist — Updraft">
+        <input type="hidden" name="from_name" value="FalqenView Website Waitlist">
+        <input type="hidden" name="tier" value="updraft">
+        <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
+        <input type="email" name="email" placeholder="you@email.com" required aria-label="Updraft waitlist email" autocomplete="email">
+        <button type="submit">Notify me</button>
+      </form>
+      <div class="waitlist-confirm">✓ You're on the list.</div>
     </div>
   </div>
 
@@ -228,11 +375,20 @@
   <div class="product-section" id="apex">
     <div class="product-header">
       <span class="product-header-name apex">Apex</span>
-      
-      <span class="coming-soon-tag">Coming Soon</span>
+      <span class="coming-soon-tag">Coming · Mid Q3 2026</span>
     </div>
     <div class="coming-soon-block">
-      <p>Apex is in development. Release notes will appear here at launch.</p>
+      <p>Apex is in development. Release notes will appear here at launch.<br>Want first access?</p>
+      <form class="waitlist-mini" data-tier="apex">
+        <input type="hidden" name="access_key" value="dc74cd1c-ffcb-47c7-8794-e69242b0855f">
+        <input type="hidden" name="subject" value="FalqenView Waitlist — Apex">
+        <input type="hidden" name="from_name" value="FalqenView Website Waitlist">
+        <input type="hidden" name="tier" value="apex">
+        <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
+        <input type="email" name="email" placeholder="you@email.com" required aria-label="Apex waitlist email" autocomplete="email">
+        <button type="submit">Notify me</button>
+      </form>
+      <div class="waitlist-confirm">✓ You're on the list.</div>
     </div>
   </div>
 
@@ -246,10 +402,81 @@
       <a href="index.html#video">Video</a>
       <a href="index.html#pricing">Pricing</a>
       <a href="support.html">Support</a>
-      <a href="changelog.html" class="dimmed">Changelog</a>
+      <a href="/cdn-cgi/l/email-protection#7b131e1717143b1d1a170a1e150d121e0c55181416">Email</a>
     </div>
   </div>
 </footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Mobile menu
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('shown');
+    menuToggle.setAttribute('aria-expanded', isOpen);
+    menuToggle.textContent = isOpen ? '✕' : '≡';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('shown');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.textContent = '≡';
+  }));
+
+  // Waitlist (Web3Forms)
+  document.querySelectorAll('form.waitlist-mini').forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const tier = form.dataset.tier;
+      const emailInput = form.querySelector('input[type=email]');
+      const email = emailInput.value.trim();
+      const btn = form.querySelector('button');
+      const msg = form.nextElementSibling;
+      const origBtn = btn.textContent;
+
+      if (msg) { msg.style.color = ''; msg.classList.remove('shown'); }
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        emailInput.focus();
+        emailInput.setCustomValidity('Please enter a valid email address.');
+        emailInput.reportValidity();
+        setTimeout(() => emailInput.setCustomValidity(''), 1800);
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      try {
+        const fd = new FormData(form);
+        const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.success) {
+          form.style.display = 'none';
+          if (msg && msg.classList.contains('waitlist-confirm')) {
+            msg.textContent = `✓ You're on the ${tier === 'updraft' ? 'Updraft' : 'Apex'} list.`;
+            msg.classList.add('shown');
+          }
+        } else {
+          btn.textContent = origBtn;
+          btn.disabled = false;
+          if (msg) {
+            msg.style.color = 'var(--gold)';
+            msg.textContent = '⚠ ' + (data.message || 'Submission failed. Please try again.');
+            msg.classList.add('shown');
+          }
+        }
+      } catch (err) {
+        btn.textContent = origBtn;
+        btn.disabled = false;
+        if (msg) {
+          msg.style.color = 'var(--gold)';
+          msg.textContent = '⚠ Network error. Please try again or email hello@falqenview.com.';
+          msg.classList.add('shown');
+        }
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
