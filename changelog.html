@@ -330,13 +330,13 @@
       </div>
       <div class="cl-dot latest"></div>
       <div class="cl-body">
-        <div class="cl-heading">CAGR Fix · Annualization Hardening</div>
+        <div class="cl-heading">fix: CAGR annualization · health score · integrity gate</div>
         <ul class="cl-items">
-          <li>Fixed a CAGR bug that could show wildly incorrect values for positions held less than a year, including extreme outputs like 5,441% on a 19-day hold or -100% on a 2-day loss — now correctly shows true annualized return for holdings of 1 year or more</li>
-          <li>Added sub-annual handling — positions held less than a year now show <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--cyan);">&lt;1yr</code>, and positions held less than 30 days show <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--cyan);">—</code> because the holding period is too short to calculate meaningfully</li>
-          <li>Hardened inputs — missing purchase dates, zero basis, or zero market value now display <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--cyan);">—</code> instead of errors or runaway values</li>
-          <li>Implemented a complex A–F grade-scoring algorithm for the entire portfolio based on a strict set of criteria</li>
-          <li>Implemented a VuePoint file integrity check based on the license key</li>
+          <li>fix: CAGR formula produced runaway values on short holds (e.g. 5,441% at 19 days, -100% at 2 days) — corrected to true annualized return; requires ≥1yr hold to calculate</li>
+          <li>add: sub-annual guard — positions &lt;1yr show <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--cyan);">&lt;1yr</code>; positions &lt;30 days show <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--cyan);">—</code></li>
+          <li>fix: null-input hardening — missing purchase date, zero basis, or zero market value now render instead of formula errors</li>
+          <li>add: portfolio health score — A–F grade derived from multi-factor scoring algorithm (gain, drift, signal, position weight)</li>
+          <li>add: license-key integrity check — onOpen validates Config token; flags tampered or unlicensed copies</li>
         </ul>
       </div>
     </div>
@@ -348,14 +348,14 @@
       </div>
       <div class="cl-dot"></div>
       <div class="cl-body">
-        <div class="cl-heading">Completeness Score · Setup Wizard · Polish</div>
+        <div class="cl-heading">add: setup wizard · completeness indicators · error handling</div>
         <ul class="cl-items">
-          <li>Added a setup wizard so first-time buyers can enter account names and set the drift threshold in about 30 seconds — can also be rerun anytime from the Settings &amp; Tools menu</li>
-          <li>Added completeness dots — every position now shows a colored indicator for how complete its data is: green for complete, amber for mostly filled, and red for needs attention</li>
-          <li>Added overall portfolio completeness percentage at the top of myPortfolio</li>
-          <li>Added smart formula protection — if you overwrite a calculated cell by accident, a friendly message explains how to undo it</li>
-          <li>Improved error messages so menu actions now show clear, helpful feedback instead of failing silently</li>
-          <li>Cleaned up reference-tab notices and corrected the misleading "changes not saved" message on read-only tabs</li>
+          <li>add: first-run setup wizard — prompts account names + drift threshold on first open; re-runnable from Settings &amp; Tools menu</li>
+          <li>add: per-position completeness indicator — green/amber/red dot per row based on required field fill state</li>
+          <li>add: portfolio-level completeness % displayed in myPortfolio header row</li>
+          <li>add: formula overwrite guard — onEdit detects protected cell writes, surfaces undo instructions via toast</li>
+          <li>fix: menu actions were failing silently on error — all actions now surface actionable error messages</li>
+          <li>fix: read-only tabs showing misleading "changes not saved" notice — removed</li>
         </ul>
       </div>
     </div>
@@ -367,13 +367,13 @@
       </div>
       <div class="cl-dot"></div>
       <div class="cl-body">
-        <div class="cl-heading">Drift Bars · Row Tint · Refined Polish</div>
+        <div class="cl-heading">add: drift bars · row tinting · integrity toast · timestamp</div>
         <ul class="cl-items">
-          <li>Added a drift visual bar in column N — block-bar view alongside the percentage for quick drift checks</li>
-          <li>Added full-row gain/loss tinting — winning positions softly shade green and losing positions softly shade red across the whole row</li>
-          <li>Updated ticker styling — symbols now appear in cyan pill cells against the dark theme</li>
-          <li>Added integrity confirmation on open — a green toast confirms the file is intact every time you open it</li>
-          <li>Added a last-refreshed timestamp to the myPortfolio header so you can see when prices were last updated</li>
+          <li>add: drift bar in col N — inline block-bar renders alongside drift % for faster visual scanning</li>
+          <li>add: full-row gain/loss tint — winning rows shade green, losing rows shade red across all columns</li>
+          <li>change: ticker cells restyled — symbols render as cyan pill against dark background</li>
+          <li>add: onOpen integrity toast — green confirmation shown each time file opens clean</li>
+          <li>add: last-refreshed timestamp injected into myPortfolio header on each price refresh</li>
         </ul>
       </div>
     </div>
@@ -385,13 +385,13 @@
       </div>
       <div class="cl-dot"></div>
       <div class="cl-body">
-        <div class="cl-heading">Dark Theme · Signal Pills · Visual Polish</div>
+        <div class="cl-heading">change: dark theme · signal pills · LTCG states · header bands</div>
         <ul class="cl-items">
-          <li>Introduced a dark navy theme on myPortfolio — high-contrast layout, cyan accents, and a clearer visual hierarchy</li>
-          <li>Replaced plain text with colored pill badges for BUY, TRIM, HOLD, and REVIEW signals</li>
-          <li>Added LTCG pill states — Clear, Soon, and Pending — for at-a-glance tax-lot status</li>
-          <li>Refreshed account headers with darker navy bands to more cleanly separate each account block</li>
-          <li>Refreshed column headers with cyan uppercase styling on a dark card background</li>
+          <li>change: myPortfolio theme overhauled — dark navy base, cyan accents, restructured visual hierarchy</li>
+          <li>change: signal column — plain text replaced with colored pill badges (BUY/TRIM/HOLD/REVIEW)</li>
+          <li>add: LTCG pill states — Clear / Soon / Pending per position for at-a-glance tax-lot status</li>
+          <li>change: account header rows — darker navy band applied to each account block for cleaner separation</li>
+          <li>change: column headers — cyan uppercase styling on dark card background</li>
         </ul>
       </div>
     </div>
@@ -403,16 +403,16 @@
       </div>
       <div class="cl-dot"></div>
       <div class="cl-body">
-        <div class="cl-heading">Buy/Sell Signal · CAGR · Visual Upgrade</div>
+        <div class="cl-heading">add: signal col · CAGR · drift CF · ticker DB expansion</div>
         <ul class="cl-items">
-          <li>Added a Buy/Sell Decision Helper that shows TRIM, BUY, HOLD, or REVIEW for each position based on drift and gain</li>
-          <li>Added Annual Return (CAGR) — true annualized return per position using the purchase date</li>
-          <li>Added drift color coding — amber when over threshold, cyan when under, and green when within range</li>
-          <li>Added signal color coding for instant visual scanning by action type</li>
-          <li>Fixed the LTCG date so it no longer shows <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--cyan);">365</code> on empty rows</li>
-          <li>Added a notification when a ticker is not found in the database instead of leaving a silent blank</li>
-          <li>Expanded the ticker database to 300+ pre-mapped tickers</li>
-          <li>Removed gridlines across all tabs for a cleaner app-like experience</li>
+          <li>add: signal column — TRIM/BUY/HOLD/REVIEW derived from drift % vs threshold and gain state</li>
+          <li>add: CAGR column — annualized return per position calculated from purchase date</li>
+          <li>add: drift conditional formatting — amber (over threshold) / cyan (under) / green (in range)</li>
+          <li>add: signal conditional formatting — color-coded per action type for instant scan</li>
+          <li>fix: LTCG date formula showing <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--cyan);">365</code> on empty rows — resolved</li>
+          <li>fix: unknown ticker on onEdit produced silent blank — now surfaces toast notification</li>
+          <li>change: ticker DB expanded ~60 → 300+ pre-mapped entries</li>
+          <li>change: gridlines removed across all tabs</li>
         </ul>
       </div>
     </div>
@@ -424,12 +424,12 @@
       </div>
       <div class="cl-dot"></div>
       <div class="cl-body">
-        <div class="cl-heading">Full Visual Rebuild</div>
+        <div class="cl-heading">change: full visual rebuild · KPI banner · settings tab</div>
         <ul class="cl-items">
-          <li>Delivered a complete visual redesign with a dark theme, brand colors, and modern typography</li>
-          <li>Added a KPI banner showing Total Value, Basis, Gain $, and Gain % at a glance</li>
-          <li>Added green/red conditional formatting for Gain $ and Gain %</li>
-          <li>Added a Settings tab to configure drift threshold, cash drag threshold, LTCG warning days, and account names</li>
+          <li>change: complete sheet redesign — dark theme, brand color palette, Lexend/Montserrat typography</li>
+          <li>add: KPI banner — Total Value, Basis, Gain $, Gain % pinned to top of myPortfolio</li>
+          <li>add: conditional formatting on Gain $ and Gain % columns — green/red by value</li>
+          <li>add: Settings tab — configurable drift threshold, cash drag threshold, LTCG warning days, account names</li>
         </ul>
       </div>
     </div>
@@ -441,18 +441,18 @@
       </div>
       <div class="cl-dot"></div>
       <div class="cl-body">
-        <div class="cl-heading">Initial Launch</div>
+        <div class="cl-heading">init: multi-account tracker · ticker DB · health score</div>
         <ul class="cl-items">
-          <li>Launched as a multi-account tracker for 5 accounts and 5 positions each</li>
-          <li>Added ticker auto-fill for Position Name and Sector using a 300+ ticker database</li>
-          <li>Added gain/loss tracking with purchase date and LTCG date auto-calculation</li>
-          <li>Added Target % and Drift alerts for each position</li>
-          <li>Added a Portfolio Health Score from A to F</li>
-          <li>Added top movers to highlight the best and worst performers</li>
-          <li>Added a sector concentration breakdown</li>
-          <li>Added a cash drag monitor</li>
-          <li>Added a Watchlist tab for tracking tickers before buying</li>
-          <li>Included a Sample Data tab with a demo portfolio</li>
+          <li>init: multi-account portfolio tracker — 5 accounts × 5 positions; account-level subtotals + portfolio grand total</li>
+          <li>add: ticker auto-fill on onEdit — Position Name and Sector populated from 300+ ticker DB</li>
+          <li>add: gain/loss tracking — purchase date input drives LTCG date auto-calc (+365 days)</li>
+          <li>add: Target % + Drift per position — alerts when allocation exceeds configured threshold</li>
+          <li>add: Portfolio Health Score — A–F grade based on gain, drift, and signal state</li>
+          <li>add: top movers — best and worst performer surfaced at portfolio level</li>
+          <li>add: sector concentration breakdown — 8-sector aggregation across all positions</li>
+          <li>add: cash drag monitor — flags uninvested cash above threshold</li>
+          <li>add: Watchlist tab — track tickers pre-purchase</li>
+          <li>add: Sample Data tab — demo portfolio (Alex &amp; Jordan Chen) with pre-filled values</li>
         </ul>
       </div>
     </div>
