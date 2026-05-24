@@ -325,21 +325,94 @@
 
     <div class="cl-entry">
       <div class="cl-meta">
-        <div class="cl-version">v1.2</div>
+        <div class="cl-version">v1.3.3</div>
         <div class="cl-date">May 2026</div>
       </div>
       <div class="cl-dot latest"></div>
       <div class="cl-body">
+        <div class="cl-heading">CAGR Fix · Annualization Hardening</div>
+        <ul class="cl-items">
+          <li>Fixed a CAGR bug that could show wildly incorrect values for positions held less than a year, including extreme outputs like 5,441% on a 19-day hold or -100% on a 2-day loss — now correctly shows true annualized return for holdings of 1 year or more</li>
+          <li>Added sub-annual handling — positions held less than a year now show <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--cyan);">&lt;1yr</code>, and positions held less than 30 days show <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--cyan);">—</code> because the holding period is too short to calculate meaningfully</li>
+          <li>Hardened inputs — missing purchase dates, zero basis, or zero market value now display <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--cyan);">—</code> instead of errors or runaway values</li>
+          <li>Implemented a complex A–F grade-scoring algorithm for the entire portfolio based on a strict set of criteria</li>
+          <li>Implemented a VuePoint file integrity check based on the license key</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <div class="cl-version">v1.3.2</div>
+        <div class="cl-date">May 2026</div>
+      </div>
+      <div class="cl-dot"></div>
+      <div class="cl-body">
+        <div class="cl-heading">Completeness Score · Setup Wizard · Polish</div>
+        <ul class="cl-items">
+          <li>Added a setup wizard so first-time buyers can enter account names and set the drift threshold in about 30 seconds — can also be rerun anytime from the Settings &amp; Tools menu</li>
+          <li>Added completeness dots — every position now shows a colored indicator for how complete its data is: green for complete, amber for mostly filled, and red for needs attention</li>
+          <li>Added overall portfolio completeness percentage at the top of myPortfolio</li>
+          <li>Added smart formula protection — if you overwrite a calculated cell by accident, a friendly message explains how to undo it</li>
+          <li>Improved error messages so menu actions now show clear, helpful feedback instead of failing silently</li>
+          <li>Cleaned up reference-tab notices and corrected the misleading "changes not saved" message on read-only tabs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <div class="cl-version">v1.3.1</div>
+        <div class="cl-date">May 2026</div>
+      </div>
+      <div class="cl-dot"></div>
+      <div class="cl-body">
+        <div class="cl-heading">Drift Bars · Row Tint · Refined Polish</div>
+        <ul class="cl-items">
+          <li>Added a drift visual bar in column N — block-bar view alongside the percentage for quick drift checks</li>
+          <li>Added full-row gain/loss tinting — winning positions softly shade green and losing positions softly shade red across the whole row</li>
+          <li>Updated ticker styling — symbols now appear in cyan pill cells against the dark theme</li>
+          <li>Added integrity confirmation on open — a green toast confirms the file is intact every time you open it</li>
+          <li>Added a last-refreshed timestamp to the myPortfolio header so you can see when prices were last updated</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <div class="cl-version">v1.3.0</div>
+        <div class="cl-date">Apr 2026</div>
+      </div>
+      <div class="cl-dot"></div>
+      <div class="cl-body">
+        <div class="cl-heading">Dark Theme · Signal Pills · Visual Polish</div>
+        <ul class="cl-items">
+          <li>Introduced a dark navy theme on myPortfolio — high-contrast layout, cyan accents, and a clearer visual hierarchy</li>
+          <li>Replaced plain text with colored pill badges for BUY, TRIM, HOLD, and REVIEW signals</li>
+          <li>Added LTCG pill states — Clear, Soon, and Pending — for at-a-glance tax-lot status</li>
+          <li>Refreshed account headers with darker navy bands to more cleanly separate each account block</li>
+          <li>Refreshed column headers with cyan uppercase styling on a dark card background</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <div class="cl-version">v1.2</div>
+        <div class="cl-date">Mar 2026</div>
+      </div>
+      <div class="cl-dot"></div>
+      <div class="cl-body">
         <div class="cl-heading">Buy/Sell Signal · CAGR · Visual Upgrade</div>
         <ul class="cl-items">
-          <li>Buy / Sell Decision Helper — TRIM, BUY, HOLD, REVIEW signal per position based on drift and gain</li>
-          <li>Annual Return (CAGR) — true annualized return per position using your purchase date</li>
-          <li>Drift color coding — amber when over threshold, cyan when under, green when within range</li>
-          <li>Signal color coding — color per action type for instant visual scanning</li>
-          <li>LTCG Date fix — no longer shows "365" on empty rows</li>
-          <li>Ticker not found — notification when a ticker isn't in the database instead of silent blank</li>
-          <li>Ticker database expanded to 300+ pre-mapped tickers</li>
-          <li>Gridlines removed across all tabs for a cleaner app-like experience</li>
+          <li>Added a Buy/Sell Decision Helper that shows TRIM, BUY, HOLD, or REVIEW for each position based on drift and gain</li>
+          <li>Added Annual Return (CAGR) — true annualized return per position using the purchase date</li>
+          <li>Added drift color coding — amber when over threshold, cyan when under, and green when within range</li>
+          <li>Added signal color coding for instant visual scanning by action type</li>
+          <li>Fixed the LTCG date so it no longer shows <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--cyan);">365</code> on empty rows</li>
+          <li>Added a notification when a ticker is not found in the database instead of leaving a silent blank</li>
+          <li>Expanded the ticker database to 300+ pre-mapped tickers</li>
+          <li>Removed gridlines across all tabs for a cleaner app-like experience</li>
         </ul>
       </div>
     </div>
@@ -347,16 +420,16 @@
     <div class="cl-entry">
       <div class="cl-meta">
         <div class="cl-version">v1.1</div>
-        <div class="cl-date">May 2026</div>
+        <div class="cl-date">Feb 2026</div>
       </div>
       <div class="cl-dot"></div>
       <div class="cl-body">
         <div class="cl-heading">Full Visual Rebuild</div>
         <ul class="cl-items">
-          <li>Complete visual redesign — dark theme, brand colors, modern typography</li>
-          <li>KPI banner — Total Value, Basis, Gain $, Gain % visible at a glance</li>
-          <li>Green / red conditional formatting on Gain $ and Gain %</li>
-          <li>Settings tab — configure drift threshold, cash drag threshold, LTCG warning days, account names</li>
+          <li>Delivered a complete visual redesign with a dark theme, brand colors, and modern typography</li>
+          <li>Added a KPI banner showing Total Value, Basis, Gain $, and Gain % at a glance</li>
+          <li>Added green/red conditional formatting for Gain $ and Gain %</li>
+          <li>Added a Settings tab to configure drift threshold, cash drag threshold, LTCG warning days, and account names</li>
         </ul>
       </div>
     </div>
@@ -370,16 +443,16 @@
       <div class="cl-body">
         <div class="cl-heading">Initial Launch</div>
         <ul class="cl-items">
-          <li>Multi-account tracker — 5 accounts, 5 positions each</li>
-          <li>Ticker auto-fill — Position Name and Sector from 300+ ticker database</li>
-          <li>Gain / loss tracking with purchase date and LTCG date auto-calc</li>
-          <li>Target % and Drift alerts per position</li>
-          <li>Portfolio Health Score (A–F)</li>
-          <li>Top movers — best and worst performer</li>
-          <li>Sector concentration breakdown</li>
-          <li>Cash drag monitor</li>
-          <li>Watchlist tab — track tickers before buying</li>
-          <li>Sample Data tab — demo portfolio included</li>
+          <li>Launched as a multi-account tracker for 5 accounts and 5 positions each</li>
+          <li>Added ticker auto-fill for Position Name and Sector using a 300+ ticker database</li>
+          <li>Added gain/loss tracking with purchase date and LTCG date auto-calculation</li>
+          <li>Added Target % and Drift alerts for each position</li>
+          <li>Added a Portfolio Health Score from A to F</li>
+          <li>Added top movers to highlight the best and worst performers</li>
+          <li>Added a sector concentration breakdown</li>
+          <li>Added a cash drag monitor</li>
+          <li>Added a Watchlist tab for tracking tickers before buying</li>
+          <li>Included a Sample Data tab with a demo portfolio</li>
         </ul>
       </div>
     </div>
