@@ -100,7 +100,8 @@ window.addEventListener('error', function(e) {
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
 
 <style>
 /* ============ TOKENS ============ */
@@ -228,8 +229,9 @@ body[data-hero="constellation"] .hero-variant--constellation { display: block; }
   font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--cyan);
 }
-.pulse-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgba(34,197,94,0.6); animation: pulse 2s infinite; }
-@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.6); } 70% { box-shadow: 0 0 0 8px rgba(34,197,94,0); } 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); } }
+.pulse-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); position: relative; }
+.pulse-dot::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: rgba(34,197,94,0.6); animation: pulse 2s infinite; }
+@keyframes pulse { 0% { transform: scale(1); opacity: 0.6; } 70% { transform: scale(2.6); opacity: 0; } 100% { transform: scale(1); opacity: 0; } }
 
 .btn-primary {
   background: var(--blue); color: #fff;
@@ -477,11 +479,12 @@ body[data-hero="constellation"] .hero-variant--constellation { display: block; }
   font-size: 0.66rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: #8b96aa;
   white-space: nowrap;
   display: flex; align-items: center; gap: 6px;
 }
-.es-tag .live { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgba(34,197,94,0.6); animation: pulse 2s infinite; }
+.es-tag .live { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--green); position: relative; }
+.es-tag .live::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: rgba(34,197,94,0.6); animation: pulse 2s infinite; }
 .es-stat { display: flex; flex-direction: column; gap: 3px; }
 .es-val {
   font-family: var(--font-display);
@@ -529,7 +532,7 @@ body[data-hero="constellation"] .hero-variant--constellation { display: block; }
 .es-label {
   font-family: var(--font-mono);
   font-size: 0.64rem;
-  color: var(--muted);
+  color: #8b96aa;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -1023,7 +1026,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
   display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
 }
 .footer-legal { font-size: 0.72rem; color: var(--muted); opacity: 0.85; }
-.footer-legal a { color: var(--cyan); text-decoration: none; opacity: 1; }
+.footer-legal a { color: var(--cyan); text-decoration: underline; opacity: 1; }
 .footer-contact a { font-size: 0.78rem; color: var(--cyan); text-decoration: none; font-weight: 500; }
 
 /* ============ REVEAL ============ */
@@ -1164,8 +1167,11 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
 
 <!-- ============ NAV ============ -->
 <nav>
-  <a href="#home" class="nav-logo" aria-label="FalqenView home">
-    <img src="assets/fvIcon.png" alt="FalqenView icon">
+  <a href="#home" class="nav-logo" aria-label="FalqenView — go to homepage">
+    <picture>
+      <source srcset="assets/fvIcon-32.webp" type="image/webp">
+      <img src="assets/fvIcon.png" alt="FalqenView icon" width="32" height="32">
+    </picture>
     <span class="nav-logo-text">Falqen<em>V</em>iew</span>
   </a>
   <ul class="nav-links">
@@ -1669,7 +1675,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
   <h2 class="section-title reveal">About FalqenView</h2>
   <div class="about-card reveal">
     <div class="about-mark">
-      <img src="assets/fvLogo.png" alt="FalqenView">
+      <img src="assets/fvLogo.png" alt="FalqenView" width="258" height="56">
     </div>
     <div class="about-tagline">Built by investors, for investors.</div>
     <p class="about-body">FalqenView started as a personal frustration. Managing four accounts — IRA, Roth, taxable, HSA — shouldn't require a Bloomberg terminal or a financial advisor with a logo.<br><br>So we built the tracker we wanted. <strong>No monthly fee. No data sharing. No fluff.</strong> Just a sheet that lives in your own Google account and gives you the clarity to invest like a grown-up.</p>
@@ -1688,8 +1694,11 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <a href="#home" class="footer-lockup" aria-label="FalqenView home">
-        <img src="assets/fvIcon.png" alt="FalqenView">
+      <a href="#home" class="footer-lockup" aria-label="FalqenView — go to homepage">
+        <picture>
+          <source srcset="assets/fvIcon-32.webp" type="image/webp">
+          <img src="assets/fvIcon.png" alt="FalqenView" width="30" height="30">
+        </picture>
         <span class="footer-lockup-text">Falqen<em>V</em>iew</span>
       </a>
       <div class="footer-motto">See further. Act smarter.</div>
@@ -1892,7 +1901,26 @@ window.addEventListener('scroll', () => {
   navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + c ? 'var(--text)' : ''; });
 });
 </script>
-<!-- Web3Forms client — renders the h-captcha widgets in the waitlist forms -->
-<script src="https://web3forms.com/client/script.js" async defer></script>
+<!-- Web3Forms client — lazy-loaded on first waitlist form interaction -->
+<script>
+(function() {
+  var loaded = false;
+  function loadCaptcha() {
+    if (loaded) return;
+    loaded = true;
+    var s = document.createElement('script');
+    s.src = 'https://web3forms.com/client/script.js';
+    s.async = true;
+    s.defer = true;
+    document.body.appendChild(s);
+  }
+  document.querySelectorAll('form.waitlist input[type=email]').forEach(function(el) {
+    el.addEventListener('focus', loadCaptcha, { once: true });
+    el.addEventListener('click', loadCaptcha, { once: true });
+  });
+  // Fallback: load after 5s in case user scrolls past without focusing
+  setTimeout(loadCaptcha, 5000);
+})();
+</script>
 </body>
 </html>
