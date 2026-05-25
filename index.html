@@ -1124,6 +1124,12 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
 }
+.btn-price-wrap { display: flex; flex-direction: column; gap: 10px; }
+.btn-price-gumroad { background: var(--blue); color: #fff !important; box-shadow: 0 4px 20px rgba(26,115,232,0.35); }
+.btn-price-gumroad:hover { background: var(--blue-2) !important; transform: translateY(-1px); box-shadow: 0 8px 28px rgba(26,115,232,0.5) !important; }
+.btn-price-stripe { background: transparent; color: var(--muted) !important; border: 1px solid var(--border-2); font-size: 0.78rem !important; padding: 9px !important; }
+.btn-price-stripe:hover { border-color: rgba(255,255,255,0.2); color: var(--text) !important; }
+.btn-price-or { text-align: center; font-size: 0.68rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; }
 </style>
 </head>
 <body data-hero="editorial">
@@ -1163,7 +1169,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
   <!-- VARIANT 1: DASHBOARD SPLIT -->
   <div class="hero-variant hero-variant--dashboard">
     <div class="hero-copy">
-      <div class="eyebrow"><span class="pulse-dot"></span>VuePoint v1.2 shipped · changelog →</div>
+      <div class="eyebrow"><span class="pulse-dot"></span>VuePoint v1.3.3 shipped · changelog →</div>
       <h1>Your portfolio. <span class="accent">In one</span><br>spreadsheet you actually <span class="accent">understand.</span></h1>
       <p class="sub">FalqenView is a Google Sheets tracker for self-directed investors who got tired of <span class="strike">paying 1%</span> for a quarterly PDF. Drift alerts, health score, CAGR, and signals — all live, all yours.</p>
       <div class="actions">
@@ -1246,7 +1252,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
       <div class="editorial-top">
         <div class="editorial-meta">
           <div class="editorial-meta-item">No. <strong>01</strong></div>
-          <div class="editorial-meta-item">VuePoint <strong>v1.2</strong></div>
+          <div class="editorial-meta-item">VuePoint <strong>v1.3.3</strong></div>
           <div class="editorial-meta-item"><span style="color:var(--green-2)">● live</span></div>
         </div>
         <div class="editorial-meta-item" style="color:var(--cyan);">For investors who read line items.</div>
@@ -1512,7 +1518,11 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
           <li><span class="chk">✓</span>CAGR per position</li>
           <li><span class="chk">✓</span>300+ ticker database</li>
         </ul>
-        <a href="https://buy.stripe.com/cNi00k0ek16fbjB5QN8bS00" class="btn-price btn-price-solid">Get VuePoint — $19 →</a>
+        <div class="btn-price-wrap">
+          <a href="https://falqenview.gumroad.com/l/mqookv" class="btn-price btn-price-gumroad gumroad-button">Get VuePoint — $19 →</a>
+          <div class="btn-price-or">or</div>
+          <a href="https://buy.stripe.com/cNi00k0ek16fbjB5QN8bS00" class="btn-price btn-price-stripe">Pay with Stripe →</a>
+        </div>
       </div>
 
       <!-- UPDRAFT — COMING -->
@@ -1862,5 +1872,6 @@ window.addEventListener('scroll', () => {
 </script>
 <!-- Web3Forms client — renders the h-captcha widgets in the waitlist forms -->
 <script src="https://web3forms.com/client/script.js" async defer></script>
+<script src="https://gumroad.com/js/gumroad.js"></script>
 </body>
 </html>
