@@ -13,6 +13,8 @@
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#1A73E8">
 <link rel="canonical" href="https://falqenview.com/support.html">
+<link rel="icon" type="image/webp" href="assets/fvIcon-32.webp">
+<link rel="icon" type="image/png" href="assets/fvIcon.png">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -57,7 +59,7 @@
     --green:    #22c55e;
     --amber:    #f59e0b;
     --text:     #e8ecf4;
-    --muted:    #7a8499;
+    --muted:    #8d97ab;
     --nav-h:    64px;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -84,10 +86,10 @@
   .page-wrap { position: relative; z-index: 1; padding: calc(var(--nav-h) + 60px) 24px 80px; max-width: 1100px; margin: 0 auto; }
 
   .page-hero { text-align: center; margin-bottom: 64px; }
-  .page-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--blue-dim); border: 1px solid rgba(26,115,232,0.3); border-radius: 100px; padding: 6px 16px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 20px; }
+  .page-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--blue-dim); border: 1px solid rgba(26,115,232,0.3); border-radius: 100px; padding: 6px 16px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #4d9ef5; margin-bottom: 20px; }
   .page-hero h1 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.03em; margin-bottom: 16px; }
   .page-hero p { color: var(--muted); font-size: 1rem; font-weight: 300; max-width: 500px; margin: 0 auto; line-height: 1.7; }
-  .page-hero a { color: var(--blue); text-decoration: none; }
+  .page-hero a { color: var(--blue); text-decoration: underline; }
 
   .support-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
 
@@ -171,7 +173,7 @@
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo" aria-label="FalqenView — go to homepage">
+  <a href="index.html" class="nav-logo" aria-label="FalqenView">
     <picture>
       <source srcset="assets/fvIcon-32.webp" type="image/webp">
       <img src="assets/fvIcon.png" alt="FalqenView icon" width="36" height="36">
@@ -199,11 +201,12 @@
   <a href="index.html#pricing" class="cta">Get Started →</a>
 </div>
 
+<main>
 <div class="page-wrap">
   <div class="page-hero reveal">
     <div class="page-eyebrow">🛟 Support</div>
     <h1>How can we help?</h1>
-    <p>Fill out the form and we'll get back to you as soon as humanly possible. Or reach us at <a href="support.html">hello@falqenview.com</a>.</p>
+    <p>Fill out the form and we'll get back to you as soon as humanly possible. Or reach us at <a href="mailto:hello@falqenview.com" style="text-decoration:underline;">hello@falqenview.com</a>.</p>
   </div>
 
   <div class="support-grid">
@@ -221,7 +224,7 @@
         </div>
         <div class="form-group"><label>Email</label><input type="email" id="emailField" name="email" placeholder="you@email.com"></div>
         <div class="form-group">
-          <label>Package</label>
+          <label for="packageField">Package</label>
           <select id="packageField" name="package">
             <option value="">Select your package</option>
             <option value="vuepoint">VuePoint</option>
@@ -231,7 +234,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label>Topic</label>
+          <label for="topicField">Topic</label>
           <select id="topicField" name="topic">
             <option value="">Select a topic</option>
             <option>Getting started / setup</option>
@@ -301,11 +304,12 @@
   </div>
 
 </div>
+</main>
 
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <a href="index.html" class="footer-lockup" aria-label="FalqenView — go to homepage">
+      <a href="index.html" class="footer-lockup" aria-label="FalqenView">
         <picture>
           <source srcset="assets/fvIcon-32.webp" type="image/webp">
           <img src="assets/fvIcon.png" alt="FalqenView" width="32" height="32">
