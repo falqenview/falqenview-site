@@ -55,17 +55,46 @@ window.addEventListener('error', function(e) {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "FalqenView",
+  "alternateName": ["FalqenView VuePoint", "FalqenView Updraft", "FalqenView Apex"],
   "description": "Google Sheets portfolio tracker for self-directed investors. Track multiple accounts, monitor drift, view health score, manage sector concentration.",
   "url": "https://falqenview.com",
   "logo": "https://falqenview.com/assets/fvLogo.png",
   "applicationCategory": "FinanceApplication",
-  "operatingSystem": "Web",
+  "operatingSystem": "Web, Google Sheets",
+  "featureList": "multi-account portfolio tracking, drift alerts, sector concentration, LTCG tracking, health score, rebalance planner",
+  "screenshot": "https://falqenview.com/assets/screenshot-vuepoint.png",
   "offers": [
-    {"@type": "Offer", "name": "FalqenView VuePoint", "price": "19.00", "priceCurrency": "USD"},
-    {"@type": "Offer", "name": "FalqenView Updraft", "price": "79.00", "priceCurrency": "USD"},
-    {"@type": "Offer", "name": "FalqenView Apex", "price": "149.00", "priceCurrency": "USD"}
+    {
+      "@type": "Offer",
+      "name": "FalqenView VuePoint",
+      "price": "19.00",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "url": "https://falqenview.com"
+    },
+    {
+      "@type": "Offer",
+      "name": "FalqenView Updraft",
+      "price": "79.00",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "url": "https://falqenview.com/#updraft"
+    },
+    {
+      "@type": "Offer",
+      "name": "FalqenView Apex",
+      "price": "149.00",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "url": "https://falqenview.com/#apex"
+    }
   ],
-  "publisher": {"@type": "Organization", "name": "FalqenView", "url": "https://falqenview.com", "email": "hello@falqenview.com"}
+  "publisher": {
+    "@type": "Organization",
+    "name": "FalqenView",
+    "url": "https://falqenview.com",
+    "email": "hello@falqenview.com"
+  }
 }
 </script>
 
