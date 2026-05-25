@@ -41,7 +41,10 @@
 }
 </script>
 
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet"></noscript>
 <style>
   :root {
     --bg:       #141820;
@@ -137,7 +140,7 @@
   .footer-links a:hover { color: var(--text); }
   .footer-bottom { max-width: 1100px; margin: 20px auto 0; padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
   .footer-legal { font-size: 0.7rem; color: var(--muted); opacity: 0.6; }
-  .footer-legal a { color: var(--blue); text-decoration: none; opacity: 1; }
+  .footer-legal a { color: var(--blue); text-decoration: underline; opacity: 1; }
   .footer-contact a { font-size: 0.72rem; color: var(--blue); text-decoration: none; }
 
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -168,8 +171,11 @@
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">
-    <img src="assets/fvIcon.png" alt="FalqenView icon">
+  <a href="index.html" class="nav-logo" aria-label="FalqenView — go to homepage">
+    <picture>
+      <source srcset="assets/fvIcon-32.webp" type="image/webp">
+      <img src="assets/fvIcon.png" alt="FalqenView icon" width="36" height="36">
+    </picture>
     <span class="nav-logo-text">Falqen<span>V</span>iew</span>
   </a>
   <ul class="nav-links">
@@ -299,8 +305,11 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <a href="index.html" class="footer-lockup">
-        <img src="assets/fvIcon.png" alt="FalqenView">
+      <a href="index.html" class="footer-lockup" aria-label="FalqenView — go to homepage">
+        <picture>
+          <source srcset="assets/fvIcon-32.webp" type="image/webp">
+          <img src="assets/fvIcon.png" alt="FalqenView" width="32" height="32">
+        </picture>
         <span class="footer-lockup-text">Falqen<span>V</span>iew</span>
       </a>
       <div class="footer-motto">See further. Act smarter.</div>
@@ -422,7 +431,27 @@
     }
   }, true);
 </script>
-<script src="https://web3forms.com/client/script.js" async defer></script>
+<!-- Web3Forms client — lazy-loaded on first form interaction -->
+<script>
+(function() {
+  var loaded = false;
+  function loadCaptcha() {
+    if (loaded) return;
+    loaded = true;
+    var s = document.createElement('script');
+    s.src = 'https://web3forms.com/client/script.js';
+    s.async = true;
+    s.defer = true;
+    document.body.appendChild(s);
+  }
+  var inputs = document.querySelectorAll('#contactForm input, #contactForm textarea, #contactForm select');
+  inputs.forEach(function(el) {
+    el.addEventListener('focus', loadCaptcha, { once: true });
+    el.addEventListener('click', loadCaptcha, { once: true });
+  });
+  setTimeout(loadCaptcha, 5000);
+})();
+</script>
 <script>
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
