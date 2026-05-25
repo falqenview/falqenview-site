@@ -100,8 +100,8 @@ window.addEventListener('error', function(e) {
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=optional" rel="stylesheet"></noscript>
 
 <style>
 /* ============ TOKENS ============ */
@@ -441,6 +441,7 @@ body[data-hero="constellation"] .hero-variant--constellation { display: block; }
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   gap: 56px;
   align-items: end;
+  min-height: 220px;
 }
 .editorial-sub {
   font-size: 1.15rem; line-height: 1.6; color: var(--text-dim);
@@ -1025,7 +1026,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
   border-top: 1px solid var(--border);
   display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
 }
-.footer-legal { font-size: 0.72rem; color: var(--muted); opacity: 0.85; }
+.footer-legal { font-size: 0.72rem; color: var(--muted); }
 .footer-legal a { color: var(--cyan); text-decoration: underline; opacity: 1; }
 .footer-contact a { font-size: 0.78rem; color: var(--cyan); text-decoration: none; font-weight: 500; }
 
@@ -1167,7 +1168,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
 
 <!-- ============ NAV ============ -->
 <nav>
-  <a href="#home" class="nav-logo" aria-label="FalqenView — go to homepage">
+  <a href="#home" class="nav-logo" aria-label="FalqenView">
     <picture>
       <source srcset="assets/fvIcon-32.webp" type="image/webp">
       <img src="assets/fvIcon.png" alt="FalqenView icon" width="32" height="32">
@@ -1694,7 +1695,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <a href="#home" class="footer-lockup" aria-label="FalqenView — go to homepage">
+      <a href="#home" class="footer-lockup" aria-label="FalqenView">
         <picture>
           <source srcset="assets/fvIcon-32.webp" type="image/webp">
           <img src="assets/fvIcon.png" alt="FalqenView" width="30" height="30">
