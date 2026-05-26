@@ -1,891 +1,440 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Videos — FalqenView</title>
-  <meta name="description" content="Product walkthroughs, feature breakdowns, and setup guides for FalqenView VuePoint, Updraft, and Apex." />
-  <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Videos — FalqenView" />
-  <meta property="og:description" content="Watch how FalqenView tracks drift, signals, CAGR, and health score across every account you own." />
-  <meta property="og:image" content="https://falqenview.com/assets/fvLogo.png" />
-  <meta property="og:url" content="https://falqenview.com/videos.html" />
-  <meta name="theme-color" content="#1A73E8" />
-  <link rel="icon" href="https://falqenview.com/assets/fvIcon.png" type="image/png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
-
-  <style>
-    /* ── Reset & base ─────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy:       #0D47A1;
-      --navy-dark:  #0A3880;
-      --navy-deep:  #0A1628;
-      --navy-mid:   #0F1F3D;
-      --navy-card:  #112240;
-      --blue:       #1A73E8;
-      --cyan:       #38bdf8;
-      --gold:       #f59e0b;
-      --text:       #E8F0FE;
-      --text-muted: #94A3B8;
-      --text-dim:   #4A6080;
-      --border:     rgba(56,189,248,.13);
-      --gain:       #22C55E;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--navy-deep);
-      color: var(--text);
-      font-family: 'Lexend', sans-serif;
-      font-weight: 400;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* ── Nav ──────────────────────────────────────────────────── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(10,22,40,.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: var(--text);
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: 15px;
-      letter-spacing: -.3px;
-    }
-
-    .nav-brand img { width: 26px; height: 26px; object-fit: contain; }
-    .nav-brand em { color: var(--cyan); font-style: normal; }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 500;
-      transition: color .2s;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active { color: var(--cyan); }
-
-    .nav-cta {
-      background: var(--blue);
-      color: #fff !important;
-      padding: 8px 18px;
-      border-radius: 6px;
-      font-weight: 600 !important;
-      font-size: 13px !important;
-      transition: background .2s !important;
-    }
-
-    .nav-cta:hover { background: var(--navy-dark) !important; color: #fff !important; }
-
-    /* ── Hero header ──────────────────────────────────────────── */
-    .hero {
-      position: relative;
-      padding: 100px 32px 80px;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    /* Atmospheric background glow */
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 70% 60% at 50% 0%, rgba(26,115,232,.18) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(56,189,248,.07) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    /* Subtle grid lines */
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(56,189,248,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(56,189,248,.04) 1px, transparent 1px);
-      background-size: 48px 48px;
-      pointer-events: none;
-    }
-
-    .hero-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(56,189,248,.1);
-      border: 1px solid rgba(56,189,248,.2);
-      color: var(--cyan);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 100px;
-      margin-bottom: 28px;
-    }
-
-    .hero-eyebrow span {
-      width: 6px; height: 6px;
-      background: var(--cyan);
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: .4; transform: scale(.7); }
-    }
-
-    .hero h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      font-size: clamp(32px, 5vw, 52px);
-      line-height: 1.1;
-      letter-spacing: -.03em;
-      color: #fff;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 em {
-      font-style: normal;
-      color: var(--cyan);
-    }
-
-    .hero-sub {
-      font-size: 16px;
-      font-weight: 300;
-      color: var(--text-muted);
-      line-height: 1.7;
-      max-width: 520px;
-      margin: 0 auto 36px;
-    }
-
-    .hero-meta {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 24px;
-      font-size: 12px;
-      color: var(--text-dim);
-    }
-
-    .hero-meta span { display: flex; align-items: center; gap: 6px; }
-    .hero-meta strong { color: var(--text-muted); }
-
-    /* ── Main content ─────────────────────────────────────────── */
-    main {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 0 32px 100px;
-    }
-
-    /* ── Loading state ────────────────────────────────────────── */
-    #loading {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      padding: 80px 0;
-      color: var(--text-muted);
-      font-size: 14px;
-    }
-
-    .spinner {
-      width: 36px; height: 36px;
-      border: 2px solid rgba(56,189,248,.15);
-      border-top-color: var(--cyan);
-      border-radius: 50%;
-      animation: spin .8s linear infinite;
-    }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* ── Error state ──────────────────────────────────────────── */
-    #error {
-      display: none;
-      text-align: center;
-      padding: 60px 0;
-      color: var(--text-muted);
-    }
-
-    #error h3 { color: #ef4444; font-size: 16px; margin-bottom: 8px; }
-    #error p  { font-size: 13px; }
-
-    /* ── Video grid ───────────────────────────────────────────── */
-    #video-grid {
-      display: none;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 28px;
-    }
-
-    /* ── Video card ───────────────────────────────────────────── */
-    .vid-card {
-      background: var(--navy-card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
-      animation: fadeUp .4s ease both;
-    }
-
-    .vid-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(56,189,248,.35);
-      box-shadow: 0 20px 48px rgba(0,0,0,.4), 0 0 0 1px rgba(56,189,248,.1);
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .vid-thumb {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16/9;
-      overflow: hidden;
-      background: var(--navy-mid);
-    }
-
-    .vid-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .3s ease;
-      display: block;
-    }
-
-    .vid-card:hover .vid-thumb img { transform: scale(1.04); }
-
-    /* Play button overlay */
-    .vid-play {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(10,22,40,.35);
-      transition: background .22s;
-    }
-
-    .vid-card:hover .vid-play { background: rgba(10,22,40,.2); }
-
-    .vid-play-btn {
-      width: 56px; height: 56px;
-      background: rgba(26,115,232,.9);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform .22s, background .22s;
-      box-shadow: 0 4px 24px rgba(26,115,232,.5);
-    }
-
-    .vid-card:hover .vid-play-btn {
-      transform: scale(1.1);
-      background: var(--blue);
-    }
-
-    .vid-play-btn svg {
-      width: 20px; height: 20px;
-      fill: #fff;
-      margin-left: 3px;
-    }
-
-    /* Duration badge */
-    .vid-duration {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      background: rgba(10,22,40,.85);
-      color: var(--text);
-      font-size: 10px;
-      font-weight: 600;
-      padding: 2px 7px;
-      border-radius: 4px;
-      letter-spacing: .04em;
-    }
-
-    /* Card body */
-    .vid-body { padding: 20px; }
-
-    .vid-tag {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--cyan);
-      margin-bottom: 8px;
-    }
-
-    .vid-title {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-      line-height: 1.4;
-      color: #fff;
-      margin-bottom: 10px;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .vid-desc {
-      font-size: 12px;
-      font-weight: 300;
-      color: var(--text-muted);
-      line-height: 1.65;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      margin-bottom: 16px;
-    }
-
-    .vid-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 11px;
-      color: var(--text-dim);
-      border-top: 1px solid var(--border);
-      padding-top: 14px;
-    }
-
-    .vid-footer-left { display: flex; align-items: center; gap: 14px; }
-    .vid-footer span { display: flex; align-items: center; gap: 4px; }
-
-    .vid-watch {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--cyan);
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      transition: gap .2s;
-    }
-
-    .vid-card:hover .vid-watch { gap: 7px; }
-
-    /* ── Modal ────────────────────────────────────────────────── */
-    #modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 200;
-      background: rgba(10,22,40,.92);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      animation: fadeIn .2s ease;
-    }
-
-    #modal-overlay.open { display: flex; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-
-    .modal-box {
-      width: 100%;
-      max-width: 900px;
-      background: var(--navy-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      animation: slideUp .25s ease;
-    }
-
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .modal-video {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16/9;
-      background: #000;
-    }
-
-    .modal-video iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .modal-meta {
-      padding: 20px 24px;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .modal-title {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 16px;
-      color: #fff;
-      line-height: 1.35;
-      flex: 1;
-    }
-
-    .modal-close {
-      background: rgba(56,189,248,.1);
-      border: 1px solid rgba(56,189,248,.2);
-      color: var(--cyan);
-      font-size: 18px;
-      width: 36px; height: 36px;
-      border-radius: 8px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: background .2s;
-      line-height: 1;
-    }
-
-    .modal-close:hover { background: rgba(56,189,248,.2); }
-
-    /* ── Channel CTA strip ────────────────────────────────────── */
-    .channel-cta {
-      margin-top: 60px;
-      padding: 36px 40px;
-      background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-card) 100%);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .channel-cta-text h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: 18px;
-      color: #fff;
-      margin-bottom: 6px;
-    }
-
-    .channel-cta-text p {
-      font-size: 13px;
-      color: var(--text-muted);
-      font-weight: 300;
-    }
-
-    .channel-cta-btn {
-      background: #FF0000;
-      color: #fff;
-      text-decoration: none;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 13px;
-      padding: 12px 24px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-      transition: opacity .2s;
-    }
-
-    .channel-cta-btn:hover { opacity: .85; }
-
-    .channel-cta-btn svg { width: 18px; height: 18px; fill: #fff; }
-
-    /* ── Footer ───────────────────────────────────────────────── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 32px;
-      text-align: center;
-    }
-
-    .footer-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: var(--text);
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: 14px;
-    }
-
-    .footer-brand img { width: 22px; height: 22px; object-fit: contain; }
-    .footer-brand em { color: var(--cyan); font-style: normal; }
-
-    .footer-tagline {
-      font-size: 12px;
-      color: var(--text-dim);
-      letter-spacing: .06em;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-      list-style: none;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .footer-links a {
-      color: var(--text-dim);
-      text-decoration: none;
-      font-size: 12px;
-      transition: color .2s;
-    }
-
-    .footer-links a:hover { color: var(--cyan); }
-
-    .footer-copy {
-      font-size: 11px;
-      color: var(--text-dim);
-    }
-
-    /* ── Responsive ───────────────────────────────────────────── */
-    @media (max-width: 768px) {
-      nav { padding: 0 20px; }
-      .nav-links { display: none; }
-      .hero { padding: 72px 20px 60px; }
-      main { padding: 0 20px 80px; }
-      #video-grid { grid-template-columns: 1fr; }
-      .channel-cta { flex-direction: column; text-align: center; }
-      .modal-meta { flex-direction: column; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Videos — FalqenView Portfolio Tracker</title>
+<meta name="description" content="Product walkthroughs, feature deep-dives, setup guides, and investor education videos from FalqenView.">
+<meta name="author" content="FalqenView">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1A73E8">
+<link rel="canonical" href="https://falqenview.com/videos.html">
+<link rel="icon" type="image/webp" href="assets/fvIcon-32.webp">
+<link rel="icon" type="image/png" href="assets/fvIcon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://falqenview.com/videos.html">
+<meta property="og:title" content="Videos — FalqenView Portfolio Tracker">
+<meta property="og:description" content="Watch product walkthroughs, feature deep-dives, and investor education from FalqenView.">
+<meta property="og:image" content="https://falqenview.com/assets/fvLogo.png">
+<meta property="og:site_name" content="FalqenView">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Videos — FalqenView Portfolio Tracker">
+<meta name="twitter:description" content="Watch product walkthroughs, feature deep-dives, and investor education from FalqenView.">
+<meta name="twitter:image" content="https://falqenview.com/assets/fvLogo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet"></noscript>
+<style>
+  :root {
+    --bg:       #141820;
+    --surface:  #1c2230;
+    --surface2: #232b3e;
+    --border:   rgba(255,255,255,0.07);
+    --blue:     #1A73E8;
+    --blue-dim: rgba(26,115,232,0.12);
+    --cyan:     #38bdf8;
+    --green:    #22c55e;
+    --amber:    #f59e0b;
+    --text:     #e8ecf4;
+    --muted:    #8d97ab;
+    --nav-h:    64px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Lexend', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; opacity: 0.4; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; background: rgba(20,24,32,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo img { height: 32px; width: 32px; object-fit: contain; filter: drop-shadow(0 0 8px rgba(26,115,232,0.4)); }
+  .nav-logo-text { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em; color: var(--text); }
+  .nav-logo-text em { font-style: normal; color: var(--cyan); }
+  .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+  .nav-links a { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; color: var(--muted); text-decoration: none; text-transform: uppercase; transition: color 0.2s; position: relative; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--cyan); transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-links a.active { color: var(--text); }
+  .nav-links a.active::after { transform: scaleX(1); }
+  .nav-cta { background: var(--blue); color: #fff !important; padding: 8px 18px; border-radius: 8px; font-weight: 600 !important; white-space: nowrap; box-shadow: 0 4px 16px rgba(26,115,232,0.3); transition: transform 0.15s, background 0.2s, box-shadow 0.2s; }
+  .nav-links a.nav-cta::after { display: none; }
+  .nav-cta:hover { background: #1557b0 !important; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(26,115,232,0.45); }
+  .menu-toggle { display: none; background: none; border: 1px solid var(--border); color: var(--text); padding: 8px 12px; border-radius: 8px; font-size: 1.1rem; cursor: pointer; }
+  .mobile-menu { position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 99; background: rgba(20,24,32,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 16px 18px; display: none; }
+  .mobile-menu.shown { display: flex; flex-direction: column; gap: 4px; }
+  .mobile-menu a { color: var(--text); text-decoration: none; padding: 12px 14px; border-radius: 8px; font-size: 0.95rem; font-weight: 500; }
+  .mobile-menu a:hover, .mobile-menu a:focus { background: var(--surface); }
+  .mobile-menu a.cta { background: var(--blue); color: #fff; text-align: center; margin-top: 8px; }
+
+  .page-wrap { position: relative; z-index: 1; padding: calc(var(--nav-h) + 60px) 24px 80px; max-width: 1100px; margin: 0 auto; }
+
+  .page-hero { text-align: center; margin-bottom: 56px; }
+  .page-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--blue-dim); border: 1px solid rgba(26,115,232,0.3); border-radius: 100px; padding: 6px 16px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #4d9ef5; margin-bottom: 20px; }
+  .eyebrow-dot { width: 6px; height: 6px; background: var(--cyan); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
+  .page-hero h1 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.03em; margin-bottom: 16px; }
+  .page-hero h1 em { font-style: normal; color: var(--cyan); }
+  .page-hero p { color: var(--muted); font-size: 1rem; font-weight: 300; max-width: 560px; margin: 0 auto 24px; line-height: 1.7; }
+  .hero-meta { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; font-size: 0.78rem; color: var(--muted); }
+  .hero-meta a { color: var(--cyan); text-decoration: none; font-weight: 500; transition: opacity .2s; }
+  .hero-meta a:hover { opacity: .75; }
+  .hero-meta-sep { opacity: .3; }
+
+  #loading { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 80px 0; color: var(--muted); font-size: 0.9rem; }
+  .spinner { width: 34px; height: 34px; border: 2px solid rgba(56,189,248,.15); border-top-color: var(--cyan); border-radius: 50%; animation: spin .8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  #error { display: none; text-align: center; padding: 60px 0; }
+  #error h3 { color: #ef4444; font-size: 1rem; margin-bottom: 8px; font-family: 'Montserrat', sans-serif; }
+  #error p { color: var(--muted); font-size: 0.9rem; }
+  #error a { color: var(--blue); }
+
+  #video-grid { display: none; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+
+  .vid-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; cursor: pointer; transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease; animation: fadeUp .4s ease both; position: relative; }
+  .vid-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--blue), transparent); opacity: 0; transition: opacity .25s; }
+  .vid-card:hover { transform: translateY(-4px); border-color: rgba(26,115,232,0.3); box-shadow: 0 16px 40px rgba(0,0,0,.35); }
+  .vid-card:hover::before { opacity: 1; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+
+  .vid-thumb { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: var(--surface2); }
+  .vid-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; display: block; }
+  .vid-card:hover .vid-thumb img { transform: scale(1.04); }
+  .vid-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(20,24,32,.35); transition: background .22s; }
+  .vid-card:hover .vid-play { background: rgba(20,24,32,.15); }
+  .vid-play-btn { width: 52px; height: 52px; background: rgba(26,115,232,.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform .22s, background .22s; box-shadow: 0 4px 20px rgba(26,115,232,.5); }
+  .vid-card:hover .vid-play-btn { transform: scale(1.1); background: var(--blue); }
+  .vid-play-btn svg { width: 18px; height: 18px; fill: #fff; margin-left: 3px; }
+  .vid-duration { position: absolute; bottom: 10px; right: 10px; background: rgba(20,24,32,.85); color: var(--text); font-size: 0.68rem; font-weight: 600; padding: 2px 7px; border-radius: 4px; letter-spacing: .04em; }
+
+  .vid-body { padding: 20px; }
+  .vid-tag { display: inline-block; font-size: 0.68rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--cyan); margin-bottom: 8px; }
+  .vid-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; line-height: 1.4; color: var(--text); margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .vid-desc { font-size: 0.8rem; font-weight: 300; color: var(--muted); line-height: 1.65; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 16px; }
+  .vid-footer { display: flex; align-items: center; justify-content: space-between; font-size: 0.72rem; color: var(--muted); border-top: 1px solid var(--border); padding-top: 14px; }
+  .vid-footer-left { display: flex; align-items: center; gap: 12px; }
+  .vid-watch { font-size: 0.72rem; font-weight: 600; color: var(--blue); display: flex; align-items: center; gap: 4px; transition: gap .2s; }
+  .vid-card:hover .vid-watch { gap: 7px; }
+
+  .channel-cta { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px 40px; margin-top: 48px; display: none; align-items: center; justify-content: space-between; gap: 24px; position: relative; overflow: hidden; }
+  .channel-cta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--amber), transparent); }
+  .channel-cta-text h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+  .channel-cta-text p { font-size: 0.83rem; color: var(--muted); font-weight: 300; }
+  .channel-cta-btn { background: #FF0000; color: #fff; text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.82rem; padding: 11px 22px; border-radius: 8px; display: flex; align-items: center; gap: 10px; flex-shrink: 0; transition: opacity .2s; white-space: nowrap; }
+  .channel-cta-btn:hover { opacity: .85; }
+  .channel-cta-btn svg { width: 16px; height: 16px; fill: #fff; }
+
+  #modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(20,24,32,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); align-items: center; justify-content: center; padding: 24px; }
+  #modal-overlay.open { display: flex; }
+  .modal-box { width: 100%; max-width: 880px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; animation: slideUp .25s ease; }
+  @keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  .modal-video { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; }
+  .modal-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+  .modal-meta { padding: 18px 22px; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  .modal-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--text); line-height: 1.4; flex: 1; }
+  .modal-close { background: var(--surface2); border: 1px solid var(--border); color: var(--muted); font-size: 1rem; width: 34px; height: 34px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: color .2s, border-color .2s; }
+  .modal-close:hover { color: var(--text); border-color: rgba(255,255,255,.2); }
+
+  footer { border-top: 1px solid var(--border); padding: 40px 48px; position: relative; z-index: 1; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { display: flex; flex-direction: column; gap: 6px; }
+  .footer-lockup { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .footer-lockup img { height: 32px; width: 32px; object-fit: contain; filter: drop-shadow(0 0 8px rgba(26,115,232,0.35)); }
+  .footer-lockup-text { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; color: var(--text); }
+  .footer-lockup-text span { color: var(--blue); }
+  .footer-motto { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; padding-left: 42px; }
+  .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--text); }
+  .footer-bottom { max-width: 1100px; margin: 20px auto 0; padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .footer-legal { font-size: 0.7rem; color: var(--muted); opacity: 0.6; }
+  .footer-legal a { color: var(--blue); text-decoration: underline; opacity: 1; }
+  .footer-contact a { font-size: 0.72rem; color: var(--blue); text-decoration: none; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 18px; }
+    .nav-links { display: none; }
+    .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+    #video-grid { grid-template-columns: 1fr; }
+    footer { padding: 32px 20px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .channel-cta { flex-direction: column; align-items: flex-start; padding: 24px; }
+    .modal-meta { flex-direction: column; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- ── Nav ── -->
-  <nav>
-    <a href="https://falqenview.com" class="nav-brand">
-      <img src="https://falqenview.com/assets/fvIcon.png" alt="FalqenView icon" />
-      Falqen<em>V</em>iew
-    </a>
-    <ul class="nav-links">
-      <li><a href="https://falqenview.com/#home">Home</a></li>
-      <li><a href="https://falqenview.com/#products">Products</a></li>
-      <li><a href="https://falqenview.com/videos.html" class="active">Videos</a></li>
-      <li><a href="https://falqenview.com/#pricing">Pricing</a></li>
-      <li><a href="https://falqenview.com/support.html">Support</a></li>
-      <li><a href="https://falqenview.com/#about">About</a></li>
-      <li><a href="https://falqenview.com/#pricing" class="nav-cta">Get Started →</a></li>
-    </ul>
-  </nav>
+<nav>
+  <a href="index.html" class="nav-logo" aria-label="FalqenView">
+    <picture>
+      <source srcset="assets/fvIcon-32.webp" type="image/webp">
+      <img src="assets/fvIcon.png" alt="FalqenView icon" width="32" height="32">
+    </picture>
+    <span class="nav-logo-text">Falqen<em>V</em>iew</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#products">Products</a></li>
+    <li><a href="videos.html" class="active">Videos</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="support.html">Support</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#pricing" class="nav-cta">Get Started</a></li>
+  </ul>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">&#8801;</button>
+</nav>
 
-  <!-- ── Hero ── -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-eyebrow">
-        <span></span>
-        FalqenView Channel
-      </div>
-      <h1>See it before<br />you <em>buy it.</em></h1>
-      <p class="hero-sub">
-        Product walkthroughs, feature deep-dives, setup guides, and investor education.
-        Everything you need to track smarter — before you buy, and long after.
-      </p>
-      <div class="hero-meta">
-        <span>📺 <strong id="vid-count">—</strong> videos</span>
-        <span>·</span>
-        <span>🦅 <a href="https://youtube.com/@falqenview" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none;font-weight:500;">@FalqenView</a></span>
-        <span>·</span>
-        <span>🔔 New videos as features ship</span>
-      </div>
-    </div>
-  </section>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="index.html#products">Products</a>
+  <a href="videos.html">Videos</a>
+  <a href="index.html#pricing">Pricing</a>
+  <a href="support.html">Support</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#pricing" class="cta">Get Started &rarr;</a>
+</div>
 
-  <!-- ── Main grid ── -->
-  <main>
-    <div id="loading">
-      <div class="spinner"></div>
-      Loading videos…
-    </div>
+<div class="page-wrap">
 
-    <div id="error">
-      <h3>Could not load videos</h3>
-      <p>Check your connection or visit the <a href="https://youtube.com/@falqenview" style="color:var(--cyan)">YouTube channel</a> directly.</p>
-    </div>
-
-    <div id="video-grid"></div>
-
-    <!-- Channel CTA -->
-    <div class="channel-cta" id="channel-cta" style="display:none;">
-      <div class="channel-cta-text">
-        <h3>More videos on the way.</h3>
-        <p>Subscribe to catch walkthroughs for Updraft and Apex as they ship — and setup guides for every new feature.</p>
-      </div>
-      <a href="https://youtube.com/@falqenview" target="_blank" rel="noopener" class="channel-cta-btn">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.4 12 20.4 12 20.4s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/>
-        </svg>
-        Subscribe on YouTube
-      </a>
-    </div>
-  </main>
-
-  <!-- ── Modal ── -->
-  <div id="modal-overlay" role="dialog" aria-modal="true" aria-label="Video player">
-    <div class="modal-box">
-      <div class="modal-video">
-        <iframe id="modal-iframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      </div>
-      <div class="modal-meta">
-        <div class="modal-title" id="modal-title"></div>
-        <button class="modal-close" id="modal-close" aria-label="Close video">✕</button>
-      </div>
+  <div class="page-hero reveal">
+    <div class="page-eyebrow"><span class="eyebrow-dot"></span> FalqenView Channel</div>
+    <h1>See it before<br>you <em>buy it.</em></h1>
+    <p>Product walkthroughs, feature deep-dives, setup guides, and investor education &mdash; everything you need to track smarter, before and after you buy.</p>
+    <div class="hero-meta">
+      <span>&#128250; <strong id="vid-count">&mdash;</strong> videos</span>
+      <span class="hero-meta-sep">&middot;</span>
+      <a href="https://youtube.com/@falqenview" target="_blank" rel="noopener">&#129445; @FalqenView</a>
+      <span class="hero-meta-sep">&middot;</span>
+      <span>New videos as features ship</span>
     </div>
   </div>
 
-  <!-- ── Footer ── -->
-  <footer>
-    <div class="footer-inner">
-      <a href="https://falqenview.com" class="footer-brand">
-        <img src="https://falqenview.com/assets/fvIcon.png" alt="FalqenView" />
-        Falqen<em>V</em>iew
-      </a>
-      <div class="footer-tagline">See further. Act smarter.</div>
-      <ul class="footer-links">
-        <li><a href="https://falqenview.com/#home">Home</a></li>
-        <li><a href="https://falqenview.com/#products">Products</a></li>
-        <li><a href="https://falqenview.com/videos.html">Videos</a></li>
-        <li><a href="https://falqenview.com/#pricing">Pricing</a></li>
-        <li><a href="https://falqenview.com/support.html">Support</a></li>
-        <li><a href="https://falqenview.com/#about">About</a></li>
-        <li><a href="https://falqenview.com/changelog.html">Changelog</a></li>
-      </ul>
-      <div class="footer-copy">
-        © 2026 FalqenView ·
-        <a href="https://falqenview.com/terms.html" style="color:var(--text-dim);text-decoration:none;">Terms of Use</a> ·
-        <a href="https://falqenview.com/privacy.html" style="color:var(--text-dim);text-decoration:none;">Privacy Policy</a> ·
-        For informational purposes only. Not financial advice.
-      </div>
-      <a href="https://falqenview.com/support.html" style="font-size:12px;color:var(--cyan);text-decoration:none;font-weight:500;">Contact Support →</a>
+  <div id="loading">
+    <div class="spinner"></div>
+    Loading videos&hellip;
+  </div>
+
+  <div id="error">
+    <h3>Could not load videos</h3>
+    <p>Check your connection or visit the <a href="https://youtube.com/@falqenview" target="_blank" rel="noopener">YouTube channel</a> directly.</p>
+  </div>
+
+  <div id="video-grid"></div>
+
+  <div class="channel-cta" id="channel-cta">
+    <div class="channel-cta-text">
+      <h3>More videos on the way.</h3>
+      <p>Subscribe to catch walkthroughs for Updraft and Apex as they ship &mdash; and setup guides for every new feature.</p>
     </div>
-  </footer>
+    <a href="https://youtube.com/@falqenview" target="_blank" rel="noopener" class="channel-cta-btn">
+      <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.4 12 20.4 12 20.4s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+      Subscribe on YouTube
+    </a>
+  </div>
 
-  <script>
-    // ── Config ──────────────────────────────────────────────────
-    const API_KEY    = 'AIzaSyAS-1DJ49Z_ZcgWYy1xy83S9T9ampafw-U';
-    const CHANNEL_ID = 'UCsiLE9wEFkv7xwemeC9B9zQ';
-    const MAX_RESULTS = 20;
+</div>
 
-    // ── Helpers ─────────────────────────────────────────────────
-    function fmtDate(iso) {
-      const d = new Date(iso);
-      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+<div id="modal-overlay" role="dialog" aria-modal="true" aria-label="Video player">
+  <div class="modal-box">
+    <div class="modal-video">
+      <iframe id="modal-iframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="modal-meta">
+      <div class="modal-title" id="modal-title"></div>
+      <button class="modal-close" id="modal-close" aria-label="Close video">&#x2715;</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-lockup" aria-label="FalqenView">
+        <picture>
+          <source srcset="assets/fvIcon-32.webp" type="image/webp">
+          <img src="assets/fvIcon.png" alt="FalqenView" width="32" height="32">
+        </picture>
+        <span class="footer-lockup-text">Falqen<span>V</span>iew</span>
+      </a>
+      <div class="footer-motto">See further. Act smarter.</div>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+      <a href="videos.html">Videos</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="support.html">Support</a>
+      <a href="index.html#about">About</a>
+      <a href="changelog.html" style="opacity:0.45;">Changelog</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-legal">&copy; 2026 FalqenView &middot; <a href="terms.html">Terms of Use</a> &middot; <a href="privacy.html">Privacy Policy</a> &middot; For informational purposes only. Not financial advice.</div>
+    <div class="footer-contact"><a href="support.html">hello@falqenview.com</a></div>
+  </div>
+</footer>
+
+<script>
+  const API_KEY    = 'AIzaSyAS-1DJ49Z_ZcgWYy1xy83S9T9ampafw-U';
+  const CHANNEL_ID = 'UCsiLE9wEFkv7xwemeC9B9zQ';
+  const MAX_RESULTS = 20;
+
+  function fmtDate(iso) {
+    return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+  function fmtViews(n) {
+    const v = parseInt(n, 10);
+    if (isNaN(v)) return '';
+    if (v >= 1000000) return (v/1000000).toFixed(1) + 'M views';
+    if (v >= 1000)    return (v/1000).toFixed(1) + 'K views';
+    return v + ' views';
+  }
+  function parseDuration(iso) {
+    const m = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+    if (!m) return '';
+    const h = parseInt(m[1]||0), min = parseInt(m[2]||0), s = parseInt(m[3]||0);
+    if (h) return h+':'+String(min).padStart(2,'0')+':'+String(s).padStart(2,'0');
+    return min+':'+String(s).padStart(2,'0');
+  }
+  function escHtml(s) {
+    return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function inferTag(title) {
+    const t = title.toLowerCase();
+    if (t.includes('setup') || t.includes('guide') || t.includes('start'))   return 'Setup Guide';
+    if (t.includes('walk')  || t.includes('overview') || t.includes('tour')) return 'Walkthrough';
+    if (t.includes('advisor') || t.includes('replac'))                        return 'Product Story';
+    if (t.includes('drift') || t.includes('signal') || t.includes('cagr'))   return 'Feature Deep-Dive';
+    if (t.includes('learn') || t.includes('what is') || t.includes('how to'))return 'Education';
+    return 'FalqenView';
+  }
+
+  function buildCard(video, idx) {
+    const id    = video.id;
+    const snip  = video.snippet;
+    const stats = video.statistics || {};
+    const cdet  = video.contentDetails || {};
+    const thumb = (snip.thumbnails.maxres || snip.thumbnails.high || snip.thumbnails.medium || snip.thumbnails.default).url;
+    const title = escHtml(snip.title);
+    const desc  = escHtml((snip.description || '').split('\n')[0].slice(0, 140));
+    const dur   = cdet.duration ? parseDuration(cdet.duration) : '';
+    const tag   = inferTag(snip.title);
+    const views = fmtViews(stats.viewCount);
+
+    const card = document.createElement('div');
+    card.className = 'vid-card';
+    card.style.animationDelay = (idx * 0.07) + 's';
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-label', 'Play: ' + title);
+
+    card.innerHTML =
+      '<div class="vid-thumb">' +
+        '<img src="' + thumb + '" alt="' + title + '" loading="lazy" />' +
+        '<div class="vid-play"><div class="vid-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>' +
+        (dur ? '<div class="vid-duration">' + dur + '</div>' : '') +
+      '</div>' +
+      '<div class="vid-body">' +
+        '<div class="vid-tag">' + tag + '</div>' +
+        '<div class="vid-title">' + title + '</div>' +
+        (desc ? '<div class="vid-desc">' + desc + '</div>' : '') +
+        '<div class="vid-footer">' +
+          '<div class="vid-footer-left">' +
+            '<span>' + fmtDate(snip.publishedAt) + '</span>' +
+            (views ? '<span>' + views + '</span>' : '') +
+          '</div>' +
+          '<div class="vid-watch">Watch <span>&rarr;</span></div>' +
+        '</div>' +
+      '</div>';
+
+    card.addEventListener('click', function() { openModal(id, snip.title); });
+    card.addEventListener('keydown', function(e) { if (e.key==='Enter'||e.key===' ') openModal(id, snip.title); });
+    return card;
+  }
+
+  const overlay    = document.getElementById('modal-overlay');
+  const iframe     = document.getElementById('modal-iframe');
+  const modalTitle = document.getElementById('modal-title');
+
+  function openModal(videoId, title) {
+    iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1&color=white';
+    modalTitle.textContent = title;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    overlay.classList.remove('open');
+    iframe.src = '';
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+  async function loadVideos() {
+    try {
+      const chanResp = await fetch('https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=' + CHANNEL_ID + '&key=' + API_KEY);
+      const chanData = await chanResp.json();
+      if (!chanData.items || !chanData.items.length) throw new Error('Channel not found');
+      const uploadsId = chanData.items[0].contentDetails.relatedPlaylists.uploads;
+
+      const plResp = await fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=' + uploadsId + '&maxResults=' + MAX_RESULTS + '&key=' + API_KEY);
+      const plData = await plResp.json();
+      if (!plData.items || !plData.items.length) throw new Error('No videos found');
+
+      const videoIds = plData.items.map(function(i) { return i.snippet.resourceId.videoId; }).join(',');
+
+      const vidResp = await fetch('https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics,contentDetails&id=' + videoIds + '&key=' + API_KEY);
+      const vidData = await vidResp.json();
+      if (!vidData.items || !vidData.items.length) throw new Error('Video details unavailable');
+
+      const grid = document.getElementById('video-grid');
+      vidData.items.forEach(function(video, i) { grid.appendChild(buildCard(video, i)); });
+
+      document.getElementById('vid-count').textContent = vidData.items.length;
+      document.getElementById('loading').style.display = 'none';
+      grid.style.display = 'grid';
+      document.getElementById('channel-cta').style.display = 'flex';
+
+    } catch(err) {
+      console.error('FalqenView videos:', err);
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('error').style.display = 'block';
     }
+  }
 
-    function fmtViews(n) {
-      const v = parseInt(n, 10);
-      if (isNaN(v)) return '—';
-      if (v >= 1000000) return (v / 1000000).toFixed(1) + 'M views';
-      if (v >= 1000)    return (v / 1000).toFixed(1)    + 'K views';
-      return v + ' views';
-    }
+  loadVideos();
 
-    function parseDuration(iso) {
-      // ISO 8601 duration e.g. PT4M13S
-      const m = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
-      if (!m) return '';
-      const h = parseInt(m[1] || 0);
-      const min = parseInt(m[2] || 0);
-      const s = parseInt(m[3] || 0);
-      if (h) return h + ':' + String(min).padStart(2,'0') + ':' + String(s).padStart(2,'0');
-      return min + ':' + String(s).padStart(2,'0');
-    }
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e, i) {
+      if (e.isIntersecting) { setTimeout(function() { e.target.classList.add('visible'); }, i * 100); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(function(el) { io.observe(el); });
 
-    function escHtml(s) {
-      return String(s || '')
-        .replace(/&/g,'&amp;').replace(/</g,'&lt;')
-        .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    }
-
-    // ── Tag label from video title ───────────────────────────────
-    function inferTag(title) {
-      const t = title.toLowerCase();
-      if (t.includes('setup') || t.includes('guide') || t.includes('start'))   return 'Setup Guide';
-      if (t.includes('walk') || t.includes('overview') || t.includes('tour'))  return 'Walkthrough';
-      if (t.includes('advisor') || t.includes('replac'))                        return 'Product Story';
-      if (t.includes('drift') || t.includes('signal') || t.includes('cagr'))   return 'Feature Deep-Dive';
-      return 'FalqenView';
-    }
-
-    // ── Build a card ─────────────────────────────────────────────
-    function buildCard(video, idx) {
-      const id    = video.id;
-      const snip  = video.snippet;
-      const stats = video.statistics || {};
-      const cdet  = video.contentDetails || {};
-
-      const thumb = (snip.thumbnails.maxres || snip.thumbnails.high || snip.thumbnails.medium || snip.thumbnails.default).url;
-      const title = escHtml(snip.title);
-      const desc  = escHtml((snip.description || '').split('\n')[0].slice(0, 160));
-      const date  = fmtDate(snip.publishedAt);
-      const views = fmtViews(stats.viewCount);
-      const dur   = cdet.duration ? parseDuration(cdet.duration) : '';
-      const tag   = inferTag(snip.title);
-
-      const card = document.createElement('div');
-      card.className = 'vid-card';
-      card.style.animationDelay = (idx * 0.07) + 's';
-      card.setAttribute('role', 'button');
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('aria-label', 'Play: ' + title);
-
-      card.innerHTML = `
-        <div class="vid-thumb">
-          <img src="${thumb}" alt="${title}" loading="lazy" />
-          <div class="vid-play">
-            <div class="vid-play-btn">
-              <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-            </div>
-          </div>
-          ${dur ? `<div class="vid-duration">${dur}</div>` : ''}
-        </div>
-        <div class="vid-body">
-          <div class="vid-tag">${tag}</div>
-          <div class="vid-title">${title}</div>
-          ${desc ? `<div class="vid-desc">${desc}</div>` : ''}
-          <div class="vid-footer">
-            <div class="vid-footer-left">
-              <span>📅 ${date}</span>
-              ${stats.viewCount ? `<span>👁 ${views}</span>` : ''}
-            </div>
-            <div class="vid-watch">Watch <span>→</span></div>
-          </div>
-        </div>
-      `;
-
-      card.addEventListener('click', () => openModal(id, snip.title));
-      card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openModal(id, snip.title); });
-      return card;
-    }
-
-    // ── Modal ────────────────────────────────────────────────────
-    const overlay = document.getElementById('modal-overlay');
-    const iframe  = document.getElementById('modal-iframe');
-    const modalTitle = document.getElementById('modal-title');
-
-    function openModal(videoId, title) {
-      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&color=white`;
-      modalTitle.textContent = title;
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      overlay.classList.remove('open');
-      iframe.src = '';
-      document.body.style.overflow = '';
-    }
-
-    document.getElementById('modal-close').addEventListener('click', closeModal);
-    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-    // ── Fetch videos ─────────────────────────────────────────────
-    async function loadVideos() {
-      try {
-        // Step 1: get upload playlist ID
-        const chanResp = await fetch(
-          `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${CHANNEL_ID}&key=${API_KEY}`
-        );
-        const chanData = await chanResp.json();
-
-        if (!chanData.items || !chanData.items.length) throw new Error('Channel not found');
-        const uploadsId = chanData.items[0].contentDetails.relatedPlaylists.uploads;
-
-        // Step 2: get video IDs from uploads playlist
-        const plResp = await fetch(
-          `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsId}&maxResults=${MAX_RESULTS}&key=${API_KEY}`
-        );
-        const plData = await plResp.json();
-        if (!plData.items || !plData.items.length) throw new Error('No videos found');
-
-        const videoIds = plData.items
-          .map(item => item.snippet.resourceId.videoId)
-          .join(',');
-
-        // Step 3: get full video details (stats + duration)
-        const vidResp = await fetch(
-          `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics,contentDetails&id=${videoIds}&key=${API_KEY}`
-        );
-        const vidData = await vidResp.json();
-        if (!vidData.items || !vidData.items.length) throw new Error('Video details not available');
-
-        // Render
-        const grid = document.getElementById('video-grid');
-        vidData.items.forEach((video, i) => {
-          grid.appendChild(buildCard(video, i));
-        });
-
-        document.getElementById('vid-count').textContent = vidData.items.length;
-        document.getElementById('loading').style.display = 'none';
-        grid.style.display = 'grid';
-        document.getElementById('channel-cta').style.display = 'flex';
-
-      } catch (err) {
-        console.error('FalqenView videos error:', err);
-        document.getElementById('loading').style.display = 'none';
-        document.getElementById('error').style.display = 'block';
-      }
-    }
-
-    loadVideos();
-  </script>
+  // Mobile menu
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuToggle.addEventListener('click', function() {
+    const isOpen = mobileMenu.classList.toggle('shown');
+    menuToggle.setAttribute('aria-expanded', isOpen);
+    menuToggle.textContent = isOpen ? '\u2715' : '\u2261';
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      mobileMenu.classList.remove('shown');
+      menuToggle.textContent = '\u2261';
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
 </body>
 </html>
