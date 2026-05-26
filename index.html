@@ -925,6 +925,28 @@ body[data-hero="constellation"] .hero-variant--constellation { display: block; }
 .waitlist-msg { margin-top: 8px; font-size: 0.74rem; color: var(--green-2); display: none; font-family: var(--font-mono); letter-spacing: 0.04em; line-height: 1.5; }
 .waitlist-msg.shown { display: block; }
 
+/* COMING SOON CTA */
+.coming-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.coming-eta {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fbbf24;
+  opacity: 0.75;
+}
+.coming-note {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
 .guarantee {
   margin-top: 36px; text-align: center;
   display: inline-flex; align-items: center; gap: 10px;
@@ -1578,19 +1600,11 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
           <li><span class="chk">✓</span>Benchmark vs S&amp;P 500</li>
           <li><span class="chk">✓</span>Dividend income forecaster</li>
         </ul>
-        <form class="waitlist" data-tier="updraft">
-          <input type="hidden" name="access_key" value="dc74cd1c-ffcb-47c7-8794-e69242b0855f">
-          <input type="hidden" name="subject" value="FalqenView Waitlist — Updraft">
-          <input type="hidden" name="from_name" value="FalqenView Website Waitlist">
-          <input type="hidden" name="tier" value="updraft">
-          <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
-          <div class="waitlist-row">
-            <input type="email" name="email" placeholder="you@email.com" required aria-label="Email for Updraft waitlist" autocomplete="email">
-            <button type="submit">Join waitlist</button>
-          </div>
-          <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
-        </form>
-        <div class="waitlist-msg">✓ You're on the Updraft list.</div>
+        <div class="coming-cta">
+          <div class="coming-eta">&#9201; Est. Q3 2026</div>
+          <p class="coming-note">Start with VuePoint — upgrade at launch pricing when Updraft ships.</p>
+          <a href="https://falqenview.gumroad.com/l/mqookv" class="btn-price btn-price-ghost">Get VuePoint now &mdash; $19 &rarr;</a>
+        </div>
       </div>
 
       <!-- APEX — COMING -->
@@ -1614,19 +1628,11 @@ footer { border-top: 1px solid var(--border); padding: 40px 32px; position: rela
           <li><span class="chk">✓</span>Priority support</li>
           <li><span class="chk">✓</span>First access to new products</li>
         </ul>
-        <form class="waitlist" data-tier="apex">
-          <input type="hidden" name="access_key" value="dc74cd1c-ffcb-47c7-8794-e69242b0855f">
-          <input type="hidden" name="subject" value="FalqenView Waitlist — Apex">
-          <input type="hidden" name="from_name" value="FalqenView Website Waitlist">
-          <input type="hidden" name="tier" value="apex">
-          <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
-          <div class="waitlist-row">
-            <input type="email" name="email" placeholder="you@email.com" required aria-label="Email for Apex waitlist" autocomplete="email">
-            <button type="submit">Join waitlist</button>
-          </div>
-          <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
-        </form>
-        <div class="waitlist-msg">✓ You're on the Apex list.</div>
+        <div class="coming-cta">
+          <div class="coming-eta">&#9201; Est. Mid Q3 2026</div>
+          <p class="coming-note">Start with VuePoint &mdash; upgrade path to Apex opens at launch.</p>
+          <a href="https://falqenview.gumroad.com/l/mqookv" class="btn-price btn-price-ghost">Get VuePoint now &mdash; $19 &rarr;</a>
+        </div>
       </div>
 
     </div>
@@ -1825,73 +1831,7 @@ document.querySelectorAll('.feat-card').forEach(card => {
   });
 });
 
-/* ============ WAITLIST FORMS (Web3Forms) ============ */
-document.querySelectorAll('form.waitlist').forEach(form => {
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const tier = form.dataset.tier;
-    const emailInput = form.querySelector('input[type=email]');
-    const email = emailInput.value.trim();
-    const btn = form.querySelector('button[type=submit]');
-    const msg = form.nextElementSibling;
-    const origMsg = msg ? msg.textContent : '';
-
-    // Reset state on any prior error styling
-    if (msg) { msg.style.color = ''; msg.classList.remove('shown'); }
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      emailInput.focus();
-      emailInput.setCustomValidity('Please enter a valid email address.');
-      emailInput.reportValidity();
-      setTimeout(() => emailInput.setCustomValidity(''), 1800);
-      return;
-    }
-
-    // Captcha must be solved before submission (Web3Forms account requires it)
-    const captchaInput = form.querySelector('textarea[name=h-captcha-response]');
-    if (!captchaInput || !captchaInput.value) {
-      if (msg) {
-        msg.style.color = 'var(--amber)';
-        msg.textContent = '⚠ Please complete the verification challenge.';
-        msg.classList.add('shown');
-      }
-      return;
-    }
-
-    btn.disabled = true;
-    const origBtn = btn.textContent;
-    btn.textContent = 'Sending…';
-
-    try {
-      const fd = new FormData(form);
-      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd });
-      const data = await res.json().catch(() => ({}));
-      if (res.ok && data.success) {
-        form.style.display = 'none';
-        if (msg && msg.classList.contains('waitlist-msg')) {
-          msg.textContent = `✓ You're on the ${tier === 'updraft' ? 'Updraft' : 'Apex'} list — we'll email you at launch.`;
-          msg.classList.add('shown');
-        }
-      } else {
-        btn.textContent = origBtn;
-        btn.disabled = false;
-        if (msg) {
-          msg.style.color = 'var(--amber)';
-          msg.textContent = '⚠ ' + (data.message || 'Submission failed. Please try again.');
-          msg.classList.add('shown');
-        }
-      }
-    } catch (err) {
-      btn.textContent = origBtn;
-      btn.disabled = false;
-      if (msg) {
-        msg.style.color = 'var(--amber)';
-        msg.textContent = '⚠ Network error. Please try again in a moment.';
-        msg.classList.add('shown');
-      }
-    }
-  });
-});
+/* waitlist forms removed */
 
 /* ============ NAV ACTIVE STATE ============ */
 const sections = document.querySelectorAll('section[id]');
@@ -1902,26 +1842,6 @@ window.addEventListener('scroll', () => {
   navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + c ? 'var(--text)' : ''; });
 });
 </script>
-<!-- Web3Forms client — lazy-loaded on first waitlist form interaction -->
-<script>
-(function() {
-  var loaded = false;
-  function loadCaptcha() {
-    if (loaded) return;
-    loaded = true;
-    var s = document.createElement('script');
-    s.src = 'https://web3forms.com/client/script.js';
-    s.async = true;
-    s.defer = true;
-    document.body.appendChild(s);
-  }
-  document.querySelectorAll('form.waitlist input[type=email]').forEach(function(el) {
-    el.addEventListener('focus', loadCaptcha, { once: true });
-    el.addEventListener('click', loadCaptcha, { once: true });
-  });
-  // Fallback: load after 5s in case user scrolls past without focusing
-  setTimeout(loadCaptcha, 5000);
-})();
-</script>
+
 </body>
 </html>
