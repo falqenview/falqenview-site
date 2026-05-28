@@ -805,14 +805,31 @@ body[data-hero="constellation"] .hero-variant--constellation { display: block; }
   z-index: 2;
 }
 .price-card[data-tier="apex"] {
-  background: linear-gradient(160deg, var(--surface2) 0%, rgba(245,158,11,0.06) 100%);
-  border-color: rgba(245,158,11,0.22);
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,166,74,0.08) 0%, transparent 60%),
+    linear-gradient(165deg, #181f2c 0%, #11151d 60%, #0e1118 100%);
+  border-color: rgba(212,166,74,0.30);
+  box-shadow: 0 0 0 1px rgba(212,166,74,0.18), 0 16px 48px rgba(0,0,0,0.45), 0 8px 36px rgba(212,166,74,0.10);
 }
-.price-card[data-tier="apex"]:hover { border-color: rgba(245,158,11,0.4); }
+.price-card[data-tier="apex"]:hover {
+  border-color: rgba(230,192,104,0.55);
+  box-shadow: 0 0 0 1px rgba(212,166,74,0.30), 0 24px 60px rgba(0,0,0,0.5), 0 12px 48px rgba(212,166,74,0.18);
+}
 .price-card[data-tier="apex"]::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--amber), transparent);
+  background: linear-gradient(90deg, transparent 0%, rgba(212,166,74,0.30) 20%, #e6c068 50%, rgba(212,166,74,0.30) 80%, transparent 100%);
   z-index: 2;
+}
+.price-card[data-tier="apex"] .price-tier { color: #e6c068; }
+.price-card[data-tier="apex"] .price-val {
+  background: linear-gradient(180deg, #f0d088 0%, #c89b3c 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.price-card[data-tier="apex"] .price-badge.coming {
+  background: linear-gradient(135deg, #e6c068, #c89b3c); color: #1a140a;
+  border: 1px solid #f0d088;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.25);
+  box-shadow: 0 2px 8px rgba(212,166,74,0.35);
 }
 
 /* Decorative watermarks */
@@ -823,7 +840,7 @@ body[data-hero="constellation"] .hero-variant--constellation { display: block; }
 }
 .price-deco.vuepoint { bottom: -10px; right: -10px; width: 170px; height: 170px; opacity: 0.10; color: var(--cyan); }
 .price-deco.updraft  { bottom: -20px; right: -30px; width: 220px; height: 220px; opacity: 0.14; color: #93c5fd; }
-.price-deco.apex     { bottom: -10px; left: -10px; right: -10px; width: auto; height: 130px; opacity: 0.12; color: var(--amber); }
+.price-deco.apex     { bottom: -10px; left: -10px; right: -10px; width: auto; height: 130px; opacity: 0.18; color: #d4a64a; }
 .price-card.coming { opacity: 1; }
 .price-card.coming::after {
   content: ''; position: absolute; inset: 0;
