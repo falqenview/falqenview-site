@@ -157,6 +157,9 @@
       background: var(--blue); border: 2px solid var(--bg); z-index: 1;
     }
     .cl-dot.latest { background: var(--cyan); box-shadow: 0 0 0 4px rgba(56,189,248,0.18), 0 0 8px rgba(56,189,248,0.6); }
+    .cl-toprow { display: flex; align-items: center; gap: 9px; margin-bottom: 9px; }
+    .cl-ver { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; color: var(--muted); }
+    .cl-latest-tag { font-family: var(--font-mono); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.28); padding: 2px 8px; border-radius: 100px; }
     .cl-body {
       padding-left: 20px;
       background: var(--surface);
@@ -325,50 +328,19 @@
     <div class="cl-entry">
       <div class="cl-dot latest"></div>
       <div class="cl-body">
-        <div class="cl-heading">refined: calculation hardening · visual polish · guided setup</div>
-        <ul class="cl-items">
-          <li>fix: calculations hardened across the board — short holds, missing dates, and incomplete rows now render cleanly instead of throwing errors</li>
-          <li>add: completeness cues — per-position and portfolio-level indicators show at a glance when key fields still need attention</li>
-          <li>add: faster scanning — inline drift bars and full-row gain/loss tinting let you read the portfolio without reading the numbers</li>
-          <li>change: dark theme refined end-to-end — ticker badges, signal pills, status labels, and account bands all updated for clearer reading</li>
-          <li>add: first-run setup wizard — walks you through account names and your drift threshold on first open; re-runnable anytime</li>
-          <li>add: health score recalibrated for more accurate grading, plus a last-refreshed timestamp and quick links to the website and support</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="cl-entry">
-      <div class="cl-dot"></div>
-      <div class="cl-body">
-        <div class="cl-heading">add: rebalance hints · top movers</div>
-        <ul class="cl-items">
-          <li>add: rebalance hints — each account shows how many positions need attention based on current drift</li>
-          <li>add: top movers and completeness tracking — best and worst performers surfaced at a glance, with a per-account fill indicator</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="cl-entry">
-      <div class="cl-dot"></div>
-      <div class="cl-body">
-        <div class="cl-heading">add: cash drag monitor · sector breakdown · Watchlist</div>
-        <ul class="cl-items">
-          <li>add: cash drag monitor — flags idle cash above your configured threshold</li>
-          <li>add: sector concentration breakdown — exposure rolled up across all your accounts</li>
-          <li>add: Watchlist — track tickers you're considering before they go into the portfolio</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="cl-entry">
-      <div class="cl-dot"></div>
-      <div class="cl-body">
-        <div class="cl-heading">change: multi-account restructure · dark theme · signal pills</div>
+        <div class="cl-toprow">
+          <span class="cl-ver">v1.3</span>
+          <span class="cl-latest-tag">Latest</span>
+        </div>
+        <div class="cl-heading">Multi-account, dark theme &amp; deep refinement</div>
         <ul class="cl-items">
           <li>change: multi-account restructure — track several accounts with per-account subtotals and a portfolio grand total</li>
-          <li>change: full dark-theme redesign — navy base, cyan accents, and a restructured visual hierarchy</li>
-          <li>add: signal and tax-lot pills — color-coded action and status cues replace plain text for instant scanning</li>
-          <li>add: a built-in sample portfolio and tier comparison to reference during setup, with safeguards that protect your inputs from accidental edits</li>
+          <li>change: full dark-theme redesign, refined end-to-end — signal and tax-lot pills, ticker badges, and account bands all tuned for clearer reading</li>
+          <li>add: monitoring suite — cash drag, sector concentration, rebalance hints, and top movers surfaced across your accounts</li>
+          <li>add: a Watchlist to track tickers you're weighing before they go into the portfolio</li>
+          <li>add: completeness cues and inline drift bars — read the portfolio at a glance without reading the numbers</li>
+          <li>add: first-run setup wizard — guides account names and your drift threshold on first open; re-runnable anytime</li>
+          <li>fix: calculations hardened across the board — short holds, missing dates, and incomplete rows now render cleanly instead of throwing errors</li>
         </ul>
       </div>
     </div>
@@ -376,24 +348,17 @@
     <div class="cl-entry">
       <div class="cl-dot"></div>
       <div class="cl-body">
-        <div class="cl-heading">add: signals · annualized return · broader ticker coverage</div>
-        <ul class="cl-items">
-          <li>add: signal column — at-a-glance, color-coded action signals based on your drift and gain state</li>
-          <li>add: annualized return per position, with color-coded drift and signal cues for instant scanning</li>
-          <li>change: broader built-in ticker coverage, plus clearer alerts when an unrecognized symbol is entered</li>
-          <li>add: factory reset and an About panel from the FalqenView menu, on a cleaner gridline-free reading surface</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="cl-entry">
-      <div class="cl-dot"></div>
-      <div class="cl-body">
-        <div class="cl-heading">change: full visual rebuild · KPI banner · settings</div>
+        <div class="cl-toprow">
+          <span class="cl-ver">v1.2</span>
+        </div>
+        <div class="cl-heading">Signals, scoring &amp; full visual rebuild</div>
         <ul class="cl-items">
           <li>change: complete visual rebuild — dark theme, brand palette, and refined typography across every tab</li>
           <li>add: KPI banner — total value, cost basis, and gains pinned to the top of your portfolio at all times</li>
-          <li>add: a Settings tab to configure your thresholds and account names in one place, with gain/loss color cues throughout</li>
+          <li>add: signal column — at-a-glance, color-coded action signals based on your drift and gain state</li>
+          <li>add: annualized return per position, with color-coded drift and signal cues for instant scanning</li>
+          <li>add: a Settings tab to configure your thresholds and account names in one place</li>
+          <li>change: broader built-in ticker coverage, clearer unknown-symbol alerts, and a cleaner gridline-free reading surface</li>
         </ul>
       </div>
     </div>
@@ -401,13 +366,16 @@
     <div class="cl-entry">
       <div class="cl-dot"></div>
       <div class="cl-body">
-        <div class="cl-heading">init: launch — full feature set</div>
+        <div class="cl-toprow">
+          <span class="cl-ver">v1.0</span>
+        </div>
+        <div class="cl-heading">Launch — the foundation</div>
         <ul class="cl-items">
           <li>init: multi-account portfolio tracker — several accounts with subtotals and a portfolio grand total</li>
           <li>add: ticker auto-fill — enter a symbol and position details populate automatically</li>
           <li>add: gain/loss tracking with automatic long-term eligibility dates</li>
           <li>add: target allocations, drift alerts, and an A–F portfolio health score</li>
-          <li>add: top movers, sector concentration, cash drag monitoring, a Watchlist, and a sample portfolio to learn from</li>
+          <li>add: a built-in sample portfolio to learn from before entering your own holdings</li>
         </ul>
       </div>
     </div>
