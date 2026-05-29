@@ -148,14 +148,11 @@
     }
 
     /* Entry */
-    .cl-entry { display: grid; grid-template-columns: 120px 1fr; gap: 0 32px; margin-bottom: 22px; position: relative; }
-    .cl-entry::before { content: ''; position: absolute; left: 128px; top: 9px; bottom: -22px; width: 1px; background: var(--border); }
+    .cl-entry { position: relative; padding-left: 30px; margin-bottom: 22px; }
+    .cl-entry::before { content: ''; position: absolute; left: 4px; top: 9px; bottom: -22px; width: 1px; background: var(--border); }
     .cl-entry:last-child::before { display: none; }
-    .cl-meta { text-align: right; padding-top: 2px; padding-right: 14px; }
-    .cl-version { font-family: var(--font-display); font-size: 0.82rem; font-weight: 800; color: var(--text); letter-spacing: 0.02em; }
-    .cl-date { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); margin-top: 3px; }
     .cl-dot {
-      position: absolute; left: 124px; top: 8px;
+      position: absolute; left: 0; top: 8px;
       width: 9px; height: 9px; border-radius: 50%;
       background: var(--blue); border: 2px solid var(--bg); z-index: 1;
     }
@@ -264,10 +261,7 @@
       .footer-bottom { flex-direction: column; align-items: flex-start; }
     }
     @media (max-width: 600px) {
-      .cl-entry { grid-template-columns: 1fr; gap: 8px; }
-      .cl-entry::before { display: none; }
-      .cl-meta { text-align: left; display: flex; gap: 14px; align-items: baseline; padding-right: 0; }
-      .cl-dot { display: none; }
+      .cl-entry { padding-left: 24px; }
       .cl-body { padding: 14px 16px; }
       .cl-title { font-size: 1.8rem; }
       .jump-btns { gap: 8px; }
@@ -312,7 +306,7 @@
 <div class="cl-hero">
   <p class="cl-label">What's new</p>
   <h1 class="cl-title">Changelog</h1>
-  <p class="cl-sub">New features, fixes, and shipped intent. Tracked release-by-release.</p>
+  <p class="cl-sub">New features, fixes, and improvements — grouped by what changed.</p>
   <div class="jump-btns">
     <a href="#vuepoint" class="jump-btn vuepoint"><span class="dot"></span> VuePoint</a>
     <a href="#updraft" class="jump-btn updraft"><span class="dot"></span> Updraft</a>
@@ -329,10 +323,6 @@
     </div>
 
     <div class="cl-entry">
-      <div class="cl-meta">
-        <div class="cl-version">v1.3.3</div>
-        <div class="cl-date">May 2026</div>
-      </div>
       <div class="cl-dot latest"></div>
       <div class="cl-body">
         <div class="cl-heading">refined: calculation hardening · visual polish · guided setup</div>
@@ -348,10 +338,6 @@
     </div>
 
     <div class="cl-entry">
-      <div class="cl-meta">
-        <div class="cl-version">v1.3.2</div>
-        <div class="cl-date">May 2026</div>
-      </div>
       <div class="cl-dot"></div>
       <div class="cl-body">
         <div class="cl-heading">add: rebalance hints · top movers</div>
@@ -363,10 +349,6 @@
     </div>
 
     <div class="cl-entry">
-      <div class="cl-meta">
-        <div class="cl-version">v1.3.1</div>
-        <div class="cl-date">May 2026</div>
-      </div>
       <div class="cl-dot"></div>
       <div class="cl-body">
         <div class="cl-heading">add: cash drag monitor · sector breakdown · Watchlist</div>
@@ -379,10 +361,6 @@
     </div>
 
     <div class="cl-entry">
-      <div class="cl-meta">
-        <div class="cl-version">v1.3.0</div>
-        <div class="cl-date">Apr 2026</div>
-      </div>
       <div class="cl-dot"></div>
       <div class="cl-body">
         <div class="cl-heading">change: multi-account restructure · dark theme · signal pills</div>
@@ -396,15 +374,11 @@
     </div>
 
     <div class="cl-entry">
-      <div class="cl-meta">
-        <div class="cl-version">v1.2</div>
-        <div class="cl-date">Mar 2026</div>
-      </div>
       <div class="cl-dot"></div>
       <div class="cl-body">
         <div class="cl-heading">add: signals · annualized return · broader ticker coverage</div>
         <ul class="cl-items">
-          <li>add: signal column — at-a-glance BUY / TRIM / HOLD / REVIEW guidance based on your drift and gain state</li>
+          <li>add: signal column — at-a-glance, color-coded action signals based on your drift and gain state</li>
           <li>add: annualized return per position, with color-coded drift and signal cues for instant scanning</li>
           <li>change: broader built-in ticker coverage, plus clearer alerts when an unrecognized symbol is entered</li>
           <li>add: factory reset and an About panel from the FalqenView menu, on a cleaner gridline-free reading surface</li>
@@ -413,10 +387,6 @@
     </div>
 
     <div class="cl-entry">
-      <div class="cl-meta">
-        <div class="cl-version">v1.1</div>
-        <div class="cl-date">Feb 2026</div>
-      </div>
       <div class="cl-dot"></div>
       <div class="cl-body">
         <div class="cl-heading">change: full visual rebuild · KPI banner · settings</div>
@@ -429,10 +399,6 @@
     </div>
 
     <div class="cl-entry">
-      <div class="cl-meta">
-        <div class="cl-version">v1.0</div>
-        <div class="cl-date">Feb 2026</div>
-      </div>
       <div class="cl-dot"></div>
       <div class="cl-body">
         <div class="cl-heading">init: launch — full feature set</div>
