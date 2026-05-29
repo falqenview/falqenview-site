@@ -335,22 +335,14 @@
       </div>
       <div class="cl-dot latest"></div>
       <div class="cl-body">
-        <div class="cl-heading">fix: CAGR hardening · visual overhaul · completeness · setup wizard</div>
+        <div class="cl-heading">refined: calculation hardening · visual polish · guided setup</div>
         <ul class="cl-items">
-          <li>fix: CAGR formula produced runaway values on short holds — corrected to true annualized return; positions &lt;1yr show <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--cyan);">&lt;1yr</code>, positions &lt;30 days show <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--cyan);">—</code></li>
-          <li>fix: missing purchase date, zero cost basis, or zero market value no longer produce formula errors — all edge cases render cleanly</li>
-          <li>add: per-position completeness indicator — green/amber/red dot on each row shows whether required fields are filled</li>
-          <li>add: portfolio-level completeness % displayed in the myPortfolio header</li>
-          <li>add: drift bar alongside drift % — inline block-bar for faster visual scanning without reading numbers</li>
-          <li>add: full-row gain/loss tint — winning positions shade green, losing positions shade red across all columns</li>
-          <li>change: ticker symbols restyled as cyan pill badges on dark background</li>
-          <li>change: dark navy theme overhauled — signal pills, LTCG status pills, and account header bands all updated to match final palette</li>
-          <li>change: LTCG status labels updated — now shows Qualified / &lt;30 Days / Short-Term / — for clearer tax-lot reading</li>
-          <li>add: last-refreshed timestamp displayed in the myPortfolio header after each price refresh</li>
-          <li>add: first-run setup wizard — prompts for account names and drift threshold on first open; re-runnable anytime from the FalqenView menu → Settings &amp; Tools</li>
-          <li>add: formula overwrite guard — if a formula cell is edited by mistake, a toast surfaces with undo instructions</li>
-          <li>add: portfolio health score recalibrated — grade boundaries and signal weights refined for more accurate A–F output</li>
-          <li>add: FalqenView menu → Website submenu — links to Homepage, Videos, Changelog, and Support without leaving the sheet</li>
+          <li>fix: calculations hardened across the board — short holds, missing dates, and incomplete rows now render cleanly instead of throwing errors</li>
+          <li>add: completeness cues — per-position and portfolio-level indicators show at a glance when key fields still need attention</li>
+          <li>add: faster scanning — inline drift bars and full-row gain/loss tinting let you read the portfolio without reading the numbers</li>
+          <li>change: dark theme refined end-to-end — ticker badges, signal pills, status labels, and account bands all updated for clearer reading</li>
+          <li>add: first-run setup wizard — walks you through account names and your drift threshold on first open; re-runnable anytime</li>
+          <li>add: health score recalibrated for more accurate grading, plus a last-refreshed timestamp and quick links to the website and support</li>
         </ul>
       </div>
     </div>
@@ -362,11 +354,10 @@
       </div>
       <div class="cl-dot"></div>
       <div class="cl-body">
-        <div class="cl-heading">add: rebalance hints · top movers · account completeness</div>
+        <div class="cl-heading">add: rebalance hints · top movers</div>
         <ul class="cl-items">
-          <li>add: rebalance hints per account header — shows how many positions need attention based on current drift</li>
-          <li>add: top movers on Summary tab — best and worst positions by Gain % surfaced at a glance</li>
-          <li>add: account completeness tracker — per-position dot and portfolio-wide fill % visible in myPortfolio header</li>
+          <li>add: rebalance hints — each account shows how many positions need attention based on current drift</li>
+          <li>add: top movers and completeness tracking — best and worst performers surfaced at a glance, with a per-account fill indicator</li>
         </ul>
       </div>
     </div>
@@ -378,11 +369,11 @@
       </div>
       <div class="cl-dot"></div>
       <div class="cl-body">
-        <div class="cl-heading">add: cash drag monitor · sector breakdown · Watchlist tab</div>
+        <div class="cl-heading">add: cash drag monitor · sector breakdown · Watchlist</div>
         <ul class="cl-items">
-          <li>add: cash drag monitor — flags idle cash positions exceeding your configured threshold</li>
-          <li>add: sector concentration breakdown — 8-sector aggregation rolled up across all accounts</li>
-          <li>add: Watchlist tab — track tickers you're considering before adding them to your portfolio</li>
+          <li>add: cash drag monitor — flags idle cash above your configured threshold</li>
+          <li>add: sector concentration breakdown — exposure rolled up across all your accounts</li>
+          <li>add: Watchlist — track tickers you're considering before they go into the portfolio</li>
         </ul>
       </div>
     </div>
@@ -394,16 +385,12 @@
       </div>
       <div class="cl-dot"></div>
       <div class="cl-body">
-        <div class="cl-heading">change: multi-account restructure · dark theme · signal pills · LTCG states</div>
+        <div class="cl-heading">change: multi-account restructure · dark theme · signal pills</div>
         <ul class="cl-items">
-          <li>change: multi-account tracker restructured — 5 accounts × 5 positions with account-level subtotals and portfolio grand total</li>
-          <li>add: Sample Data tab — demo portfolio (Alex &amp; Jordan Chen) with pre-filled realistic values to reference during setup</li>
-          <li>add: feature comparison table in Instructions tab — shows what's included in VuePoint vs upcoming tiers</li>
-          <li>add: cell protection — formula columns are locked; only input columns (ticker, shares, cost basis, target %, notes) accept edits</li>
-          <li>change: myPortfolio theme overhauled — dark navy base, cyan accents, restructured visual hierarchy</li>
-          <li>change: signal column — plain text replaced with colored pill badges (BUY / TRIM / HOLD / REVIEW)</li>
-          <li>add: LTCG pill states — Clear / Soon / Pending per position for at-a-glance tax-lot status</li>
-          <li>change: account header rows — darker navy band per account block for cleaner visual separation</li>
+          <li>change: multi-account restructure — track several accounts with per-account subtotals and a portfolio grand total</li>
+          <li>change: full dark-theme redesign — navy base, cyan accents, and a restructured visual hierarchy</li>
+          <li>add: signal and tax-lot pills — color-coded action and status cues replace plain text for instant scanning</li>
+          <li>add: a built-in sample portfolio and tier comparison to reference during setup, with safeguards that protect your inputs from accidental edits</li>
         </ul>
       </div>
     </div>
@@ -415,18 +402,12 @@
       </div>
       <div class="cl-dot"></div>
       <div class="cl-body">
-        <div class="cl-heading">add: signal col · CAGR · drift CF · ticker DB · factory reset</div>
+        <div class="cl-heading">add: signals · annualized return · broader ticker coverage</div>
         <ul class="cl-items">
-          <li>add: signal column — TRIM / BUY / HOLD / REVIEW derived from drift % vs threshold and gain state</li>
-          <li>add: CAGR column — annualized return per position calculated from purchase date</li>
-          <li>add: drift conditional formatting — amber (over threshold) / cyan (under) / green (in range)</li>
-          <li>add: signal conditional formatting — color-coded per action type for instant scan</li>
-          <li>fix: LTCG date formula showing <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--cyan);">365</code> on empty rows — resolved</li>
-          <li>fix: entering an unknown ticker produced a silent blank — now surfaces a toast notification</li>
-          <li>change: ticker DB expanded from ~60 to 300+ pre-mapped entries</li>
-          <li>add: Reset to Factory Defaults — triple-confirmed wipe available from the FalqenView menu</li>
-          <li>add: About FalqenView modal — version info and product links accessible from the FalqenView menu</li>
-          <li>change: gridlines removed across all tabs for a cleaner reading surface</li>
+          <li>add: signal column — at-a-glance BUY / TRIM / HOLD / REVIEW guidance based on your drift and gain state</li>
+          <li>add: annualized return per position, with color-coded drift and signal cues for instant scanning</li>
+          <li>change: broader built-in ticker coverage, plus clearer alerts when an unrecognized symbol is entered</li>
+          <li>add: factory reset and an About panel from the FalqenView menu, on a cleaner gridline-free reading surface</li>
         </ul>
       </div>
     </div>
@@ -438,13 +419,11 @@
       </div>
       <div class="cl-dot"></div>
       <div class="cl-body">
-        <div class="cl-heading">change: full visual rebuild · KPI banner · settings tab</div>
+        <div class="cl-heading">change: full visual rebuild · KPI banner · settings</div>
         <ul class="cl-items">
-          <li>change: complete sheet redesign — dark theme, brand color palette, Lexend/Montserrat typography applied across all tabs</li>
-          <li>add: KPI banner — Total Value, Cost Basis, Gain $, and Gain % pinned to the top of myPortfolio at all times</li>
-          <li>add: green/red conditional formatting on Gain $ and Gain % columns</li>
-          <li>add: Settings tab — configure drift threshold, cash drag threshold, LTCG warning days, and account names in one place</li>
-          <li>add: tab color coding applied across all sheets for faster navigation</li>
+          <li>change: complete visual rebuild — dark theme, brand palette, and refined typography across every tab</li>
+          <li>add: KPI banner — total value, cost basis, and gains pinned to the top of your portfolio at all times</li>
+          <li>add: a Settings tab to configure your thresholds and account names in one place, with gain/loss color cues throughout</li>
         </ul>
       </div>
     </div>
@@ -458,17 +437,11 @@
       <div class="cl-body">
         <div class="cl-heading">init: launch — full feature set</div>
         <ul class="cl-items">
-          <li>init: multi-account portfolio tracker — 5 accounts × 5 positions; account-level subtotals and portfolio grand total</li>
-          <li>add: ticker auto-fill — enter a symbol and Position Name and Sector populate automatically from the built-in DB</li>
-          <li>add: gain/loss tracking — purchase date input drives automatic LTCG eligibility date calculation</li>
-          <li>add: Target % and Drift per position — visual alert when any allocation exceeds your configured threshold</li>
-          <li>add: Portfolio Health Score — A–F grade derived from gain performance, drift exposure, and signal mix</li>
-          <li>add: top movers — best and worst performing positions surfaced at the portfolio level</li>
-          <li>add: sector concentration breakdown — 8-sector aggregation rolled across all accounts</li>
-          <li>add: cash drag monitor — flags uninvested cash positions above your threshold</li>
-          <li>add: Watchlist tab — track tickers you're considering before adding to your portfolio</li>
-          <li>add: Sample Data tab — demo portfolio (Alex &amp; Jordan Chen) with pre-filled values</li>
-          <li>add: Changelog tab — version history viewable directly inside the sheet</li>
+          <li>init: multi-account portfolio tracker — several accounts with subtotals and a portfolio grand total</li>
+          <li>add: ticker auto-fill — enter a symbol and position details populate automatically</li>
+          <li>add: gain/loss tracking with automatic long-term eligibility dates</li>
+          <li>add: target allocations, drift alerts, and an A–F portfolio health score</li>
+          <li>add: top movers, sector concentration, cash drag monitoring, a Watchlist, and a sample portfolio to learn from</li>
         </ul>
       </div>
     </div>
