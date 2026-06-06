@@ -316,8 +316,8 @@
 .fvf-links a:hover{color:#e8ecf4;}
 .fvf-bottom{max-width:1100px;margin:24px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
 .fvf-legal{font-size:0.72rem;color:#7a8499;opacity:0.85;}
-.fvf-legal a{color:#7a8499;text-decoration:none;}
-.fvf-legal a:hover{color:#e8ecf4;}
+.fvf-legal a{color:#38bdf8;text-decoration:underline;opacity:1;}
+.fvf-legal a:hover{color:#7dd3fc;}
 .fvf-contact a{font-size:0.78rem;color:#38bdf8;text-decoration:none;font-weight:500;}
 @media(max-width:768px){.fvf-inner{flex-direction:column;align-items:flex-start;}.fvf-motto{padding-left:0;}.fvf-bottom{flex-direction:column;align-items:flex-start;}}
 </style>
@@ -428,17 +428,17 @@
           <span class="cl-ver">v1.3</span>
           <span class="cl-latest-tag" style="color:#34d399;background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.4);">Latest</span>
         </div>
-        <div class="cl-heading">Brand depth, visual upgrades &amp; data-safety hardening</div>
+        <div class="cl-heading">Brand depth, visual refinement &amp; reliability hardening</div>
         <ul class="cl-items">
-          <li>change: brand-aligned color palette applied across the banner, KPI row, and status tints — sharper visual hierarchy throughout</li>
-          <li>add: payment method network coloring — bank, card, cash, and mobile pay each get a distinct color and SVG brand icon in the sidebar</li>
-          <li>add: full amount-column heatmap (green → amber → red) — sqrt-scaled to your largest bill so relative cost weight reads at a glance</li>
-          <li>change: emoji-prefixed payment method values (🏦 · 💳 · 💵 · 📱) baked into cell text for instant visual scanning</li>
-          <li>add: custom dropdown popover for Category and Method — fixes broken native dropdowns in the sidebar environment</li>
-          <li>change: sidebar expanded to 520px with a cleaner header — product name and version only, no clutter</li>
-          <li>fix: bills health score no longer penalizes portfolios with fewer than 4 bills — concentration and frequency-mix factors adjusted for fairness</li>
-          <li>fix: initialization uses a persistent flag instead of banner-string matching — survives sheet edits and renames without false-tripping setup</li>
-          <li>fix: sheet setup is non-destructive — repairs layout in place when the Bills sheet already exists; existing data is never cleared</li>
+          <li>change: brand-aligned color palette across the banner, KPI row, and status tints — sharper visual hierarchy at every glance</li>
+          <li>add: payment method color coding — bank, card, cash, and mobile pay each render with a distinct color and icon in the sidebar</li>
+          <li>add: amount-column heatmap (green → amber → red) — scaled to your largest bill so cost weight reads instantly without scanning numbers</li>
+          <li>change: payment method labels updated with visual identifiers for faster reading across the sheet</li>
+          <li>change: Category and Method selectors rebuilt for reliability — dropdowns now work correctly every time the sidebar opens</li>
+          <li>change: sidebar panel widened and header streamlined — more room for your data, less visual noise</li>
+          <li>fix: bills health score now grades accurately regardless of how many bills are in the sheet</li>
+          <li>fix: sheet startup hardened — initializes correctly even after cosmetic edits, renames, or layout changes</li>
+          <li>fix: sheet layout self-repairs when needed — restores automatically without touching any of your existing bill data</li>
         </ul>
       </div>
     </div>
@@ -470,7 +470,7 @@
           <li>add: notes field — attach a short annotation to any bill, visible at a glance in the sidebar</li>
           <li>change: sidebar layout expanded and re-spaced for cleaner field alignment and easier editing</li>
           <li>add: animated brand header in the sidebar with version tag — polish and product identity in one strip</li>
-          <li>fix: date parsing hardened to avoid off-by-one errors near month boundaries</li>
+          <li>fix: date calculations hardened — bills at month-end and across calendar transitions now calculate correctly</li>
         </ul>
       </div>
     </div>
