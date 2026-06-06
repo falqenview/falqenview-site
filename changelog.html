@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Changelog — FalqenView</title>
-  <meta name="description" content="FalqenView product changelog — new features, improvements, and fixes across VuePoint, Updraft, Apex, and Talon — Bills & Cash.">
+  <meta name="description" content="FalqenView release notes — every feature, fix, and refinement for VuePoint and Talon, version by version.">
   <meta name="theme-color" content="#1A73E8">
 
   <link rel="icon" type="image/png" href="assets/fvIcon.png">
@@ -290,6 +290,7 @@
 .fvn-links a{font-size:0.78rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#7a8499;text-decoration:none;transition:color .2s;}
 .fvn-links a:hover{color:#e8ecf4;}
 .fvn-talon{color:#34d399 !important;display:inline-flex;align-items:center;gap:6px;}
+.fvn-investing{color:#38bdf8 !important;display:inline-flex;align-items:center;gap:6px;}.fvn-investing::before{content:"";width:6px;height:6px;border-radius:50%;background:#38bdf8;box-shadow:0 0 7px #38bdf8;flex-shrink:0;}
 .fvn-talon::before{content:'';width:6px;height:6px;border-radius:50%;background:#10b981;box-shadow:0 0 7px #10b981;}
 .fvn-cta{background:#1A73E8;color:#fff !important;padding:8px 18px;border-radius:8px;font-weight:600;box-shadow:0 4px 16px rgba(26,115,232,0.3);transition:background .2s;}
 .fvn-cta:hover{background:#1557b0;}
@@ -328,12 +329,12 @@
   </a>
   <button class="fvn-toggle" aria-label="Menu" aria-expanded="false" onclick="var n=this.closest('.fvn');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o);this.textContent=o?'✕':'≡';">≡</button>
   <ul class="fvn-links">
-    <li><a href="index.html#investing">Investing</a></li>
+    <li><a href="index.html#investing" class="fvn-investing">Investing</a></li>
     <li><a href="index.html#talon" class="fvn-talon">Talon</a></li>
     <li><a href="videos.html">Videos</a></li>
     <li><a href="index.html#pricing">Pricing</a></li>
     <li><a href="support.html">Support</a></li>
-    <li><a href="index.html#about">About</a></li>
+    <li><a href="about.html">About</a></li>
     <li><a href="index.html#pricing" class="fvn-cta">Get Started</a></li>
   </ul>
 </nav>
@@ -424,8 +425,61 @@
       <div class="cl-dot latest" style="background:#10b981;box-shadow:0 0 0 4px rgba(16,185,129,0.18),0 0 8px rgba(16,185,129,0.6);"></div>
       <div class="cl-body">
         <div class="cl-toprow">
+          <span class="cl-ver">v1.3</span>
+          <span class="cl-latest-tag" style="color:#34d399;background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.4);">Latest</span>
+        </div>
+        <div class="cl-heading">Brand depth, visual upgrades &amp; data-safety hardening</div>
+        <ul class="cl-items">
+          <li>change: brand-aligned color palette applied across the banner, KPI row, and status tints — sharper visual hierarchy throughout</li>
+          <li>add: payment method network coloring — bank, card, cash, and mobile pay each get a distinct color and SVG brand icon in the sidebar</li>
+          <li>add: full amount-column heatmap (green → amber → red) — sqrt-scaled to your largest bill so relative cost weight reads at a glance</li>
+          <li>change: emoji-prefixed payment method values (🏦 · 💳 · 💵 · 📱) baked into cell text for instant visual scanning</li>
+          <li>add: custom dropdown popover for Category and Method — fixes broken native dropdowns in the sidebar environment</li>
+          <li>change: sidebar expanded to 520px with a cleaner header — product name and version only, no clutter</li>
+          <li>fix: bills health score no longer penalizes portfolios with fewer than 4 bills — concentration and frequency-mix factors adjusted for fairness</li>
+          <li>fix: initialization uses a persistent flag instead of banner-string matching — survives sheet edits and renames without false-tripping setup</li>
+          <li>fix: sheet setup is non-destructive — repairs layout in place when the Bills sheet already exists; existing data is never cleared</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cl-entry">
+      <div class="cl-dot" style="background:#10b981;"></div>
+      <div class="cl-body">
+        <div class="cl-toprow">
+          <span class="cl-ver">v1.2</span>
+        </div>
+        <div class="cl-heading">Categories, totals &amp; health score refinement</div>
+        <ul class="cl-items">
+          <li>add: category breakdown — housing, utilities, subscriptions, and more grouped with per-category totals surfaced in the sheet</li>
+          <li>add: monthly and annual bill totals — see your full payment load at a glance without touching a formula</li>
+          <li>change: health score recalibrated — autopay coverage and frequency-mix weighted more precisely for a fairer A–F grade</li>
+          <li>change: FalqenView icon added to the sidebar header — brand presence inside the panel, consistent with VuePoint</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cl-entry">
+      <div class="cl-dot" style="background:#10b981;"></div>
+      <div class="cl-body">
+        <div class="cl-toprow">
+          <span class="cl-ver">v1.1</span>
+        </div>
+        <div class="cl-heading">Sidebar refinement &amp; bill annotations</div>
+        <ul class="cl-items">
+          <li>add: notes field — attach a short annotation to any bill, visible at a glance in the sidebar</li>
+          <li>change: sidebar layout expanded and re-spaced for cleaner field alignment and easier editing</li>
+          <li>add: animated brand header in the sidebar with version tag — polish and product identity in one strip</li>
+          <li>fix: date parsing hardened to avoid off-by-one errors near month boundaries</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cl-entry">
+      <div class="cl-dot" style="background:#10b981;"></div>
+      <div class="cl-body">
+        <div class="cl-toprow">
           <span class="cl-ver">v1.0</span>
-          <span class="cl-latest-tag" style="color:#34d399;background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.4);">New</span>
         </div>
         <div class="cl-heading">Launch — bills &amp; cash, in your grip</div>
         <ul class="cl-items">
@@ -468,7 +522,7 @@
   <div class="product-section" id="apex">
     <div class="product-header">
       <span class="product-header-name apex">Apex</span>
-      <span class="coming-soon-tag">Coming · Mid Q3 2026</span>
+      <span class="coming-soon-tag">Coming · Early Q4 2026</span>
     </div>
     <div class="coming-soon-block">
       <p>Apex is in development. Release notes will appear here at launch.<br>Want first access?</p>
@@ -498,18 +552,18 @@
     </div>
     <div class="fvf-links">
       <a href="index.html">Home</a>
-      <a href="index.html#investing">Investing</a>
+      <a href="index.html#investing" class="fvn-investing">Investing</a>
       <a href="index.html#talon">Talon</a>
       <a href="videos.html">Videos</a>
       <a href="index.html#pricing">Pricing</a>
       <a href="support.html">Support</a>
-      <a href="index.html#about">About</a>
+      <a href="about.html">About</a>
       <a href="changelog.html">Changelog</a>
     </div>
   </div>
   <div class="fvf-bottom">
     <div class="fvf-legal">© 2026 FalqenView · <a href="terms.html">Terms of Use</a> · <a href="privacy.html">Privacy Policy</a> · For informational purposes only. Not financial advice.</div>
-    <div class="fvf-contact"><a href="support.html">Contact Support →</a></div>
+    <div class="fvf-contact"><a href="https://falqenview.gumroad.com/l/mqookv">Get VuePoint →</a> <span style="color:#7a8499;margin:0 4px;">·</span> <a href="https://falqenview.gumroad.com/l/talon">Get Talon →</a></div>
   </div>
 </footer>
 
