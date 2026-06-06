@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Primary SEO -->
-<title>Support — FalqenView Portfolio Tracker</title>
-<meta name="description" content="Get help with your FalqenView portfolio tracker and Talon bills manager. Browse FAQs or send us a message — we respond as soon as possible. Support for VuePoint, Updraft, Apex, and Talon.">
+<title>Support — FalqenView</title>
+<meta name="description" content="Get help with FalqenView VuePoint and Talon. Browse FAQs on setup, authorization, and features — or send us a message. We respond as fast as possible.">
 <meta name="keywords" content="FalqenView support, portfolio tracker help, Google Sheets tracker support, investment spreadsheet help, FalqenView FAQ">
 <meta name="author" content="FalqenView">
 <meta name="copyright" content="© 2026 FalqenView. All rights reserved.">
@@ -181,6 +181,7 @@
 .fvn-links a{font-size:0.78rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#7a8499;text-decoration:none;transition:color .2s;}
 .fvn-links a:hover{color:#e8ecf4;}
 .fvn-talon{color:#34d399 !important;display:inline-flex;align-items:center;gap:6px;}
+.fvn-investing{color:#38bdf8 !important;display:inline-flex;align-items:center;gap:6px;}.fvn-investing::before{content:"";width:6px;height:6px;border-radius:50%;background:#38bdf8;box-shadow:0 0 7px #38bdf8;flex-shrink:0;}
 .fvn-talon::before{content:'';width:6px;height:6px;border-radius:50%;background:#10b981;box-shadow:0 0 7px #10b981;}
 .fvn-cta{background:#1A73E8;color:#fff !important;padding:8px 18px;border-radius:8px;font-weight:600;box-shadow:0 4px 16px rgba(26,115,232,0.3);transition:background .2s;}
 .fvn-cta:hover{background:#1557b0;}
@@ -219,12 +220,12 @@
   </a>
   <button class="fvn-toggle" aria-label="Menu" aria-expanded="false" onclick="var n=this.closest('.fvn');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o);this.textContent=o?'✕':'≡';">≡</button>
   <ul class="fvn-links">
-    <li><a href="index.html#investing">Investing</a></li>
+    <li><a href="index.html#investing" class="fvn-investing">Investing</a></li>
     <li><a href="index.html#talon" class="fvn-talon">Talon</a></li>
     <li><a href="videos.html">Videos</a></li>
     <li><a href="index.html#pricing">Pricing</a></li>
     <li><a href="support.html">Support</a></li>
-    <li><a href="index.html#about">About</a></li>
+    <li><a href="about.html">About</a></li>
     <li><a href="index.html#pricing" class="fvn-cta">Get Started</a></li>
   </ul>
 </nav>
@@ -311,7 +312,7 @@
 
       <div class="faq-item">
         <div class="faq-q">Is Talon part of FalqenView? <span class="arrow">▼</span></div>
-        <div class="faq-a">Yes. Talon is the bills-and-cash half of FalqenView — a separate Google Sheet that tracks your bills, due dates, categories, and a bills health score. VuePoint tracks what you invest; Talon manages what you owe. It's <strong>$14, once</strong>, and ships free with Apex.</div>
+        <div class="faq-a">Yes. Talon is the bills-and-cash half of FalqenView — a separate Google Sheet that tracks your bills, due dates, categories, and a bills health score. VuePoint tracks what you invest; Talon manages what you owe. Same one-time purchase model, different job.</div>
       </div>
 
       <div class="faq-item">
@@ -352,18 +353,18 @@
     </div>
     <div class="fvf-links">
       <a href="index.html">Home</a>
-      <a href="index.html#investing">Investing</a>
+      <a href="index.html#investing" class="fvn-investing">Investing</a>
       <a href="index.html#talon">Talon</a>
       <a href="videos.html">Videos</a>
       <a href="index.html#pricing">Pricing</a>
       <a href="support.html">Support</a>
-      <a href="index.html#about">About</a>
+      <a href="about.html">About</a>
       <a href="changelog.html">Changelog</a>
     </div>
   </div>
   <div class="fvf-bottom">
     <div class="fvf-legal">© 2026 FalqenView · <a href="terms.html">Terms of Use</a> · <a href="privacy.html">Privacy Policy</a> · For informational purposes only. Not financial advice.</div>
-    <div class="fvf-contact"><a href="support.html">Contact Support →</a></div>
+    <div class="fvf-contact"><a href="https://falqenview.gumroad.com/l/mqookv">Get VuePoint →</a> <span style="color:#7a8499;margin:0 4px;">·</span> <a href="https://falqenview.gumroad.com/l/talon">Get Talon →</a></div>
   </div>
 </footer>
 
