@@ -1420,6 +1420,32 @@ body[data-talon-accent="cyan"] { --talon:#0ea5e9; --talon-2:#38bdf8; --talon-dee
   #talon { padding:72px 18px; }
   .brand-hero-h1 { font-size:clamp(2.2rem,10vw,3.4rem); }
 }
+
+/* ---- Nav investing dot (View line) ---- */
+.nav-investing { display:inline-flex !important; align-items:center; gap:6px; }
+.nav-investing::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--cyan); box-shadow:0 0 7px var(--cyan); flex-shrink:0; }
+.mobile-menu a.v-link { color:var(--cyan); }
+
+/* ---- Diff chips hover ---- */
+.diff-chip { transition:transform 0.2s, box-shadow 0.2s, border-color 0.2s; cursor:default; }
+.diff-card.privacy .diff-chip:hover { transform:translateY(-2px); border-color:rgba(56,189,248,0.45); box-shadow:0 4px 12px rgba(56,189,248,0.18); }
+.diff-card.craft .diff-chip:hover { transform:translateY(-2px); border-color:rgba(167,139,250,0.45); box-shadow:0 4px 12px rgba(167,139,250,0.18); }
+
+/* ---- Pillar stat contrast ---- */
+.bpillar-stat .v { color:var(--text); }
+.bpillar-stats { background:rgba(0,0,0,0.28); border-color:var(--border-2); }
+
+/* ---- Trust band shimmer ---- */
+.trust-band { position:relative; overflow:hidden; }
+.trust-band::after { content:''; position:absolute; top:0; left:-150%; width:40%; height:100%; background:linear-gradient(90deg,transparent,rgba(56,189,248,0.06),transparent); animation:bandShimmer 5s linear infinite; pointer-events:none; }
+@keyframes bandShimmer { to { left:300%; } }
+
+/* ---- Score bar reveal animation ---- */
+.score-bar-fill { width:0 !important; transition:width 1s cubic-bezier(0.25,0.46,0.45,0.94) 0.25s; }
+.reveal.visible .score-bar-fill { width:var(--bar-w) !important; }
+
+/* ---- Footer motto ---- */
+.footer-motto { color:rgba(56,189,248,0.55); font-size:0.72rem; letter-spacing:0.18em; }
 </style>
 </head>
 <body data-talon-accent="emerald">
@@ -1434,7 +1460,7 @@ body[data-talon-accent="cyan"] { --talon:#0ea5e9; --talon-2:#38bdf8; --talon-dee
     <span class="nav-logo-text">Falqen<em>V</em>iew</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#investing">Investing</a></li>
+    <li><a href="#investing" class="nav-investing">Investing</a></li>
     <li><a href="#talon" class="nav-talon">Talon</a></li>
     <li><a href="/videos.html">Videos</a></li>
     <li><a href="#pricing">Pricing</a></li>
@@ -1445,7 +1471,7 @@ body[data-talon-accent="cyan"] { --talon:#0ea5e9; --talon-2:#38bdf8; --talon-dee
   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">≡</button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#investing">Investing</a>
+  <a href="#investing" class="v-link">Investing</a>
   <a href="#talon" class="t-link">Talon — Bills &amp; Cash</a>
   <a href="videos.html">Videos</a>
   <a href="#pricing">Pricing</a>
@@ -1630,10 +1656,10 @@ body[data-talon-accent="cyan"] { --talon:#0ea5e9; --talon-2:#38bdf8; --talon-dee
       <div class="score-grade">A</div>
       <div class="score-label">Your portfolio · May 2026</div>
       <div class="score-bars">
-        <div class="score-bar-row"><span class="score-bar-label">Gain</span><div class="score-bar-track"><div class="score-bar-fill" style="width:88%"></div></div><span class="score-pct">88</span></div>
-        <div class="score-bar-row"><span class="score-bar-label">Diversification</span><div class="score-bar-track"><div class="score-bar-fill" style="width:74%"></div></div><span class="score-pct">74</span></div>
-        <div class="score-bar-row"><span class="score-bar-label">Drift</span><div class="score-bar-track"><div class="score-bar-fill" style="width:82%"></div></div><span class="score-pct">82</span></div>
-        <div class="score-bar-row"><span class="score-bar-label">Completeness</span><div class="score-bar-track"><div class="score-bar-fill" style="width:96%"></div></div><span class="score-pct">96</span></div>
+        <div class="score-bar-row"><span class="score-bar-label">Gain</span><div class="score-bar-track"><div class="score-bar-fill" style="--bar-w:88%"></div></div><span class="score-pct">88</span></div>
+        <div class="score-bar-row"><span class="score-bar-label">Diversification</span><div class="score-bar-track"><div class="score-bar-fill" style="--bar-w:74%"></div></div><span class="score-pct">74</span></div>
+        <div class="score-bar-row"><span class="score-bar-label">Drift</span><div class="score-bar-track"><div class="score-bar-fill" style="--bar-w:82%"></div></div><span class="score-pct">82</span></div>
+        <div class="score-bar-row"><span class="score-bar-label">Completeness</span><div class="score-bar-track"><div class="score-bar-fill" style="--bar-w:96%"></div></div><span class="score-pct">96</span></div>
       </div>
     </div>
     <div class="score-copy reveal">
