@@ -1,0 +1,2018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Primary SEO -->
+<title>FalqenView — Portfolio Tracker &amp; Bills Manager for Google Sheets</title>
+<meta name="description" content="FalqenView is a family of Google Sheets tools for your money. Track investments with VuePoint — drift alerts, health score, sector concentration. Manage bills &amp; cash with Talon — due-date reminders, categories, a bills health score. One-time purchase, no subscription.">
+<meta name="keywords" content="portfolio tracker, Google Sheets portfolio, investment tracker, self-directed investor, drift alerts, portfolio health score, bills manager, bill tracker spreadsheet, bills and cash, due date reminders, bill calendar, IRA tracker, 401k tracker, HSA tracker, LTCG tracker, sector concentration, rebalance tracker">
+<meta name="author" content="FalqenView">
+<meta name="copyright" content="© 2026 FalqenView. All rights reserved.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1A73E8">
+<meta name="p:domain_verify" content="50ee6aabc9e9effdc7ec467b439f2270"/>
+<link rel="canonical" href="https://falqenview.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://falqenview.com/">
+<meta property="og:title" content="FalqenView — Portfolio Tracker &amp; Bills Manager for Google Sheets">
+<meta property="og:description" content="The falcon sees. The talon holds. Track what you invest with VuePoint; grip what you owe with Talon. One-time purchase. No subscription. Your data stays in your Google account.">
+<meta property="og:image" content="https://falqenview.com/assets/fvLogo.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="FalqenView">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FalqenView — Portfolio Tracker &amp; Bills Manager for Google Sheets">
+<meta name="twitter:description" content="The falcon sees. The talon holds. Track what you invest; grip what you owe. One-time purchase. No subscription.">
+<meta name="twitter:image" content="https://falqenview.com/assets/fvLogo.png">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="assets/fvIcon.png">
+<link rel="apple-touch-icon" href="assets/fvIcon.png">
+
+<!-- Preview-only fallback: if production assets are missing (e.g. in the design preview),
+     swap to an inline SVG so the layout stays clean. In production this never fires. -->
+<script>
+window.addEventListener('error', function(e) {
+  var t = e.target;
+  if (!t || t.tagName !== 'IMG') return;
+  var s = t.getAttribute('src') || '';
+  if (!/^assets\//.test(s) || t.dataset.fb) return;
+  t.dataset.fb = '1';
+  t.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%2338bdf8'/><stop offset='1' stop-color='%231A73E8'/></linearGradient></defs><path d='M4 6 L11 6 L16 22 L21 6 L28 6 L19 28 L13 28 Z' fill='url(%23g)'/><circle cx='16' cy='11' r='1.3' fill='%23fff' fill-opacity='0.85'/></svg>";
+}, true);
+</script>
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "FalqenView",
+  "alternateName": ["FalqenView VuePoint", "FalqenView Updraft", "FalqenView Apex", "FalqenView Talon"],
+  "description": "A family of Google Sheets tools for your money — VuePoint tracks your portfolio, Talon manages your bills and cash. Drift alerts, health scores, due-date reminders, one-time purchase.",
+  "url": "https://falqenview.com",
+  "logo": "https://falqenview.com/assets/fvLogo.png",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web, Google Sheets",
+  "featureList": "multi-account portfolio tracking, drift alerts, sector concentration, LTCG tracking, health score, rebalance planner",
+  "screenshot": "https://falqenview.com/assets/screenshot-vuepoint.png",
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "FalqenView VuePoint",
+      "price": "19.00",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "url": "https://falqenview.com"
+    },
+    {
+      "@type": "Offer",
+      "name": "FalqenView Updraft",
+      "price": "79.00",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "url": "https://falqenview.com/#updraft"
+    },
+    {
+      "@type": "Offer",
+      "name": "FalqenView Apex",
+      "price": "149.00",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "url": "https://falqenview.com/#apex"
+    },
+    {
+      "@type": "Offer",
+      "name": "FalqenView Talon — Bills &amp; Cash",
+      "price": "14.00",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "url": "https://falqenview.com/#talon"
+    }
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "FalqenView",
+    "url": "https://falqenview.com",
+    "email": "hello@falqenview.com"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=optional" rel="stylesheet"></noscript>
+
+<style>
+/* ============ TOKENS ============ */
+:root {
+  --bg:       #141820;
+  --bg-deep:  #0e1118;
+  --surface:  #1c2230;
+  --surface2: #232b3e;
+  --border:   rgba(255,255,255,0.07);
+  --border-2: rgba(255,255,255,0.12);
+  --blue:     #1A73E8;
+  --blue-2:   #1557b0;
+  --blue-dim: rgba(26,115,232,0.12);
+  --cyan:     #38bdf8;
+  --green:    #22c55e;
+  --green-2:  #4ade80;
+  --red:      #ef4444;
+  --amber:    #f59e0b;
+  --text:     #e8ecf4;
+  --text-dim: rgba(232,236,244,0.78);
+  --muted:    #7a8499;
+  --nav-h:    64px;
+
+  /* ===== Talon line (bills & cash) ===== */
+  --talon:     #10b981;
+  --talon-2:   #34d399;
+  --talon-deep:#059669;
+  --talon-dim: rgba(16,185,129,0.12);
+
+  --font-display: 'Montserrat', sans-serif;
+  --font-body:    'Lexend', sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body::before {
+  content: ''; position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.5;
+}
+
+section { position: relative; z-index: 1; }
+
+/* ============ NAV ============ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px;
+  background: rgba(20,24,32,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo img { height: 32px; width: 32px; object-fit: contain; filter: drop-shadow(0 0 8px rgba(26,115,232,0.4)); }
+@keyframes logoFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.nav-logo-text { font-family: var(--font-display); font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em; color: var(--text); }
+.nav-logo-text em { font-style: normal; color: var(--cyan); }
+.nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+.nav-links a { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; color: var(--muted); text-decoration: none; text-transform: uppercase; transition: color 0.2s; position: relative; }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--cyan); transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease; }
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-cta {
+  background: var(--blue); color: #fff !important;
+  padding: 8px 18px; border-radius: 8px;
+  font-weight: 600 !important;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(26,115,232,0.3);
+  transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
+}
+.nav-links a.nav-cta::after { display: none; }
+.nav-cta:hover { background: var(--blue-2); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(26,115,232,0.45); }
+
+.menu-toggle { display: none; background: none; border: 1px solid var(--border); color: var(--text); padding: 8px 12px; border-radius: 8px; font-size: 1.1rem; cursor: pointer; }
+
+/* Mobile menu (drops down from nav when hamburger is tapped). Hidden by default at every viewport. */
+.mobile-menu {
+  position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 99;
+  background: rgba(20,24,32,0.98); backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 18px; display: none;
+}
+.mobile-menu.shown { display: flex; flex-direction: column; gap: 4px; }
+.mobile-menu a {
+  color: var(--text); text-decoration: none;
+  padding: 12px 14px; border-radius: 8px;
+  font-size: 0.95rem; font-weight: 500;
+}
+.mobile-menu a:hover, .mobile-menu a:focus { background: var(--surface); }
+.mobile-menu a.cta { background: var(--blue); color: #fff; text-align: center; margin-top: 8px; }
+
+/* ============ HERO COMMON ============ */
+#home { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: calc(var(--nav-h) + 32px) 24px 64px; position: relative; overflow: hidden; }
+.hero-mesh { position: absolute; inset: 0; z-index: 0; background:
+  radial-gradient(ellipse 70% 50% at 50% -10%, rgba(26,115,232,0.18) 0%, transparent 60%),
+  radial-gradient(ellipse 40% 40% at 90% 70%, rgba(56,189,248,0.10) 0%, transparent 60%),
+  radial-gradient(ellipse 30% 30% at 5% 75%, rgba(26,115,232,0.07) 0%, transparent 60%);
+  animation: meshPulse 10s ease-in-out infinite alternate;
+}
+@keyframes meshPulse { from { opacity: 0.7; transform: scale(1); } to { opacity: 1; transform: scale(1.05); } }
+.hero-grid { position: absolute; inset: 0; z-index: 0; background-image:
+  linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+
+.hero-variant { display: none; position: relative; z-index: 1; width: 100%; max-width: 1240px; }
+body[data-hero="dashboard"] .hero-variant--dashboard { display: grid; }
+body[data-hero="editorial"] .hero-variant--editorial { display: block; }
+body[data-hero="constellation"] .hero-variant--constellation { display: block; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--blue-dim); border: 1px solid rgba(56,189,248,0.3);
+  border-radius: 100px; padding: 6px 14px;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--cyan);
+}
+.pulse-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); position: relative; }
+.pulse-dot::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: rgba(34,197,94,0.6); animation: pulse 2s infinite; }
+@keyframes pulse { 0% { transform: scale(1); opacity: 0.6; } 70% { transform: scale(2.6); opacity: 0; } 100% { transform: scale(1); opacity: 0; } }
+
+.btn-primary {
+  background: var(--blue); color: #fff;
+  font-family: var(--font-body); font-size: 0.92rem; font-weight: 600;
+  padding: 14px 28px; border-radius: 10px; border: none; cursor: pointer;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 24px rgba(26,115,232,0.35);
+}
+.btn-primary:hover { background: var(--blue-2); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(26,115,232,0.5); }
+.btn-ghost {
+  background: transparent; color: var(--text-dim);
+  font-family: var(--font-body); font-size: 0.92rem; font-weight: 500;
+  padding: 14px 24px; border-radius: 10px;
+  border: 1px solid var(--border-2);
+  cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  transition: color 0.2s, border-color 0.2s, transform 0.15s, background 0.2s;
+}
+.btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.03); transform: translateY(-2px); }
+
+/* ============ HERO VARIANT 1: DASHBOARD ============ */
+/* Note: `display: grid` lives in the scoped activation rule above
+   so it doesn't override the base `.hero-variant { display: none }`. */
+.hero-variant--dashboard {
+  grid-template-columns: minmax(0,1fr) minmax(0,1.1fr);
+  gap: 56px;
+  align-items: center;
+}
+.hero-copy { max-width: 540px; }
+.hero-copy .eyebrow { margin-bottom: 24px; }
+.hero-copy h1 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.2rem, 4.6vw, 3.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+.hero-copy h1 .accent {
+  background: linear-gradient(135deg, var(--blue) 0%, var(--cyan) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-copy h1 .strike { position: relative; color: var(--muted); font-weight: 700; }
+.hero-copy h1 .strike::after {
+  content: ''; position: absolute; left: -2%; right: -2%; top: 52%; height: 3px;
+  background: var(--amber); transform: rotate(-3deg);
+}
+.hero-copy .sub {
+  margin-top: 22px; font-size: 1.05rem; font-weight: 300; line-height: 1.65;
+  color: var(--text-dim); max-width: 480px;
+}
+.hero-copy .actions { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
+.hero-trust-row {
+  margin-top: 32px; display: flex; gap: 22px; flex-wrap: wrap;
+  padding-top: 24px; border-top: 1px solid var(--border);
+}
+.hero-trust-item { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--text-dim); font-weight: 400; }
+.hero-trust-item svg { width: 16px; height: 16px; color: var(--green); flex-shrink: 0; }
+
+/* DASHBOARD MOCK */
+.mock-wrap {
+  position: relative;
+  perspective: 1800px;
+  perspective-origin: 30% 50%;
+}
+.mock-glow {
+  position: absolute; inset: -40px; z-index: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(26,115,232,0.25), transparent 70%);
+  filter: blur(40px);
+}
+.mock {
+  position: relative; z-index: 1;
+  background: var(--bg-deep);
+  border: 1px solid var(--border-2);
+  border-radius: 14px;
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.55),
+    0 8px 28px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+  overflow: hidden;
+  transform: rotateY(-6deg) rotateX(2deg);
+  transition: transform 0.5s ease;
+}
+.mock:hover { transform: rotateY(-3deg) rotateX(1deg); }
+.mock-chrome {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 14px;
+  background: linear-gradient(180deg, #232a37 0%, #1a2029 100%);
+  border-bottom: 1px solid var(--border);
+}
+.mock-dot { width: 10px; height: 10px; border-radius: 50%; }
+.mock-dot.r { background: #ef4444; } .mock-dot.y { background: #f59e0b; } .mock-dot.g { background: #22c55e; }
+.mock-url {
+  flex: 1; text-align: center;
+  font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted);
+  background: rgba(0,0,0,0.25); padding: 5px 12px; border-radius: 6px;
+  margin: 0 32px; max-width: 320px;
+}
+.mock-tabs {
+  display: flex; gap: 0;
+  padding: 0 14px;
+  background: var(--bg-deep);
+  border-bottom: 1px solid var(--border);
+}
+.mock-tab {
+  font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500;
+  padding: 9px 14px; color: var(--muted);
+  border-bottom: 2px solid transparent;
+  cursor: default;
+}
+.mock-tab.active { color: var(--cyan); border-bottom-color: var(--cyan); }
+.mock-body { padding: 18px; }
+
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+.kpi {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.kpi-label { font-size: 0.6rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+.kpi-val { font-family: var(--font-display); font-size: 1rem; font-weight: 800; margin-top: 3px; letter-spacing: -0.02em; }
+.kpi-val.pos { color: var(--green-2); }
+.kpi-grade { font-family: var(--font-display); font-size: 1.5rem; font-weight: 900; line-height: 1; margin-top: 0; color: var(--green-2); }
+
+.tbl { width: 100%; border-collapse: collapse; }
+.tbl th {
+  font-family: var(--font-mono); font-size: 0.6rem;
+  font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--muted); text-align: left;
+  padding: 6px 8px; border-bottom: 1px solid var(--border);
+}
+.tbl th.r { text-align: right; }
+.tbl td {
+  font-size: 0.72rem; padding: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.tbl td.r { text-align: right; font-family: var(--font-mono); font-weight: 500; }
+.tbl tr:last-child td { border-bottom: none; }
+.tkr { font-family: var(--font-display); font-weight: 700; font-size: 0.78rem; }
+.chip { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 100px; font-family: var(--font-mono); font-size: 0.62rem; font-weight: 600; }
+.chip.ok    { background: rgba(34,197,94,0.12);  color: var(--green-2); }
+.chip.warn  { background: rgba(245,158,11,0.14); color: #fbbf24; }
+.chip.bad   { background: rgba(239,68,68,0.14);  color: #f87171; }
+.signal { font-family: var(--font-mono); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em; padding: 3px 10px; border-radius: 6px; }
+.signal.buy   { background: rgba(34,197,94,0.18);  color: var(--green-2); border: 1px solid rgba(34,197,94,0.3); }
+.signal.hold  { background: rgba(56,189,248,0.14); color: var(--cyan);    border: 1px solid rgba(56,189,248,0.3); }
+.signal.trim  { background: rgba(245,158,11,0.16); color: #fbbf24;        border: 1px solid rgba(245,158,11,0.3); }
+.signal.review{ background: rgba(239,68,68,0.16);  color: #f87171;        border: 1px solid rgba(239,68,68,0.3); }
+
+/* Floating tags overlapping the mock */
+.float-tag {
+  position: absolute; z-index: 3;
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.78rem;
+  display: flex; align-items: center; gap: 10px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+  animation: floatTag 5s ease-in-out infinite;
+}
+.float-tag .ft-icon { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.float-tag .ft-icon svg { width: 16px; height: 16px; }
+.float-tag .ft-text { line-height: 1.25; }
+.float-tag .ft-text strong { display: block; font-weight: 600; font-size: 0.78rem; }
+.float-tag .ft-text small { font-size: 0.66rem; color: var(--muted); }
+.float-tag.t1 { top: -18px; left: -32px; animation-delay: 0s; }
+.float-tag.t1 .ft-icon { background: rgba(245,158,11,0.18); color: #fbbf24; }
+.float-tag.t2 { bottom: 60px; right: -38px; animation-delay: 1.5s; }
+.float-tag.t2 .ft-icon { background: rgba(34,197,94,0.18); color: var(--green-2); }
+@keyframes floatTag { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+/* ============ HERO VARIANT 2: EDITORIAL ============ */
+.hero-variant--editorial { text-align: left; }
+.editorial-inner { max-width: 1100px; margin: 0 auto; padding: 0 8px; }
+.editorial-top {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 36px; flex-wrap: wrap; gap: 16px;
+}
+.editorial-meta { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+.editorial-meta-item { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+.editorial-meta-item strong { color: var(--text); font-weight: 600; }
+
+.editorial-h1 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.6rem, 8vw, 6.2rem);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  margin-bottom: 36px;
+}
+.editorial-h1 .ln { display: block; }
+.editorial-h1 .underline { display: inline-block; position: relative; }
+.editorial-h1 .underline::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 4px; height: 14px;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+  z-index: -1; opacity: 0.5;
+  border-radius: 4px;
+}
+.editorial-h1 .accent { color: var(--cyan); }
+.editorial-h1 .quiet { color: var(--muted); font-weight: 600; }
+.editorial-h1 em { font-style: italic; font-family: 'Lexend', serif; font-weight: 300; }
+
+.editorial-bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: end;
+  min-height: 220px;
+}
+.editorial-sub {
+  font-size: 1.15rem; line-height: 1.6; color: var(--text-dim);
+  font-weight: 300; max-width: 520px;
+}
+.editorial-sub strong { color: var(--text); font-weight: 500; }
+.editorial-actions { display: flex; flex-direction: column; gap: 14px; align-items: flex-end; }
+.editorial-actions .row { display: flex; gap: 12px; }
+.editorial-footnote {
+  font-family: var(--font-mono); font-size: 0.7rem;
+  color: var(--muted); letter-spacing: 0.05em;
+}
+.editorial-footnote span { color: var(--green-2); }
+
+/* ============ EDITORIAL SNAPSHOT (variant 2 product strip) ============ */
+.editorial-snapshot {
+  margin: 0 0 40px;
+  padding: 18px 22px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+.editorial-snapshot::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+}
+.es-tag {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8b96aa;
+  white-space: nowrap;
+  display: flex; align-items: center; gap: 6px;
+}
+.es-tag .live { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--green); position: relative; }
+.es-tag .live::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: rgba(34,197,94,0.6); animation: pulse 2s infinite; }
+.es-stat { display: flex; flex-direction: column; gap: 3px; }
+.es-val {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.es-val.pos { color: var(--green-2); }
+.es-val.warn { color: var(--amber); }
+.es-val.grade { color: var(--green-2); font-size: 1.45rem; }
+
+/* Cycling alert slot inside the editorial snapshot */
+.es-stat.alert-slot { position: relative; }
+.alert-stream {
+  display: flex; flex-direction: column;
+  height: 1.25rem;
+  overflow: hidden;
+}
+.alert-stream .es-val {
+  height: 1.25rem;
+  line-height: 1.25rem;
+  flex-shrink: 0;
+  font-size: 1.05rem;
+  animation: alertScroll 18s cubic-bezier(0.85, 0.02, 0.18, 1) infinite;
+}
+@keyframes alertScroll {
+  0%, 11% { transform: translateY(0); }
+  16.66%, 27.66% { transform: translateY(-1.25rem); }
+  33.33%, 44.33% { transform: translateY(-2.5rem); }
+  50%, 61% { transform: translateY(-3.75rem); }
+  66.66%, 77.66% { transform: translateY(-5rem); }
+  83.33%, 94.33% { transform: translateY(-6.25rem); }
+  100% { transform: translateY(-7.5rem); }
+}
+.es-stat.alert-slot .es-label { animation: slotPulse 3s infinite ease-in-out; }
+@keyframes slotPulse {
+  0%, 100% { opacity: 1; }
+  48% { opacity: 1; }
+  52% { opacity: 0.35; }
+  56% { opacity: 1; }
+}
+.es-label {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  color: #8b96aa;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.es-divider { width: 1px; height: 28px; background: var(--border-2); }
+
+/* ============ HERO VARIANT 3: CONSTELLATION ============ */
+.hero-variant--constellation { text-align: center; max-width: 900px; margin: 0 auto; padding: 24px 0 32px; }
+.constellation-stage {
+  position: relative;
+  padding: 80px 0;
+  min-height: 520px;
+}
+.constellation-content { position: relative; z-index: 2; }
+.constellation-content .eyebrow { margin-bottom: 24px; }
+.constellation-content h1 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.2rem, 5.2vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  margin-bottom: 22px;
+}
+.constellation-content h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.constellation-content .sub {
+  font-size: 1.05rem; color: var(--text-dim); font-weight: 300;
+  line-height: 1.6; max-width: 520px; margin: 0 auto 32px;
+}
+.constellation-content .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+.orb {
+  position: absolute; z-index: 1;
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.8rem;
+  display: flex; align-items: center; gap: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  white-space: nowrap;
+  animation: orbFloat 7s ease-in-out infinite;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+@keyframes orbFloat { 0%,100% { transform: translateY(0); opacity: 1; } 50% { transform: translateY(-10px); opacity: 1; } }
+@keyframes orbIn { from { opacity: 0; transform: scale(0.85) translateY(8px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+.orb .orb-dot { width: 8px; height: 8px; border-radius: 50%; }
+.orb strong { font-weight: 600; }
+.orb small { color: var(--muted); font-size: 0.66rem; }
+.orb.c1 { top: 8%;  left: -2%;  animation-delay: 0.3s; }
+.orb.c2 { top: 4%;  right: 0%;  animation-delay: 0.6s; }
+.orb.c3 { top: 48%; left: -8%;  animation-delay: 0.9s; }
+.orb.c4 { top: 52%; right: -8%; animation-delay: 1.2s; }
+.orb.c5 { bottom: 4%; left: 8%; animation-delay: 1.5s; }
+.orb.c6 { bottom: 0%; right: 6%; animation-delay: 1.8s; }
+.orb .green { background: var(--green); }
+.orb .amber { background: var(--amber); }
+.orb .cyan  { background: var(--cyan); }
+.orb .red   { background: var(--red); }
+.orb-grade {
+  font-family: var(--font-display); font-weight: 900;
+  background: linear-gradient(135deg, var(--green), var(--green-2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; font-size: 1.4rem; line-height: 1;
+}
+
+/* SVG connecting lines for constellation */
+.constellation-lines { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.constellation-lines path { stroke: var(--cyan); stroke-width: 1; fill: none; stroke-dasharray: 4 6; opacity: 0.18; animation: dash 16s linear infinite; }
+@keyframes dash { to { stroke-dashoffset: -200; } }
+
+/* ============ STATS / TRUST STRIP ============ */
+.trust-band {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 24px;
+}
+.trust-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; color: var(--text-dim); font-weight: 400; }
+.trust-item svg { width: 18px; height: 18px; color: var(--cyan); flex-shrink: 0; }
+.trust-item strong { color: var(--text); font-weight: 500; }
+
+/* ============ SHARED SECTION ============ */
+.section-label {
+  text-align: center; font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan);
+  margin-bottom: 14px;
+}
+.section-title {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  letter-spacing: -0.03em; text-align: center; margin-bottom: 14px;
+  line-height: 1.1;
+}
+.section-sub {
+  text-align: center; color: var(--text-dim); font-size: 1rem;
+  font-weight: 300; max-width: 560px; margin: 0 auto 56px; line-height: 1.6;
+}
+
+/* ============ PRODUCTS ============ */
+#investing { padding: 100px 24px; max-width: 1200px; margin: 0 auto; scroll-margin-top: 72px; }
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 64px;
+}
+.feat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 22px 20px;
+  position: relative; overflow: hidden;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.feat-card::before {
+  content: ''; position: absolute; inset: 0; border-radius: 14px;
+  background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(56,189,248,0.08) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.3s; pointer-events: none;
+}
+.feat-card:hover { transform: translateY(-3px); border-color: rgba(56,189,248,0.3); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
+.feat-card:hover::before { opacity: 1; }
+.feat-card.feat-gold { border-color: rgba(96,165,250,0.25); }
+.feat-card.feat-platinum { border-color: rgba(245,158,11,0.25); }
+.feat-icon {
+  width: 42px; height: 42px; border-radius: 11px;
+  background: var(--blue-dim); border: 1px solid rgba(26,115,232,0.25);
+  color: var(--cyan);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+.feat-icon svg { width: 20px; height: 20px; }
+.feat-card:hover .feat-icon, .feat-card:focus-within .feat-icon { transform: scale(1.06) rotate(-2deg); }
+.feat-card.feat-gold .feat-icon { background: rgba(96,165,250,0.12); border-color: rgba(96,165,250,0.3); color: #93c5fd; }
+.feat-card.feat-platinum .feat-icon { background: rgba(245,158,11,0.12); border-color: rgba(245,158,11,0.35); color: var(--amber); }
+.feat-title { font-family: var(--font-display); font-weight: 700; font-size: 1rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.feat-tier {
+  font-family: var(--font-mono); font-size: 0.58rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 100px;
+  background: rgba(96,165,250,0.15); color: #93c5fd;
+}
+.feat-tier.feat-tier-plat { background: rgba(245,158,11,0.15); color: #fbbf24; }
+.feat-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; font-weight: 300; }
+
+/* HEALTH SCORE DEMO */
+.score-demo {
+  max-width: 1100px; margin: 24px auto 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+  align-items: stretch;
+}
+.score-visual {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 16px; padding: 32px; position: relative; overflow: hidden;
+}
+.score-visual::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--green), transparent);
+}
+.score-grade {
+  font-family: var(--font-display); font-size: 5.2rem; font-weight: 900;
+  color: var(--green-2); line-height: 1;
+  text-shadow: 0 0 40px rgba(34,197,94,0.4);
+  letter-spacing: -0.04em;
+}
+.score-label { font-size: 0.78rem; color: var(--muted); margin-top: 6px; letter-spacing: 0.08em; text-transform: uppercase; }
+.score-bars { margin-top: 28px; display: flex; flex-direction: column; gap: 10px; }
+.score-bar-row { display: flex; align-items: center; gap: 12px; }
+.score-bar-label { font-size: 0.74rem; color: var(--text-dim); width: 100px; flex-shrink: 0; }
+.score-bar-track { flex: 1; height: 6px; background: var(--surface2); border-radius: 3px; overflow: hidden; }
+.score-bar-fill {
+  height: 100%; border-radius: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+  animation: barGrow 1.5s ease forwards; transform-origin: left;
+}
+@keyframes barGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.score-pct { font-size: 0.72rem; color: var(--muted); width: 36px; text-align: right; font-family: var(--font-mono); }
+.score-copy { padding: 8px; display: flex; flex-direction: column; justify-content: center; }
+.score-copy h3 { font-family: var(--font-display); font-size: 1.7rem; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 14px; line-height: 1.15; }
+.score-copy p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.7; font-weight: 300; }
+
+/* ALERT STRIP — scrolling */
+.alert-strip { width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; margin-top: 72px; padding: 0; }
+.alert-strip-inner { position: relative; }
+.alert-strip::before, .alert-strip::after { content: ''; position: absolute; top: 0; bottom: 0; width: 160px; z-index: 10; pointer-events: none; }
+.alert-strip::before { left: 0; background: linear-gradient(90deg, var(--bg) 0%, transparent 100%); }
+.alert-strip::after { right: 0; background: linear-gradient(270deg, var(--bg) 0%, transparent 100%); }
+.alert-scroll-wrap { overflow: hidden; width: 100%; margin-bottom: 12px; }
+.alert-scroll-wrap:hover .alert-track { animation-play-state: paused; }
+.alert-track { display: flex; gap: 12px; width: max-content; }
+.alert-track-left  { animation: scrollLeft 28s linear infinite; }
+.alert-track-right { animation: scrollRight 28s linear infinite; }
+@keyframes scrollLeft  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes scrollRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+.alert-pill {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 100px; padding: 9px 16px;
+  font-size: 0.8rem; font-weight: 400; color: var(--text-dim);
+  cursor: default; flex-shrink: 0;
+}
+.alert-pill strong { color: var(--text); font-weight: 600; font-family: var(--font-display); }
+.alert-pill.drift { border-color: rgba(245,158,11,0.35); }
+.alert-pill.cap   { border-color: rgba(239,68,68,0.35); }
+.alert-pill.ok    { border-color: rgba(34,197,94,0.35); }
+.adot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.adot.amber { background: var(--amber); box-shadow: 0 0 6px var(--amber); }
+.adot.red   { background: var(--red);   box-shadow: 0 0 6px var(--red); }
+.adot.green { background: var(--green); box-shadow: 0 0 6px var(--green); }
+
+/* ============ VIDEO ============ */
+#video { padding: 100px 24px; max-width: 960px; margin: 0 auto; }
+.video-wrap {
+  position: relative; width: 100%; padding-bottom: 56.25%;
+  border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--border-2);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+  background: #000;
+}
+.video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+/* ============ PRICING ============ */
+#pricing {
+  padding: 100px 24px;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(26,115,232,0.10) 0%, transparent 70%),
+    linear-gradient(180deg, var(--bg) 0%, #181d28 50%, var(--bg) 100%);
+}
+.pricing-inner { max-width: 1080px; margin: 0 auto; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+.price-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 32px 26px;
+  position: relative; overflow: hidden;
+  isolation: isolate;
+  display: flex; flex-direction: column;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+.price-card:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(0,0,0,0.4); }
+
+/* Tier-distinct treatments */
+.price-card[data-tier="vuepoint"].featured {
+  border-color: var(--blue);
+  background: linear-gradient(160deg, var(--surface2) 0%, rgba(26,115,232,0.12) 100%);
+  box-shadow: 0 0 0 1px rgba(26,115,232,0.35), 0 12px 48px rgba(26,115,232,0.18);
+}
+.price-card[data-tier="vuepoint"]::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  z-index: 2;
+}
+.price-card[data-tier="updraft"] {
+  background: linear-gradient(160deg, var(--surface2) 0%, rgba(96,165,250,0.08) 100%);
+  border-color: rgba(96,165,250,0.22);
+}
+.price-card[data-tier="updraft"]:hover { border-color: rgba(96,165,250,0.4); }
+.price-card[data-tier="updraft"]::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, #93c5fd, transparent);
+  z-index: 2;
+}
+.price-card[data-tier="apex"] {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,166,74,0.08) 0%, transparent 60%),
+    linear-gradient(165deg, #181f2c 0%, #11151d 60%, #0e1118 100%);
+  border-color: rgba(212,166,74,0.30);
+  box-shadow: 0 0 0 1px rgba(212,166,74,0.18), 0 16px 48px rgba(0,0,0,0.45), 0 8px 36px rgba(212,166,74,0.10);
+}
+.price-card[data-tier="apex"]:hover {
+  border-color: rgba(230,192,104,0.55);
+  box-shadow: 0 0 0 1px rgba(212,166,74,0.30), 0 24px 60px rgba(0,0,0,0.5), 0 12px 48px rgba(212,166,74,0.18);
+}
+.price-card[data-tier="apex"]::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(212,166,74,0.30) 20%, #e6c068 50%, rgba(212,166,74,0.30) 80%, transparent 100%);
+  z-index: 2;
+}
+.price-card[data-tier="apex"] .price-tier { color: #e6c068; }
+.price-card[data-tier="apex"] .price-val {
+  background: linear-gradient(180deg, #f0d088 0%, #c89b3c 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.price-card[data-tier="apex"] .price-val sup {
+  background: none; -webkit-text-fill-color: #e6c068; color: #e6c068;
+}
+.price-card[data-tier="apex"] .price-badge.coming {
+  background: linear-gradient(135deg, #e6c068, #c89b3c); color: #1a140a;
+  border: 1px solid #f0d088;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.25);
+  box-shadow: 0 2px 8px rgba(212,166,74,0.35);
+}
+
+/* Decorative watermarks */
+.price-deco {
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+}
+.price-deco.vuepoint { bottom: -10px; right: -10px; width: 170px; height: 170px; opacity: 0.10; color: var(--cyan); }
+.price-deco.updraft  { bottom: -20px; right: -30px; width: 220px; height: 220px; opacity: 0.14; color: #93c5fd; }
+.price-deco.apex     { bottom: -10px; left: -10px; right: -10px; width: auto; height: 130px; opacity: 0.18; color: #d4a64a; }
+.price-card.coming { opacity: 1; }
+.price-card.coming::after {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(135deg, transparent 0 14px, rgba(255,255,255,0.012) 14px 15px);
+  pointer-events: none;
+}
+
+.price-badge {
+  position: absolute; top: 16px; right: 16px;
+  font-family: var(--font-mono); font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.1em; padding: 4px 10px; border-radius: 100px;
+}
+.price-badge.available { background: var(--blue); color: #fff; }
+.price-badge.coming    { background: rgba(245,158,11,0.18); color: #fbbf24; border: 1px solid rgba(245,158,11,0.35); }
+
+.price-tier {
+  font-family: var(--font-display); font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 10px;
+}
+.price-card.featured .price-tier { color: var(--cyan); }
+.price-tagline {
+  font-size: 0.82rem; color: var(--text-dim); font-weight: 300;
+  margin-bottom: 18px; line-height: 1.5; min-height: 2.4em;
+}
+.price-val { font-family: var(--font-display); font-size: 2.8rem; font-weight: 900; letter-spacing: -0.04em; color: var(--text); line-height: 1; }
+.price-val sup { font-size: 1.3rem; vertical-align: super; opacity: 0.65; margin-right: 2px; }
+.price-once { font-size: 0.74rem; color: var(--muted); margin-top: 6px; margin-bottom: 22px; }
+.price-features { list-style: none; margin-bottom: 22px; flex: 1; }
+.price-features li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 0.84rem; color: var(--text-dim);
+  padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-weight: 300; line-height: 1.5;
+}
+.price-features li:last-child { border-bottom: none; }
+.chk { color: var(--green); flex-shrink: 0; margin-top: 2px; font-weight: 700; }
+.lck { color: var(--muted); flex-shrink: 0; margin-top: 2px; opacity: 0.5; }
+
+.btn-price {
+  width: 100%; padding: 13px; border-radius: 10px;
+  border: none; cursor: pointer;
+  font-family: var(--font-body); font-size: 0.88rem; font-weight: 600;
+  text-decoration: none; display: block; text-align: center;
+  transition: all 0.2s;
+}
+.btn-price-solid { background: var(--blue); color: #fff; box-shadow: 0 4px 20px rgba(26,115,232,0.35); }
+.btn-price-solid:hover { background: var(--blue-2); transform: translateY(-1px); }
+.btn-price-ghost { background: transparent; color: var(--text); border: 1px solid var(--border-2); }
+.btn-price-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+
+/* WAITLIST */
+.waitlist {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.waitlist-row {
+  display: flex; gap: 6px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 4px;
+}
+.waitlist-row input {
+  flex: 1; min-width: 0;
+  background: transparent; border: none;
+  color: var(--text); font-family: var(--font-body); font-size: 0.82rem;
+  padding: 8px 10px; outline: none;
+}
+.waitlist-row input::placeholder { color: var(--muted); }
+.waitlist-row button {
+  background: rgba(245,158,11,0.2); color: #fbbf24;
+  border: 1px solid rgba(245,158,11,0.35);
+  border-radius: 7px; padding: 7px 14px;
+  font-family: var(--font-body); font-size: 0.78rem; font-weight: 600;
+  cursor: pointer; white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+.waitlist-row button:hover { background: rgba(245,158,11,0.32); color: #fde68a; }
+.waitlist-row button:disabled { opacity: 0.55; cursor: wait; }
+.waitlist .h-captcha {
+  display: flex; justify-content: center; align-items: center;
+  min-height: 78px;
+  background: rgba(255,255,255,0.02);
+  border: 1px dashed var(--border-2);
+  border-radius: 8px;
+  padding: 6px;
+  transition: border-color 0.2s;
+}
+.waitlist .h-captcha:hover { border-color: rgba(56,189,248,0.3); }
+.waitlist .h-captcha:empty::before {
+  content: 'Verification loading…';
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.waitlist-msg { margin-top: 8px; font-size: 0.74rem; color: var(--green-2); display: none; font-family: var(--font-mono); letter-spacing: 0.04em; line-height: 1.5; }
+.waitlist-msg.shown { display: block; }
+
+/* COMING SOON CTA */
+.coming-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.coming-eta {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fbbf24;
+  opacity: 0.75;
+}
+.coming-note {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.guarantee {
+  margin-top: 36px; text-align: center;
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(34,197,94,0.08);
+  border: 1px solid rgba(34,197,94,0.3);
+  border-radius: 100px; padding: 10px 22px;
+  font-size: 0.82rem; color: var(--green-2); font-weight: 500;
+}
+.guarantee svg { width: 16px; height: 16px; }
+.pricing-meta { text-align: center; margin-top: 28px; }
+.upgrade-note { margin-top: 18px; font-size: 0.78rem; color: var(--muted); }
+.upgrade-note a { color: var(--cyan); text-decoration: none; }
+
+/* ============ HOMEPAGE FAQ ============ */
+#faq { padding: 80px 24px 40px; max-width: 760px; margin: 0 auto; }
+.faq-list { display: flex; flex-direction: column; gap: 10px; }
+.hp-faq {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.hp-faq:hover { border-color: var(--border-2); }
+.hp-faq[open] { border-color: rgba(56,189,248,0.3); }
+.hp-faq summary {
+  list-style: none;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text);
+  user-select: none;
+}
+.hp-faq summary::-webkit-details-marker { display: none; }
+.hp-faq summary::marker { display: none; content: ''; }
+.hp-faq-arrow {
+  width: 22px; height: 22px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; font-weight: 300;
+  color: var(--cyan);
+  flex-shrink: 0;
+  transition: transform 0.25s;
+}
+.hp-faq[open] .hp-faq-arrow { transform: rotate(45deg); }
+.hp-faq p {
+  padding: 0 20px 18px;
+  font-size: 0.88rem; font-weight: 300;
+  color: var(--text-dim); line-height: 1.7;
+}
+.hp-faq p a { color: var(--cyan); text-decoration: none; }
+.hp-faq p a:hover { text-decoration: underline; }
+.hp-faq p strong { color: var(--text); font-weight: 500; }
+
+/* ============ ABOUT ============ */
+#about { padding: 100px 24px; max-width: 820px; margin: 0 auto; text-align: center; }
+.about-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 18px; padding: 56px 44px;
+  position: relative; overflow: hidden;
+}
+.about-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+}
+.about-mark { display: flex; justify-content: center; margin-bottom: 24px; }
+.about-mark img { height: 56px; object-fit: contain; filter: drop-shadow(0 0 16px rgba(56,189,248,0.4)); animation: logoFloat 6s ease-in-out infinite; }
+.about-tagline { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 22px; line-height: 1.2; }
+.about-body { font-size: 0.95rem; color: var(--text-dim); line-height: 1.8; font-weight: 300; margin-bottom: 32px; }
+.about-body strong { color: var(--text); font-weight: 500; }
+.about-chips { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px; }
+.chip {
+  background: rgba(56,189,248,0.10); border: 1px solid rgba(56,189,248,0.4);
+  border-radius: 100px; padding: 6px 14px;
+  font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; color: #93d6f6;
+  letter-spacing: 0.02em;
+}
+.about-contact { font-size: 0.88rem; color: var(--text-dim); }
+.about-contact a { color: var(--cyan); text-decoration: none; font-weight: 500; }
+.about-contact a:hover { text-decoration: underline; }
+
+/* ============ FOOTER ============ */
+footer { border-top: 1px solid var(--border); padding: 40px 32px; position: relative; z-index: 1; }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+.footer-brand { display: flex; flex-direction: column; gap: 8px; }
+.footer-lockup { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.footer-lockup img { height: 30px; width: 30px; object-fit: contain; filter: drop-shadow(0 0 6px rgba(26,115,232,0.3)); }
+.footer-lockup-text { font-family: var(--font-display); font-weight: 800; font-size: 1rem; color: var(--text); }
+.footer-lockup-text em { font-style: normal; color: var(--cyan); }
+.footer-motto { font-size: 0.66rem; color: var(--muted); letter-spacing: 0.14em; text-transform: uppercase; padding-left: 40px; }
+.footer-links { display: flex; gap: 22px; flex-wrap: wrap; }
+.footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--text); }
+.footer-bottom {
+  max-width: 1100px; margin: 24px auto 0; padding-top: 20px;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.footer-legal { font-size: 0.72rem; color: var(--muted); }
+.footer-legal a { color: var(--cyan); text-decoration: underline; opacity: 1; }
+.footer-contact a { font-size: 0.78rem; color: var(--cyan); text-decoration: none; font-weight: 500; }
+
+/* ============ REVEAL ============ */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ============ TWEAKS PANEL ============ */
+#tweaks-root { position: fixed; bottom: 24px; right: 24px; z-index: 200; display: none; }
+#tweaks-root.shown { display: block; }
+.tweaks-card {
+  width: 280px;
+  background: rgba(20,24,32,0.96);
+  border: 1px solid var(--border-2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.55);
+}
+.tweaks-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 14px;
+}
+.tweaks-title { font-family: var(--font-display); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text); }
+.tweaks-close {
+  background: transparent; border: none; cursor: pointer;
+  color: var(--muted); font-size: 1.1rem; line-height: 1; padding: 4px;
+}
+.tweaks-close:hover { color: var(--text); }
+.tweaks-section-label { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.tweaks-options { display: flex; flex-direction: column; gap: 6px; }
+.tweak-opt {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  font-size: 0.82rem; color: var(--text-dim);
+  cursor: pointer; text-align: left;
+  font-family: var(--font-body); font-weight: 500;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+.tweak-opt:hover { border-color: var(--border-2); color: var(--text); }
+.tweak-opt.active { border-color: var(--cyan); background: rgba(56,189,248,0.08); color: var(--text); }
+.tweak-opt .radio {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 1.5px solid var(--muted);
+  flex-shrink: 0; position: relative;
+}
+.tweak-opt.active .radio { border-color: var(--cyan); }
+.tweak-opt.active .radio::after {
+  content: ''; position: absolute; inset: 2px; border-radius: 50%; background: var(--cyan);
+}
+.tweak-opt small { display: block; font-size: 0.68rem; color: var(--muted); margin-top: 2px; font-weight: 400; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1024px) {
+  .hero-variant--dashboard { grid-template-columns: 1fr; gap: 48px; }
+  .hero-variant--dashboard .hero-copy { max-width: 100%; text-align: center; margin: 0 auto; }
+  .hero-variant--dashboard .hero-copy .sub { margin-left: auto; margin-right: auto; }
+  .hero-variant--dashboard .hero-copy .actions { justify-content: center; }
+  .hero-variant--dashboard .hero-trust-row { justify-content: center; }
+  .mock { transform: rotateY(0) rotateX(0); }
+  .float-tag.t1 { left: -10px; }
+  .float-tag.t2 { right: -10px; }
+  .editorial-bottom { grid-template-columns: 1fr; gap: 28px; }
+  .editorial-actions { align-items: flex-start; }
+}
+
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 0 18px; }
+
+  #home { padding-top: calc(var(--nav-h) + 20px); }
+
+  .editorial-h1 { font-size: clamp(2rem, 11vw, 3.6rem); }
+  .editorial-top { margin-bottom: 28px; }
+  .editorial-meta { gap: 14px; }
+  .editorial-snapshot {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 18px;
+    padding: 16px 18px;
+  }
+  .editorial-snapshot .es-divider { display: none; }
+  .editorial-snapshot .es-tag { grid-column: 1 / -1; margin-bottom: 2px; }
+
+  .constellation-stage { padding: 40px 0; min-height: auto; }
+  .orb { display: none; }
+  .orb.c1, .orb.c4 { display: flex; position: static; margin: 12px auto; animation: none; opacity: 1; }
+  .constellation-content { padding-top: 0; }
+
+  .pricing-grid { grid-template-columns: 1fr; }
+  .score-demo { grid-template-columns: 1fr; }
+  .about-card { padding: 36px 22px; }
+  footer { padding: 32px 18px; }
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .footer-motto { padding-left: 0; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+
+  /* Mock chrome compresses */
+  .mock-url { margin: 0 8px; max-width: none; font-size: 0.6rem; }
+  .mock-body { padding: 12px; }
+  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+  .tbl th, .tbl td { font-size: 0.66rem; padding: 6px; }
+  .signal { font-size: 0.56rem; padding: 2px 6px; }
+
+  .float-tag { display: none; }
+
+  #tweaks-root { bottom: 16px; right: 16px; left: 16px; }
+  .tweaks-card { width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .hero-copy h1 { font-size: 2rem; line-height: 1.1; }
+  .editorial-h1 { font-size: 2.2rem; line-height: 1; }
+  .btn-primary, .btn-ghost { padding: 12px 20px; font-size: 0.86rem; }
+  #investing, #videos, #pricing, #about { padding-left: 18px; padding-right: 18px; }
+  .feat-card { padding: 18px 18px 16px; }
+  .about-card { padding: 28px 18px; }
+  .about-tagline { font-size: 1.25rem; }
+  .price-card { padding: 26px 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+.btn-price-wrap { display: flex; flex-direction: column; gap: 10px; }
+.btn-price-gumroad { background: var(--blue); color: #fff !important; box-shadow: 0 4px 20px rgba(26,115,232,0.35); }
+.btn-price-gumroad:hover { background: var(--blue-2) !important; transform: translateY(-1px); box-shadow: 0 8px 28px rgba(26,115,232,0.5) !important; }
+
+/* ============================================================
+   TALON LINE + TWO-PILLAR BRAND HERO  (added for Talon launch)
+   ============================================================ */
+/* accent swap (Tweaks) */
+body[data-talon-accent="teal"] { --talon:#14b8a6; --talon-2:#2dd4bf; --talon-deep:#0d9488; --talon-dim:rgba(20,184,166,0.12); }
+body[data-talon-accent="cyan"] { --talon:#0ea5e9; --talon-2:#38bdf8; --talon-deep:#0284c7; --talon-dim:rgba(56,189,248,0.12); }
+
+.accent-see { background:linear-gradient(135deg,var(--blue),var(--cyan)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.accent-hold { color:var(--talon-2); }
+
+/* ---- Two-pillar brand hero ---- */
+.brand-hero { position:relative; z-index:1; width:100%; max-width:1180px; text-align:center; }
+.brand-hero .eyebrow { margin-bottom:22px; }
+.brand-hero-h1 { font-family:var(--font-display); font-weight:900; font-size:clamp(2.6rem,6.4vw,5.2rem); line-height:0.98; letter-spacing:-0.04em; }
+.brand-hero-sub { margin:22px auto 0; max-width:640px; font-size:1.05rem; font-weight:300; line-height:1.62; color:var(--text-dim); }
+.brand-hero-sub strong { color:var(--text); font-weight:500; }
+.pillar-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:40px; text-align:left; }
+.bpillar { position:relative; display:flex; flex-direction:column; background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:26px 26px 22px; text-decoration:none; color:var(--text); overflow:hidden; transition:transform .25s, border-color .25s, box-shadow .25s; }
+.bpillar::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; }
+.bpillar.view { border-color:rgba(56,189,248,0.28); }
+.bpillar.view::before { background:linear-gradient(90deg,transparent,var(--cyan),transparent); }
+.bpillar.talon { border-color:rgba(16,185,129,0.32); }
+.bpillar.talon::before { background:linear-gradient(90deg,transparent,var(--talon-2),transparent); }
+.bpillar:hover { transform:translateY(-4px); box-shadow:0 22px 50px rgba(0,0,0,0.35); }
+.bpillar.view:hover { border-color:rgba(56,189,248,0.5); }
+.bpillar.talon:hover { border-color:rgba(16,185,129,0.55); }
+.bpillar-k { font-family:var(--font-mono); font-size:0.66rem; letter-spacing:0.14em; text-transform:uppercase; display:flex; align-items:center; gap:7px; }
+.bpillar.view .bpillar-k { color:var(--cyan); }
+.bpillar.talon .bpillar-k { color:var(--talon-2); }
+.bpillar-k .ndot { width:6px; height:6px; border-radius:50%; background:var(--talon); box-shadow:0 0 8px var(--talon); }
+.bpillar-h { font-family:var(--font-display); font-weight:800; font-size:1.5rem; letter-spacing:-0.025em; margin:12px 0 8px; line-height:1.08; }
+.bpillar-d { font-size:0.9rem; color:var(--text-dim); font-weight:300; line-height:1.55; }
+.bpillar-stats { display:flex; margin:18px 0 16px; border:1px solid var(--border); border-radius:10px; overflow:hidden; background:rgba(0,0,0,0.2); }
+.bpillar-stat { flex:1; padding:10px 12px; border-right:1px solid var(--border); }
+.bpillar-stat:last-child { border-right:none; }
+.bpillar-stat .v { font-family:var(--font-display); font-weight:800; font-size:1.05rem; letter-spacing:-0.02em; font-variant-numeric:tabular-nums; }
+.bpillar-stat .v.pos { color:var(--green-2); }
+.bpillar-stat .v.due { color:var(--amber); }
+.bpillar-stat .v.past { color:#f87171; }
+.bpillar-stat .v.grade-a { color:var(--green-2); }
+.bpillar-stat .v.grade-b { color:var(--talon-2); }
+.bpillar-stat .l { font-family:var(--font-mono); font-size:0.56rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); margin-top:3px; }
+.bpillar-tiers { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px; }
+.btier { font-family:var(--font-mono); font-size:0.62rem; font-weight:600; letter-spacing:0.03em; padding:4px 9px; border-radius:100px; border:1px solid var(--border-2); color:var(--text-dim); display:inline-flex; align-items:center; gap:5px; }
+.btier .tdot { width:6px; height:6px; border-radius:2px; }
+.bpillar-cta { margin-top:auto; font-family:var(--font-body); font-weight:600; font-size:0.92rem; display:inline-flex; align-items:center; gap:8px; transition:gap .2s; }
+.bpillar.view .bpillar-cta { color:var(--cyan); }
+.bpillar.talon .bpillar-cta { color:var(--talon-2); }
+.bpillar:hover .bpillar-cta { gap:12px; }
+.brand-hero-foot { margin-top:30px; font-family:var(--font-mono); font-size:0.72rem; color:var(--muted); letter-spacing:0.06em; }
+.brand-hero-foot span { color:var(--green-2); }
+
+/* ---- Talon spotlight section ---- */
+#talon { position:relative; padding:100px 24px; overflow:hidden; border-top:1px solid var(--border); scroll-margin-top:64px; }
+.talon-plate { position:absolute; inset:0; z-index:0; background:radial-gradient(ellipse 55% 50% at 82% 18%,rgba(16,185,129,0.13),transparent 60%),radial-gradient(ellipse 40% 40% at 4% 92%,rgba(16,185,129,0.06),transparent 60%); }
+.talon-inner { position:relative; z-index:1; max-width:1180px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); gap:56px; align-items:center; }
+.talon-label { color:var(--talon-2) !important; text-align:left; }
+.talon-copy h2 { font-family:var(--font-display); font-weight:800; font-size:clamp(2rem,4.2vw,3rem); letter-spacing:-0.03em; line-height:1.05; margin-bottom:16px; }
+.talon-copy h2 span { color:var(--talon-2); }
+.talon-lead { font-size:1.02rem; color:var(--text-dim); font-weight:300; line-height:1.65; margin-bottom:26px; max-width:480px; }
+.talon-lead strong { color:var(--text); font-weight:500; }
+.talon-feats { display:grid; grid-template-columns:1fr 1fr; gap:16px 18px; margin-bottom:28px; }
+.talon-feat { display:flex; gap:12px; align-items:flex-start; }
+.talon-feat .tf-ico { width:38px; height:38px; border-radius:10px; background:var(--talon-dim); border:1px solid rgba(16,185,129,0.28); color:var(--talon-2); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.talon-feat .tf-ico svg { width:19px; height:19px; }
+.talon-feat .tf-t { font-family:var(--font-display); font-weight:700; font-size:0.92rem; }
+.talon-feat .tf-d { font-size:0.78rem; color:var(--text-dim); font-weight:300; line-height:1.45; margin-top:3px; }
+.talon-actions { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:14px; }
+.btn-talon { background:var(--talon); color:#04150f; font-family:var(--font-body); font-weight:600; font-size:0.92rem; padding:14px 26px; border-radius:10px; text-decoration:none; display:inline-flex; align-items:center; gap:8px; box-shadow:0 4px 22px rgba(16,185,129,0.32); transition:transform .15s, box-shadow .2s, background .2s; }
+.btn-talon:hover { background:var(--talon-2); transform:translateY(-2px); box-shadow:0 8px 30px rgba(16,185,129,0.48); }
+.talon-bundle { font-size:0.82rem; color:var(--text-dim); }
+.talon-bundle strong { color:var(--talon-2); font-weight:600; }
+.talon-trust { font-family:var(--font-mono); font-size:0.7rem; color:var(--muted); letter-spacing:0.05em; }
+.talon-mock-wrap { position:relative; }
+.talon-mock-glow { position:absolute; inset:-30px; z-index:0; background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(16,185,129,0.22),transparent 70%); filter:blur(40px); }
+.talon-mock-wrap .mock { position:relative; z-index:1; transform:rotateY(4deg) rotateX(2deg); }
+.talon-mock-wrap .mock:hover { transform:rotateY(2deg) rotateX(1deg); }
+#talon .mock-tab.active { color:var(--talon-2); border-bottom-color:var(--talon-2); }
+#talon .kpi-grade { color:var(--talon-2); }
+.bcat { display:inline-flex; align-items:center; gap:6px; }
+.bcat .cdot { width:7px; height:7px; border-radius:2px; flex-shrink:0; }
+.bchip { display:inline-flex; align-items:center; font-family:var(--font-mono); font-size:0.6rem; font-weight:600; padding:2px 8px; border-radius:6px; letter-spacing:0.02em; }
+.bchip.auto { background:rgba(16,185,129,0.14); color:var(--talon-2); }
+.bchip.man  { background:rgba(122,132,153,0.18); color:#aeb6c7; }
+.bchip.soon { background:rgba(245,158,11,0.16); color:#fbbf24; }
+.bchip.past { background:rgba(239,68,68,0.16); color:#f87171; }
+.bchip.paid { background:rgba(34,197,94,0.14); color:var(--green-2); }
+.float-tag.talon-ft .ft-icon { background:rgba(16,185,129,0.18); color:var(--talon-2); }
+
+/* ---- Pricing groups + Talon card ---- */
+.pricing-group-label { display:flex; align-items:center; gap:14px; font-family:var(--font-mono); font-size:0.72rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin:0 0 22px; }
+.pricing-group-label::after { content:''; flex:1; height:1px; background:var(--border); }
+.pricing-group-label .pgl-note { font-weight:400; letter-spacing:0.04em; text-transform:none; color:var(--muted); }
+.pricing-group-label.talon { color:var(--talon-2); margin-top:54px; }
+.pricing-grid--talon { display:flex; justify-content:center; }
+.price-card[data-tier="talon"] { background:linear-gradient(160deg,var(--surface2) 0%,rgba(16,185,129,0.10) 100%); border-color:rgba(16,185,129,0.35); max-width:660px; width:100%; }
+.price-card[data-tier="talon"]:hover { border-color:rgba(16,185,129,0.55); }
+.price-card[data-tier="talon"]::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--talon-2),transparent); z-index:2; }
+.price-card[data-tier="talon"] .price-tier { color:var(--talon-2); }
+.price-badge.talon { background:var(--talon); color:#04150f; }
+.price-deco.talon { bottom:-16px; right:-12px; width:190px; height:190px; opacity:0.10; color:var(--talon-2); }
+.talon-card-grid { display:grid; grid-template-columns:0.95fr 1.05fr; gap:26px; align-items:stretch; }
+.talon-card-grid .tcg-right { border-left:1px solid var(--border); padding-left:26px; display:flex; flex-direction:column; }
+.btn-price-talon { background:var(--talon); color:#04150f !important; box-shadow:0 4px 20px rgba(16,185,129,0.35); }
+.btn-price-talon:hover { background:var(--talon-2) !important; transform:translateY(-1px); box-shadow:0 8px 28px rgba(16,185,129,0.5) !important; }
+
+/* nav Talon dot */
+.nav-talon { display:inline-flex !important; align-items:center; gap:6px; }
+.nav-talon::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--talon); box-shadow:0 0 7px var(--talon); }
+.mobile-menu a.t-link { color:var(--talon-2); }
+
+@media (max-width:1024px) {
+  .pillar-grid { grid-template-columns:1fr; }
+  .talon-inner { grid-template-columns:1fr; gap:40px; }
+  .talon-mock-wrap .mock { transform:none; }
+}
+@media (max-width:768px) {
+  .talon-feats { grid-template-columns:1fr; }
+  .talon-card-grid { grid-template-columns:1fr; }
+  .talon-card-grid .tcg-right { border-left:none; padding-left:0; border-top:1px solid var(--border); padding-top:20px; }
+  #talon { padding:72px 18px; }
+  .brand-hero-h1 { font-size:clamp(2.2rem,10vw,3.4rem); }
+}
+</style>
+</head>
+<body data-talon-accent="emerald">
+
+<!-- ============ NAV ============ -->
+<nav>
+  <a href="#home" class="nav-logo" aria-label="FalqenView">
+    <picture>
+      <source srcset="assets/fvIcon-32.webp" type="image/webp">
+      <img src="assets/fvIcon.png" alt="FalqenView icon" width="32" height="32">
+    </picture>
+    <span class="nav-logo-text">Falqen<em>V</em>iew</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#investing">Investing</a></li>
+    <li><a href="#talon" class="nav-talon">Talon</a></li>
+    <li><a href="/videos.html">Videos</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="support.html">Support</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#pricing" class="nav-cta">Get Started</a></li>
+  </ul>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">≡</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#investing">Investing</a>
+  <a href="#talon" class="t-link">Talon — Bills &amp; Cash</a>
+  <a href="videos.html">Videos</a>
+  <a href="#pricing">Pricing</a>
+  <a href="support.html">Support</a>
+  <a href="#about">About</a>
+  <a href="#pricing" class="cta">Get Started →</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section id="home">
+  <div class="hero-mesh"></div>
+  <div class="hero-grid"></div>
+
+  <div class="brand-hero">
+    <div class="eyebrow"><span class="pulse-dot"></span>One falcon · two instincts</div>
+    <h1 class="brand-hero-h1">The falcon <span class="accent-see">sees.</span><br>The talon <span class="accent-hold">holds.</span></h1>
+    <p class="brand-hero-sub">Two Google Sheets, one rule: <strong>own your numbers.</strong> Track what you invest. Grip what you owe. No subscription, no logins, no data ever leaving your Drive.</p>
+
+    <div class="pillar-grid">
+      <!-- VIEW / INVESTING -->
+      <a href="#investing" class="bpillar view reveal">
+        <div class="bpillar-k">The View line</div>
+        <div class="bpillar-h">See everything</div>
+        <p class="bpillar-d">A Google Sheets portfolio tracker — drift alerts, CAGR, buy/sell signals, sector concentration, and a health score. The whole portfolio, one pane.</p>
+        <div class="bpillar-stats">
+          <div class="bpillar-stat"><div class="v">$284,591</div><div class="l">total value</div></div>
+          <div class="bpillar-stat"><div class="v pos">+17.4%</div><div class="l">YTD</div></div>
+          <div class="bpillar-stat"><div class="v grade-a">A</div><div class="l">health</div></div>
+        </div>
+        <div class="bpillar-tiers">
+          <span class="btier"><span class="tdot" style="background:var(--cyan)"></span>VuePoint · $19</span>
+          <span class="btier"><span class="tdot" style="background:#93c5fd"></span>Updraft · $79</span>
+          <span class="btier"><span class="tdot" style="background:#d4a64a"></span>Apex · $149</span>
+        </div>
+        <span class="bpillar-cta">Explore investing <span aria-hidden="true">→</span></span>
+      </a>
+
+      <!-- TALON / BILLS -->
+      <a href="#talon" class="bpillar talon reveal">
+        <div class="bpillar-k"><span class="ndot"></span>The Talon line · new</div>
+        <div class="bpillar-h">Keep your bills in your grip</div>
+        <p class="bpillar-d">A simple, complete bills manager. Auto &amp; manual bills, a due-date calendar with reminders, categories — and a bills health score so you always know where you stand.</p>
+        <div class="bpillar-stats">
+          <div class="bpillar-stat"><div class="v due">4</div><div class="l">due soon</div></div>
+          <div class="bpillar-stat"><div class="v past">1</div><div class="l">past due</div></div>
+          <div class="bpillar-stat"><div class="v grade-b">B</div><div class="l">health</div></div>
+        </div>
+        <div class="bpillar-tiers">
+          <span class="btier"><span class="tdot" style="background:var(--talon)"></span>Talon · $14</span>
+          <span class="btier">Available now</span>
+          <span class="btier">Free with Apex</span>
+        </div>
+        <span class="bpillar-cta">Meet Talon <span aria-hidden="true">→</span></span>
+      </a>
+    </div>
+
+    <div class="brand-hero-foot"><span>●</span> One-time purchase · Yours forever · No subscription · Lives in your Google Drive</div>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="trust-band">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span><strong>SSL Secured</strong> · 256-bit</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L4 6 v6 c0 5 3.5 9 8 10 4.5-1 8-5 8-10 V6 z"/></svg>
+      <span><strong>Privacy first</strong> · stays in your Drive</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 12l-4 4-4-4"/><path d="M12 8v8"/></svg>
+      <span><strong>Works in</strong> your Google account</span>
+    </div>
+	<div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 11h20"/></svg>
+      <span><strong>Gumroad</strong> secure checkout</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ INVESTING (The View line) ============ -->
+<section id="investing">
+  <p class="section-label reveal">The View line · investing</p>
+  <h2 class="section-title reveal">Everything an advisor charges<br>1% a year to half-do.</h2>
+  <p class="section-sub reveal">No fluff. No subscription. No "log in to view your statement." Just a sheet that thinks — from <strong style="color:var(--text)">VuePoint</strong> to <strong style="color:var(--text)">Apex</strong>.</p>
+
+  <div class="features-grid">
+    <div class="feat-card reveal">
+      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div>
+      <div class="feat-title">Buy / Sell Decision Helper</div>
+      <p class="feat-desc">Every position gets a clear call: <strong style="color:var(--text)">TRIM, BUY, HOLD, REVIEW</strong>. Pulled from your drift, gain, and target — not vibes.</p>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+      <div class="feat-title">Annual Return (CAGR)</div>
+      <p class="feat-desc">Gain % lies. CAGR doesn't. See the true annualized return on every position — the same metric pros use.</p>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></div>
+      <div class="feat-title">Drift Alerts</div>
+      <p class="feat-desc">Set your target allocation. FalqenView fires the moment anything drifts past your threshold. Know what to trim. Know what to buy.</p>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 L4 7 v6 c0 5 3.5 9 8 10 4.5-1 8-5 8-10 V7 z"/><polyline points="8.5 12 11 14.5 15.5 10"/></svg></div>
+      <div class="feat-title">Portfolio Health Score</div>
+      <p class="feat-desc">One letter. A through F. Pulled from gain, diversification, drift, and data completeness. Open the sheet — know in one glance whether you're fine.</p>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7H5a2 2 0 1 1 0-4h13.5"/><path d="M19 7V6a1 1 0 0 0-1-1H5"/><circle cx="17" cy="13" r="1.4" fill="currentColor" stroke="none"/></svg></div>
+      <div class="feat-title">Cash Drag Monitor</div>
+      <p class="feat-desc">Idle cash is quietly costing you. We watch your cash level across accounts and flag the moment drag exceeds your threshold.</p>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></div>
+      <div class="feat-title">Sector Concentration</div>
+      <p class="feat-desc">Tech-heavy without realizing it? We roll sector exposure across <em>all</em> your accounts into one unified view. Risk you can actually see.</p>
+    </div>
+    <div class="feat-card feat-gold reveal">
+      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="2" y1="14" x2="6" y2="14"/><line x1="10" y1="8" x2="14" y2="8"/><line x1="18" y1="16" x2="22" y2="16"/></svg></div>
+      <div class="feat-title">What-If Rebalance <span class="feat-tier">Updraft</span></div>
+      <p class="feat-desc">Model the trade before you make the trade. Stress-test allocations, compare scenarios, and walk in knowing exactly what shifts.</p>
+    </div>
+    <div class="feat-card feat-gold reveal">
+      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg></div>
+      <div class="feat-title">Tax-Loss Harvest Scanner <span class="feat-tier">Updraft</span></div>
+      <p class="feat-desc">Losses you haven't harvested yet are money on the floor. One scan surfaces positions that could offset your gains before December 31.</p>
+    </div>
+    <div class="feat-card feat-platinum reveal">
+      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></div>
+      <div class="feat-title">Mobile Dashboard <span class="feat-tier feat-tier-plat">Apex</span></div>
+      <p class="feat-desc">Your entire portfolio as a real WebApp — fast, clean, opinionated. Live values, alerts, breakdowns. Pull it up at the dinner table.</p>
+    </div>
+  </div>
+
+  <!-- HEALTH SCORE DEMO -->
+  <div class="score-demo">
+    <div class="score-visual reveal">
+      <div class="score-grade">A</div>
+      <div class="score-label">Your portfolio · May 2026</div>
+      <div class="score-bars">
+        <div class="score-bar-row"><span class="score-bar-label">Gain</span><div class="score-bar-track"><div class="score-bar-fill" style="width:88%"></div></div><span class="score-pct">88</span></div>
+        <div class="score-bar-row"><span class="score-bar-label">Diversification</span><div class="score-bar-track"><div class="score-bar-fill" style="width:74%"></div></div><span class="score-pct">74</span></div>
+        <div class="score-bar-row"><span class="score-bar-label">Drift</span><div class="score-bar-track"><div class="score-bar-fill" style="width:82%"></div></div><span class="score-pct">82</span></div>
+        <div class="score-bar-row"><span class="score-bar-label">Completeness</span><div class="score-bar-track"><div class="score-bar-fill" style="width:96%"></div></div><span class="score-pct">96</span></div>
+      </div>
+    </div>
+    <div class="score-copy reveal">
+      <h3>One letter. Every time you open the sheet.</h3>
+      <p>The Health Score pulls from gain performance, diversification, drift exposure, and data completeness — and squashes it into a single grade. No interpretation. No dashboard archaeology. Just a verdict on whether your portfolio needs attention this week.</p>
+    </div>
+  </div>
+
+  <!-- ALERT STRIP -->
+  <div class="alert-strip reveal">
+    <p class="section-label" style="margin-bottom: 20px;">Smart alerts built in</p>
+    <div class="alert-strip-inner">
+      <div class="alert-scroll-wrap">
+        <div class="alert-track alert-track-left">
+          <div class="alert-pill drift"><span class="adot amber"></span><strong>TSLA</strong> drifted +8.2% above target</div>
+          <div class="alert-pill cap"><span class="adot red"></span><strong>MSFT</strong> exceeds 25% position cap</div>
+          <div class="alert-pill ok"><span class="adot green"></span><strong>AAPL</strong> within target range</div>
+          <div class="alert-pill drift"><span class="adot amber"></span>Cash drag · IRA at 12%</div>
+          <div class="alert-pill ok"><span class="adot green"></span>Portfolio Health: <strong>A</strong></div>
+          <div class="alert-pill ok"><span class="adot green"></span><strong>AMZN</strong> · LTCG opens in 14 days</div>
+          <div class="alert-pill drift"><span class="adot amber"></span><strong>TSLA</strong> drifted +8.2% above target</div>
+          <div class="alert-pill cap"><span class="adot red"></span><strong>MSFT</strong> exceeds 25% position cap</div>
+          <div class="alert-pill ok"><span class="adot green"></span><strong>AAPL</strong> within target range</div>
+          <div class="alert-pill drift"><span class="adot amber"></span>Cash drag · IRA at 12%</div>
+          <div class="alert-pill ok"><span class="adot green"></span>Portfolio Health: <strong>A</strong></div>
+          <div class="alert-pill ok"><span class="adot green"></span><strong>AMZN</strong> · LTCG opens in 14 days</div>
+        </div>
+      </div>
+      <div class="alert-scroll-wrap">
+        <div class="alert-track alert-track-right">
+          <div class="alert-pill drift"><span class="adot amber"></span><strong>GOOGL</strong> drifted −9.1% below target</div>
+          <div class="alert-pill cap"><span class="adot red"></span>Sector cap · Tech at 64%</div>
+          <div class="alert-pill ok"><span class="adot green"></span><strong>NVDA</strong> · LTCG cleared ✓</div>
+          <div class="alert-pill cap"><span class="adot red"></span>Portfolio −2.3% today</div>
+          <div class="alert-pill ok"><span class="adot green"></span><strong>META</strong> within target range</div>
+          <div class="alert-pill cap"><span class="adot red"></span>Momentum: <strong>NFLX</strong> −11% in 5 days</div>
+          <div class="alert-pill drift"><span class="adot amber"></span><strong>GOOGL</strong> drifted −9.1% below target</div>
+          <div class="alert-pill cap"><span class="adot red"></span>Sector cap · Tech at 64%</div>
+          <div class="alert-pill ok"><span class="adot green"></span><strong>NVDA</strong> · LTCG cleared ✓</div>
+          <div class="alert-pill cap"><span class="adot red"></span>Portfolio −2.3% today</div>
+          <div class="alert-pill ok"><span class="adot green"></span><strong>META</strong> within target range</div>
+          <div class="alert-pill cap"><span class="adot red"></span>Momentum: <strong>NFLX</strong> −11% in 5 days</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TALON (The Talon line · bills & cash) ============ -->
+<section id="talon">
+  <div class="talon-plate"></div>
+  <div class="talon-inner">
+    <div class="talon-copy">
+      <p class="section-label talon-label reveal">The Talon line · bills &amp; cash</p>
+      <h2 class="reveal">Keep your bills <span>in your grip.</span></h2>
+      <p class="talon-lead reveal">Talon is a simple, complete bills manager that lives in the same place your portfolio does — a Google Sheet you own. <strong>Auto &amp; manual bills, a due-date calendar, categories, and a real-time health score.</strong> No app. No login. No late fees you didn't see coming.</p>
+
+      <div class="talon-feats reveal">
+        <div class="talon-feat">
+          <div class="tf-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><circle cx="12" cy="15.5" r="2" fill="currentColor" stroke="none"/></svg></div>
+          <div><div class="tf-t">Calendar &amp; reminders</div><div class="tf-d">Every due date on a calendar. Talon nudges you before anything's late.</div></div>
+        </div>
+        <div class="talon-feat">
+          <div class="tf-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><polyline points="21 4 21 9.5 15.5 9.5"/></svg></div>
+          <div><div class="tf-t">Auto &amp; manual bills</div><div class="tf-d">Flag each bill autopay or manual — Talon tracks which still need your hand.</div></div>
+        </div>
+        <div class="talon-feat">
+          <div class="tf-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.59 13.41 13.42 20.6a2 2 0 0 1-2.83 0L3 13V3h10l7.59 7.59a2 2 0 0 1 0 2.82z"/><circle cx="7.5" cy="7.5" r="1.4" fill="currentColor" stroke="none"/></svg></div>
+          <div><div class="tf-t">Categories</div><div class="tf-d">Group by housing, utilities, subscriptions — see where the money actually goes.</div></div>
+        </div>
+        <div class="talon-feat">
+          <div class="tf-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 L4 7 v6 c0 5 3.5 9 8 10 4.5-1 8-5 8-10 V7 z"/><polyline points="8.5 12 11 14.5 15.5 10"/></svg></div>
+          <div><div class="tf-t">Bills health score</div><div class="tf-d">One letter, A–F — autopay coverage, due-soon vs. past-due, all in a glance.</div></div>
+        </div>
+      </div>
+
+      <div class="talon-actions reveal">
+        <a href="https://falqenview.gumroad.com/l/talon" class="btn-talon">Get Talon — $14 <span aria-hidden="true">→</span></a>
+        <span class="talon-bundle">Free with <strong>Apex</strong></span>
+      </div>
+      <p class="talon-trust reveal">Google Sheets · lives in your Drive · one-time purchase · yours forever</p>
+    </div>
+
+    <div class="talon-mock-wrap reveal">
+      <div class="talon-mock-glow"></div>
+      <div class="mock" aria-hidden="true">
+        <div class="mock-chrome">
+          <div class="mock-dot r"></div>
+          <div class="mock-dot y"></div>
+          <div class="mock-dot g"></div>
+          <div class="mock-url">docs.google.com/spreadsheets/d/FalqenView-Talon</div>
+          <div style="width:60px;"></div>
+        </div>
+        <div class="mock-tabs">
+          <div class="mock-tab active">Bills</div>
+          <div class="mock-tab">Calendar</div>
+          <div class="mock-tab">Categories</div>
+          <div class="mock-tab">Summary</div>
+        </div>
+        <div class="mock-body">
+          <div class="kpi-row">
+            <div class="kpi"><div class="kpi-label">Due Soon</div><div class="kpi-val" style="color:var(--amber)">4</div></div>
+            <div class="kpi"><div class="kpi-label">Past Due</div><div class="kpi-val" style="color:#f87171">1</div></div>
+            <div class="kpi"><div class="kpi-label">On Autopay</div><div class="kpi-val">68%</div></div>
+            <div class="kpi"><div class="kpi-label">Health</div><div class="kpi-grade">B</div></div>
+          </div>
+          <table class="tbl">
+            <thead><tr>
+              <th>Bill</th>
+              <th>Category</th>
+              <th class="r">Due</th>
+              <th class="r">Type</th>
+              <th class="r">Amount</th>
+            </tr></thead>
+            <tbody>
+              <tr><td><span class="tkr" style="font-size:0.74rem">Rent</span></td><td><span class="bcat"><span class="cdot" style="background:#60a5fa"></span>Housing</span></td><td class="r"><span class="bchip soon">3 DAYS</span></td><td class="r"><span class="bchip man">MANUAL</span></td><td class="r">$1,850</td></tr>
+              <tr><td><span class="tkr" style="font-size:0.74rem">Electric</span></td><td><span class="bcat"><span class="cdot" style="background:#fbbf24"></span>Utilities</span></td><td class="r"><span class="bchip past">PAST DUE</span></td><td class="r"><span class="bchip man">MANUAL</span></td><td class="r">$142</td></tr>
+              <tr><td><span class="tkr" style="font-size:0.74rem">Car insurance</span></td><td><span class="bcat"><span class="cdot" style="background:#34d399"></span>Insurance</span></td><td class="r"><span class="bchip soon">6 DAYS</span></td><td class="r"><span class="bchip auto">AUTO</span></td><td class="r">$96</td></tr>
+              <tr><td><span class="tkr" style="font-size:0.74rem">Netflix</span></td><td><span class="bcat"><span class="cdot" style="background:#a78bfa"></span>Subscriptions</span></td><td class="r"><span class="bchip paid">PAID</span></td><td class="r"><span class="bchip auto">AUTO</span></td><td class="r">$15</td></tr>
+              <tr><td><span class="tkr" style="font-size:0.74rem">Internet</span></td><td><span class="bcat"><span class="cdot" style="background:#fbbf24"></span>Utilities</span></td><td class="r"><span class="bchip soon">9 DAYS</span></td><td class="r"><span class="bchip auto">AUTO</span></td><td class="r">$70</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="float-tag talon-ft" style="bottom:46px; left:-30px;">
+        <div class="ft-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+        <div class="ft-text"><strong>Electric · past due</strong><small>reminder sent · pay by Fri</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEO ============ -->
+<section id="video">
+  <p class="section-label reveal">See it in action</p>
+  <h2 class="section-title reveal">The portfolio tracker<br>that thinks like an investor.</h2>
+  <p class="section-sub reveal">From the foundational clarity of VuePoint to the automated intelligence of Apex. Six minutes — shorter than your last quarterly review, considerably more useful.</p>
+  <div class="video-wrap reveal">
+    <iframe
+      src="https://www.youtube.com/embed/5k8n-hp9pGY?rel=0&modestbranding=1&color=white"
+      title="FalqenView — The Portfolio Tracker That Thinks Like an Investor"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section id="pricing">
+  <div class="pricing-inner">
+    <p class="section-label reveal">Pricing</p>
+    <h2 class="section-title reveal">Pay once. Use it forever.<br>Yes, really.</h2>
+    <p class="section-sub reveal">No subscription. No "free trial that auto-charges in 14 days." One charge, lifetime updates, your data stays yours.</p>
+
+    <p class="pricing-group-label reveal">Investing · the View line</p>
+    <div class="pricing-grid">
+
+      <!-- VUEPOINT — AVAILABLE -->
+      <div class="price-card featured reveal" data-tier="vuepoint">
+        <svg class="price-deco vuepoint" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <circle cx="100" cy="100" r="80"/>
+          <circle cx="100" cy="100" r="55"/>
+          <circle cx="100" cy="100" r="30"/>
+          <circle cx="100" cy="100" r="6" fill="currentColor"/>
+        </svg>
+        <span class="price-badge available">AVAILABLE NOW</span>
+        <div class="price-tier">VuePoint</div>
+        <p class="price-tagline">The complete tracker. Everything most self-directed investors need.</p>
+        <div class="price-val"><sup>$</sup>19</div>
+        <div class="price-once">one-time purchase · lifetime use</div>
+        <ul class="price-features">
+          <li><span class="chk">✓</span><span><strong style="color:var(--text)">5 accounts</strong>, 5 positions each</span></li>
+          <li><span class="chk">✓</span>Ticker auto-fill (name, price, sector)</li>
+          <li><span class="chk">✓</span>Gain / loss + LTCG date tracking</li>
+          <li><span class="chk">✓</span>Drift alerts (per-position threshold)</li>
+          <li><span class="chk">✓</span>Portfolio Health Score (A–F)</li>
+          <li><span class="chk">✓</span>Sector concentration view</li>
+          <li><span class="chk">✓</span>Cash drag monitor</li>
+		  <li><span class="chk">✓</span>Tax-loss harvest scanner</li>
+          <li><span class="chk">✓</span>Buy / Sell decision helper</li>
+          <li><span class="chk">✓</span>CAGR per position</li>
+          <li><span class="chk">✓</span>300+ ticker database</li>
+        </ul>
+	 <div class="btn-price-wrap">
+          <a href="https://falqenview.gumroad.com/l/mqookv" class="btn-price btn-price-gumroad">Get VuePoint — $19 →</a>
+        </div>
+      </div>
+
+      <!-- UPDRAFT — COMING -->
+      <div class="price-card coming reveal" data-tier="updraft">
+        <svg class="price-deco updraft" viewBox="0 0 220 220" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+          <path d="M10 180 Q70 130 110 150 T210 80"/>
+          <path d="M20 210 Q80 160 120 180 T220 120"/>
+          <path d="M0 140 Q60 90 100 110 T200 40"/>
+          <polyline points="190 50 210 40 210 60"/>
+          <polyline points="200 90 220 80 220 100"/>
+          <polyline points="210 130 220 120 220 140"/>
+        </svg>
+        <span class="price-badge coming">UNDER DEVELOPMENT</span>
+        <div class="price-tier">Updraft</div>
+        <p class="price-tagline">Visual dashboard, what-if rebalances, tax-loss scanner.</p>
+        <div class="price-val"><sup>$</sup>79</div>
+        <div class="price-once">launch pricing · early waitlist</div>
+        <ul class="price-features">
+          <li><span class="chk">✓</span>Everything in VuePoint</li>
+          <li><span class="chk">✓</span>Visual dashboard (charts + KPIs)</li>
+          <li><span class="chk">✓</span>What-If rebalance calculator</li>
+          <li><span class="chk">✓</span>LTCG calendar timeline</li>
+          <li><span class="chk">✓</span>Net worth tracker</li>
+          <li><span class="chk">✓</span>Benchmark vs S&amp;P 500</li>
+          <li><span class="chk">✓</span>Dividend income forecaster</li>
+        </ul>
+        <div class="coming-cta">
+          <div class="coming-eta">&#9201; Est. Q3 2026</div>
+          <p class="coming-note">Start with VuePoint — upgrade at launch pricing when Updraft ships.</p>
+          <a href="https://falqenview.gumroad.com/l/mqookv" class="btn-price btn-price-ghost">Get VuePoint now &mdash; $19 &rarr;</a>
+        </div>
+      </div>
+
+      <!-- APEX — COMING -->
+      <div class="price-card coming reveal" data-tier="apex">
+        <svg class="price-deco apex" viewBox="0 0 320 130" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+          <path d="M0 130 L60 60 L100 85 L160 25 L210 70 L255 50 L320 130"/>
+          <circle cx="160" cy="25" r="3" fill="currentColor"/>
+        </svg>
+        <span class="price-badge coming">COMING · MID Q3 2026</span>
+        <div class="price-tier">Apex</div>
+        <p class="price-tagline">Mobile WebApp, email alerts, the works. The whole arsenal.</p>
+        <div class="price-val"><sup>$</sup>149</div>
+        <div class="price-once">launch pricing · early waitlist</div>
+        <ul class="price-features">
+          <li><span class="chk">✓</span>Everything in Updraft</li>
+          <li><span class="chk">✓</span>Mobile Dashboard (WebApp)</li>
+          <li><span class="chk">✓</span>Email alerts &amp; notifications</li>
+          <li><span class="chk">✓</span>Portfolio snapshots + sparkline</li>
+          <li><span class="chk">✓</span>Annual performance report</li>
+          <li><span class="chk">✓</span>Multi-year contribution tracker</li>
+          <li><span class="chk">✓</span>Priority support</li>
+          <li><span class="chk">✓</span>First access to new products</li>
+        </ul>
+        <div class="coming-cta">
+          <div class="coming-eta">&#9201; Est. Mid Q3 2026</div>
+          <p class="coming-note">Start with VuePoint &mdash; upgrade path to Apex opens at launch.</p>
+          <a href="https://falqenview.gumroad.com/l/mqookv" class="btn-price btn-price-ghost">Get VuePoint now &mdash; $19 &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="pricing-group-label talon reveal">Bills &amp; cash · the Talon line <span class="pgl-note">— included free with Apex</span></p>
+    <div class="pricing-grid--talon reveal">
+      <div class="price-card" data-tier="talon">
+        <svg class="price-deco talon" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M60 28 h80 v144 l-16 -10 -16 10 -16 -10 -16 10 -16 -10 -16 10 z"/>
+          <path d="M78 64 h44 M78 90 h44 M78 116 h26"/>
+        </svg>
+        <span class="price-badge talon">AVAILABLE NOW</span>
+        <div class="talon-card-grid">
+          <div class="tcg-left">
+            <div class="price-tier">Talon</div>
+            <p class="price-tagline">A simple, complete bills manager. The other half of FalqenView.</p>
+            <div class="price-val"><sup>$</sup>14</div>
+            <div class="price-once">one-time purchase · lifetime use</div>
+            <div class="btn-price-wrap">
+              <a href="https://falqenview.gumroad.com/l/talon" class="btn-price btn-price-talon">Get Talon — $14 →</a>
+            </div>
+            <p class="talon-bundle" style="margin-top:16px;">Free with <strong>Apex</strong> — the whole arsenal.</p>
+          </div>
+          <div class="tcg-right">
+            <ul class="price-features">
+              <li><span class="chk">✓</span><span>Unlimited bills, <strong style="color:var(--text)">auto &amp; manual</strong></span></li>
+              <li><span class="chk">✓</span>Due-date calendar + reminders</li>
+              <li><span class="chk">✓</span>Categories &amp; spend breakdown</li>
+              <li><span class="chk">✓</span>Bills health score (A–F)</li>
+              <li><span class="chk">✓</span>Due-soon &amp; past-due tracking</li>
+              <li><span class="chk">✓</span>Autopay coverage monitor</li>
+              <li><span class="chk">✓</span>Monthly &amp; annual totals</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pricing-meta">
+      <p class="upgrade-note">Already a VuePoint buyer? <a href="support.html">Contact us</a> with your order # for upgrade pricing when Updraft and Apex ship.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOMEPAGE FAQ ============ -->
+<section id="faq">
+  <p class="section-label reveal">Common questions</p>
+  <h2 class="section-title reveal">Before you buy</h2>
+  <p class="section-sub reveal">If you've read this far, you have questions. Probably these.</p>
+  <div class="faq-list">
+    <details class="hp-faq reveal">
+      <summary>Do I need Excel or Microsoft 365?<span class="hp-faq-arrow">+</span></summary>
+      <p>Nope. FalqenView lives in Google Sheets. If you have a free Google account, you have everything you need — no Excel, no Microsoft 365, no separate app to install.</p>
+    </details>
+    <details class="hp-faq reveal">
+      <summary>What if I have more than 5 accounts?<span class="hp-faq-arrow">+</span></summary>
+      <p>VuePoint covers <strong>5 accounts × 5 positions</strong> out of the box. Updraft removes the 5 positions per-account cap when it ships.</p>
+    </details>
+    <details class="hp-faq reveal">
+      <summary>How private is my portfolio data?<span class="hp-faq-arrow">+</span></summary>
+      <p>Completely. The sheet lives in <strong>your</strong> Google Drive. We don't have a server, an API, or a way to see your data. Nothing is transmitted outside your Google account.</p>
+    </details>
+    <details class="hp-faq reveal">
+      <summary>Will it work on my phone?<span class="hp-faq-arrow">+</span></summary>
+      <p>The sheet opens in the Google Sheets mobile app on iOS and Android — view-only is comfortable, edits are workable. A dedicated mobile dashboard (live values, alerts, account breakdowns) ships with Apex.</p>
+    </details>
+    <details class="hp-faq reveal">
+      <summary>Is this a subscription? Will it auto-renew?<span class="hp-faq-arrow">+</span></summary>
+      <p>No. One charge. No renewal. No "free trial that auto-charges in 14 days." Lifetime use, and all updates within your tier are included forever.</p>
+    </details>
+    <details class="hp-faq reveal">
+      <summary>Can I upgrade to Updraft or Apex later?<span class="hp-faq-arrow">+</span></summary>
+      <p>Yes — at upgrade pricing. <a href="support.html">Reach out</a> with your original order number and we'll set you up. Start with VuePoint now and your upgrade path opens the moment Updraft and Apex ship.</p>
+    </details>
+    <details class="hp-faq reveal">
+      <summary>What's Talon — and is it the same as VuePoint?<span class="hp-faq-arrow">+</span></summary>
+      <p><strong>Talon is the bills-and-cash half of FalqenView.</strong> VuePoint tracks what you <em>invest</em>; Talon manages what you <em>owe</em> — bills, due dates, categories, autopay coverage, and a bills health score. Same idea (a Google Sheet you own, one-time purchase), different job. Buy either, or both.</p>
+    </details>
+    <details class="hp-faq reveal">
+      <summary>Is Talon included with Apex?<span class="hp-faq-arrow">+</span></summary>
+      <p>Yes. <strong>Talon ships free with Apex</strong> — the top investing tier — so the whole arsenal sits in one place. On its own, Talon is <strong>$14, once</strong>. (Updraft does not include Talon.)</p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <p class="section-label reveal">Our story</p>
+  <h2 class="section-title reveal">About FalqenView</h2>
+  <div class="about-card reveal">
+    <div class="about-mark">
+      <img src="assets/fvLogo.png" alt="FalqenView" width="258" height="56">
+    </div>
+    <div class="about-tagline">Built to put you back in control of your money.</div>
+    <p class="about-body">FalqenView started as a personal frustration. Managing four accounts — IRA, Roth, taxable, HSA — shouldn't require a Bloomberg terminal or a financial advisor with a logo.<br><br>So we built the tracker we wanted. <strong>No monthly fee. No data sharing. No fluff.</strong> Just a sheet that lives in your own Google account and gives you the clarity to invest like a grown-up.<br><br>Talon is that same instinct pointed at the other half of the problem — the bills. <strong>The falcon sees from above and grips below.</strong> Two sheets, one philosophy: own your numbers.</p>
+    <div class="about-chips">
+      <span class="chip">Self-directed</span>
+      <span class="chip">No AUM fees</span>
+      <span class="chip">Bills &amp; cash</span>
+      <span class="chip">Privacy-first</span>
+      <span class="chip">One-time purchase</span>
+      <span class="chip">Your data, your Drive</span>
+    </div>
+    <p class="about-contact"><a href="support.html">Visit Support →</a></p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#home" class="footer-lockup" aria-label="FalqenView">
+        <picture>
+          <source srcset="assets/fvIcon-32.webp" type="image/webp">
+          <img src="assets/fvIcon.png" alt="FalqenView" width="30" height="30">
+        </picture>
+        <span class="footer-lockup-text">Falqen<em>V</em>iew</span>
+      </a>
+      <div class="footer-motto">See further. Act smarter.</div>
+    </div>
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#investing">Investing</a>
+      <a href="#talon">Talon</a>
+      <a href="videos.html">Videos</a>
+      <a href="#pricing">Pricing</a>
+      <a href="support.html">Support</a>
+      <a href="#about">About</a>
+      <a href="changelog.html">Changelog</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-legal">© 2026 FalqenView · <a href="terms.html">Terms of Use</a> · <a href="privacy.html">Privacy Policy</a> · For informational purposes only. Not financial advice.</div>
+    <div class="footer-contact"><a href="support.html">Contact Support →</a></div>
+  </div>
+</footer>
+
+<!-- ============ TWEAKS PANEL ============ -->
+<div id="tweaks-root">
+  <div class="tweaks-card">
+    <div class="tweaks-header">
+      <div class="tweaks-title">Tweaks</div>
+      <button class="tweaks-close" id="tweaksClose" aria-label="Close tweaks">✕</button>
+    </div>
+    <div class="tweaks-section-label">Talon accent</div>
+    <div class="tweaks-options" id="accentOptions">
+      <button class="tweak-opt" data-accent="emerald">
+        <span class="radio"></span>
+        <span>Emerald<small>Cash green — the default</small></span>
+      </button>
+      <button class="tweak-opt" data-accent="teal">
+        <span class="radio"></span>
+        <span>Teal<small>Bridges toward brand cyan</small></span>
+      </button>
+      <button class="tweak-opt" data-accent="cyan">
+        <span class="radio"></span>
+        <span>Cyan family<small>Closest to the View line</small></span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============ TWEAKS DEFAULTS ============ */
+const TWEAKS_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "talonAccent": "emerald"
+}/*EDITMODE-END*/;
+
+let tweaks = { ...TWEAKS_DEFAULTS };
+
+function applyAccent(value) {
+  document.body.dataset.talonAccent = value;
+  document.querySelectorAll('#accentOptions .tweak-opt').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.accent === value);
+  });
+}
+
+function setTweak(key, value) {
+  tweaks[key] = value;
+  if (key === 'talonAccent') applyAccent(value);
+  try {
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [key]: value } }, '*');
+  } catch (e) {}
+}
+
+document.querySelectorAll('#accentOptions .tweak-opt').forEach(btn => {
+  btn.addEventListener('click', () => setTweak('talonAccent', btn.dataset.accent));
+});
+
+applyAccent(tweaks.talonAccent);
+
+/* ============ EDIT-MODE PROTOCOL ============ */
+const tweaksRoot = document.getElementById('tweaks-root');
+const tweaksClose = document.getElementById('tweaksClose');
+
+window.addEventListener('message', (e) => {
+  const t = e.data && e.data.type;
+  if (t === '__activate_edit_mode')   tweaksRoot.classList.add('shown');
+  if (t === '__deactivate_edit_mode') tweaksRoot.classList.remove('shown');
+});
+tweaksClose.addEventListener('click', () => {
+  tweaksRoot.classList.remove('shown');
+  try { window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*'); } catch (e) {}
+});
+
+try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch (e) {}
+
+/* ============ MOBILE NAV ============ */
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+menuToggle.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('shown');
+  menuToggle.setAttribute('aria-expanded', isOpen);
+  menuToggle.textContent = isOpen ? '✕' : '≡';
+});
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mobileMenu.classList.remove('shown');
+  menuToggle.setAttribute('aria-expanded', 'false');
+  menuToggle.textContent = '≡';
+}));
+
+/* ============ REVEAL ON SCROLL ============ */
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 60);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+reveals.forEach(el => io.observe(el));
+
+/* ============ FEATURE CARD HOVER ============ */
+document.querySelectorAll('.feat-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+    card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+  });
+});
+
+/* waitlist forms removed */
+
+/* ============ NAV ACTIVE STATE ============ */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+window.addEventListener('scroll', () => {
+  let c = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) c = s.id; });
+  navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + c ? 'var(--text)' : ''; });
+});
+</script>
+
+</body>
+</html>
