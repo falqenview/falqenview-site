@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FalqenView Qibla — A gentle first step toward prayer</title>
+<meta name="description" content="FalqenView Qibla is a free, beginner-friendly guide to the five daily prayers and a Qibla compass. No ads, no accounts, no tracking, no cost — a small gift, offered freely.">
+<meta name="keywords" content="Qibla compass, prayer guide, learn salah, new Muslim, wudu steps, prayer times, beginner prayer app, free Islamic app">
+<meta name="author" content="FalqenView">
+<meta name="theme-color" content="#1a4d3a">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://falqenview.com/qibla/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://falqenview.com/qibla/">
+<meta property="og:title" content="FalqenView Qibla — A gentle first step toward prayer">
+<meta property="og:description" content="A free, beginner-friendly prayer guide and Qibla compass. No ads, no accounts, no tracking, no cost — a small gift, offered freely.">
+<meta property="og:image" content="https://falqenview.com/assets/fvLogo.png">
+<meta property="og:site_name" content="FalqenView">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/png" href="/assets/fvIcon.png">
+<link rel="apple-touch-icon" href="/assets/fvIcon.png">
+
+<script>
+window.addEventListener('error', function(e) {
+  var t = e.target;
+  if (!t || t.tagName !== 'IMG') return;
+  var s = t.getAttribute('src') || '';
+  if (!/^\/?assets\//.test(s) || t.dataset.fb) return;
+  t.dataset.fb = '1';
+  var pic = t.parentNode;
+  if (pic && pic.tagName === 'PICTURE') { pic.querySelectorAll('source').forEach(function (so) { so.remove(); }); }
+  t.srcset = '';
+  t.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%2338bdf8'/><stop offset='1' stop-color='%231A73E8'/></linearGradient></defs><path d='M4 6 L11 6 L16 22 L21 6 L28 6 L19 28 L13 28 Z' fill='url(%23g)'/><circle cx='16' cy='11' r='1.3' fill='%23fff' fill-opacity='0.85'/></svg>";
+}, true);
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=optional" rel="stylesheet"></noscript>
+
+<style>
+:root {
+  --bg:#141820; --bg-deep:#0e1118; --surface:#1c2230; --surface2:#232b3e;
+  --border:rgba(255,255,255,0.07); --border-2:rgba(255,255,255,0.12);
+  --blue:#1A73E8; --blue-2:#1557b0; --blue-dim:rgba(26,115,232,0.12);
+  --cyan:#38bdf8; --green:#22c55e; --green-2:#4ade80; --red:#ef4444; --amber:#f59e0b;
+  --talon:#10b981; --talon-2:#34d399; --gold:#f59e0b;
+  /* Qibla green identity */
+  --q-deep:#1a4d3a; --q-mid:#52b788; --q-light:#7fd6a4;
+  --q-dim:rgba(82,183,136,0.12); --q-bg:#10241b;
+  --text:#e8ecf4; --text-dim:rgba(232,236,244,0.80); --muted:#7a8499; --nav-h:64px;
+  --font-display:'Montserrat',sans-serif; --font-body:'Lexend',sans-serif; --font-mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.5;}
+section{position:relative;z-index:1;}
+a{color:inherit;}
+
+/* NAV (identical across site) */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 32px;background:rgba(20,24,32,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:32px;width:32px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(26,115,232,0.4));}
+.nav-logo-text{font-family:var(--font-display);font-weight:800;font-size:1.1rem;letter-spacing:-0.02em;color:var(--text);}
+.nav-logo-text em{font-style:normal;color:var(--cyan);}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
+.nav-links a{font-size:0.78rem;font-weight:500;letter-spacing:0.06em;color:var(--muted);text-decoration:none;text-transform:uppercase;transition:color 0.2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--cyan);transform:scaleX(0);transform-origin:left;transition:transform 0.25s ease;}
+.nav-links a:hover{color:var(--text);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-links a.active{color:var(--text);}
+.nav-links a.active::after{transform:scaleX(1);}
+.menu-toggle{display:none;background:none;border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:1.1rem;cursor:pointer;}
+.mobile-menu{position:fixed;top:var(--nav-h);left:0;right:0;z-index:99;background:rgba(20,24,32,0.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 18px;display:none;}
+.mobile-menu.shown{display:flex;flex-direction:column;gap:4px;}
+.mobile-menu a{color:var(--text);text-decoration:none;padding:12px 14px;border-radius:8px;font-size:0.95rem;font-weight:500;}
+.mobile-menu a:hover,.mobile-menu a:focus{background:var(--surface);}
+@media (max-width:860px){.nav-links{display:none;}.menu-toggle{display:inline-flex;align-items:center;justify-content:center;}}
+
+.wrap{max-width:760px;margin:0 auto;padding:0 24px;}
+
+/* HERO */
+.q-hero{position:relative;overflow:hidden;padding:calc(var(--nav-h) + 92px) 24px 84px;text-align:center;}
+.q-hero-glow{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 60% 55% at 50% -10%,rgba(82,183,136,0.20) 0%,transparent 62%),radial-gradient(ellipse 40% 40% at 85% 88%,rgba(26,77,58,0.5) 0%,transparent 60%);}
+/* arabesque geometric pattern backdrop */
+.q-hero-pattern{position:absolute;inset:0;z-index:0;opacity:0.5;background-image:url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2352b788' stroke-opacity='0.10' stroke-width='1'%3E%3Cpath d='M60 0 L75 45 L120 60 L75 75 L60 120 L45 75 L0 60 L45 45 Z'/%3E%3Crect x='30' y='30' width='60' height='60' transform='rotate(45 60 60)'/%3E%3Ccircle cx='60' cy='60' r='30'/%3E%3C/g%3E%3C/svg%3E");mask-image:radial-gradient(ellipse 75% 75% at 50% 40%,black 10%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 75% 75% at 50% 40%,black 10%,transparent 75%);}
+.q-hero-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;}
+.q-crest{width:78px;height:78px;margin:0 auto 26px;display:flex;align-items:center;justify-content:center;}
+.q-crest svg{width:78px;height:78px;filter:drop-shadow(0 0 18px rgba(82,183,136,0.45));}
+.q-eyebrow{display:inline-block;font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--q-mid);margin-bottom:20px;}
+.q-hero h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.1rem,4.6vw,3.1rem);letter-spacing:-0.03em;line-height:1.05;}
+.q-hero h1 em{font-style:normal;color:var(--q-light);}
+.q-hero .tagline{margin-top:18px;font-size:clamp(1.05rem,1.8vw,1.25rem);font-weight:300;color:var(--text-dim);line-height:1.55;}
+.q-hero .arabic{margin-top:22px;font-size:1.1rem;color:var(--q-mid);opacity:0.85;direction:rtl;font-weight:400;}
+
+/* FREE BANNER */
+.q-free{position:relative;z-index:1;max-width:680px;margin:-40px auto 0;padding:0 24px;}
+.q-free-inner{background:linear-gradient(150deg,rgba(26,77,58,0.55),rgba(16,36,27,0.6));border:1px solid rgba(82,183,136,0.32);border-radius:18px;padding:30px 34px;text-align:center;}
+.q-free-inner h2{font-family:var(--font-display);font-weight:800;font-size:1.5rem;color:var(--q-light);letter-spacing:-0.01em;}
+.q-free-inner p{margin-top:12px;color:var(--text-dim);font-weight:300;line-height:1.7;font-size:1.0rem;}
+.q-free-inner p em{font-style:italic;color:var(--q-light);}
+
+/* CONTENT BLOCKS */
+.q-block{padding:56px 0 0;}
+.q-block h3{font-family:var(--font-display);font-weight:700;font-size:1.5rem;letter-spacing:-0.02em;margin-bottom:18px;display:flex;align-items:center;gap:14px;}
+.q-block h3::before{content:'';width:26px;height:2px;background:var(--q-mid);border-radius:2px;flex-shrink:0;}
+.q-block p{color:var(--text-dim);font-weight:300;font-size:1.06rem;line-height:1.75;margin-bottom:16px;}
+.q-block p strong{color:var(--text);font-weight:600;}
+.q-block p a{color:var(--q-light);text-decoration:none;border-bottom:1px solid rgba(82,183,136,0.4);}
+.q-block p a:hover{border-color:var(--q-light);}
+
+/* WHAT'S INSIDE LIST */
+.q-inside{list-style:none;margin:8px 0 0;display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--surface);}
+.q-inside li{display:flex;gap:16px;align-items:flex-start;padding:18px 22px;border-bottom:1px solid var(--border);}
+.q-inside li:last-child{border-bottom:none;}
+.q-inside .ic{flex-shrink:0;width:38px;height:38px;border-radius:10px;background:var(--q-dim);display:flex;align-items:center;justify-content:center;}
+.q-inside .ic svg{width:20px;height:20px;color:var(--q-mid);}
+.q-inside .tx{font-size:1.0rem;color:var(--text-dim);font-weight:300;line-height:1.5;padding-top:7px;}
+.q-inside .tx strong{color:var(--text);font-weight:600;}
+
+/* MAKER NOTE */
+.q-note{margin-top:56px;background:linear-gradient(160deg,rgba(26,77,58,0.22),rgba(20,24,32,0.3));border:1px solid rgba(82,183,136,0.22);border-radius:18px;padding:38px 36px;position:relative;overflow:hidden;}
+.q-note::before{content:'';position:absolute;top:0;right:0;width:160px;height:160px;background-image:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2352b788' stroke-opacity='0.16' stroke-width='1'%3E%3Cpath d='M40 4 L50 30 L76 40 L50 50 L40 76 L30 50 L4 40 L30 30 Z'/%3E%3C/g%3E%3C/svg%3E");background-size:80px 80px;opacity:0.7;pointer-events:none;}
+.q-note h3{font-family:var(--font-display);font-weight:700;font-size:1.3rem;margin-bottom:16px;color:var(--q-light);}
+.q-note p{color:var(--text-dim);font-weight:300;font-size:1.06rem;line-height:1.75;margin-bottom:14px;}
+.q-note p:last-child{margin-bottom:0;}
+.q-note p a{color:var(--q-light);text-decoration:none;border-bottom:1px solid rgba(82,183,136,0.4);}
+.q-note p a:hover{border-color:var(--q-light);}
+
+/* CTA */
+.q-cta-row{margin:54px auto 8px;text-align:center;}
+.q-cta{display:inline-flex;align-items:center;gap:10px;background:var(--q-mid);color:#08130d;text-decoration:none;font-family:var(--font-display);font-weight:700;font-size:1.0rem;padding:16px 34px;border-radius:12px;box-shadow:0 8px 30px rgba(82,183,136,0.28);transition:transform 0.15s,box-shadow 0.2s,filter 0.2s;}
+.q-cta:hover{transform:translateY(-2px);filter:brightness(1.06);box-shadow:0 12px 38px rgba(82,183,136,0.42);}
+.q-pass{text-align:center;margin-top:20px;color:var(--muted);font-weight:300;font-size:0.96rem;font-style:italic;}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-index:1;margin-top:72px;}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+.footer-brand{display:flex;flex-direction:column;gap:8px;}
+.footer-lockup{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.footer-lockup img{height:30px;width:30px;object-fit:contain;}
+.footer-lockup-text{font-family:var(--font-display);font-weight:800;font-size:1rem;color:var(--text);}
+.footer-lockup-text em{font-style:normal;color:var(--cyan);}
+.footer-motto{font-size:0.66rem;color:var(--muted);letter-spacing:0.14em;text-transform:uppercase;padding-left:40px;}
+.footer-links{display:flex;gap:22px;flex-wrap:wrap;}
+.footer-links a{font-size:0.78rem;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--text);}
+.footer-bottom{max-width:1100px;margin:24px auto 0;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-legal{font-size:0.7rem;color:var(--muted);opacity:0.7;}
+.footer-contact a{font-size:0.74rem;color:var(--cyan);text-decoration:none;}
+.footer-contact a:hover{text-decoration:underline;}
+.footer-contact .dot{color:var(--muted);margin:0 4px;}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+
+@media (max-width:760px){
+  nav{padding:0 18px;}
+  .q-note{padding:30px 24px;}
+  .footer-inner{flex-direction:column;align-items:flex-start;gap:18px;}
+  .footer-motto{padding-left:0;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;}
+}
+
+/* hero feature pills */
+.q-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px;}
+.q-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(82,183,136,0.10);border:1px solid rgba(82,183,136,0.30);color:var(--q-light);font-size:0.78rem;font-weight:500;padding:7px 14px;border-radius:100px;transition:transform .18s,border-color .18s,box-shadow .18s;}
+.q-pill svg{width:14px;height:14px;flex-shrink:0;}
+.q-pill:hover{transform:translateY(-2px);border-color:rgba(82,183,136,0.55);box-shadow:0 4px 14px rgba(82,183,136,0.18);}
+/* feature cards grid */
+.q-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;}
+.q-fcard{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 22px;transition:transform .2s,border-color .2s,box-shadow .2s;overflow:hidden;}
+.q-fcard::before{content:'';position:absolute;top:0;left:22px;right:22px;height:2px;background:linear-gradient(90deg,transparent,var(--q-mid),transparent);opacity:0.7;}
+.q-fcard:hover{transform:translateY(-4px);border-color:rgba(82,183,136,0.4);box-shadow:0 16px 40px rgba(0,0,0,0.35);}
+.q-fic{width:42px;height:42px;border-radius:11px;background:var(--q-dim);border:1px solid rgba(82,183,136,0.3);display:flex;align-items:center;justify-content:center;color:var(--q-mid);margin-bottom:14px;}
+.q-fic svg{width:21px;height:21px;}
+.q-fcard h4{font-family:var(--font-display);font-weight:700;font-size:1.02rem;margin-bottom:8px;letter-spacing:-0.01em;}
+.q-fcard p{color:var(--text-dim);font-weight:300;font-size:0.9rem;line-height:1.6;}
+@media(max-width:860px){.q-feature-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.q-feature-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <a href="/" class="nav-logo" aria-label="FalqenView home">
+    <picture>
+      <source srcset="/assets/fvIcon-32.webp" type="image/webp">
+      <img src="/assets/fvIcon.png" alt="FalqenView" width="32" height="32">
+    </picture>
+    <span class="nav-logo-text">Falqen<em>V</em>iew</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/products/">Products</a></li>
+    <li><a href="/videos.html">Videos</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/support.html">Support</a></li>
+    <li><a href="/changelog.html">Changelog</a></li>
+  </ul>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">≡</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">Home</a>
+  <a href="/products/">Products</a>
+  <a href="/videos.html">Videos</a>
+  <a href="/about.html">About</a>
+  <a href="/support.html">Support</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="q-hero">
+  <div class="q-hero-glow"></div>
+  <div class="q-hero-pattern"></div>
+  <div class="q-hero-inner">
+    <div class="q-crest">
+      <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <path d="M40 8a24 24 0 1 0 0 48 19 19 0 1 1 0-48z" fill="#52b788"/>
+        <path d="M47 20l2.1 5.1 5.5.4-4.2 3.6 1.3 5.4L47 37l-4.7 2.9 1.3-5.4-4.2-3.6 5.5-.4z" fill="#7fd6a4"/>
+      </svg>
+    </div>
+    <div class="q-eyebrow">FalqenView Qibla</div>
+    <h1>The first step is the hardest.<br><em>We made it easier.</em></h1>
+    <p class="tagline">A gentle, beginner-friendly guide to the five daily prayers — and a compass to face the Kaaba from wherever you are.</p>
+    <p class="arabic">السلام عليكم</p>
+    <div class="q-pills">
+      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Live prayer times</span>
+      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Nearest mosques</span>
+      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>Qibla compass</span>
+      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M5 9c0 4 3 7 7 7s7-3 7-7"/></svg>Wudu guide</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FREE BANNER ============ -->
+<div class="q-free">
+  <div class="q-free-inner reveal">
+    <h2>Free, always.</h2>
+    <p>This app is a personal gift — a small <em>sadaqah jariyah</em> — offered freely to anyone learning or returning to the basics of prayer. No ads, no accounts, no tracking. If it helps even one person, that is more than enough.</p>
+  </div>
+</div>
+
+<!-- ============ CONTENT ============ -->
+<section class="wrap">
+
+  <div class="q-block reveal">
+    <h3>Why this exists</h3>
+    <p>Most prayer apps are built for people who already know what they're doing. Long menus, dense rulings, assumed knowledge. That leaves new Muslims, younger learners, and anyone coming back to their prayers after time away without a clear, gentle first step.</p>
+    <p>This app is for those people.</p>
+    <p>It walks you through each of the five daily prayers — what to say, when to say it, how many rak'ahs, and what every word means in plain language. No prior knowledge assumed.</p>
+  </div>
+
+  <div class="q-block reveal">
+    <h3>What's inside</h3>
+    <ul class="q-inside">
+      <li>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        <span class="tx"><strong>Today's prayer times</strong> and a live countdown to the next prayer</span>
+      </li>
+      <li>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
+        <span class="tx"><strong>Step-by-step guided flow</strong> for each of the five obligatory prayers</span>
+      </li>
+      <li>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M5 9c0 4 3 7 7 7s7-3 7-7M8 22h8M12 16v6"/></svg></span>
+        <span class="tx"><strong>Wudu</strong> — requirements, steps, and order, written plainly</span>
+      </li>
+      <li>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2z"/><path d="M8 8h8M8 12h6"/></svg></span>
+        <span class="tx"><strong>Short surahs</strong> with Arabic, transliteration, and translation per ayah — linked to Quran.com audio</span>
+      </li>
+      <li>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></span>
+        <span class="tx">A <strong>Qibla compass</strong> to find the direction of the Kaaba from wherever you are</span>
+      </li>
+      <li>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <span class="tx"><strong>Beginner-friendly notes</strong> on common conditions and rulings</span>
+      </li>
+    </ul>
+  </div>
+
+  
+  <div class="q-block reveal">
+    <h3>Made to feel like a finished app</h3>
+    <div class="q-feature-grid">
+      <div class="q-fcard">
+        <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <h4>Nearest mosques</h4>
+        <p>Masjids around you, sorted by distance from your current location. Tap any one to open directions straight in Google Maps.</p>
+      </div>
+      <div class="q-fcard">
+        <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></div>
+        <h4>Live Qibla compass</h4>
+        <p>A real-time compass that points to the Kaaba from wherever you stand — calibrated to your device heading and location.</p>
+      </div>
+      <div class="q-fcard">
+        <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h4>Today's schedule</h4>
+        <p>The five prayers for today with a gentle countdown to the next — Fajr through Isha, in your local time.</p>
+      </div>
+      <div class="q-fcard">
+        <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2z"/><path d="M8 8h8M8 12h6"/></svg></div>
+        <h4>Recitation library</h4>
+        <p>Short surahs with Arabic, transliteration, and plain-language meaning per ayah — each linked to Quran.com audio.</p>
+      </div>
+      <div class="q-fcard">
+        <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M5 9c0 4 3 7 7 7s7-3 7-7M8 22h8"/></svg></div>
+        <h4>Step-by-step Wudu</h4>
+        <p>Every step of ablution in order, with a progress tracker — what's fard, what's sunnah, written for beginners.</p>
+      </div>
+      <div class="q-fcard">
+        <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h4>Beginner-first notes</h4>
+        <p>Common conditions and rulings explained gently, with a clear reminder to consult a trusted local scholar.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="q-cta-row reveal">
+    <a href="https://qibla.falqenview.com/" class="q-cta">Open Qibla <span aria-hidden="true">→</span></a>
+  </div>
+
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="footer-lockup" aria-label="FalqenView">
+        <picture>
+          <source srcset="/assets/fvIcon-32.webp" type="image/webp">
+          <img src="/assets/fvIcon.png" alt="FalqenView" width="30" height="30">
+        </picture>
+        <span class="footer-lockup-text">Falqen<em>V</em>iew</span>
+      </a>
+      <div class="footer-motto">See further. Act smarter.</div>
+    </div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/products/">Products</a>
+      <a href="/videos.html">Videos</a>
+      <a href="/about.html">About</a>
+      <a href="/support.html">Support</a>
+      <a href="/changelog.html">Changelog</a>
+      <a href="/qibla/">Qibla</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-legal">© 2026 FalqenView · <a href="/terms.html">Terms of Use</a> · <a href="/privacy.html">Privacy Policy</a> · For informational purposes only. Not financial advice.</div>
+    <div class="footer-contact"><a href="https://falqenview.gumroad.com/l/mqookv">Get VuePoint →</a> <span class="dot">·</span> <a href="https://falqenview.gumroad.com/l/bwvbl">Get Talon →</a></div>
+  </div>
+</footer>
+
+<script>
+  var mt = document.getElementById('menuToggle');
+  var mm = document.getElementById('mobileMenu');
+  if (mt && mm) {
+    mt.addEventListener('click', function () {
+      var open = mm.classList.toggle('shown');
+      mt.setAttribute('aria-expanded', open);
+      mt.textContent = open ? '✕' : '≡';
+    });
+    mm.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { mm.classList.remove('shown'); mt.textContent = '≡'; mt.setAttribute('aria-expanded', false); });
+    });
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e, i) { if (e.isIntersecting) { setTimeout(function () { e.target.classList.add('visible'); }, i * 60); io.unobserve(e.target); } });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+</script>
+</body>
+</html>
