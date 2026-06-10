@@ -167,6 +167,23 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   .footer-motto{padding-left:0;}
   .footer-bottom{flex-direction:column;align-items:flex-start;}
 }
+
+/* hero feature pills */
+.q-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px;}
+.q-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(82,183,136,0.10);border:1px solid rgba(82,183,136,0.30);color:var(--q-light);font-size:0.78rem;font-weight:500;padding:7px 14px;border-radius:100px;transition:transform .18s,border-color .18s,box-shadow .18s;}
+.q-pill svg{width:14px;height:14px;flex-shrink:0;}
+.q-pill:hover{transform:translateY(-2px);border-color:rgba(82,183,136,0.55);box-shadow:0 4px 14px rgba(82,183,136,0.18);}
+/* feature cards grid */
+.q-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;}
+.q-fcard{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 22px;transition:transform .2s,border-color .2s,box-shadow .2s;overflow:hidden;}
+.q-fcard::before{content:'';position:absolute;top:0;left:22px;right:22px;height:2px;background:linear-gradient(90deg,transparent,var(--q-mid),transparent);opacity:0.7;}
+.q-fcard:hover{transform:translateY(-4px);border-color:rgba(82,183,136,0.4);box-shadow:0 16px 40px rgba(0,0,0,0.35);}
+.q-fic{width:42px;height:42px;border-radius:11px;background:var(--q-dim);border:1px solid rgba(82,183,136,0.3);display:flex;align-items:center;justify-content:center;color:var(--q-mid);margin-bottom:14px;}
+.q-fic svg{width:21px;height:21px;}
+.q-fcard h4{font-family:var(--font-display);font-weight:700;font-size:1.02rem;margin-bottom:8px;letter-spacing:-0.01em;}
+.q-fcard p{color:var(--text-dim);font-weight:300;font-size:0.9rem;line-height:1.6;}
+@media(max-width:860px){.q-feature-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.q-feature-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -186,6 +203,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     <li><a href="/videos.html">Videos</a></li>
     <li><a href="/about.html">About</a></li>
     <li><a href="/support.html">Support</a></li>
+    <li><a href="/changelog.html">Changelog</a></li>
   </ul>
   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">≡</button>
 </nav>
@@ -212,6 +230,12 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     <h1>The first step is the hardest.<br><em>We made it easier.</em></h1>
     <p class="tagline">A gentle, beginner-friendly guide to the five daily prayers — and a compass to face the Kaaba from wherever you are.</p>
     <p class="arabic">السلام عليكم</p>
+    <div class="q-pills">
+      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Live prayer times</span>
+      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Nearest mosques</span>
+      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>Qibla compass</span>
+      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M5 9c0 4 3 7 7 7s7-3 7-7"/></svg>Wudu guide</span>
+    </div>
   </div>
 </section>
 
@@ -263,17 +287,46 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     </ul>
   </div>
 
-  <!-- MAKER NOTE -->
-  <div class="q-note reveal">
-    <h3>A note from the maker</h3>
-    <p>Built by the same person behind <a href="https://falqenview.com">FalqenView</a> — a small collection of tools made to be genuinely useful.</p>
-    <p>If even one person finds their way back to a single prayer through this, it has done its job.</p>
-    <p>Pass it along to someone who might need it.</p>
+  
+  <div class="q-block reveal">
+    <h3>Made to feel like a finished app</h3>
+    <div class="q-feature-grid">
+      <div class="q-fcard">
+        <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <h4>Nearest mosques</h4>
+        <p>Masjids around you, sorted by distance from your current location. Tap any one to open directions straight in Google Maps.</p>
+      </div>
+      <div class="q-fcard">
+        <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></div>
+        <h4>Live Qibla compass</h4>
+        <p>A real-time compass that points to the Kaaba from wherever you stand — calibrated to your device heading and location.</p>
+      </div>
+      <div class="q-fcard">
+        <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h4>Today's schedule</h4>
+        <p>The five prayers for today with a gentle countdown to the next — Fajr through Isha, in your local time.</p>
+      </div>
+      <div class="q-fcard">
+        <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2z"/><path d="M8 8h8M8 12h6"/></svg></div>
+        <h4>Recitation library</h4>
+        <p>Short surahs with Arabic, transliteration, and plain-language meaning per ayah — each linked to Quran.com audio.</p>
+      </div>
+      <div class="q-fcard">
+        <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M5 9c0 4 3 7 7 7s7-3 7-7M8 22h8"/></svg></div>
+        <h4>Step-by-step Wudu</h4>
+        <p>Every step of ablution in order, with a progress tracker — what's fard, what's sunnah, written for beginners.</p>
+      </div>
+      <div class="q-fcard">
+        <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h4>Beginner-first notes</h4>
+        <p>Common conditions and rulings explained gently, with a clear reminder to consult a trusted local scholar.</p>
+      </div>
+    </div>
   </div>
 
   <!-- CTA -->
   <div class="q-cta-row reveal">
-    <a href="#" class="q-cta">Open Qibla <span aria-hidden="true">→</span></a>
+    <a href="https://qibla.falqenview.com/" class="q-cta">Open Qibla <span aria-hidden="true">→</span></a>
   </div>
 
 </section>
@@ -297,6 +350,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       <a href="/videos.html">Videos</a>
       <a href="/about.html">About</a>
       <a href="/support.html">Support</a>
+      <a href="/changelog.html">Changelog</a>
       <a href="/qibla/">Qibla</a>
     </div>
   </div>
