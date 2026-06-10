@@ -76,44 +76,57 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-si
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.5;}
 
 /* ── PAGE ── */
-.page-wrap{position:relative;z-index:1;padding:calc(var(--nav-h) + 32px) 24px 100px;max-width:860px;margin:0 auto;}
-.page-eyebrow{font-family:var(--font-display);font-size:0.7rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px;display:inline-block;}
+.page-wrap{position:relative;z-index:1;padding:calc(var(--nav-h) + 48px) 24px 100px;max-width:1080px;margin:0 auto;}
+.page-eyebrow{font-family:var(--font-display);font-size:0.7rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px;display:inline-block;}
+.about-headline{font-family:var(--font-display);font-size:clamp(2rem,4.4vw,3.1rem);font-weight:900;letter-spacing:-0.035em;line-height:1.04;margin-bottom:14px;color:var(--text);}
+.about-headline .accent{background:linear-gradient(135deg,var(--blue) 0%,var(--cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.about-lede{font-size:1.05rem;color:var(--text-dim);font-weight:300;line-height:1.65;max-width:640px;margin-bottom:48px;}
 
-/* ── STORY CARD ── */
-.story-card{background:var(--surface);border:1px solid var(--border-2);border-radius:20px;padding:52px 48px;text-align:center;position:relative;overflow:hidden;margin-bottom:24px;}
-.story-card::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:400px;height:400px;background:radial-gradient(circle,rgba(26,115,232,0.07) 0%,transparent 68%);pointer-events:none;}
-.story-logo{display:flex;justify-content:center;margin-bottom:32px;}
-.story-logo img{height:50px;object-fit:contain;filter:drop-shadow(0 0 18px rgba(56,189,248,0.35));}
-.story-tagline{font-family:var(--font-display);font-size:1.6rem;font-weight:800;letter-spacing:-0.025em;margin-bottom:28px;line-height:1.22;color:var(--text);}
-.story-body{font-size:0.94rem;color:var(--text-dim);line-height:1.9;font-weight:300;max-width:660px;margin:0 auto 32px;text-align:left;}
-.story-body p{margin-bottom:1.1em;}
+/* ── TWO-COLUMN GRID ── */
+.about-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:32px;align-items:start;}
+
+/* left: story */
+.story-body{font-size:0.96rem;color:var(--text-dim);line-height:1.85;font-weight:300;}
+.story-body p{margin-bottom:1.05em;}
 .story-body p:last-child{margin-bottom:0;}
 .story-body strong{color:var(--text);font-weight:500;}
-.story-body .pull{font-size:1rem;font-weight:500;color:var(--text);line-height:1.7;border-left:2px solid var(--cyan);padding-left:18px;margin:24px 0;}
-.about-chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:36px;}
-.chip{font-size:0.71rem;font-weight:600;letter-spacing:0.04em;padding:5px 14px;background:var(--surface2);border:1px solid var(--border-2);border-radius:100px;color:var(--text-dim);}
-.story-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
-.cta-primary{display:inline-flex;align-items:center;gap:7px;background:var(--blue);color:#fff;text-decoration:none;font-size:0.85rem;font-weight:600;padding:11px 24px;border-radius:10px;box-shadow:0 4px 16px rgba(26,115,232,0.3);transition:background .2s,transform .15s;}
+.story-body .pull{font-size:1.12rem;font-weight:500;color:var(--text);line-height:1.5;border-left:2px solid var(--cyan);padding-left:20px;margin:28px 0;}
+.story-creed{margin-top:34px;padding-top:26px;border-top:1px solid var(--border);font-family:var(--font-display);font-size:1.02rem;font-weight:700;letter-spacing:-0.01em;color:var(--text);line-height:1.4;}
+.story-creed span{color:var(--cyan);}
+
+/* right: sticky brand + pillars */
+.about-aside{position:sticky;top:calc(var(--nav-h) + 32px);display:flex;flex-direction:column;gap:16px;}
+.aside-card{background:var(--surface);border:1px solid var(--border-2);border-radius:18px;padding:30px 26px;position:relative;overflow:hidden;}
+.aside-card::before{content:'';position:absolute;top:-90px;right:-40px;width:280px;height:280px;background:radial-gradient(circle,rgba(26,115,232,0.10) 0%,transparent 68%);pointer-events:none;}
+.aside-logo{display:flex;margin-bottom:18px;position:relative;}
+.aside-logo img{height:42px;object-fit:contain;filter:drop-shadow(0 0 16px rgba(56,189,248,0.32));}
+.aside-tagline{font-family:var(--font-display);font-size:1.18rem;font-weight:800;letter-spacing:-0.02em;line-height:1.25;color:var(--text);margin-bottom:20px;position:relative;}
+.about-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;position:relative;}
+.chip{font-size:0.71rem;font-weight:600;letter-spacing:0.04em;padding:5px 13px;background:var(--surface2);border:1px solid var(--border-2);border-radius:100px;color:var(--text-dim);}
+.story-ctas{display:flex;flex-direction:column;gap:10px;position:relative;}
+.cta-primary{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:var(--blue);color:#fff;text-decoration:none;font-size:0.85rem;font-weight:600;padding:12px 24px;border-radius:10px;box-shadow:0 4px 16px rgba(26,115,232,0.3);transition:background .2s,transform .15s;}
 .cta-primary:hover{background:var(--blue-2);transform:translateY(-1px);}
-.cta-ghost{display:inline-flex;align-items:center;gap:7px;background:transparent;color:var(--cyan);text-decoration:none;font-size:0.85rem;font-weight:500;padding:11px 22px;border-radius:10px;border:1px solid rgba(56,189,248,0.3);transition:border-color .2s,background .2s;}
+.cta-ghost{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:transparent;color:var(--cyan);text-decoration:none;font-size:0.85rem;font-weight:500;padding:12px 22px;border-radius:10px;border:1px solid rgba(56,189,248,0.3);transition:border-color .2s,background .2s;}
 .cta-ghost:hover{border-color:var(--cyan);background:rgba(56,189,248,0.06);}
 
-/* ── PILLARS ── */
-.pillars{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.pillar{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:28px 26px;transition:border-color .2s;}
+/* pillars stacked in aside */
+.pillar{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 22px;transition:border-color .2s;}
 .pillar:hover{border-color:var(--border-2);}
-.pillar-icon{margin-bottom:14px;}
+.pillar-icon{margin-bottom:12px;}
 .pillar-icon svg{display:block;}
-.pillar-name{font-family:var(--font-display);font-size:1rem;font-weight:800;letter-spacing:0.02em;margin-bottom:10px;}
+.pillar-name{font-family:var(--font-display);font-size:0.98rem;font-weight:800;letter-spacing:0.02em;margin-bottom:8px;}
 .pillar-name.vp{color:var(--cyan);}
 .pillar-name.tl{color:var(--green);}
-.pillar-desc{font-size:0.83rem;color:var(--text-dim);line-height:1.72;font-weight:300;}
+.pillar-desc{font-size:0.82rem;color:var(--text-dim);line-height:1.7;font-weight:300;}
 
-@media(max-width:640px){
-  .story-card{padding:36px 22px;}
-  .story-tagline{font-size:1.25rem;}
-  .pillars{grid-template-columns:1fr;}
+@media(max-width:860px){
+  .about-grid{grid-template-columns:1fr;gap:24px;}
+  .about-aside{position:static;}
   nav{padding:0 18px;}
+}
+@media(max-width:640px){
+  .aside-card{padding:24px 20px;}
+  .about-lede{margin-bottom:32px;}
 }
 </style>
 <style id="fv-canon">
@@ -190,67 +203,72 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 <div class="page-wrap">
 
   <span class="page-eyebrow">The not-so-boring story</span>
+  <h1 class="about-headline">Built to put you back in <span class="accent">control of your money.</span></h1>
+  <p class="about-lede">FalqenView didn't start with a pitch deck. It started with a long string of frustrations — and a decision to stop linking and start building.</p>
 
-  <div class="story-card">
-    <div class="story-logo">
-      <img src="assets/fvLogo.png" alt="FalqenView" width="220" height="48">
-    </div>
+  <div class="about-grid">
 
-    <div class="story-tagline">Built to put you back in control of your money.</div>
-
+    <!-- LEFT: story -->
     <div class="story-body">
-      <p>FalqenView didn't start with a pitch deck. It started with a long string of frustrations.</p>
       <p>Like most self-directed investors, I tried what everyone recommends — portfolio apps, budgeting dashboards, account aggregators. The pitch is always the same: link your accounts and get the full picture. Simple.</p>
       <p>Except it never is. The linkages break. Repeatedly. You reconnect, re-authorize, re-trust — over and over. Half your accounts aren't even supported, so the "complete" picture is never actually complete. And the whole time you're left wondering exactly who has eyes on your balances, your positions, your transaction history. The answers are never satisfying.</p>
       <p>Bills management was no different. Every budgeting tool demanded access. Every app needed a connection. One broken link and the whole dashboard collapses — back to maintenance mode, back to re-authorizing services you were never fully comfortable trusting in the first place.</p>
       <p class="pull">Eventually, enough was enough. So I stopped linking and started building.</p>
       <p>A sheet that lives in your Google account — not ours, not a third party's. Your data doesn't travel anywhere. There's nothing to reconnect, nothing to re-authorize, and no server on the other end wondering what to do with your financial life.</p>
       <p>VuePoint tracks what you invest. Talon tracks what you owe. Both do it without touching a system you don't control. <strong>No maintenance. No broken connections. No privacy guesswork.</strong> Just the full, clear picture — always in your hands.</p>
-      <p><strong>The falcon sees from above. The falcon grips below.</strong> Two sheets. One philosophy: own your numbers, completely.</p>
+      <div class="story-creed"><span>The falcon sees from above. The falcon grips below.</span><br>Two sheets. One philosophy: own your numbers, completely.</div>
     </div>
 
-    <div class="about-chips">
-      <span class="chip">No account linking</span>
-      <span class="chip">No data sharing</span>
-      <span class="chip">No subscription</span>
-      <span class="chip">Privacy-first</span>
-      <span class="chip">Your data, your Drive</span>
-      <span class="chip">Full control</span>
-    </div>
-
-    <div class="story-ctas">
-      <a href="/products/" class="cta-primary">See the Products →</a>
-      <a href="/support.html" class="cta-ghost">Contact Support →</a>
-    </div>
-  </div>
-
-  <div class="pillars">
-    <div class="pillar">
-      <div class="pillar-icon">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M4 27 L4 6" stroke="rgba(56,189,248,0.25)" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M4 28 L28 28" stroke="rgba(56,189,248,0.25)" stroke-width="1.5" stroke-linecap="round"/>
-          <polyline points="6,23 11,16 17,19 22,11 28,6" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="28" cy="6" r="2.5" fill="#38bdf8"/>
-          <circle cx="22" cy="11" r="1.5" fill="#38bdf8" opacity="0.55"/>
-          <circle cx="17" cy="19" r="1.5" fill="#38bdf8" opacity="0.55"/>
-        </svg>
+    <!-- RIGHT: sticky aside -->
+    <aside class="about-aside">
+      <div class="aside-card">
+        <div class="aside-logo">
+          <img src="assets/fvLogo.png" alt="FalqenView" width="200" height="44">
+        </div>
+        <div class="aside-tagline">Own your numbers, completely.</div>
+        <div class="about-chips">
+          <span class="chip">No account linking</span>
+          <span class="chip">No data sharing</span>
+          <span class="chip">No subscription</span>
+          <span class="chip">Privacy-first</span>
+          <span class="chip">Your data, your Drive</span>
+          <span class="chip">Full control</span>
+        </div>
+        <div class="story-ctas">
+          <a href="/products/" class="cta-primary">See the Products →</a>
+          <a href="/support.html" class="cta-ghost">Contact Support →</a>
+        </div>
       </div>
-      <div class="pillar-name vp">VuePoint</div>
-      <p class="pillar-desc">Portfolio tracker for self-directed investors. Drift alerts, a health score, sector concentration, LTCG tracking, and cash drag monitoring — in a Google Sheet you own. No account linking required.</p>
-    </div>
-    <div class="pillar">
-      <div class="pillar-icon">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M7 4 L7 29 L9 27 L11 29 L13 27 L15 29 L17 27 L19 29 L21 27 L23 29 L25 27 L25 4 Z" stroke="#34d399" stroke-width="1.5" stroke-linejoin="round" fill="rgba(52,211,153,0.06)"/>
-          <line x1="11" y1="11" x2="21" y2="11" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
-          <line x1="11" y1="16" x2="21" y2="16" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
-          <line x1="11" y1="21" x2="17" y2="21" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
-        </svg>
+
+      <div class="pillar">
+        <div class="pillar-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 27 L4 6" stroke="rgba(56,189,248,0.25)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M4 28 L28 28" stroke="rgba(56,189,248,0.25)" stroke-width="1.5" stroke-linecap="round"/>
+            <polyline points="6,23 11,16 17,19 22,11 28,6" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="28" cy="6" r="2.5" fill="#38bdf8"/>
+            <circle cx="22" cy="11" r="1.5" fill="#38bdf8" opacity="0.55"/>
+            <circle cx="17" cy="19" r="1.5" fill="#38bdf8" opacity="0.55"/>
+          </svg>
+        </div>
+        <div class="pillar-name vp">VuePoint</div>
+        <p class="pillar-desc">Portfolio tracker for self-directed investors. Drift alerts, a health score, sector concentration, LTCG tracking, and cash drag monitoring — in a Google Sheet you own. No account linking required.</p>
       </div>
-      <div class="pillar-name tl">Talon</div>
-      <p class="pillar-desc">Bills and cash-flow manager. Due-date reminders, autopay coverage, category breakdowns, and a bills health score — same privacy model, same Google Sheets format. No connecting to your bank.</p>
-    </div>
+
+      <div class="pillar">
+        <div class="pillar-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M7 4 L7 29 L9 27 L11 29 L13 27 L15 29 L17 27 L19 29 L21 27 L23 29 L25 27 L25 4 Z" stroke="#34d399" stroke-width="1.5" stroke-linejoin="round" fill="rgba(52,211,153,0.06)"/>
+            <line x1="11" y1="11" x2="21" y2="11" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+            <line x1="11" y1="16" x2="21" y2="16" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+            <line x1="11" y1="21" x2="17" y2="21" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="pillar-name tl">Talon</div>
+        <p class="pillar-desc">Bills and cash-flow manager. Due-date reminders, autopay coverage, category breakdowns, and a bills health score — same privacy model, same Google Sheets format. No connecting to your bank.</p>
+      </div>
+    </aside>
+
   </div>
 
 </div>
@@ -275,7 +293,6 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       <a href="/about.html">About</a>
       <a href="/support.html">Support</a>
       <a href="/changelog.html">Changelog</a>
-      <a href="/qibla/">Qibla</a>
     </div>
   </div>
   <div class="footer-bottom">
