@@ -191,6 +191,16 @@ nav {
   color: var(--text-dim); max-width: 620px;
 }
 .hero-actions { margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+.hero-cards { margin: 52px auto 0; max-width: 720px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.hero-card { display: flex; align-items: flex-start; gap: 14px; text-align: left; text-decoration: none; background: rgba(28,34,48,0.55); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transition: transform 0.18s, border-color 0.18s, background 0.18s; }
+.hero-card:hover { transform: translateY(-3px); border-color: var(--border-2); background: rgba(35,43,62,0.7); }
+.hero-card .hc-dot { flex: 0 0 auto; width: 10px; height: 10px; border-radius: 50%; margin-top: 6px; box-shadow: 0 0 10px currentColor; }
+.hero-card .hc-body { display: flex; flex-direction: column; gap: 3px; }
+.hero-card .hc-name { font-family: var(--font-display); font-weight: 800; font-size: 0.98rem; letter-spacing: -0.01em; }
+.hero-card .hc-desc { font-size: 0.8rem; font-weight: 300; color: var(--text-dim); line-height: 1.45; }
+.hero-card .hc-go { margin-top: 6px; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); transition: color 0.18s; }
+.hero-card:hover .hc-go { color: var(--text); }
+@media (max-width: 600px) { .hero-cards { grid-template-columns: 1fr; max-width: 380px; } }
 
 /* ============ SECTION SHELL ============ */
 .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
@@ -714,6 +724,24 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
       <a href="/products/" class="btn-primary">See all tools <span aria-hidden="true">→</span></a>
       <a href="/videos.html" class="btn-ghost">Watch the tour</a>
     </div>
+    <div class="hero-cards">
+      <a href="https://falqenview.gumroad.com/l/mqookv" class="hero-card">
+        <span class="hc-dot" style="background:var(--cyan);color:var(--cyan);"></span>
+        <span class="hc-body">
+          <span class="hc-name" style="color:var(--cyan);">VuePoint</span>
+          <span class="hc-desc">Track your portfolio — drift, gains, and a health score, all in a sheet you own.</span>
+          <span class="hc-go">Get VuePoint →</span>
+        </span>
+      </a>
+      <a href="https://falqenview.gumroad.com/l/bwvbl" class="hero-card">
+        <span class="hc-dot" style="background:var(--green);color:var(--green);"></span>
+        <span class="hc-body">
+          <span class="hc-name" style="color:var(--green);">Talon</span>
+          <span class="hc-desc">Grip your bills — due dates, autopay, and reminders, with nothing linked to your bank.</span>
+          <span class="hc-go">Get Talon →</span>
+        </span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -1091,7 +1119,6 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
       <a href="/about.html">About</a>
       <a href="/support.html">Support</a>
       <a href="/changelog.html">Changelog</a>
-      <a href="/qibla/">Qibla</a>
     </div>
   </div>
   <div class="footer-bottom">
