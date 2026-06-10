@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+window.addEventListener('error', function(e) {
+  var t = e.target;
+  if (!t || t.tagName !== 'IMG') return;
+  var s = t.getAttribute('src') || '';
+  if (!/^\/?assets\//.test(s) || t.dataset.fb) return;
+  t.dataset.fb = '1';
+  var pic = t.parentNode;
+  if (pic && pic.tagName === 'PICTURE') { pic.querySelectorAll('source').forEach(function (so) { so.remove(); }); }
+  t.srcset = '';
+  t.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%2338bdf8'/><stop offset='1' stop-color='%231A73E8'/></linearGradient></defs><path d='M4 6 L11 6 L16 22 L21 6 L28 6 L19 28 L13 28 Z' fill='url(%23g)'/><circle cx='16' cy='11' r='1.3' fill='%23fff' fill-opacity='0.85'/></svg>";
+}, true);
+</script>
+<title>Privacy Policy — FalqenView</title>
+<meta name="description" content="FalqenView Privacy Policy.">
+<meta name="robots" content="index, follow, noai, noimageai">
+<link rel="canonical" href="https://falqenview.com/privacy.html">
+<link rel="icon" type="image/png" href="assets/fvIcon.png">
+<link rel="apple-touch-icon" href="assets/fvIcon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=optional" rel="stylesheet"></noscript>
+<style>
+:root {
+  --bg:#141820;--bg-deep:#0e1118;--surface:#1c2230;--surface2:#232b3e;
+  --border:rgba(255,255,255,0.07);--border-2:rgba(255,255,255,0.12);
+  --blue:#1A73E8;--blue-2:#1557b0;--blue-dim:rgba(26,115,232,0.12);
+  --cyan:#38bdf8;--amber:#f59e0b;--text:#e8ecf4;
+  --text-dim:rgba(232,236,244,0.78);--muted:#7a8499;--nav-h:64px;
+  --font-display:'Montserrat',sans-serif;--font-body:'Lexend',sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:1rem;line-height:1.7;min-height:100vh;}
+nav{position:sticky;top:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 32px;background:rgba(14,17,24,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:28px;width:28px;object-fit:contain;}
+.nav-logo-text{font-family:var(--font-display);font-weight:800;font-size:1.1rem;letter-spacing:-0.02em;color:var(--text);}
+.nav-logo-text em{font-style:normal;color:var(--cyan);}
+.nav-home{font-size:0.82rem;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.nav-home:hover{color:var(--cyan);}
+.page-wrap{max-width:780px;margin:0 auto;padding:calc(var(--nav-h) + 36px) 32px 96px;}
+.page-eyebrow{font-family:var(--font-mono);font-size:0.7rem;color:var(--cyan);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:16px;}
+.page-title{font-family:var(--font-display);font-size:2.4rem;font-weight:900;line-height:1.1;letter-spacing:-0.03em;margin-bottom:12px;}
+.page-meta{font-size:0.78rem;color:var(--muted);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border);}
+.page-meta strong{color:var(--amber);}
+.section{margin-bottom:44px;}
+.section-title{font-family:var(--font-display);font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.section p{font-size:0.9rem;color:var(--text-dim);margin-bottom:12px;}
+.section p:last-child{margin-bottom:0;}
+.highlight-box{background:var(--surface);border:1px solid var(--border-2);border-left:3px solid var(--cyan);border-radius:6px;padding:16px 20px;margin:16px 0;font-size:0.88rem;color:var(--text-dim);}
+.highlight-box strong{color:var(--text);}
+a{color:var(--cyan);text-decoration:none;}
+a:hover{text-decoration:underline;}
+footer{border-top:1px solid var(--border);padding:32px;text-align:center;}
+.footer-legal{font-size:0.72rem;color:var(--muted);}
+.footer-legal a{color:var(--cyan);text-decoration:underline;}
+@media(max-width:640px){.page-wrap{padding:40px 20px 72px;}.page-title{font-size:1.8rem;}nav{padding:0 18px;}}
+</style>
+</head>
+<body>
+<style id="fv-canon">
+:root{--blue-2:#1557b0;--border-2:rgba(255,255,255,0.12);--text-dim:rgba(232,236,244,0.78);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 32px;background:rgba(20,24,32,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:32px;width:32px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(26,115,232,0.4));}
+.nav-logo-text{font-family:var(--font-display,'Montserrat',sans-serif);font-weight:800;font-size:1.1rem;letter-spacing:-0.02em;color:var(--text);}
+.nav-logo-text em{font-style:normal;color:var(--cyan);}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none;margin:0;padding:0;}
+.nav-links a{font-size:0.78rem;font-weight:500;letter-spacing:0.06em;color:var(--muted);text-decoration:none;text-transform:uppercase;transition:color 0.2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--cyan);transform:scaleX(0);transform-origin:left;transition:transform 0.25s ease;}
+.nav-links a:hover{color:var(--text);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-links a.active{color:var(--text);}
+.nav-links a.active::after{transform:scaleX(1);}
+.menu-toggle{display:none;background:none;border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:1.1rem;cursor:pointer;}
+.mobile-menu{position:fixed;top:var(--nav-h);left:0;right:0;z-index:99;background:rgba(20,24,32,0.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 18px;display:none;}
+.mobile-menu.shown{display:flex;flex-direction:column;gap:4px;}
+.mobile-menu a{color:var(--text);text-decoration:none;padding:12px 14px;border-radius:8px;font-size:0.95rem;font-weight:500;}
+.mobile-menu a:hover,.mobile-menu a:focus{background:var(--surface);}
+@media(max-width:860px){.nav-links{display:none;}.menu-toggle{display:inline-flex;align-items:center;justify-content:center;}}
+footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-index:1;text-align:left;}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+.footer-brand{display:flex;flex-direction:column;gap:8px;}
+.footer-lockup{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.footer-lockup img{height:30px;width:30px;object-fit:contain;}
+.footer-lockup-text{font-family:var(--font-display,'Montserrat',sans-serif);font-weight:800;font-size:1rem;color:var(--text);}
+.footer-lockup-text em{font-style:normal;color:var(--cyan);}
+.footer-motto{font-size:0.66rem;color:var(--muted);letter-spacing:0.14em;text-transform:uppercase;padding-left:40px;}
+.footer-links{display:flex;gap:22px;flex-wrap:wrap;}
+.footer-links a{font-size:0.78rem;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--text);}
+.footer-bottom{max-width:1100px;margin:24px auto 0;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-legal{font-size:0.7rem;color:var(--muted);opacity:0.75;}
+.footer-legal a{color:var(--cyan);text-decoration:none;}
+.footer-legal a:hover{text-decoration:underline;}
+.footer-contact a{font-size:0.74rem;color:var(--cyan);text-decoration:none;}
+.footer-contact a:hover{text-decoration:underline;}
+.footer-contact .dot{color:var(--muted);margin:0 4px;}
+@media(max-width:760px){nav{padding:0 18px;}.footer-inner{flex-direction:column;align-items:flex-start;gap:18px;}.footer-motto{padding-left:0;}.footer-bottom{flex-direction:column;align-items:flex-start;}}
+</style>
+<nav>
+  <a href="/" class="nav-logo" aria-label="FalqenView home">
+    <picture>
+      <source srcset="/assets/fvIcon-32.webp" type="image/webp">
+      <img src="/assets/fvIcon.png" alt="FalqenView" width="32" height="32">
+    </picture>
+    <span class="nav-logo-text">Falqen<em>V</em>iew</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/products/">Products</a></li>
+    <li><a href="/videos.html">Videos</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/support.html">Support</a></li>
+  </ul>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">≡</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">Home</a>
+  <a href="/products/">Products</a>
+  <a href="/videos.html">Videos</a>
+  <a href="/about.html">About</a>
+  <a href="/support.html">Support</a>
+</div>
+<div class="page-wrap">
+  <div class="page-eyebrow">Legal</div>
+  <h1 class="page-title">Privacy Policy</h1>
+  <div class="page-meta">
+    Effective date: May 25, 2026 &nbsp;·&nbsp;
+    <strong>This policy may be updated at any time without prior notice. Continued use of the site or product constitutes acceptance of the current policy.</strong>
+  </div>
+
+  <div class="section">
+    <div class="section-title">1. What We Collect</div>
+    <p>FalqenView does not directly collect, store, or process personal data. We do not use analytics tools, advertising trackers, or cookies of any kind on this website.</p>
+    <p>When you submit the contact form on this site, your name and email address are routed to our support inbox. This information is used solely to respond to your inquiry and is not stored beyond that purpose.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">2. Purchases</div>
+    <p>All purchase transactions are processed by Gumroad. FalqenView does not collect, see, or store your payment information. Any data collected during checkout — including your email address and payment details — is governed by <a href="https://gumroad.com/privacy" target="_blank" rel="noopener">Gumroad's Privacy Policy</a>.</p>
+    <p>Your purchase email may be retained by FalqenView solely to verify buyer status when you request access to a product update.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">3. Your Portfolio Data</div>
+    <div class="highlight-box"><strong>We never see your portfolio data.</strong> All data you enter into a FalqenView product — tickers, balances, account names, share counts — is stored exclusively in your own Google account. FalqenView has no access to it at any time.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">4. Contact</div>
+    <p>Questions about this policy may be directed to us via the support page at <a href="support.html">falqenview.com/support</a>.</p>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="footer-lockup" aria-label="FalqenView">
+        <picture>
+          <source srcset="/assets/fvIcon-32.webp" type="image/webp">
+          <img src="/assets/fvIcon.png" alt="FalqenView" width="30" height="30">
+        </picture>
+        <span class="footer-lockup-text">Falqen<em>V</em>iew</span>
+      </a>
+      <div class="footer-motto">See further. Act smarter.</div>
+    </div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/products/">Products</a>
+      <a href="/videos.html">Videos</a>
+      <a href="/about.html">About</a>
+      <a href="/support.html">Support</a>
+      <a href="/qibla/">Qibla</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-legal">© 2026 FalqenView · <a href="/terms.html">Terms of Use</a> · <a href="/privacy.html">Privacy Policy</a> · For informational purposes only. Not financial advice.</div>
+    <div class="footer-contact"><a href="https://falqenview.gumroad.com/l/mqookv">Get VuePoint →</a> <span class="dot">·</span> <a href="https://falqenview.gumroad.com/l/bwvbl">Get Talon →</a></div>
+  </div>
+</footer>
+<script>
+  (function(){
+    var mt=document.getElementById('menuToggle');
+    var mm=document.getElementById('mobileMenu');
+    if(mt&&mm){
+      mt.addEventListener('click',function(){var open=mm.classList.toggle('shown');mt.setAttribute('aria-expanded',open);mt.textContent=open?'✕':'≡';});
+      mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mm.classList.remove('shown');mt.textContent='≡';mt.setAttribute('aria-expanded',false);});});
+    }
+  })();
+</script>
+</body>
+</html>
