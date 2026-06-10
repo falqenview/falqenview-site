@@ -143,18 +143,45 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .qibla-divider span{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--qibla-mid);white-space:nowrap;}
 .qibla-divider::before,.qibla-divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(82,183,136,0.35),transparent);}
 .qibla-wrap{max-width:760px;margin:30px auto 0;padding:0 24px;}
-.qcard{position:relative;background:linear-gradient(160deg,rgba(26,77,58,0.32),rgba(20,24,32,0.4));border:1px solid rgba(82,183,136,0.28);border-radius:18px;padding:36px 34px;display:flex;gap:26px;align-items:center;overflow:hidden;}
-.qcard::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(82,183,136,0.10) 1px,transparent 0);background-size:22px 22px;mask-image:radial-gradient(ellipse 70% 100% at 100% 0%,black,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 70% 100% at 100% 0%,black,transparent 70%);pointer-events:none;}
-.qcard-icon{position:relative;z-index:1;flex-shrink:0;width:78px;height:78px;border-radius:16px;background:rgba(26,77,58,0.55);border:1px solid rgba(82,183,136,0.35);display:flex;align-items:center;justify-content:center;}
-.qcard-icon svg{width:42px;height:42px;}
+.qcard{
+  position:relative;
+  background:linear-gradient(160deg,rgba(26,77,58,0.42) 0%,rgba(20,24,32,0.55) 60%,rgba(14,17,24,0.6) 100%);
+  border:1px solid rgba(82,183,136,0.38);
+  border-radius:20px;padding:36px 34px;display:flex;gap:28px;align-items:center;overflow:hidden;
+  box-shadow:0 0 0 1px rgba(82,183,136,0.12), 0 16px 48px rgba(0,0,0,0.5), 0 0 60px rgba(26,77,58,0.3);
+  transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;
+}
+.qcard:hover{transform:translateY(-3px);border-color:rgba(82,183,136,0.55);box-shadow:0 0 0 1px rgba(82,183,136,0.22),0 22px 56px rgba(0,0,0,0.55),0 0 80px rgba(26,77,58,0.4);}
+.qcard::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent 0%,rgba(82,183,136,0.5) 30%,var(--qibla-mid) 50%,rgba(82,183,136,0.5) 70%,transparent 100%);
+}
+.qcard::after{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle at 1px 1px,rgba(82,183,136,0.09) 1px,transparent 0);
+  background-size:22px 22px;
+  mask-image:radial-gradient(ellipse 70% 100% at 100% 0%,black,transparent 70%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 100% at 100% 0%,black,transparent 70%);
+  pointer-events:none;
+}
+.qcard-icon{
+  position:relative;z-index:1;flex-shrink:0;
+  width:86px;height:86px;border-radius:18px;
+  background:linear-gradient(145deg,rgba(26,77,58,0.8),rgba(16,58,42,0.6));
+  border:1px solid rgba(82,183,136,0.42);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(0,0,0,0.4),inset 0 1px 0 rgba(82,183,136,0.2);
+}
+.qcard-icon svg{width:48px;height:48px;}
 .qcard-body{position:relative;z-index:1;flex:1;}
-.qcard-name{font-family:var(--font-display);font-weight:800;font-size:1.5rem;color:var(--text);letter-spacing:-0.01em;}
+.qcard-name{font-family:var(--font-display);font-weight:800;font-size:1.6rem;color:var(--text);letter-spacing:-0.01em;}
 .qcard-name .dot{color:var(--qibla-mid);}
-.qcard-desc{margin-top:8px;color:var(--text-dim);font-weight:300;font-size:0.96rem;line-height:1.6;}
-.qcard-foot{margin-top:20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
-.qcard-price{font-family:var(--font-mono);font-size:0.86rem;color:var(--muted);}
-.qcard-cta{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid var(--qibla-mid);color:var(--qibla-mid);text-decoration:none;font-weight:600;font-size:0.88rem;padding:11px 20px;border-radius:10px;transition:background 0.2s,color 0.2s;}
-.qcard-cta:hover{background:rgba(82,183,136,0.14);color:#7fd6a4;}
+.qcard-subtitle{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--qibla-mid);margin-top:4px;opacity:0.85;}
+.qcard-desc{margin-top:10px;color:var(--text-dim);font-weight:300;font-size:0.96rem;line-height:1.65;}
+.qcard-foot{margin-top:22px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.qcard-price{font-family:var(--font-mono);font-size:0.86rem;color:var(--qibla-mid);font-weight:600;letter-spacing:0.04em;}
+.qcard-cta{display:inline-flex;align-items:center;gap:8px;background:rgba(82,183,136,0.14);border:1px solid rgba(82,183,136,0.45);color:var(--qibla-mid);text-decoration:none;font-weight:600;font-size:0.88rem;padding:11px 22px;border-radius:10px;transition:background 0.2s,color 0.2s,border-color 0.2s,box-shadow 0.2s;}
+.qcard-cta:hover{background:rgba(82,183,136,0.24);color:#7fd6a4;border-color:rgba(82,183,136,0.65);box-shadow:0 4px 16px rgba(82,183,136,0.2);}
 
 /* TRUST */
 .trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px;}
@@ -256,7 +283,6 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     <li><a href="/videos.html">Videos</a></li>
     <li><a href="/about.html">About</a></li>
     <li><a href="/support.html">Support</a></li>
-    <li><a href="/changelog.html">Changelog</a></li>
   </ul>
   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">≡</button>
 </nav>
@@ -266,7 +292,6 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   <a href="/videos.html">Videos</a>
   <a href="/about.html">About</a>
   <a href="/support.html">Support</a>
-  <a href="/changelog.html">Changelog</a>
 </div>
 
 <!-- ============ HERO ============ -->
@@ -315,11 +340,13 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
         <div class="fcard-price"><sup>$</sup>24</div>
         <div class="fcard-once">one-time purchase · lifetime use</div>
         <ul class="fcard-features">
-          <li><span class="chk">✓</span>Due-date tracking with a clear bill calendar</li>
-          <li><span class="chk">✓</span>Categories &amp; recurring bill automation</li>
-          <li><span class="chk">✓</span>Cash-on-hand &amp; "safe to spend" read-out</li>
-          <li><span class="chk">✓</span>Past-due &amp; upcoming reminders</li>
-          <li><span class="chk">✓</span>Monthly cash-flow overview at a glance</li>
+          <li><span class="chk">✓</span>Unlimited bills · auto &amp; manual · autopay tracking</li>
+          <li><span class="chk">✓</span>Due-date calendar with reminders &amp; Google Calendar sync</li>
+          <li><span class="chk">✓</span>Categories &amp; spend breakdown · past-due &amp; due-soon alerts</li>
+          <li><span class="chk">✓</span>Bills health score (A–F) with animated sidebar dashboard</li>
+          <li><span class="chk">✓</span>Mark-paid with undo · one-time bill archiving</li>
+          <li><span class="chk">✓</span>Filter bar · bill history · variable-amount payment prompt</li>
+          <li><span class="chk">✓</span>Backup &amp; restore — survives any reset, yours forever</li>
         </ul>
         <a href="https://falqenview.gumroad.com/l/bwvbl" class="fcard-cta">Get Talon — $24 →</a>
       </div>
@@ -370,15 +397,20 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   <div class="qcard reveal">
     <div class="qcard-icon">
       <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <path d="M31 8a16 16 0 1 0 0 32 13 13 0 1 1 0-32z" fill="#52b788"/>
-        <path d="M35.5 16.5l1.4 3.4 3.6.3-2.7 2.4.8 3.5-3.1-1.9-3.1 1.9.8-3.5-2.7-2.4 3.6-.3z" fill="#52b788"/>
+        <!-- Crescent -->
+        <path d="M30 9a16 16 0 1 0 0 30 13 13 0 1 1 0-30z" fill="rgba(82,183,136,0.85)"/>
+        <!-- Star -->
+        <path d="M36.5 15.5l1.6 3.8 4.1.35-3.1 2.7.92 4-3.52-2.15-3.52 2.15.92-4-3.1-2.7 4.1-.35z" fill="#52b788"/>
+        <!-- Subtle inner glow arc -->
+        <path d="M17 24a14 14 0 0 1 11-13.7" stroke="rgba(82,183,136,0.3)" stroke-width="1" stroke-linecap="round" fill="none"/>
       </svg>
     </div>
     <div class="qcard-body">
       <div class="qcard-name">Qibla<span class="dot">.</span></div>
-      <p class="qcard-desc">A gentle, beginner-friendly prayer guide and Qibla compass — built as a small gift, offered freely. Not marketed, not monetized. If it's useful to you, that's more than enough.</p>
+      <div class="qcard-subtitle">Prayer guide &amp; Qibla compass</div>
+      <p class="qcard-desc">A gentle, beginner-friendly prayer guide and Qibla compass — built as a small gift, offered freely. Not marketed, not monetized. No ads, no accounts, no tracking. If it's useful to you, that's more than enough.</p>
       <div class="qcard-foot">
-        <span class="qcard-price">Free, always</span>
+        <span class="qcard-price">Free, always.</span>
         <a href="/qibla/" class="qcard-cta">Open Qibla →</a>
       </div>
     </div>
