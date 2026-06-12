@@ -216,7 +216,15 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 /* feature cards grid */
 .q-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;}
 .q-fcard{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 22px;transition:transform .2s,border-color .2s,box-shadow .2s;overflow:hidden;}
-.q-fcard::before{content:'';position:absolute;top:0;left:22px;right:22px;height:2px;background:linear-gradient(90deg,transparent,var(--q-mid),transparent);opacity:0.7;}
+.q-fcard-bg{position:absolute;right:-18px;bottom:-18px;width:150px;height:150px;z-index:0;color:var(--q-mid);opacity:0.09;pointer-events:none;
+  -webkit-mask-image:radial-gradient(ellipse 130% 130% at 100% 100%,#000 32%,transparent 80%);
+          mask-image:radial-gradient(ellipse 130% 130% at 100% 100%,#000 32%,transparent 80%);}
+.q-fcard-bg svg{width:100%;height:100%;}
+.q-feature-grid[dir="rtl"] .q-fcard-bg,.q-fcard[dir="rtl"] .q-fcard-bg{right:auto;left:-18px;
+  -webkit-mask-image:radial-gradient(ellipse 130% 130% at 0% 100%,#000 32%,transparent 80%);
+          mask-image:radial-gradient(ellipse 130% 130% at 0% 100%,#000 32%,transparent 80%);}
+.q-fcard>.q-fic,.q-fcard>h4,.q-fcard>p{position:relative;z-index:1;}
+.q-fcard::before{content:'';position:absolute;top:0;left:22px;right:22px;height:2px;background:linear-gradient(90deg,transparent,var(--q-mid),transparent);opacity:0.7;z-index:2;}
 .q-fcard:hover{transform:translateY(-4px);border-color:rgba(82,183,136,0.4);box-shadow:0 16px 40px rgba(0,0,0,0.35);}
 .q-fic{width:42px;height:42px;border-radius:11px;background:var(--q-dim);border:1px solid rgba(82,183,136,0.3);display:flex;align-items:center;justify-content:center;color:var(--q-mid);margin-bottom:14px;}
 .q-fic svg{width:21px;height:21px;}
@@ -321,46 +329,55 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     <h3 data-i18n="inside_h">Everything inside</h3>
     <div class="q-feature-grid">
       <div class="q-fcard">
+        <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
         <h4 data-i18n="c_times_h">Today's prayer times</h4>
         <p data-i18n="c_times_p">The five prayers for today, calculated from your current location, with a gentle countdown to the next — Fajr through Isha, in your local time.</p>
       </div>
       <div class="q-fcard">
+        <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
         <h4 data-i18n="c_how_h">How to pray, prayer by prayer</h4>
         <p data-i18n="c_how_p">Each of the five daily prayers shown exactly as it's performed — rak'ahs, what to say, and when to say it. No prior knowledge assumed.</p>
       </div>
       <div class="q-fcard">
+        <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 9-14 9V3z"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 9-14 9V3z"/></svg></div>
         <h4 data-i18n="c_guided_h">Pray along, step by step</h4>
         <p data-i18n="c_guided_p">A full-screen guided mode walks you through a whole prayer one move at a time, so the first time you stand to pray, you're never guessing what comes next.</p>
       </div>
       <div class="q-fcard">
+        <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M5 9c0 4 3 7 7 7s7-3 7-7M8 22h8"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M5 9c0 4 3 7 7 7s7-3 7-7M8 22h8"/></svg></div>
         <h4 data-i18n="c_wudu_h">Step-by-step Wudu</h4>
         <p data-i18n="c_wudu_p">Every step of ablution in order, with a progress tracker — what's fard, what's sunnah, written plainly for beginners.</p>
       </div>
       <div class="q-fcard">
+        <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2z"/><path d="M8 8h8M8 12h6"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2z"/><path d="M8 8h8M8 12h6"/></svg></div>
         <h4 data-i18n="c_lib_h">Surahs, du'ās &amp; adhkar</h4>
         <p data-i18n="c_lib_p">Twenty short surahs plus the everyday du'ās and Post-Prayer Adhkar (PPA) you say after salah — each in Arabic with transliteration and translation, and a tap to listen.</p>
       </div>
       <div class="q-fcard">
+        <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></div>
         <h4 data-i18n="c_qibla_h">Live Qibla compass</h4>
         <p data-i18n="c_qibla_p">A real-time compass that points to the Kaaba from wherever you stand — calibrated to your device heading and current location.</p>
       </div>
       <div class="q-fcard">
+        <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
         <h4 data-i18n="c_mosques_h">Nearest mosques</h4>
         <p data-i18n="c_mosques_p">The five closest masjids to your current location, sorted by distance. Tap any one to open directions straight in Google Maps.</p>
       </div>
       <div class="q-fcard">
+        <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="8" cy="6" r="2" fill="currentColor"/><circle cx="16" cy="12" r="2" fill="currentColor"/><circle cx="8" cy="18" r="2" fill="currentColor"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="8" cy="6" r="2" fill="currentColor"/><circle cx="16" cy="12" r="2" fill="currentColor"/><circle cx="8" cy="18" r="2" fill="currentColor"/></svg></div>
         <h4 data-i18n="c_madhab_h">Your madhab, your settings</h4>
         <p data-i18n="c_madhab_p">Choose Hanafi, Shafi'i, Maliki, or Hanbali, and your prayer times follow. Turn Sunnah Ghair Mu'akkadah (SGM) and Post-Prayer Adhkar (PPA) on or off per prayer or all at once, pick a system, dark, or light theme, and lean on beginner-first notes for common conditions and rulings. The app prays the way you pray.</p>
       </div>
       <div class="q-fcard">
+        <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 6 3.8 9S14.5 18.3 12 21M12 3C9.5 5.7 8.2 9 8.2 12S9.5 18.3 12 21"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 6 3.8 9S14.5 18.3 12 21M12 3C9.5 5.7 8.2 9 8.2 12S9.5 18.3 12 21"/></svg></div>
         <h4 data-i18n="c_lang_h">Read it in your language</h4>
         <p data-i18n="c_lang_p">Use Quba in English, Arabic, Bengali, Turkish, or Urdu — five of the most widely spoken languages across the Muslim world — with full right-to-left support.</p>
