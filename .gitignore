@@ -1,0 +1,6 @@
+# FalqenView ops — ignore backup/temp artifacts
+*.html.*
+*.xml.*
+*.txt.*
+*.old
+*.bak
