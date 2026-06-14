@@ -633,8 +633,8 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   /* ---------- Quba page audio ---------- */
   (function () {
     var AUDIO_SRCS = {
-      bn: '/assets/quba-bn.mp3',
-      ar: '/assets/quba-ar.mp3'
+      bn: '/assets/audio/quba-bn.mp3',
+      ar: '/assets/audio/quba-ar.mp3'
     };
     var currentAudio = null;
     var currentIcon = null;
@@ -652,55 +652,61 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       currentIcon = null;
     }
 
-    document.querySelectorAll('.q-audio-icon').forEach(function (icon) {
+    function playAudio(icon, lang) {
+      if (currentIcon === icon) { stopCurrent(); return; }
+      stopCurrent();
+      var audio = new Audio(AUDIO_SRCS[lang]);
+      audio.preload = 'auto';
+      currentAudio = audio;
+      currentIcon = icon;
+      icon.classList.add('playing');
+      icon.setAttribute('aria-pressed', 'true');
+      audio.addEventListener('ended', function () {
+        icon.classList.remove('playing');
+        icon.setAttribute('aria-pressed', 'false');
+        currentAudio = null;
+        currentIcon = null;
+      });
+      audio.addEventListener('error', function () {
+        icon.classList.remove('playing');
+        icon.setAttribute('aria-pressed', 'false');
+        currentAudio = null;
+        currentIcon = null;
+      });
+      var p = audio.play();
+      if (p !== undefined) {
+        p.catch(function (err) {
+          if (err.name === 'NotAllowedError') {
+            icon.classList.remove('playing');
+            icon.setAttribute('aria-pressed', 'false');
+            currentAudio = null;
+            currentIcon = null;
+          }
+        });
+      }
+    }
+
+    // Listen on each pill button — branch inside on whether the click hit the icon
+    document.querySelectorAll('.q-lang-btn').forEach(function (btn) {
+      var icon = btn.querySelector('.q-audio-icon');
+      if (!icon) return;
       var lang = icon.getAttribute('data-audio');
       icon.setAttribute('role', 'button');
       icon.setAttribute('aria-pressed', 'false');
-      icon.setAttribute('tabindex', '0');
-
-      function toggle(e) {
-        e.stopPropagation(); // prevent bubble to pill (no lang switch)
-        if (currentIcon === icon) {
-          stopCurrent();
-          return;
+      icon.setAttribute('tabindex', '-1'); // button handles tab focus
+      btn.addEventListener('click', function (e) {
+        if (e.target.closest('.q-audio-icon')) {
+          e.stopImmediatePropagation(); // block setLang on the btn listener
+          playAudio(icon, lang);
         }
-        stopCurrent();
-        var audio = new Audio(AUDIO_SRCS[lang]);
-        audio.preload = 'auto';
-        currentAudio = audio;
-        currentIcon = icon;
-        icon.classList.add('playing');
-        icon.setAttribute('aria-pressed', 'true');
-        audio.addEventListener('ended', function () {
-          icon.classList.remove('playing');
-          icon.setAttribute('aria-pressed', 'false');
-          currentAudio = null;
-          currentIcon = null;
-        });
-        audio.addEventListener('error', function () {
-          icon.classList.remove('playing');
-          icon.setAttribute('aria-pressed', 'false');
-          currentAudio = null;
-          currentIcon = null;
-        });
-        var playPromise = audio.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(function (err) {
-            // Autoplay blocked (not user-gesture context) — strip state cleanly
-            if (err.name === 'NotAllowedError') {
-              icon.classList.remove('playing');
-              icon.setAttribute('aria-pressed', 'false');
-              currentAudio = null;
-              currentIcon = null;
-            }
-            // Other errors (network, decode) are handled by the 'error' listener above
-          });
-        }
-      }
-
-      icon.addEventListener('click', toggle);
+        // else: normal lang switch — let the existing setLang handler run
+      });
       icon.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(e); }
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          e.stopPropagation();
+          playAudio(icon, lang);
+        }
       });
     });
   })();
