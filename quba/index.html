@@ -120,21 +120,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .q-hero-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;}
 .q-crest{width:78px;height:78px;margin:0 auto 26px;display:flex;align-items:center;justify-content:center;}
 .q-crest svg{width:78px;height:78px;filter:drop-shadow(0 0 18px rgba(82,183,136,0.45));}
-.q-crest img{filter:drop-shadow(0 0 18px rgba(82,183,136,0.45));}
+.q-crest img{filter:drop-shadow(0 0 14px rgba(230,185,80,0.65)) drop-shadow(0 0 36px rgba(200,155,50,0.35));}
 .q-eyebrow{display:inline-block;font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--q-mid);margin-bottom:20px;}
 /* language selector */
 .q-lang{display:flex;justify-content:center;gap:8px;margin:0 auto 22px;}
 .q-lang-btn{font-family:var(--font-body);font-size:0.82rem;font-weight:500;color:var(--text-dim);background:rgba(82,183,136,0.08);border:1px solid rgba(82,183,136,0.28);border-radius:100px;padding:6px 16px;cursor:pointer;transition:color .18s,background .18s,border-color .18s,transform .15s;display:inline-flex;align-items:center;gap:0;}
 .q-lang-btn:hover{color:var(--text);border-color:rgba(82,183,136,0.5);transform:translateY(-1px);}
 .q-lang-btn.active{color:#08130d;background:var(--q-mid);border-color:var(--q-mid);font-weight:600;}
-.q-lang-btn .q-audio-icon{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin-left:6px;border-radius:50%;cursor:pointer;flex-shrink:0;opacity:0.7;transition:opacity .15s,background .15s;}
-[dir="rtl"] .q-lang-btn .q-audio-icon{margin-left:0;margin-right:6px;}
-.q-lang-btn .q-audio-icon:hover{opacity:1;background:rgba(0,0,0,0.12);}
-.q-lang-btn.active .q-audio-icon{opacity:0.75;}
-.q-lang-btn.active .q-audio-icon:hover{opacity:1;background:rgba(0,0,0,0.18);}
-.q-lang-btn .q-audio-icon svg{width:13px;height:13px;pointer-events:none;}
-.q-lang-btn .q-audio-icon.playing svg .q-wave{animation:q-wave-pulse .6s ease-in-out infinite alternate;}
-@keyframes q-wave-pulse{from{opacity:0.4;}to{opacity:1;}}
+.q-lang-btn .q-audio-icon{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;margin-left:7px;border-radius:6px;cursor:pointer;flex-shrink:0;opacity:0.65;transition:opacity .18s,background .18s,transform .12s;}
+[dir="rtl"] .q-lang-btn .q-audio-icon{margin-left:0;margin-right:7px;}
+.q-lang-btn .q-audio-icon:hover{opacity:1;background:rgba(255,255,255,0.1);transform:scale(1.08);}
+.q-lang-btn.active .q-audio-icon{opacity:0.8;}
+.q-lang-btn.active .q-audio-icon:hover{opacity:1;background:rgba(0,0,0,0.15);}
+/* play+arc icon */
+.q-audio-icon svg{width:14px;height:14px;pointer-events:none;overflow:visible;}
+.q-audio-icon .q-arc{transition:opacity .18s;}
+.q-audio-icon.playing .q-arc{animation:q-arc-pulse 1.2s ease-in-out infinite alternate;}
+@keyframes q-arc-pulse{from{opacity:0.4;}to{opacity:1;}}
 /* RTL: when a block is flipped, mirror flex/alignment cleanly */
 [dir="rtl"]{text-align:right;}
 [dir="rtl"] .q-block h3{flex-direction:row-reverse;}
@@ -300,8 +302,8 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     <div class="q-eyebrow">Quba</div>
     <div class="q-lang" role="group" aria-label="Language">
       <button class="q-lang-btn active" data-lang="en" lang="en">English</button>
-      <button class="q-lang-btn" data-lang="bn" lang="bn">বাংলা<span class="q-audio-icon" data-audio="bn" role="button" aria-label="বাংলায় শুনুন" title="বাংলায় শুনুন"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path class="q-wave" d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path class="q-wave" d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></span></button>
-      <button class="q-lang-btn" data-lang="ar" lang="ar">عربي<span class="q-audio-icon" data-audio="ar" role="button" aria-label="استمع بالعربية" title="استمع بالعربية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path class="q-wave" d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path class="q-wave" d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></span></button>
+      <button class="q-lang-btn" data-lang="bn" lang="bn">বাংলা<span class="q-audio-icon" data-audio="bn" role="button" aria-label="বাংলায় শুনুন" title="বাংলায় শুনুন"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><polygon points="3,2 13,8 3,14"/><path class="q-arc" d="M13.5 4.5 a5 5 0 0 1 0 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></button>
+      <button class="q-lang-btn" data-lang="ar" lang="ar">عربي<span class="q-audio-icon" data-audio="ar" role="button" aria-label="استمع بالعربية" title="استمع بالعربية"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><polygon points="3,2 13,8 3,14"/><path class="q-arc" d="M13.5 4.5 a5 5 0 0 1 0 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></button>
     </div>
     <h1 data-i18n="hero_h1">The first step is the hardest.<br><em>We made it easier.</em></h1>
     <p class="tagline" data-i18n="hero_tag">A warm, beginner-friendly guide to the five daily prayers, and a compass that points you to the Kaaba from wherever you are. Simple enough to start praying today, and a companion you'll keep reaching for long after.</p>
@@ -631,8 +633,8 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   /* ---------- Quba page audio ---------- */
   (function () {
     var AUDIO_SRCS = {
-      bn: '/assets/audio/quba-bn.mp3',
-      ar: '/assets/audio/quba-ar.mp3'
+      bn: '/assets/quba-bn.mp3',
+      ar: '/assets/quba-ar.mp3'
     };
     var currentAudio = null;
     var currentIcon = null;
@@ -664,22 +666,36 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
         }
         stopCurrent();
         var audio = new Audio(AUDIO_SRCS[lang]);
+        audio.preload = 'auto';
         currentAudio = audio;
         currentIcon = icon;
         icon.classList.add('playing');
         icon.setAttribute('aria-pressed', 'true');
-        audio.play().catch(function () {
-          icon.classList.remove('playing');
-          icon.setAttribute('aria-pressed', 'false');
-          currentAudio = null;
-          currentIcon = null;
-        });
         audio.addEventListener('ended', function () {
           icon.classList.remove('playing');
           icon.setAttribute('aria-pressed', 'false');
           currentAudio = null;
           currentIcon = null;
         });
+        audio.addEventListener('error', function () {
+          icon.classList.remove('playing');
+          icon.setAttribute('aria-pressed', 'false');
+          currentAudio = null;
+          currentIcon = null;
+        });
+        var playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(function (err) {
+            // Autoplay blocked (not user-gesture context) — strip state cleanly
+            if (err.name === 'NotAllowedError') {
+              icon.classList.remove('playing');
+              icon.setAttribute('aria-pressed', 'false');
+              currentAudio = null;
+              currentIcon = null;
+            }
+            // Other errors (network, decode) are handled by the 'error' listener above
+          });
+        }
       }
 
       icon.addEventListener('click', toggle);
