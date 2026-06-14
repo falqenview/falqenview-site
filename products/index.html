@@ -138,6 +138,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .fcard.ghost .fcard-cta{background:transparent;color:var(--text-dim);border:1px solid var(--border-2);}
 .fcard.ghost .fcard-cta:hover{color:var(--text);border-color:rgba(255,255,255,0.25);}
 
+/* CARD BACKGROUND ART */
+.fcard-bg{position:absolute;bottom:-8px;right:-8px;width:160px;height:160px;pointer-events:none;z-index:0;color:var(--accent);opacity:0.11;mask-image:radial-gradient(ellipse 85% 85% at 90% 90%,black 20%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 85% 85% at 90% 90%,black 20%,transparent 75%);}
+.fcard-bg svg,.fcard-bg{overflow:visible;}
+.qcard-bg{position:absolute;bottom:-6px;right:-6px;width:150px;height:150px;pointer-events:none;z-index:0;color:var(--qibla-mid);opacity:0.10;mask-image:radial-gradient(ellipse 85% 85% at 90% 90%,black 20%,transparent 72%);-webkit-mask-image:radial-gradient(ellipse 85% 85% at 90% 90%,black 20%,transparent 72%);overflow:visible;}
+
 /* QIBLA — DISTINCT, HUMBLE */
 .qibla-divider{max-width:1100px;margin:64px auto 0;padding:0 24px;display:flex;align-items:center;gap:18px;}
 .qibla-divider span{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--qibla-mid);white-space:nowrap;}
@@ -314,6 +319,18 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 
       <!-- VuePoint -->
       <div class="fcard reveal" style="--accent: var(--cyan);">
+        <svg class="fcard-bg" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M10 130 L35 95 L60 108 L85 72 L110 50 L135 28 L150 18 L150 150 L10 150 Z" fill="currentColor" opacity="0.35"/>
+          <polyline points="10,130 35,95 60,108 85,72 110,50 135,28 150,18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="35" cy="95" r="3.5" fill="currentColor"/>
+          <circle cx="85" cy="72" r="3.5" fill="currentColor"/>
+          <circle cx="135" cy="28" r="3.5" fill="currentColor"/>
+          <circle cx="150" cy="18" r="4.5" fill="currentColor"/>
+          <line x1="10" y1="150" x2="150" y2="150" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          <line x1="10" y1="120" x2="150" y2="120" stroke="currentColor" stroke-width="0.5" opacity="0.2" stroke-dasharray="4 4"/>
+          <line x1="10" y1="90" x2="150" y2="90" stroke="currentColor" stroke-width="0.5" opacity="0.2" stroke-dasharray="4 4"/>
+          <line x1="10" y1="60" x2="150" y2="60" stroke="currentColor" stroke-width="0.5" opacity="0.2" stroke-dasharray="4 4"/>
+        </svg>
         <div class="fcard-top">
           <div class="fcard-name">VuePoint<span class="dot">.</span></div>
           <span class="launch-pill">🏷 Launch Pricing · Limited</span>
@@ -333,6 +350,22 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 
       <!-- Talon -->
       <div class="fcard reveal" style="--accent: var(--talon);">
+        <svg class="fcard-bg" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- talon/claw grip — three curved talons gripping downward -->
+          <!-- central talon -->
+          <path d="M80 20 C80 20 74 55 68 90 C64 112 70 135 80 148" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <!-- left talon -->
+          <path d="M80 20 C80 20 60 48 48 80 C40 102 46 128 38 148" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <!-- right talon -->
+          <path d="M80 20 C80 20 100 48 112 80 C120 102 114 128 122 148" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <!-- far left talon (thinner) -->
+          <path d="M80 30 C80 30 44 56 28 90 C18 112 24 135 14 150" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.6"/>
+          <!-- far right talon (thinner) -->
+          <path d="M80 30 C80 30 116 56 132 90 C142 112 136 135 146 150" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.6"/>
+          <!-- grip knuckle band -->
+          <path d="M44 68 C55 62 68 59 80 59 C92 59 105 62 116 68" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+          <path d="M36 90 C50 83 65 79 80 79 C95 79 110 83 124 90" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.3"/>
+        </svg>
         <div class="fcard-top">
           <div class="fcard-name">Talon<span class="dot">.</span></div>
           <span class="launch-pill">🏷 Launch Pricing · Limited</span>
@@ -354,6 +387,22 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 
       <!-- Updraft -->
       <div class="fcard ghost reveal" style="--accent: var(--blue);">
+        <svg class="fcard-bg" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- rising air-current arcs — updraft thermal column -->
+          <!-- central column -->
+          <path d="M80 155 C80 155 80 120 80 90 C80 60 80 30 80 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.3"/>
+          <!-- left arc 1 -->
+          <path d="M55 155 C55 130 58 105 65 82 C72 58 82 36 88 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <!-- right arc 1 -->
+          <path d="M105 155 C105 130 102 105 95 82 C88 58 78 36 72 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <!-- left arc 2 (wider) -->
+          <path d="M28 155 C32 128 40 100 54 75 C68 50 82 28 96 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.55"/>
+          <!-- right arc 2 (wider) -->
+          <path d="M132 155 C128 128 120 100 106 75 C92 50 78 28 64 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.55"/>
+          <!-- upward chevron markers -->
+          <polyline points="72,42 80,28 88,42" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <polyline points="72,64 80,50 88,64" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.5"/>
+        </svg>
         <div class="fcard-top">
           <div class="fcard-name">Updraft<span class="dot">.</span></div>
           <span class="coming-pill">Coming Q4 2026</span>
@@ -371,6 +420,19 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 
       <!-- Apex -->
       <div class="fcard ghost reveal" style="--accent: var(--gold);">
+        <svg class="fcard-bg" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- mountain peaks — layered ranges, tallest peak at apex (right) -->
+          <!-- far background range (faintest) -->
+          <path d="M0 140 L28 80 L52 110 L76 60 L100 95 L124 40 L148 70 L160 55 L160 160 L0 160 Z" fill="currentColor" opacity="0.18"/>
+          <!-- mid range -->
+          <path d="M0 155 L20 105 L44 130 L70 75 L96 115 L118 58 L140 88 L160 68 L160 160 L0 160 Z" fill="currentColor" opacity="0.28"/>
+          <!-- foreground range (sharpest) -->
+          <path d="M0 160 L18 125 L40 145 L62 95 L85 130 L108 72 L130 105 L152 52 L160 65 L160 160 Z" fill="currentColor" opacity="0.22"/>
+          <!-- peak outlines -->
+          <polyline points="0,160 18,125 40,145 62,95 85,130 108,72 130,105 152,52 160,65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.7"/>
+          <!-- summit highlight — small notch at tallest peak -->
+          <path d="M148,52 L152,42 L156,52" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
         <div class="fcard-top">
           <div class="fcard-name">Apex<span class="dot">.</span></div>
           <span class="coming-pill">Coming Q4 2026</span>
@@ -396,6 +458,31 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 <div class="qibla-divider reveal"><span>Free &amp; for everyone</span></div>
 <section class="qibla-wrap" id="quba">
   <div class="qcard reveal">
+    <svg class="qcard-bg" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- mosque dome and minarets silhouette -->
+      <!-- main dome -->
+      <path d="M45 100 C45 72 55 55 75 52 C95 55 105 72 105 100 Z" fill="currentColor" opacity="0.5"/>
+      <!-- crescent atop dome -->
+      <path d="M75 48 C75 48 72 40 75 36 C78 40 75 48 75 48" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.7"/>
+      <path d="M72 40 C72 36 69 34 70 31 C72 32 74 34 75 36" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.6"/>
+      <!-- left minaret -->
+      <rect x="36" y="64" width="10" height="36" fill="currentColor" opacity="0.35"/>
+      <path d="M36 64 C36 56 46 56 46 64" fill="currentColor" opacity="0.5"/>
+      <line x1="41" y1="56" x2="41" y2="48" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+      <!-- right minaret -->
+      <rect x="104" y="64" width="10" height="36" fill="currentColor" opacity="0.35"/>
+      <path d="M104 64 C104 56 114 56 114 64" fill="currentColor" opacity="0.5"/>
+      <line x1="109" y1="56" x2="109" y2="48" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+      <!-- base platform -->
+      <rect x="28" y="100" width="94" height="8" rx="2" fill="currentColor" opacity="0.3"/>
+      <!-- arched doorway -->
+      <path d="M68 100 L68 88 C68 83 82 83 82 88 L82 100" fill="currentColor" opacity="0.45"/>
+      <!-- geometric star (8-point, small) in upper corner -->
+      <g transform="translate(128,28) scale(0.65)" opacity="0.4">
+        <polygon points="0,-12 3,-3 12,0 3,3 0,12 -3,3 -12,0 -3,-3" fill="currentColor"/>
+        <polygon points="0,-12 3,-3 12,0 3,3 0,12 -3,3 -12,0 -3,-3" fill="currentColor" transform="rotate(45)"/>
+      </g>
+    </svg>
     <div class="qcard-icon">
       <img src="/assets/quba.png" alt="Quba" width="48" height="48" style="border-radius:12px;object-fit:contain;">
     </div>
@@ -442,23 +529,15 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   <div class="wrap">
     <p class="section-label reveal">See it in action</p>
     <h2 class="section-title reveal">Watch before you buy.</h2>
-    <div class="yt-grid">
-      <button class="yt-tile reveal" type="button" data-vid="5k8n-hp9pGY">
-        <span class="yt-thumb"><span class="yt-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
-        <div class="yt-cap">
-          <div class="kicker">Walkthrough</div>
-          <h3>The portfolio tracker that thinks like an investor</h3>
-        </div>
-      </button>
-      <button class="yt-tile reveal" type="button" data-vid="QZnKZUM66s4">
-        <span class="yt-thumb"><span class="yt-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
-        <div class="yt-cap">
-          <div class="kicker">Deep dive</div>
-          <h3>Setup &amp; features — getting started with FalqenView</h3>
-        </div>
-      </button>
+    <div id="yt-loading" style="display:flex;align-items:center;justify-content:center;gap:12px;padding:48px 0;color:var(--muted);font-size:0.9rem;">
+      <svg style="width:22px;height:22px;animation:spin .8s linear infinite;flex-shrink:0;" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" opacity="0.2"/><path d="M12 2 A10 10 0 0 1 22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      Loading videos…
     </div>
-    <div class="yt-channel reveal">
+    <div id="yt-error" style="display:none;text-align:center;padding:48px 0;color:var(--muted);font-size:0.88rem;">
+      Could not load videos. <a href="https://youtube.com/@falqenview" target="_blank" rel="noopener" style="color:var(--cyan);">Visit the channel →</a>
+    </div>
+    <div class="yt-grid" id="yt-grid" style="display:none;"></div>
+    <div class="yt-channel reveal" id="yt-channel" style="display:none;">
       <p>Setup guides and feature deep-dives — with Updraft and Apex walkthroughs as they ship.</p>
       <a class="subscribe" href="https://youtube.com/@falqenview" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.4 12 20.4 12 20.4s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6z"/></svg>
@@ -531,16 +610,116 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     <div class="vmodal-frame"><iframe id="vmodalIframe" src="" title="FalqenView video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
   </div>
 </div>
+
 <script>
-(function(){
-  var modal=document.getElementById('vmodal');
-  var iframe=document.getElementById('vmodalIframe');
-  function open(id){ iframe.src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&color=white'; modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
-  function close(){ iframe.src=''; modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
-  document.querySelectorAll('.yt-tile[data-vid]').forEach(function(b){ b.addEventListener('click',function(){ open(b.getAttribute('data-vid')); }); });
-  document.getElementById('vmodalClose').addEventListener('click',close);
-  modal.querySelector('[data-close]').addEventListener('click',close);
-  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&modal.classList.contains('open')) close(); });
+(function () {
+  /* ── YouTube API config ── */
+  var CHANNEL_ID  = 'UCsiLE9wEFkv7xwemeC9B9zQ';
+  var API_KEY     = 'AIzaSyAS-1DJ49Z_ZcgWYy1xy83S9T9ampafw-U';
+  var MAX_RESULTS = 2;
+
+  var grid    = document.getElementById('yt-grid');
+  var loading = document.getElementById('yt-loading');
+  var error   = document.getElementById('yt-error');
+  var channel = document.getElementById('yt-channel');
+
+  /* ── modal ── */
+  var modal  = document.getElementById('vmodal');
+  var iframe = document.getElementById('vmodalIframe');
+  function openModal(id) {
+    iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&color=white';
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    iframe.src = '';
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('vmodalClose').addEventListener('click', closeModal);
+  modal.querySelector('[data-close]').addEventListener('click', closeModal);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+
+  /* ── tag inference ── */
+  function inferTag(title) {
+    var t = title.toLowerCase();
+    if (t.indexOf('setup') !== -1 || t.indexOf('get started') !== -1 || t.indexOf('getting started') !== -1) return 'Setup guide';
+    if (t.indexOf('walkthrough') !== -1 || t.indexOf('tour') !== -1) return 'Walkthrough';
+    if (t.indexOf('feature') !== -1 || t.indexOf('deep dive') !== -1) return 'Deep dive';
+    if (t.indexOf('talon') !== -1) return 'Talon';
+    if (t.indexOf('vuepoint') !== -1 || t.indexOf('portfolio') !== -1) return 'VuePoint';
+    return 'FalqenView';
+  }
+
+  /* ── best thumbnail ── */
+  function thumb(snip) {
+    var t = snip.thumbnails;
+    return (t.maxres || t.standard || t.high || t.medium || t.default).url;
+  }
+
+  /* ── build card ── */
+  function buildCard(video) {
+    var id    = video.id;
+    var snip  = video.snippet;
+    var title = snip.title;
+
+    var card = document.createElement('button');
+    card.className = 'yt-tile reveal';
+    card.type = 'button';
+    card.setAttribute('aria-label', 'Play: ' + title);
+    card.innerHTML =
+      '<span class="yt-thumb">' +
+        '<img src="' + thumb(snip) + '" alt="' + title.replace(/"/g, '&quot;') + '" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">' +
+        '<span class="yt-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>' +
+      '</span>' +
+      '<div class="yt-cap">' +
+        '<div class="kicker">' + inferTag(title) + '</div>' +
+        '<h3>' + title + '</h3>' +
+      '</div>';
+
+    card.addEventListener('click', function () { openModal(id); });
+    return card;
+  }
+
+  /* ── fetch pipeline ── */
+  fetch('https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=' + CHANNEL_ID + '&key=' + API_KEY)
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      if (!data.items || !data.items.length) throw new Error('channel');
+      var uploadsId = data.items[0].contentDetails.relatedPlaylists.uploads;
+      return fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=' + uploadsId + '&maxResults=' + MAX_RESULTS + '&key=' + API_KEY);
+    })
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      if (!data.items || !data.items.length) throw new Error('playlist');
+      var ids = data.items.map(function (i) { return i.snippet.resourceId.videoId; }).join(',');
+      return fetch('https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + ids + '&key=' + API_KEY);
+    })
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      if (!data.items || !data.items.length) throw new Error('videos');
+      data.items.forEach(function (v) { grid.appendChild(buildCard(v)); });
+      loading.style.display = 'none';
+      grid.style.display = 'grid';
+      channel.style.display = 'flex';
+      /* re-observe new cards for scroll reveal */
+      grid.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    })
+    .catch(function (err) {
+      console.error('FalqenView videos:', err);
+      loading.style.display = 'none';
+      error.style.display = 'block';
+    });
+
+  /* ── spin keyframe (inline, safe) ── */
+  if (!document.getElementById('fv-spin-kf')) {
+    var s = document.createElement('style');
+    s.id = 'fv-spin-kf';
+    s.textContent = '@keyframes spin{to{transform:rotate(360deg)}}';
+    document.head.appendChild(s);
+  }
 })();
 </script>
 
