@@ -118,15 +118,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 /* arabesque geometric pattern backdrop */
 .q-hero-pattern{position:absolute;inset:0;z-index:0;opacity:0.06;background-image:url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2352b788' stroke-width='1'%3E%3Cpath d='M60 0 L75 45 L120 60 L75 75 L60 120 L45 75 L0 60 L45 45 Z'/%3E%3Crect x='30' y='30' width='60' height='60' transform='rotate(45 60 60)'/%3E%3Ccircle cx='60' cy='60' r='30'/%3E%3C/g%3E%3C/svg%3E");background-size:118px 118px;mask-image:radial-gradient(ellipse 80% 80% at 50% 35%,black 25%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 35%,black 25%,transparent 80%);}
 .q-hero-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;}
-.q-crest{width:104px;height:104px;margin:0 auto 26px;display:flex;align-items:center;justify-content:center;}
-.q-crest img,.q-crest svg{width:104px;height:104px;border-radius:22px;
-  filter:drop-shadow(0 0 22px rgba(245,158,11,0.40)) drop-shadow(0 0 38px rgba(82,183,136,0.28));}
+.q-crest{width:78px;height:78px;margin:0 auto 26px;display:flex;align-items:center;justify-content:center;}
+.q-crest svg{width:78px;height:78px;filter:drop-shadow(0 0 18px rgba(82,183,136,0.45));}
 .q-eyebrow{display:inline-block;font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--q-mid);margin-bottom:20px;}
 /* language selector */
 .q-lang{display:flex;justify-content:center;gap:8px;margin:0 auto 22px;}
-.q-lang-btn{font-family:var(--font-body);font-size:0.82rem;font-weight:500;color:var(--text-dim);background:rgba(82,183,136,0.08);border:1px solid rgba(82,183,136,0.28);border-radius:100px;padding:6px 16px;cursor:pointer;transition:color .18s,background .18s,border-color .18s,transform .15s;}
+.q-lang-btn{font-family:var(--font-body);font-size:0.82rem;font-weight:500;color:var(--text-dim);background:rgba(82,183,136,0.08);border:1px solid rgba(82,183,136,0.28);border-radius:100px;padding:6px 16px;cursor:pointer;transition:color .18s,background .18s,border-color .18s,transform .15s;display:inline-flex;align-items:center;gap:0;}
 .q-lang-btn:hover{color:var(--text);border-color:rgba(82,183,136,0.5);transform:translateY(-1px);}
 .q-lang-btn.active{color:#08130d;background:var(--q-mid);border-color:var(--q-mid);font-weight:600;}
+.q-lang-btn .q-audio-icon{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin-left:6px;border-radius:50%;cursor:pointer;flex-shrink:0;opacity:0.7;transition:opacity .15s,background .15s;}
+[dir="rtl"] .q-lang-btn .q-audio-icon{margin-left:0;margin-right:6px;}
+.q-lang-btn .q-audio-icon:hover{opacity:1;background:rgba(0,0,0,0.12);}
+.q-lang-btn.active .q-audio-icon{opacity:0.75;}
+.q-lang-btn.active .q-audio-icon:hover{opacity:1;background:rgba(0,0,0,0.18);}
+.q-lang-btn .q-audio-icon svg{width:13px;height:13px;pointer-events:none;}
+.q-lang-btn .q-audio-icon.playing svg .q-wave{animation:q-wave-pulse .6s ease-in-out infinite alternate;}
+@keyframes q-wave-pulse{from{opacity:0.4;}to{opacity:1;}}
 /* RTL: when a block is flipped, mirror flex/alignment cleanly */
 [dir="rtl"]{text-align:right;}
 [dir="rtl"] .q-block h3{flex-direction:row-reverse;}
@@ -220,14 +227,9 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 .q-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(82,183,136,0.10);border:1px solid rgba(82,183,136,0.30);color:var(--q-light);font-size:0.78rem;font-weight:500;padding:7px 14px;border-radius:100px;transition:transform .18s,border-color .18s,box-shadow .18s;}
 .q-pill svg{width:14px;height:14px;flex-shrink:0;}
 .q-pill:hover{transform:translateY(-2px);border-color:rgba(82,183,136,0.55);box-shadow:0 4px 14px rgba(82,183,136,0.18);}
-.q-a11y{display:flex;flex-direction:column;align-items:center;gap:7px;margin-top:18px;}
+.q-a11y{display:flex;flex-direction:column;align-items:center;gap:7px;margin-top:14px;}
 .q-a11y-sub{font-size:0.7rem;font-weight:400;letter-spacing:0.02em;color:rgba(82,183,136,0.62);}
 .q-hero[dir="rtl"] .q-a11y-sub{direction:rtl;}
-/* accessibility BADGE — a credential, not a touchable feature: flatter, muted, dashed, no hover lift */
-.q-badge{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px dashed rgba(122,132,153,0.45);color:var(--muted);font-size:0.72rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;padding:6px 14px;border-radius:8px;}
-.q-badge svg{width:14px;height:14px;flex-shrink:0;color:rgba(122,132,153,0.85);}
-.q-badge-sub{font-size:0.64rem;font-weight:400;letter-spacing:0.02em;color:rgba(122,132,153,0.7);text-transform:none;padding-left:8px;border-left:1px solid rgba(122,132,153,0.3);}
-.q-hero[dir="rtl"] .q-badge-sub{padding-left:0;padding-right:8px;border-left:none;border-right:1px solid rgba(122,132,153,0.3);}
 /* feature cards grid */
 .q-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;}
 .q-fcard{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 22px;transition:transform .2s,border-color .2s,box-shadow .2s;overflow:hidden;}
@@ -292,26 +294,26 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   <div class="q-hero-pattern"></div>
   <div class="q-hero-inner">
     <div class="q-crest">
-      <img src="/assets/quba.png" alt="Quba" width="104" height="104" style="object-fit:contain;">
+      <img src="/assets/quba.png" alt="Quba" width="78" height="78" style="object-fit:contain;border-radius:18px;">
     </div>
     <div class="q-eyebrow">Quba</div>
     <div class="q-lang" role="group" aria-label="Language">
       <button class="q-lang-btn active" data-lang="en" lang="en">English</button>
-      <button class="q-lang-btn" data-lang="bn" lang="bn">বাংলা</button>
-      <button class="q-lang-btn" data-lang="ar" lang="ar">عربي</button>
+      <button class="q-lang-btn" data-lang="bn" lang="bn">বাংলা<span class="q-audio-icon" data-audio="bn" role="button" aria-label="বাংলায় শুনুন" title="বাংলায় শুনুন"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path class="q-wave" d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path class="q-wave" d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></span></button>
+      <button class="q-lang-btn" data-lang="ar" lang="ar">عربي<span class="q-audio-icon" data-audio="ar" role="button" aria-label="استمع بالعربية" title="استمع بالعربية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path class="q-wave" d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path class="q-wave" d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></span></button>
     </div>
     <h1 data-i18n="hero_h1">The first step is the hardest.<br><em>We made it easier.</em></h1>
     <p class="tagline" data-i18n="hero_tag">A warm, beginner-friendly guide to the five daily prayers, and a compass that points you to the Kaaba from wherever you are. Simple enough to start praying today, and a companion you'll keep reaching for long after.</p>
     <p class="arabic">السلام عليكم</p>
     <div class="q-pills">
-      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-i18n="pill_times">Prayer times &amp; tracker</span></span>
-      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-i18n="pill_mosques">Nearest mosques &amp; compass</span></span>
-      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M5 9c0 4 3 7 7 7s7-3 7-7"/></svg><span data-i18n="pill_wudu">Wudu guide &amp; tracker</span></span>
-      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="4.5" r="1.6" fill="currentColor" stroke="none"/></svg><span data-i18n="pill_tasbih">Tasbih counter</span></span>
-      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16v.01M12 13a2.2 2.2 0 0 0 .9-4.2 2.4 2.4 0 0 0-3.2 1.5"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="pill_faq">Beginner FAQ</span></span>
+      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-i18n="pill_times">Live prayer times</span></span>
+      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-i18n="pill_mosques">Nearest mosques</span></span>
+      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg><span data-i18n="pill_qibla">Qibla compass</span></span>
+      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M5 9c0 4 3 7 7 7s7-3 7-7"/></svg><span data-i18n="pill_wudu">Wudu guide</span></span>
     </div>
     <div class="q-a11y">
-      <span class="q-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/></svg><span data-i18n="pill_all">Accessibility-first</span><span class="q-badge-sub" data-i18n="pill_all_t">Built to WCAG 2.1 AA</span></span>
+      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M5 9h14M12 9v5M12 14l-3 6M12 14l3 6"/></svg><span data-i18n="pill_all">Accessibility-first</span></span>
+      <span class="q-a11y-sub" data-i18n="pill_all_t">Designed to WCAG 2.1 AA guidelines</span>
     </div>
   </div>
 </section>
@@ -376,7 +378,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2z"/><path d="M8 8h8M8 12h6"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2z"/><path d="M8 8h8M8 12h6"/></svg></div>
         <h4 data-i18n="c_lib_h">Surahs, du'ās &amp; adhkar</h4>
-        <p data-i18n="c_lib_p">Twenty short <span class='q-kw'>surahs</span> plus the everyday <span class='q-kw'>du'ās</span> and <span class='q-kw'>Post-Prayer Adhkar</span> you say after salah — each in Arabic with transliteration and translation, and a tap to listen. A built-in <span class='q-kw'>tasbih counter</span> on the Prayers tab counts your dhikr down from 33 with a gentle pulse, and a <span class='q-kw'>beginner-friendly FAQ</span> answers the questions new Muslims ask most.</p>
+        <p data-i18n="c_lib_p">Twenty short <span class='q-kw'>surahs</span> plus the everyday <span class='q-kw'>du'ās</span> and <span class='q-kw'>Post-Prayer Adhkar</span> you say after salah — each in Arabic with transliteration and translation, and a tap to listen. A built-in <span class='q-kw'>tasbih counter</span> on the Prayers tab counts your dhikr down from 33 with a gentle pulse.</p>
       </div>
       <div class="q-fcard">
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></div>
@@ -474,15 +476,12 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     en: {
       hero_h1: "The first step is the hardest.<br><em>We made it easier.</em>",
       hero_tag: "A warm, beginner-friendly guide to the five daily prayers, and a compass that points you to the Kaaba from wherever you are. Simple enough to start praying today, and a companion you'll keep reaching for long after.",
-      pill_times: "Prayer times &amp; tracker",
-      pill_mosques: "Nearest mosques &amp; compass",
+      pill_times: "Live prayer times",
+      pill_mosques: "Nearest mosques",
       pill_qibla: "Qibla compass",
-      pill_wudu: "Wudu guide &amp; tracker",
-      pill_tasbih: "Tasbih counter",
-      pill_tracker: "Prayer tracker",
-      pill_faq: "Beginner FAQ",
+      pill_wudu: "Wudu guide",
       pill_all: "Accessibility-first",
-      pill_all_t: "Built to WCAG 2.1 AA",
+      pill_all_t: "Designed to WCAG 2.1 AA guidelines",
       free_h: "Free, always.",
       free_p: "A personal gift, offered freely to anyone learning or returning to the basics of prayer. No ads, no accounts, no tracking, no cost. If it's useful to you, that is more than enough.",
       why_h: "Why this exists",
@@ -504,7 +503,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       c_wudu_h: "Wudu &amp; prayer tracking",
       c_wudu_p: "Every step of <span class='q-kw'>ablution</span> in order, with a progress tracker showing what's fard and what's sunnah. Then <span class='q-kw'>log each prayer</span> as you complete it, and tap back to any day in the past week to record missed prayers.",
       c_lib_h: "Surahs, du'ās &amp; adhkar",
-      c_lib_p: "Twenty short <span class='q-kw'>surahs</span> plus the everyday <span class='q-kw'>du'ās</span> and <span class='q-kw'>Post-Prayer Adhkar</span> you say after salah — each in Arabic with transliteration and translation, and a tap to listen. A built-in <span class='q-kw'>tasbih counter</span> on the Prayers tab counts your dhikr down from 33 with a gentle pulse, and a <span class='q-kw'>beginner-friendly FAQ</span> answers the questions new Muslims ask most.",
+      c_lib_p: "Twenty short <span class='q-kw'>surahs</span> plus the everyday <span class='q-kw'>du'ās</span> and <span class='q-kw'>Post-Prayer Adhkar</span> you say after salah — each in Arabic with transliteration and translation, and a tap to listen. A built-in <span class='q-kw'>tasbih counter</span> on the Prayers tab counts your dhikr down from 33 with a gentle pulse.",
       c_qibla_h: "Live Qibla compass",
       c_qibla_p: "A real-time <span class='q-kw'>compass</span> that points to the Kaaba from wherever you stand — calibrated to your device heading and current location.",
       c_mosques_h: "Nearest mosques",
@@ -520,15 +519,12 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     bn: {
       hero_h1: "প্রথম ধাপটাই সবচেয়ে কঠিন।<br><em>আমরা সেটা সহজ করে দিয়েছি।</em>",
       hero_tag: "পাঁচ ওয়াক্ত নামাজের জন্য একটি সহজ, নতুনদের উপযোগী গাইড, আর যেখানেই থাকুন কাবার দিকে মুখ ফেরানোর জন্য একটি কম্পাস। আজই নামাজ শুরু করার মতো সহজ, আবার বহুদিন পরেও সঙ্গে থাকার মতো পূর্ণাঙ্গ।",
-      pill_times: "নামাজের সময় ও ট্র্যাকার",
-      pill_mosques: "নিকটবর্তী মসজিদ ও কম্পাস",
+      pill_times: "নামাজের সময়সূচি",
+      pill_mosques: "নিকটবর্তী মসজিদ",
       pill_qibla: "কিবলা কম্পাস",
-      pill_wudu: "অজুর গাইড ও ট্র্যাকার",
-      pill_tasbih: "তাসবিহ কাউন্টার",
-      pill_tracker: "নামাজ ট্র্যাকার",
-      pill_faq: "নতুনদের প্রশ্নোত্তর",
+      pill_wudu: "অজুর গাইড",
       pill_all: "অ্যাক্সেসিবিলিটি-প্রথম",
-      pill_all_t: "WCAG 2.1 AA অনুযায়ী তৈরি",
+      pill_all_t: "WCAG 2.1 AA নির্দেশিকা অনুসরণ করে তৈরি",
       free_h: "সবসময় বিনামূল্যে।",
       free_p: "নামাজের মৌলিক বিষয় শিখছেন বা আবার শুরু করছেন, এমন যে কারো জন্য একটি ছোট উপহার। কোনো বিজ্ঞাপন নেই, অ্যাকাউন্ট নেই, ট্র্যাকিং নেই, কোনো খরচ নেই। এটি যদি আপনার কাজে লাগে, সেটাই যথেষ্ট।",
       why_h: "কেন এই অ্যাপ",
@@ -550,7 +546,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       c_wudu_h: "অজু ও নামাজ ট্র্যাকিং",
       c_wudu_p: "অজুর প্রতিটি ধাপ ক্রম অনুযায়ী, কোনটি ফরজ আর কোনটি সুন্নত তা দেখানো একটি অগ্রগতি নির্দেশকসহ। এরপর প্রতিদিনের পাঁচ ওয়াক্ত নামাজ পড়ার পর লগ করুন, আর গত সাত দিনের যেকোনো দিনে ফিরে গিয়ে ছুটে যাওয়া নামাজ রেকর্ড করুন।",
       c_lib_h: "সূরা, দোয়া ও আযকার",
-      c_lib_p: "বিশটি ছোট সূরা, সঙ্গে প্রতিদিনের দোয়া আর নামাজের পরের আযকার (Post-Prayer Adhkar, PPA) — প্রতিটি আরবিতে, উচ্চারণ ও অর্থসহ, আর শোনার জন্য এক টোকা। নামাজ ট্যাবে একটি তাসবিহ কাউন্টার আপনার যিকির ৩৩ থেকে গুনে কমায়, একটি মৃদু স্পন্দনসহ। আর নতুনদের উপযোগী একটি প্রশ্নোত্তর বিভাগ নতুন মুসলিমদের সবচেয়ে সাধারণ প্রশ্নগুলোর উত্তর দেয়।",
+      c_lib_p: "বিশটি ছোট সূরা, সঙ্গে প্রতিদিনের দোয়া আর নামাজের পরের আযকার (Post-Prayer Adhkar, PPA) — প্রতিটি আরবিতে, উচ্চারণ ও অর্থসহ, আর শোনার জন্য এক টোকা। নামাজ ট্যাবে একটি তাসবিহ কাউন্টার আপনার যিকির ৩৩ থেকে গুনে কমায়, একটি মৃদু স্পন্দনসহ।",
       c_qibla_h: "লাইভ কিবলা কম্পাস",
       c_qibla_p: "একটি রিয়েল-টাইম কম্পাস যা আপনি যেখানেই দাঁড়ান, কাবার দিকে নির্দেশ করে — আপনার ডিভাইসের দিক ও বর্তমান অবস্থান অনুযায়ী।",
       c_mosques_h: "নিকটবর্তী মসজিদ",
@@ -566,15 +562,12 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     ar: {
       hero_h1: "الخطوة الأولى هي الأصعب.<br><em>وقد جعلناها أيسر.</em>",
       hero_tag: "دليلٌ ميسَّرٌ ولطيفٌ للمبتدئين إلى الصلوات الخمس، وبوصلةٌ تدلّك على القبلة أينما كنت. بسيطٌ بما يكفي لتبدأ الصلاة اليوم، ورفيقٌ يبقى معك بعد ذلك بزمن طويل.",
-      pill_times: "مواقيت الصلاة ومتابعتها",
-      pill_mosques: "أقرب المساجد والبوصلة",
+      pill_times: "مواقيت الصلاة",
+      pill_mosques: "أقرب المساجد",
       pill_qibla: "بوصلة القبلة",
-      pill_wudu: "دليل الوضوء ومتابعته",
-      pill_tasbih: "عدّاد التسبيح",
-      pill_tracker: "متابعة الصلوات",
-      pill_faq: "أسئلة المبتدئين",
+      pill_wudu: "دليل الوضوء",
       pill_all: "إتاحةٌ أولًا",
-      pill_all_t: "مبنيٌّ وفق WCAG 2.1 AA",
+      pill_all_t: "مُصمَّمٌ وفق إرشادات WCAG 2.1 AA",
       free_h: "مجّانيٌّ دائمًا.",
       free_p: "هديةٌ تُقدَّم بسخاءٍ لكل من يتعلّم أساسيات الصلاة أو يعود إليها. لا إعلانات، ولا حسابات، ولا تتبّع، ولا تكلفة. إن نفعك، فهذا يكفينا.",
       why_h: "لماذا وُجد هذا التطبيق",
@@ -596,7 +589,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       c_wudu_h: "الوضوء ومتابعة الصلوات",
       c_wudu_p: "كل خطوةٍ من الوضوء بترتيبها، مع متتبّعٍ للتقدّم يبيّن ما هو فرضٌ وما هو سنّة. ثم سجِّل كل صلاةٍ من الصلوات الخمس فور أدائها، وعُد إلى أي يومٍ من الأسبوع الماضي لتدوين الصلوات الفائتة.",
       c_lib_h: "سُوَرٌ وأدعيةٌ وأذكار",
-      c_lib_p: "عشرون سورةً قصيرة، إضافةً إلى أدعية اليوم وأذكار ما بعد الصلاة (Post-Prayer Adhkar, PPA) — كلٌّ منها بالعربية مع النقل الصوتي والترجمة، ولمسةٌ واحدةٌ للاستماع. وفي تبويب الصلوات عدّادُ تسبيحٍ يعدّ ذِكرك تنازليًّا من ٣٣ بنبضةٍ لطيفة. كما يجيب قسمُ أسئلةٍ شائعةٍ ميسَّرٌ للمبتدئين عن أكثر ما يسأل عنه المسلمون الجدد.",
+      c_lib_p: "عشرون سورةً قصيرة، إضافةً إلى أدعية اليوم وأذكار ما بعد الصلاة (Post-Prayer Adhkar, PPA) — كلٌّ منها بالعربية مع النقل الصوتي والترجمة، ولمسةٌ واحدةٌ للاستماع. وفي تبويب الصلوات عدّادُ تسبيحٍ يعدّ ذِكرك تنازليًّا من ٣٣ بنبضةٍ لطيفة.",
       c_qibla_h: "بوصلة قبلةٍ حيّة",
       c_qibla_p: "بوصلةٌ فوريّةٌ تشير إلى الكعبة أينما وقفت — مضبوطةٌ على اتجاه جهازك وموقعك الحالي.",
       c_mosques_h: "أقرب المساجد",
@@ -631,6 +624,67 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     }
     btns.forEach(function (b) {
       b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); });
+    });
+  })();
+
+  /* ---------- Quba page audio ---------- */
+  (function () {
+    var AUDIO_SRCS = {
+      bn: '/assets/audio/quba-bn.mp3',
+      ar: '/assets/audio/quba-ar.mp3'
+    };
+    var currentAudio = null;
+    var currentIcon = null;
+
+    function stopCurrent() {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+      if (currentIcon) {
+        currentIcon.classList.remove('playing');
+        currentIcon.setAttribute('aria-pressed', 'false');
+      }
+      currentAudio = null;
+      currentIcon = null;
+    }
+
+    document.querySelectorAll('.q-audio-icon').forEach(function (icon) {
+      var lang = icon.getAttribute('data-audio');
+      icon.setAttribute('role', 'button');
+      icon.setAttribute('aria-pressed', 'false');
+      icon.setAttribute('tabindex', '0');
+
+      function toggle(e) {
+        e.stopPropagation(); // prevent bubble to pill (no lang switch)
+        if (currentIcon === icon) {
+          stopCurrent();
+          return;
+        }
+        stopCurrent();
+        var audio = new Audio(AUDIO_SRCS[lang]);
+        currentAudio = audio;
+        currentIcon = icon;
+        icon.classList.add('playing');
+        icon.setAttribute('aria-pressed', 'true');
+        audio.play().catch(function () {
+          icon.classList.remove('playing');
+          icon.setAttribute('aria-pressed', 'false');
+          currentAudio = null;
+          currentIcon = null;
+        });
+        audio.addEventListener('ended', function () {
+          icon.classList.remove('playing');
+          icon.setAttribute('aria-pressed', 'false');
+          currentAudio = null;
+          currentIcon = null;
+        });
+      }
+
+      icon.addEventListener('click', toggle);
+      icon.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(e); }
+      });
     });
   })();
 </script>
