@@ -230,9 +230,14 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 .q-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(82,183,136,0.10);border:1px solid rgba(82,183,136,0.30);color:var(--q-light);font-size:0.78rem;font-weight:500;padding:7px 14px;border-radius:100px;transition:transform .18s,border-color .18s,box-shadow .18s;}
 .q-pill svg{width:14px;height:14px;flex-shrink:0;}
 .q-pill:hover{transform:translateY(-2px);border-color:rgba(82,183,136,0.55);box-shadow:0 4px 14px rgba(82,183,136,0.18);}
-.q-a11y{display:flex;flex-direction:column;align-items:center;gap:7px;margin-top:14px;}
+.q-a11y{display:flex;flex-direction:column;align-items:center;gap:7px;margin-top:18px;}
 .q-a11y-sub{font-size:0.7rem;font-weight:400;letter-spacing:0.02em;color:rgba(82,183,136,0.62);}
 .q-hero[dir="rtl"] .q-a11y-sub{direction:rtl;}
+/* accessibility BADGE — a credential, not a touchable feature: flatter, muted, dashed, no hover lift */
+.q-badge{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px dashed rgba(122,132,153,0.45);color:var(--muted,#7a8499);font-size:0.72rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;padding:6px 14px;border-radius:8px;}
+.q-badge svg{width:14px;height:14px;flex-shrink:0;color:rgba(122,132,153,0.85);}
+.q-badge-sub{font-size:0.64rem;font-weight:400;letter-spacing:0.02em;color:rgba(122,132,153,0.7);text-transform:none;padding-left:8px;border-left:1px solid rgba(122,132,153,0.3);}
+.q-hero[dir="rtl"] .q-badge-sub{padding-left:0;padding-right:8px;border-left:none;border-right:1px solid rgba(122,132,153,0.3);}
 /* feature cards grid */
 .q-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;}
 .q-fcard{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 22px;transition:transform .2s,border-color .2s,box-shadow .2s;overflow:hidden;}
@@ -309,14 +314,14 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     <p class="tagline" data-i18n="hero_tag">A warm, beginner-friendly guide to the five daily prayers, and a compass that points you to the Kaaba from wherever you are. Simple enough to start praying today, and a companion you'll keep reaching for long after.</p>
     <p class="arabic">السلام عليكم</p>
     <div class="q-pills">
-      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-i18n="pill_times">Live prayer times</span></span>
-      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-i18n="pill_mosques">Nearest mosques</span></span>
-      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg><span data-i18n="pill_qibla">Qibla compass</span></span>
-      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M5 9c0 4 3 7 7 7s7-3 7-7"/></svg><span data-i18n="pill_wudu">Wudu guide</span></span>
+      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-i18n="pill_times">Prayer times &amp; tracker</span></span>
+      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-i18n="pill_mosques">Nearest mosques &amp; compass</span></span>
+      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M5 9c0 4 3 7 7 7s7-3 7-7"/></svg><span data-i18n="pill_wudu">Wudu guide &amp; tracker</span></span>
+      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="4.5" r="1.6" fill="currentColor" stroke="none"/></svg><span data-i18n="pill_tasbih">Tasbih counter</span></span>
+      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16v.01M12 13a2.2 2.2 0 0 0 .9-4.2 2.4 2.4 0 0 0-3.2 1.5"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="pill_faq">Beginner FAQ</span></span>
     </div>
     <div class="q-a11y">
-      <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M5 9h14M12 9v5M12 14l-3 6M12 14l3 6"/></svg><span data-i18n="pill_all">Accessibility-first</span></span>
-      <span class="q-a11y-sub" data-i18n="pill_all_t">Designed to WCAG 2.1 AA guidelines</span>
+      <span class="q-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/></svg><span data-i18n="pill_all">Accessibility-first</span><span class="q-badge-sub" data-i18n="pill_all_t">Built to WCAG 2.1 AA</span></span>
     </div>
   </div>
 </section>
@@ -479,12 +484,14 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     en: {
       hero_h1: "The first step is the hardest.<br><em>We made it easier.</em>",
       hero_tag: "A warm, beginner-friendly guide to the five daily prayers, and a compass that points you to the Kaaba from wherever you are. Simple enough to start praying today, and a companion you'll keep reaching for long after.",
-      pill_times: "Live prayer times",
-      pill_mosques: "Nearest mosques",
+      pill_times: "Prayer times &amp; tracker",
+      pill_mosques: "Nearest mosques &amp; compass",
       pill_qibla: "Qibla compass",
-      pill_wudu: "Wudu guide",
+      pill_wudu: "Wudu guide &amp; tracker",
+      pill_tasbih: "Tasbih counter",
+      pill_faq: "Beginner FAQ",
       pill_all: "Accessibility-first",
-      pill_all_t: "Designed to WCAG 2.1 AA guidelines",
+      pill_all_t: "Built to WCAG 2.1 AA",
       free_h: "Free, always.",
       free_p: "A personal gift, offered freely to anyone learning or returning to the basics of prayer. No ads, no accounts, no tracking, no cost. If it's useful to you, that is more than enough.",
       why_h: "Why this exists",
@@ -522,12 +529,14 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     bn: {
       hero_h1: "প্রথম ধাপটাই সবচেয়ে কঠিন।<br><em>আমরা সেটা সহজ করে দিয়েছি।</em>",
       hero_tag: "পাঁচ ওয়াক্ত নামাজের জন্য একটি সহজ, নতুনদের উপযোগী গাইড, আর যেখানেই থাকুন কাবার দিকে মুখ ফেরানোর জন্য একটি কম্পাস। আজই নামাজ শুরু করার মতো সহজ, আবার বহুদিন পরেও সঙ্গে থাকার মতো পূর্ণাঙ্গ।",
-      pill_times: "নামাজের সময়সূচি",
-      pill_mosques: "নিকটবর্তী মসজিদ",
+      pill_times: "নামাজের সময় ও ট্র্যাকার",
+      pill_mosques: "নিকটবর্তী মসজিদ ও কম্পাস",
       pill_qibla: "কিবলা কম্পাস",
-      pill_wudu: "অজুর গাইড",
+      pill_wudu: "অজুর গাইড ও ট্র্যাকার",
+      pill_tasbih: "তাসবিহ কাউন্টার",
+      pill_faq: "নতুনদের প্রশ্নোত্তর",
       pill_all: "অ্যাক্সেসিবিলিটি-প্রথম",
-      pill_all_t: "WCAG 2.1 AA নির্দেশিকা অনুসরণ করে তৈরি",
+      pill_all_t: "WCAG 2.1 AA অনুযায়ী তৈরি",
       free_h: "সবসময় বিনামূল্যে।",
       free_p: "নামাজের মৌলিক বিষয় শিখছেন বা আবার শুরু করছেন, এমন যে কারো জন্য একটি ছোট উপহার। কোনো বিজ্ঞাপন নেই, অ্যাকাউন্ট নেই, ট্র্যাকিং নেই, কোনো খরচ নেই। এটি যদি আপনার কাজে লাগে, সেটাই যথেষ্ট।",
       why_h: "কেন এই অ্যাপ",
@@ -565,12 +574,14 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     ar: {
       hero_h1: "الخطوة الأولى هي الأصعب.<br><em>وقد جعلناها أيسر.</em>",
       hero_tag: "دليلٌ ميسَّرٌ ولطيفٌ للمبتدئين إلى الصلوات الخمس، وبوصلةٌ تدلّك على القبلة أينما كنت. بسيطٌ بما يكفي لتبدأ الصلاة اليوم، ورفيقٌ يبقى معك بعد ذلك بزمن طويل.",
-      pill_times: "مواقيت الصلاة",
-      pill_mosques: "أقرب المساجد",
+      pill_times: "مواقيت الصلاة ومتابعتها",
+      pill_mosques: "أقرب المساجد والبوصلة",
       pill_qibla: "بوصلة القبلة",
-      pill_wudu: "دليل الوضوء",
+      pill_wudu: "دليل الوضوء ومتابعته",
+      pill_tasbih: "عدّاد التسبيح",
+      pill_faq: "أسئلة المبتدئين",
       pill_all: "إتاحةٌ أولًا",
-      pill_all_t: "مُصمَّمٌ وفق إرشادات WCAG 2.1 AA",
+      pill_all_t: "مبنيٌّ وفق WCAG 2.1 AA",
       free_h: "مجّانيٌّ دائمًا.",
       free_p: "هديةٌ تُقدَّم بسخاءٍ لكل من يتعلّم أساسيات الصلاة أو يعود إليها. لا إعلانات، ولا حسابات، ولا تتبّع، ولا تكلفة. إن نفعك، فهذا يكفينا.",
       why_h: "لماذا وُجد هذا التطبيق",
