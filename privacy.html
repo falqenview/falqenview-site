@@ -17,7 +17,7 @@ window.addEventListener('error', function(e) {
 }, true);
 </script>
 <title>Privacy Policy — FalqenView</title>
-<meta name="description" content="FalqenView Privacy Policy.">
+<meta name="description" content="FalqenView Privacy Policy. No data collection, no tracking, no third-party exposure. Your data stays in your own account — always.">
 <meta name="robots" content="index, follow, noai, noimageai">
 <link rel="canonical" href="https://falqenview.com/privacy.html">
 <link rel="icon" type="image/png" href="assets/fvIcon.png">
@@ -31,7 +31,7 @@ window.addEventListener('error', function(e) {
   --bg:#141820;--bg-deep:#0e1118;--surface:#1c2230;--surface2:#232b3e;
   --border:rgba(255,255,255,0.07);--border-2:rgba(255,255,255,0.12);
   --blue:#1A73E8;--blue-2:#1557b0;--blue-dim:rgba(26,115,232,0.12);
-  --cyan:#38bdf8;--amber:#f59e0b;--text:#e8ecf4;
+  --cyan:#38bdf8;--amber:#f59e0b;--red:#ef4444;--text:#e8ecf4;
   --text-dim:rgba(232,236,244,0.78);--muted:#7a8499;--nav-h:64px;
   --font-display:'Montserrat',sans-serif;--font-body:'Lexend',sans-serif;
   --font-mono:'JetBrains Mono',ui-monospace,monospace;
@@ -39,13 +39,6 @@ window.addEventListener('error', function(e) {
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:1rem;line-height:1.7;min-height:100vh;}
-nav{position:sticky;top:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 32px;background:rgba(14,17,24,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-logo img{height:28px;width:28px;object-fit:contain;}
-.nav-logo-text{font-family:var(--font-display);font-weight:800;font-size:1.1rem;letter-spacing:-0.02em;color:var(--text);}
-.nav-logo-text em{font-style:normal;color:var(--cyan);}
-.nav-home{font-size:0.82rem;color:var(--muted);text-decoration:none;transition:color 0.2s;}
-.nav-home:hover{color:var(--cyan);}
 .page-wrap{max-width:780px;margin:0 auto;padding:calc(var(--nav-h) + 36px) 32px 96px;}
 .page-eyebrow{font-family:var(--font-mono);font-size:0.7rem;color:var(--cyan);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:16px;}
 .page-title{font-family:var(--font-display);font-size:2.4rem;font-weight:900;line-height:1.1;letter-spacing:-0.03em;margin-bottom:12px;}
@@ -55,14 +48,34 @@ nav{position:sticky;top:0;z-index:100;height:var(--nav-h);display:flex;align-ite
 .section-title{font-family:var(--font-display);font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);}
 .section p{font-size:0.9rem;color:var(--text-dim);margin-bottom:12px;}
 .section p:last-child{margin-bottom:0;}
+.section ul{list-style:none;margin:10px 0 12px 0;}
+.section ul li{font-size:0.9rem;color:var(--text-dim);padding:5px 0 5px 20px;position:relative;}
+.section ul li::before{content:'—';position:absolute;left:0;color:var(--muted);}
 .highlight-box{background:var(--surface);border:1px solid var(--border-2);border-left:3px solid var(--cyan);border-radius:6px;padding:16px 20px;margin:16px 0;font-size:0.88rem;color:var(--text-dim);}
 .highlight-box strong{color:var(--text);}
 a{color:var(--cyan);text-decoration:none;}
 a:hover{text-decoration:underline;}
-footer{border-top:1px solid var(--border);padding:32px;text-align:center;}
-.footer-legal{font-size:0.72rem;color:var(--muted);}
-.footer-legal a{color:var(--cyan);text-decoration:underline;}
-@media(max-width:640px){.page-wrap{padding:40px 20px 72px;}.page-title{font-size:1.8rem;}nav{padding:0 18px;}}
+@media(max-width:640px){.page-wrap{padding:40px 20px 72px;}.page-title{font-size:1.8rem;}}
+
+footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-index:1;text-align:left;}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+.footer-brand{display:flex;flex-direction:column;gap:8px;}
+.footer-lockup{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.footer-lockup img{height:30px;width:30px;object-fit:contain;}
+.footer-lockup-text{font-family:var(--font-display,'Montserrat',sans-serif);font-weight:800;font-size:1rem;color:var(--text);}
+.footer-lockup-text em{font-style:normal;color:var(--cyan);}
+.footer-motto{font-size:0.66rem;color:var(--muted);letter-spacing:0.14em;text-transform:uppercase;padding-left:40px;}
+.footer-links{display:flex;gap:22px;flex-wrap:wrap;}
+.footer-links a{font-size:0.78rem;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--text);}
+.footer-bottom{max-width:1100px;margin:24px auto 0;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-legal{font-size:0.7rem;color:var(--muted);opacity:0.75;}
+.footer-legal a{color:var(--cyan);text-decoration:none;}
+.footer-legal a:hover{text-decoration:underline;}
+.footer-contact a{font-size:0.74rem;color:var(--cyan);text-decoration:none;}
+.footer-contact a:hover{text-decoration:underline;}
+.footer-contact .dot{color:var(--muted);margin:0 4px;}
+@media(max-width:760px){.footer-inner{flex-direction:column;align-items:flex-start;gap:18px;}.footer-motto{padding-left:0;}.footer-bottom{flex-direction:column;align-items:flex-start;}}
 </style>
 </head>
 <body>
@@ -86,25 +99,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .mobile-menu a{color:var(--text);text-decoration:none;padding:12px 14px;border-radius:8px;font-size:0.95rem;font-weight:500;}
 .mobile-menu a:hover,.mobile-menu a:focus{background:var(--surface);}
 @media(max-width:860px){.nav-links{display:none;}.menu-toggle{display:inline-flex;align-items:center;justify-content:center;}}
-footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-index:1;text-align:left;}
-.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
-.footer-brand{display:flex;flex-direction:column;gap:8px;}
-.footer-lockup{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.footer-lockup img{height:30px;width:30px;object-fit:contain;}
-.footer-lockup-text{font-family:var(--font-display,'Montserrat',sans-serif);font-weight:800;font-size:1rem;color:var(--text);}
-.footer-lockup-text em{font-style:normal;color:var(--cyan);}
-.footer-motto{font-size:0.66rem;color:var(--muted);letter-spacing:0.14em;text-transform:uppercase;padding-left:40px;}
-.footer-links{display:flex;gap:22px;flex-wrap:wrap;}
-.footer-links a{font-size:0.78rem;color:var(--muted);text-decoration:none;transition:color 0.2s;}
-.footer-links a:hover{color:var(--text);}
-.footer-bottom{max-width:1100px;margin:24px auto 0;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.footer-legal{font-size:0.7rem;color:var(--muted);opacity:0.75;}
-.footer-legal a{color:var(--cyan);text-decoration:none;}
-.footer-legal a:hover{text-decoration:underline;}
-.footer-contact a{font-size:0.74rem;color:var(--cyan);text-decoration:none;}
-.footer-contact a:hover{text-decoration:underline;}
-.footer-contact .dot{color:var(--muted);margin:0 4px;}
-@media(max-width:760px){nav{padding:0 18px;}.footer-inner{flex-direction:column;align-items:flex-start;gap:18px;}.footer-motto{padding-left:0;}.footer-bottom{flex-direction:column;align-items:flex-start;}}
 </style>
 <nav>
   <a href="/" class="nav-logo" aria-label="FalqenView home">
@@ -134,14 +128,15 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   <div class="page-eyebrow">Legal</div>
   <h1 class="page-title">Privacy Policy</h1>
   <div class="page-meta">
-    Effective date: May 25, 2026 &nbsp;·&nbsp;
+    Effective date: May 25, 2026 &nbsp;·&nbsp; Last revised: June 15, 2026 &nbsp;·&nbsp;
     <strong>This policy may be updated at any time without prior notice. Continued use of the site or product constitutes acceptance of the current policy.</strong>
   </div>
 
   <div class="section">
-    <div class="section-title">1. What We Collect</div>
-    <p>FalqenView does not directly collect, store, or process personal data. We do not use analytics tools, advertising trackers, or cookies of any kind on this website.</p>
-    <p>When you submit the contact form on this site, your name and email address are routed to our support inbox. This information is used solely to respond to your inquiry and is not stored beyond that purpose.</p>
+    <div class="section-title">1. Privacy as a Foundation</div>
+    <p>Privacy is not a feature at FalqenView. It is the foundation. These tools were built the way I use tools: no one watching, no data leaving, no system sitting between you and your own information.</p>
+    <p>FalqenView does not collect, store, or process your personal data. There are no analytics tools, no advertising trackers, and no third-party data collection of any kind embedded in this website or in any FalqenView product.</p>
+    <p>When you submit the contact form on this site, your name and email address are routed to our support inbox to respond to your inquiry. That information is not stored beyond that purpose.</p>
   </div>
 
   <div class="section">
@@ -151,15 +146,26 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   </div>
 
   <div class="section">
-    <div class="section-title">3. Your Portfolio Data</div>
-    <div class="highlight-box"><strong>We never see your portfolio data.</strong> All data you enter into a FalqenView product — tickers, balances, account names, share counts — is stored exclusively in your own Google account. FalqenView has no access to it at any time.</div>
+    <div class="section-title">3. Your Data</div>
+    <div class="highlight-box"><strong>We never see your data.</strong> All information you enter into a FalqenView product — portfolio positions, bill amounts, account names, balances, or any other financial detail — lives exclusively where you put it: your own Google account. There is no FalqenView server receiving it, no database storing it, and no one with access to it. Not now, not ever.</div>
+    <p>Quba, FalqenView's free prayer app, stores your preferences and prayer tracking directly on your device. That information never leaves your device and is never transmitted to FalqenView or any third party.</p>
+    <p>FalqenView holds no copies of your financial or personal data. There is no FalqenView database to compromise. Any security exposure related to your data would exist entirely within systems you already own and control — your Google account or your device.</p>
+    <div class="highlight-box"><strong>No mothership. No back door. No exceptions.</strong></div>
   </div>
 
   <div class="section">
-    <div class="section-title">4. Contact</div>
+    <div class="section-title">4. Why This Matters</div>
+    <p>Most software is designed to learn about you. FalqenView is designed to work for you. The distinction is intentional.</p>
+    <p>I chose to build products where the only person with access to your financial and personal data is you. Not because privacy is good marketing. Because handing someone else visibility into your accounts — even passively, even "anonymized" — is a trade you should never have to make just to use a decent tool.</p>
+    <p>FalqenView keeps its focus on the work. No founder profile. No personal brand attached to the products. The tools stand on their own.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">5. Contact</div>
     <p>Questions about this policy may be directed to us via the support page at <a href="support.html">falqenview.com/support</a>.</p>
   </div>
 </div>
+
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
