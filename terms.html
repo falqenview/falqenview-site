@@ -39,13 +39,6 @@ window.addEventListener('error', function(e) {
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:1rem;line-height:1.7;min-height:100vh;}
-nav{position:sticky;top:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 32px;background:rgba(14,17,24,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-logo img{height:28px;width:28px;object-fit:contain;}
-.nav-logo-text{font-family:var(--font-display);font-weight:800;font-size:1.1rem;letter-spacing:-0.02em;color:var(--text);}
-.nav-logo-text em{font-style:normal;color:var(--cyan);}
-.nav-home{font-size:0.82rem;color:var(--muted);text-decoration:none;transition:color 0.2s;}
-.nav-home:hover{color:var(--cyan);}
 .page-wrap{max-width:780px;margin:0 auto;padding:calc(var(--nav-h) + 36px) 32px 96px;}
 .page-eyebrow{font-family:var(--font-mono);font-size:0.7rem;color:var(--cyan);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:16px;}
 .page-title{font-family:var(--font-display);font-size:2.4rem;font-weight:900;line-height:1.1;letter-spacing:-0.03em;margin-bottom:12px;}
@@ -64,10 +57,27 @@ nav{position:sticky;top:0;z-index:100;height:var(--nav-h);display:flex;align-ite
 .warn-box strong{color:var(--amber);}
 a{color:var(--cyan);text-decoration:none;}
 a:hover{text-decoration:underline;}
-footer{border-top:1px solid var(--border);padding:32px;text-align:center;}
-.footer-legal{font-size:0.72rem;color:var(--muted);}
-.footer-legal a{color:var(--cyan);text-decoration:underline;}
-@media(max-width:640px){.page-wrap{padding:40px 20px 72px;}.page-title{font-size:1.8rem;}nav{padding:0 18px;}}
+@media(max-width:640px){.page-wrap{padding:40px 20px 72px;}.page-title{font-size:1.8rem;}}
+
+footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-index:1;text-align:left;}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+.footer-brand{display:flex;flex-direction:column;gap:8px;}
+.footer-lockup{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.footer-lockup img{height:30px;width:30px;object-fit:contain;}
+.footer-lockup-text{font-family:var(--font-display,'Montserrat',sans-serif);font-weight:800;font-size:1rem;color:var(--text);}
+.footer-lockup-text em{font-style:normal;color:var(--cyan);}
+.footer-motto{font-size:0.66rem;color:var(--muted);letter-spacing:0.14em;text-transform:uppercase;padding-left:40px;}
+.footer-links{display:flex;gap:22px;flex-wrap:wrap;}
+.footer-links a{font-size:0.78rem;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--text);}
+.footer-bottom{max-width:1100px;margin:24px auto 0;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-legal{font-size:0.7rem;color:var(--muted);opacity:0.75;}
+.footer-legal a{color:var(--cyan);text-decoration:none;}
+.footer-legal a:hover{text-decoration:underline;}
+.footer-contact a{font-size:0.74rem;color:var(--cyan);text-decoration:none;}
+.footer-contact a:hover{text-decoration:underline;}
+.footer-contact .dot{color:var(--muted);margin:0 4px;}
+@media(max-width:760px){.footer-inner{flex-direction:column;align-items:flex-start;gap:18px;}.footer-motto{padding-left:0;}.footer-bottom{flex-direction:column;align-items:flex-start;}}
 </style>
 </head>
 <body>
@@ -91,25 +101,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .mobile-menu a{color:var(--text);text-decoration:none;padding:12px 14px;border-radius:8px;font-size:0.95rem;font-weight:500;}
 .mobile-menu a:hover,.mobile-menu a:focus{background:var(--surface);}
 @media(max-width:860px){.nav-links{display:none;}.menu-toggle{display:inline-flex;align-items:center;justify-content:center;}}
-footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-index:1;text-align:left;}
-.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
-.footer-brand{display:flex;flex-direction:column;gap:8px;}
-.footer-lockup{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.footer-lockup img{height:30px;width:30px;object-fit:contain;}
-.footer-lockup-text{font-family:var(--font-display,'Montserrat',sans-serif);font-weight:800;font-size:1rem;color:var(--text);}
-.footer-lockup-text em{font-style:normal;color:var(--cyan);}
-.footer-motto{font-size:0.66rem;color:var(--muted);letter-spacing:0.14em;text-transform:uppercase;padding-left:40px;}
-.footer-links{display:flex;gap:22px;flex-wrap:wrap;}
-.footer-links a{font-size:0.78rem;color:var(--muted);text-decoration:none;transition:color 0.2s;}
-.footer-links a:hover{color:var(--text);}
-.footer-bottom{max-width:1100px;margin:24px auto 0;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.footer-legal{font-size:0.7rem;color:var(--muted);opacity:0.75;}
-.footer-legal a{color:var(--cyan);text-decoration:none;}
-.footer-legal a:hover{text-decoration:underline;}
-.footer-contact a{font-size:0.74rem;color:var(--cyan);text-decoration:none;}
-.footer-contact a:hover{text-decoration:underline;}
-.footer-contact .dot{color:var(--muted);margin:0 4px;}
-@media(max-width:760px){nav{padding:0 18px;}.footer-inner{flex-direction:column;align-items:flex-start;gap:18px;}.footer-motto{padding-left:0;}.footer-bottom{flex-direction:column;align-items:flex-start;}}
 </style>
 <nav>
   <a href="/" class="nav-logo" aria-label="FalqenView home">
@@ -139,7 +130,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   <div class="page-eyebrow">Legal</div>
   <h1 class="page-title">Terms of Use</h1>
   <div class="page-meta">
-    Effective date: May 25, 2026 &nbsp;·&nbsp;
+    Effective date: May 25, 2026 &nbsp;·&nbsp; Last revised: June 15, 2026 &nbsp;·&nbsp;
     <strong>These terms may be updated at any time without prior notice. Continued use of the product constitutes acceptance of the current terms.</strong>
   </div>
 
@@ -189,8 +180,24 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 
   <div class="section">
     <div class="section-title">7. Intellectual Property</div>
-    <p>All FalqenView products — including spreadsheet structure, automation code, formulas, design, branding, and documentation — are the exclusive intellectual property of FalqenView and are protected by applicable copyright law. Unauthorized reproduction or distribution constitutes infringement and may subject you to civil and criminal liability.</p>
-    <p>The FalqenView name, logo, and product names (VuePoint, Updraft, Apex) are proprietary identifiers of FalqenView. You may not use them without express written permission.</p>
+    <p>All FalqenView products and materials are the original work and exclusive intellectual property of FalqenView. This includes, but is not limited to: product designs, spreadsheet architectures and layouts, data models, automation logic, formula construction, code and scripts, user interface design, visual theme and color systems, iconography, graphic assets, images, written content, slogans, brand identity, feature concepts, workflow designs, and any other creative or technical work embodied in or associated with FalqenView products, the FalqenView website, or any related materials.</p>
+    <p>All such works are protected under applicable intellectual property law, including:</p>
+    <ul>
+      <li>The U.S. Copyright Act (17 U.S.C. § 101 et seq.), which protects original works of authorship from the moment of creation, including software, design, and written content</li>
+      <li>The Digital Millennium Copyright Act (17 U.S.C. § 1201 et seq.), which prohibits circumvention of technological protection measures applied to protected works</li>
+      <li>The Computer Fraud and Abuse Act (18 U.S.C. § 1030), which governs unauthorized access to and use of protected computer systems and software code</li>
+      <li>The Virginia Computer Crimes Act (Va. Code § 18.2-152.1 et seq.), applicable under the governing jurisdiction of these Terms</li>
+      <li>The Berne Convention for the Protection of Literary and Artistic Works, as adopted by the United States and over 180 member countries, which provides automatic copyright protection without registration</li>
+      <li>The WIPO Copyright Treaty, which extends protections to digital works and software distributed via the internet</li>
+    </ul>
+    <p>The FalqenView name, logo, and product names (VuePoint, Talon, Updraft, Apex, Quba) are proprietary identifiers of FalqenView. You may not use them without express prior written permission.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">7a. Permitted Viewing — Prohibited Copying</div>
+    <p>Certain FalqenView products make underlying code, automation logic, or formulas visible to you as part of the product experience. You are permitted to view that material solely in connection with your authorized, personal use of the product. Viewing does not grant any license to use, copy, reproduce, adapt, or build upon that work in any way.</p>
+    <p>You are strictly prohibited from copying, reproducing, adapting, reverse-engineering, extracting, or repurposing any portion of FalqenView's code, automation logic, formulas, designs, creative concepts, written content, visual assets, or any other product component — whether for personal, professional, commercial, educational, or any other purpose — without the explicit prior written consent of FalqenView.</p>
+    <p>FalqenView reserves the right to pursue all remedies available under applicable law in the event of any unauthorized use, reproduction, or distribution of its intellectual property, including injunctive relief and monetary damages.</p>
   </div>
 
   <div class="section">
