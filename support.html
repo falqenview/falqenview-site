@@ -229,10 +229,7 @@ window.addEventListener('error', function(e) {
     <div class="form-card reveal">
       <h2>Send us a message</h2>
       <form id="contactForm">
-        <input type="hidden" name="access_key" value="dc74cd1c-ffcb-47c7-8794-e69242b0855f">
-        <input type="hidden" name="subject" value="FalqenView Support Request">
-        <input type="hidden" name="from_name" value="FalqenView Website">
-        <input type="checkbox" name="botcheck" style="display:none;">
+
         <div class="form-row">
           <div class="form-group"><label>First Name</label><input type="text" id="firstName" name="first_name" placeholder="John" minlength="2" maxlength="50"></div>
           <div class="form-group"><label>Last Name</label><input type="text" id="lastName" name="last_name" placeholder="Doe" minlength="2" maxlength="50"></div>
@@ -266,7 +263,7 @@ window.addEventListener('error', function(e) {
           <label>Message <span id="charCount" style="float:right;font-size:0.7rem;color:var(--muted);">0 / 1000</span></label>
           <textarea id="messageField" name="message" placeholder="Describe your question or issue in as much detail as possible..." maxlength="1000"></textarea>
         </div>
-        <div class="h-captcha" data-captcha="true" data-theme="dark" style="display:flex;justify-content:center;margin:8px 0;"></div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAADlbtpcMN3MxkDSX" data-theme="dark" style="display:flex;justify-content:center;margin:8px 0;"></div>
         <div id="formError" style="display:none;color:#ef4444;font-size:0.8rem;margin-bottom:12px;padding:10px 14px;background:rgba(239,68,68,0.08);border-radius:6px;border:1px solid rgba(239,68,68,0.2);"></div>
         <div id="formSuccess" style="display:none;color:var(--green);font-size:0.88rem;margin-bottom:12px;padding:12px 16px;background:rgba(34,197,94,0.08);border-radius:8px;border:1px solid rgba(34,197,94,0.25);font-weight:500;">✓ Message sent!</div>
         <button type="submit" class="btn-submit" id="submitBtn">Send Message →</button>
@@ -388,7 +385,7 @@ window.addEventListener('error', function(e) {
   // Email validation
   function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
 
-  // Form submit with Web3Forms
+  // Form submit → fv-forms Worker
   document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const fn      = document.getElementById('firstName').value.trim();
@@ -409,6 +406,11 @@ window.addEventListener('error', function(e) {
     if (!topic)               errors.push('Please select a topic.');
     if (message.length < 10)  errors.push('Message must be at least 10 characters.');
 
+    const tsToken = document.querySelector('[name="cf-turnstile-response"]');
+    if (!tsToken || !tsToken.value) {
+      errors.push('Please complete the verification challenge.');
+    }
+
     if (errors.length > 0) {
       errBox.innerHTML = errors.map(e=>'• '+e).join('<br>');
       errBox.style.display = 'block';
@@ -422,10 +424,18 @@ window.addEventListener('error', function(e) {
     btn.disabled = true;
 
     try {
-      const formData = new FormData(this);
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('https://fv-forms.falqenview.workers.dev/submit/contact', {
         method: 'POST',
-        body: formData
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: fn,
+          lastName: ln,
+          email,
+          pkg,
+          topic,
+          message,
+          'cf-turnstile-response': tsToken.value
+        })
       });
       const data = await response.json();
 
@@ -433,54 +443,24 @@ window.addEventListener('error', function(e) {
         sucBox.style.display = 'block';
         this.reset();
         counter.textContent = '0 / 1000';
+        if (window.turnstile) window.turnstile.reset();
         sucBox.scrollIntoView({behavior:'smooth',block:'nearest'});
       } else {
-        errBox.innerHTML = '• Submission failed: ' + (data.message || 'Please try again.');
+        errBox.innerHTML = '• ' + (data.message || 'Submission failed. Please try again.');
         errBox.style.display = 'block';
+        if (window.turnstile) window.turnstile.reset();
       }
     } catch(err) {
-      errBox.innerHTML = '• Something went wrong. Please try again or email us at <a href="support.html">hello@falqenview.com</a>.';
+      errBox.innerHTML = '• Something went wrong. Please try again or email us at <a href="mailto:hello@falqenview.com">hello@falqenview.com</a>.';
       errBox.style.display = 'block';
+      if (window.turnstile) window.turnstile.reset();
     } finally {
       btn.textContent = 'Send Message →';
       btn.disabled = false;
     }
   });
-
-  // Client-side hCaptcha validation
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-    const hCaptcha = this.querySelector('textarea[name=h-captcha-response]');
-    if (!hCaptcha || !hCaptcha.value) {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      const errBox = document.getElementById('formError');
-      errBox.innerHTML = '• Please complete the captcha challenge.';
-      errBox.style.display = 'block';
-      errBox.scrollIntoView({behavior:'smooth', block:'nearest'});
-    }
-  }, true);
 </script>
-<!-- Web3Forms client — lazy-loaded on first form interaction -->
-<script>
-(function() {
-  var loaded = false;
-  function loadCaptcha() {
-    if (loaded) return;
-    loaded = true;
-    var s = document.createElement('script');
-    s.src = 'https://web3forms.com/client/script.js';
-    s.async = true;
-    s.defer = true;
-    document.body.appendChild(s);
-  }
-  var inputs = document.querySelectorAll('#contactForm input, #contactForm textarea, #contactForm select');
-  inputs.forEach(function(el) {
-    el.addEventListener('focus', loadCaptcha, { once: true });
-    el.addEventListener('click', loadCaptcha, { once: true });
-  });
-  setTimeout(loadCaptcha, 5000);
-})();
-</script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
