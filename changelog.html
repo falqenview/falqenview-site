@@ -219,21 +219,10 @@
     }
     .coming-soon-block .waitlist-row button:hover { background: rgba(245,158,11,0.32); }
     .coming-soon-block .waitlist-row button:disabled { opacity: 0.55; cursor: wait; }
-    .coming-soon-block .h-captcha {
+    .coming-soon-block .cf-turnstile {
       display: flex; justify-content: center; align-items: center;
-      min-height: 78px;
-      background: rgba(255,255,255,0.02);
-      border: 1px dashed var(--border-2);
-      border-radius: 8px;
+      min-height: 65px;
       padding: 6px;
-    }
-    .coming-soon-block .h-captcha:empty::before {
-      content: 'Verification loading…';
-      font-family: var(--font-mono);
-      font-size: 0.66rem;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
     }
     .waitlist-confirm { margin-top: 10px; font-size: 0.74rem; color: var(--green-2); font-family: var(--font-mono); display: none; letter-spacing: 0.04em; line-height: 1.5; }
     .waitlist-confirm.shown { display: block; }
@@ -516,23 +505,17 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     <div class="coming-soon-block">
       <p>Updraft is in development. Release notes will appear here at launch.<br>Want to know the moment it ships?</p>
       <form class="waitlist-mini" data-tier="updraft">
-        <input type="hidden" name="access_key" value="dc74cd1c-ffcb-47c7-8794-e69242b0855f">
-        <input type="hidden" name="subject" value="FalqenView Waitlist — Updraft">
-        <input type="hidden" name="from_name" value="FalqenView Website Waitlist">
-        <input type="hidden" name="tier" value="updraft">
-        <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
         <div class="waitlist-row">
           <input type="email" name="email" placeholder="you@email.com" required aria-label="Updraft waitlist email" autocomplete="email">
           <button type="submit">Notify me</button>
         </div>
-        <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAADlbtpcMN3MxkDSX" data-theme="dark"></div>
       </form>
       <div class="waitlist-confirm">✓ You're on the list.</div>
     </div>
   </div>
 
   <!-- APEX -->
-  <div class="product-section" id="apex">
     <div class="product-header">
       <span class="product-header-name apex">Apex</span>
       <span class="coming-soon-tag">Coming · Q4 2026</span>
@@ -540,16 +523,11 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     <div class="coming-soon-block">
       <p>Apex is in development. Release notes will appear here at launch.<br>Want first access?</p>
       <form class="waitlist-mini" data-tier="apex">
-        <input type="hidden" name="access_key" value="dc74cd1c-ffcb-47c7-8794-e69242b0855f">
-        <input type="hidden" name="subject" value="FalqenView Waitlist — Apex">
-        <input type="hidden" name="from_name" value="FalqenView Website Waitlist">
-        <input type="hidden" name="tier" value="apex">
-        <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
         <div class="waitlist-row">
           <input type="email" name="email" placeholder="you@email.com" required aria-label="Apex waitlist email" autocomplete="email">
           <button type="submit">Notify me</button>
         </div>
-        <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAADlbtpcMN3MxkDSX" data-theme="dark"></div>
       </form>
       <div class="waitlist-confirm">✓ You're on the list.</div>
     </div>
@@ -599,7 +577,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     menuToggle.textContent = '≡';
   }));
 
-  // Waitlist (Web3Forms)
+  // Waitlist → fv-forms Worker
   document.querySelectorAll('form.waitlist-mini').forEach(form => {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -620,9 +598,8 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
         return;
       }
 
-      // Captcha must be solved before submission (Web3Forms account requires it)
-      const captchaInput = form.querySelector('textarea[name=h-captcha-response]');
-      if (!captchaInput || !captchaInput.value) {
+      const tsToken = form.querySelector('[name="cf-turnstile-response"]');
+      if (!tsToken || !tsToken.value) {
         if (msg) {
           msg.style.color = 'var(--gold)';
           msg.textContent = '⚠ Please complete the verification challenge.';
@@ -635,8 +612,11 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       btn.textContent = 'Sending…';
 
       try {
-        const fd = new FormData(form);
-        const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd });
+        const res = await fetch('https://fv-forms.falqenview.workers.dev/submit/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, tier, 'cf-turnstile-response': tsToken.value })
+        });
         const data = await res.json().catch(() => ({}));
         if (res.ok && data.success) {
           form.style.display = 'none';
@@ -647,6 +627,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
         } else {
           btn.textContent = origBtn;
           btn.disabled = false;
+          if (window.turnstile) window.turnstile.reset();
           if (msg) {
             msg.style.color = 'var(--gold)';
             msg.textContent = '⚠ ' + (data.message || 'Submission failed. Please try again.');
@@ -656,6 +637,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       } catch (err) {
         btn.textContent = origBtn;
         btn.disabled = false;
+        if (window.turnstile) window.turnstile.reset();
         if (msg) {
           msg.style.color = 'var(--gold)';
           msg.textContent = '⚠ Network error. Please try again in a moment.';
@@ -665,26 +647,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     });
   });
 </script>
-<!-- Web3Forms client — lazy-loaded on first waitlist form interaction -->
-<script>
-(function() {
-  var loaded = false;
-  function loadCaptcha() {
-    if (loaded) return;
-    loaded = true;
-    var s = document.createElement('script');
-    s.src = 'https://web3forms.com/client/script.js';
-    s.async = true;
-    s.defer = true;
-    document.body.appendChild(s);
-  }
-  document.querySelectorAll('form.waitlist-mini input[type=email]').forEach(function(el) {
-    el.addEventListener('focus', loadCaptcha, { once: true });
-    el.addEventListener('click', loadCaptcha, { once: true });
-  });
-  setTimeout(loadCaptcha, 5000);
-})();
-</script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 </body>
 </html>
