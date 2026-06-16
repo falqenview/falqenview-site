@@ -24,3 +24,5 @@ Disallow: /
 
 User-agent: Bytespider
 Disallow: /
+
+Sitemap: https://falqenview.com/sitemap.xml
