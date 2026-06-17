@@ -235,6 +235,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .tcard-cta{display:inline-flex;align-items:center;gap:8px;background:rgba(56,189,248,0.14);border:1px solid rgba(56,189,248,0.45);color:var(--cyan);text-decoration:none;font-weight:600;font-size:0.88rem;padding:11px 22px;border-radius:10px;transition:background 0.2s,color 0.2s,border-color 0.2s,box-shadow 0.2s;}
 .tcard-cta:hover{background:rgba(56,189,248,0.24);color:#93e3ff;border-color:rgba(56,189,248,0.65);box-shadow:0 4px 16px rgba(56,189,248,0.2);}
 
+/* FREE TOOLS & APPS — unified section, cards side-by-side */
+.ft-divider{max-width:1100px;margin:64px auto 0;padding:0 24px;display:flex;align-items:center;gap:18px;}
+.ft-divider span{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-dim);white-space:nowrap;}
+.ft-divider::before,.ft-divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);}
+.ft-wrap{max-width:1000px;margin:30px auto 0;padding:0 24px;}
+.ft-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch;}
+/* side-by-side: stack icon on top, pin CTA to bottom so both cards align */
+.ft-grid .qcard,.ft-grid .tcard{flex-direction:column;align-items:flex-start;gap:0;height:100%;padding:30px 28px;}
+.ft-grid .qcard-icon,.ft-grid .tcard-icon{margin-bottom:20px;}
+.ft-grid .qcard-body,.ft-grid .tcard-body{display:flex;flex-direction:column;flex:1;width:100%;}
+.ft-grid .qcard-foot,.ft-grid .tcard-foot{margin-top:auto;}
+
 /* TRUST */
 .trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px;}
 .trust-cell{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px 22px;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s;}
@@ -312,6 +324,10 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   .tcard{flex-direction:column;text-align:center;align-items:center;padding:28px 22px;}
   .tcard-foot{justify-content:center;}
   .tools-wrap{padding:0 16px;}
+  .ft-grid{grid-template-columns:1fr;}
+  .ft-wrap{padding:0 16px;}
+  .ft-grid .qcard,.ft-grid .tcard{align-items:center;text-align:center;}
+  .ft-grid .qcard-foot,.ft-grid .tcard-foot{justify-content:center;}
   .upgrade-note{margin:32px 16px 0;padding:18px 20px;font-size:0.88rem;}
   .yt-channel{flex-direction:column;text-align:center;gap:14px;}
   .footer-inner{flex-direction:column;align-items:flex-start;gap:18px;}
@@ -464,10 +480,58 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   </div>
 </section>
 
-<!-- ============ QUBA — SEPARATED ============ -->
-<div class="qibla-divider reveal"><span>Free &amp; for everyone</span></div>
-<section class="qibla-wrap" id="quba">
-  <div class="qcard reveal">
+<!-- ============ TRUST SIGNALS — FULL ============ -->
+<section class="section-pad" id="trust">
+  <div class="wrap">
+    <p class="section-label reveal">Why you can trust it</p>
+    <h2 class="section-title reveal">Your money. Your sheet. Your rules.</h2>
+    <div class="trust-grid">
+      <div class="trust-cell reveal">
+        <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h4>No accounts, no logins</h4>
+        <p>Nothing to sign up for. The tools live inside your own Google Sheet — no FalqenView account ever required.</p>
+      </div>
+      <div class="trust-cell reveal">
+        <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h4>No subscriptions, no API keys</h4>
+        <p>One-time purchase, not a subscription. No external API keys to wire up, no recurring charges, no surprise renewals.</p>
+      </div>
+      <div class="trust-cell reveal">
+        <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h4>Your data stays yours</h4>
+        <p>Everything stays inside your own Google account. Your numbers never leave your Drive and never come to us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FREE TOOLS & APPS ============ -->
+<div class="ft-divider reveal"><span>Free tools and apps</span></div>
+<section class="ft-wrap" id="free">
+  <div class="ft-grid">
+
+    <!-- AI Prompt Architect -->
+    <div class="tcard reveal" id="tools">
+      <div class="tcard-icon">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="5" y="9" width="38" height="30" rx="5" stroke="#38bdf8" stroke-width="2" fill="rgba(56,189,248,0.08)"/>
+          <path d="M12 19 L18 24 L12 29" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <line x1="22" y1="29" x2="32" y2="29" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="tcard-body">
+        <div class="tcard-name">AI Prompt Architect<span class="dot">.</span></div>
+        <div class="tcard-subtitle">Structured prompt engineering</div>
+        <p class="tcard-desc">Pick a role, task, tone and format, and get a clean, structured prompt tuned for Claude, ChatGPT, Gemini, Perplexity, Copilot or Grok.</p>
+        <div class="tcard-foot">
+          <span class="tcard-price">Free, always.</span>
+          <a href="https://tools.falqenview.com/prompt-architect/" class="tcard-cta">Open Prompt Architect →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quba -->
+    <div class="qcard reveal" id="quba">
     <svg class="qcard-bg" viewBox="0 0 400 140" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <!-- base platform spanning full width -->
       <rect x="0" y="118" width="400" height="22" fill="currentColor" opacity="0.25"/>
@@ -512,53 +576,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       </div>
     </div>
   </div>
-</section>
 
-<!-- ============ FREE TOOLS ============ -->
-<div class="tools-divider reveal"><span>Free tools, no account needed</span></div>
-<section class="tools-wrap" id="tools">
-  <div class="tcard reveal">
-    <div class="tcard-icon">
-      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect x="5" y="9" width="38" height="30" rx="5" stroke="#38bdf8" stroke-width="2" fill="rgba(56,189,248,0.08)"/>
-        <path d="M12 19 L18 24 L12 29" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <line x1="22" y1="29" x2="32" y2="29" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <div class="tcard-body">
-      <div class="tcard-name">AI Prompt Architect<span class="dot">.</span></div>
-      <div class="tcard-subtitle">Structured prompt engineering</div>
-      <p class="tcard-desc">Pick a role, task, tone and format, and get a clean, structured prompt tuned for Claude, ChatGPT, Gemini, Perplexity, Copilot or Grok. No account, no cost.</p>
-      <div class="tcard-foot">
-        <span class="tcard-price">Free, always.</span>
-        <a href="https://tools.falqenview.com/prompt-architect/" class="tcard-cta">Open Prompt Architect →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ TRUST SIGNALS — FULL ============ -->
-<section class="section-pad" id="trust">
-  <div class="wrap">
-    <p class="section-label reveal">Why you can trust it</p>
-    <h2 class="section-title reveal">Your money. Your sheet. Your rules.</h2>
-    <div class="trust-grid">
-      <div class="trust-cell reveal">
-        <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-        <h4>No accounts, no logins</h4>
-        <p>Nothing to sign up for. The tools live inside your own Google Sheet — no FalqenView account ever required.</p>
-      </div>
-      <div class="trust-cell reveal">
-        <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-        <h4>No subscriptions, no API keys</h4>
-        <p>One-time purchase, not a subscription. No external API keys to wire up, no recurring charges, no surprise renewals.</p>
-      </div>
-      <div class="trust-cell reveal">
-        <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-        <h4>Your data stays yours</h4>
-        <p>Everything stays inside your own Google account. Your numbers never leave your Drive and never come to us.</p>
-      </div>
-    </div>
   </div>
 </section>
 
