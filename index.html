@@ -736,9 +736,6 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 @keyframes floatTag { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 
 
-/* inline video */
-.video-wrap { position: relative; width: 100%; max-width: 960px; margin: 48px auto 0; padding-bottom: 54%; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-2); box-shadow: 0 24px 80px rgba(0,0,0,0.5); background:#000; }
-.video-wrap iframe { position: absolute; top:0; left:0; width:100%; height:100%; border:none; }
 .apex-word { color:#e6c068; font-weight:700; }
 
 /* ============ MOBILE — ADDITIONAL BREAKPOINTS ============ */
@@ -961,7 +958,7 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
   <div class="wrap">
     <p class="section-label reveal">The tools</p>
     <h2 class="section-title reveal">Built for your money first.</h2>
-    <p class="section-sub reveal">A small family of Google Sheets tools — buy once, use forever, your data never leaves your Drive. Two are here today; two are on the way.</p>
+    <p class="section-sub reveal">A small family of Google Sheets tools — your data never leaves your Drive. Two are here today; two are on the way.</p>
 
     <div class="prod-grid">
       <!-- VuePoint -->
@@ -1019,8 +1016,8 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 
     <div class="prod-foot-cta reveal"><a href="/products/">Compare every tool, side by side →</a></div>
 
-    <!-- quiet quba line -->
-    <p class="quba-quiet reveal">Also free, always: <a href="/quba/">Quba →</a></p>
+    <!-- quiet quba + free tools line -->
+    <p class="quba-quiet reveal">Also free, always: <a href="/quba/">Quba</a>, plus a growing <a href="/products/#free">toolset</a> for everyday work.</p>
   </div>
 </section>
 
@@ -1099,8 +1096,8 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
   <div class="features-grid">
     <div class="feat-card reveal">
       <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div>
-      <div class="feat-title">Buy / Sell Decision Helper</div>
-      <p class="feat-desc">Every position gets a clear call: <strong style="color:var(--text)">TRIM, BUY, HOLD, REVIEW</strong>. Pulled from your drift, gain, and target — not vibes.</p>
+      <div class="feat-title">Drift Alerts &amp; Buy/Sell Signals</div>
+      <p class="feat-desc">Set your target allocation — the moment anything drifts past it, every position gets a clear call: <strong style="color:var(--text)">TRIM, BUY, HOLD, REVIEW</strong>. Pulled from your numbers, not vibes.</p>
     </div>
     <div class="feat-card reveal">
       <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
@@ -1108,34 +1105,19 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
       <p class="feat-desc">Gain % lies. CAGR doesn't. See the true annualized return on every position — the same metric pros use.</p>
     </div>
     <div class="feat-card reveal">
-      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></div>
-      <div class="feat-title">Drift Alerts</div>
-      <p class="feat-desc">Set your target allocation. FalqenView fires the moment anything drifts past your threshold. Know what to trim. Know what to buy.</p>
-    </div>
-    <div class="feat-card reveal">
       <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 L4 7 v6 c0 5 3.5 9 8 10 4.5-1 8-5 8-10 V7 z"/><polyline points="8.5 12 11 14.5 15.5 10"/></svg></div>
       <div class="feat-title">Portfolio Health Score</div>
       <p class="feat-desc">One letter. A through F. Pulled from gain, diversification, drift, and data completeness. Open the sheet — know in one glance whether you're fine.</p>
     </div>
     <div class="feat-card reveal">
-      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7H5a2 2 0 1 1 0-4h13.5"/><path d="M19 7V6a1 1 0 0 0-1-1H5"/><circle cx="17" cy="13" r="1.4" fill="currentColor" stroke="none"/></svg></div>
-      <div class="feat-title">Cash Drag Monitor</div>
-      <p class="feat-desc">Idle cash is quietly costing you. We watch your cash level across accounts and flag the moment drag exceeds your threshold.</p>
-    </div>
-    <div class="feat-card reveal">
       <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></div>
-      <div class="feat-title">Sector Concentration</div>
-      <p class="feat-desc">Tech-heavy without realizing it? We roll sector exposure across <em>all</em> your accounts into one unified view. Risk you can actually see.</p>
+      <div class="feat-title">Cash Drag &amp; Sector Concentration</div>
+      <p class="feat-desc">Idle cash quietly costs you, and being tech-heavy without realizing it costs more. We watch cash levels and roll sector exposure across <em>all</em> your accounts into one unified view.</p>
     </div>
     <div class="feat-card feat-gold reveal">
       <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="2" y1="14" x2="6" y2="14"/><line x1="10" y1="8" x2="14" y2="8"/><line x1="18" y1="16" x2="22" y2="16"/></svg></div>
-      <div class="feat-title">What-If Rebalance <span class="feat-tier">Updraft</span></div>
-      <p class="feat-desc">Model the trade before you make the trade. Stress-test allocations, compare scenarios, and walk in knowing exactly what shifts.</p>
-    </div>
-    <div class="feat-card feat-gold reveal">
-      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg></div>
-      <div class="feat-title">Tax-Loss Harvest Scanner <span class="feat-tier">Updraft</span></div>
-      <p class="feat-desc">Losses you haven't harvested yet are money on the floor. One scan surfaces positions that could offset your gains before December 31.</p>
+      <div class="feat-title">What-If Rebalance &amp; Tax-Loss Harvesting <span class="feat-tier">Updraft</span></div>
+      <p class="feat-desc">Model the trade before you make it, and scan for losses worth harvesting before December 31 — Updraft adds the forward-looking tools the base tier doesn't need yet.</p>
     </div>
     <div class="feat-card feat-platinum reveal">
       <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></div>
@@ -1291,22 +1273,6 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 <section class="trust-strip">
   <div class="wrap">
     <p class="line reveal"><strong>No accounts. No subscriptions.</strong> Your data stays in your own Google account — always.</p>
-  </div>
-</section>
-
-<!-- ============ YOUTUBE ============ -->
-<section class="section-pad" id="watch">
-  <div class="wrap">
-    <p class="section-label reveal">See it in action</p>
-    <h2 class="section-title reveal">A six-minute look.</h2>
-    <div class="video-wrap reveal">
-      <iframe
-        src="https://www.youtube.com/embed/5k8n-hp9pGY?rel=0&modestbranding=1&color=white"
-        title="FalqenView — The Portfolio Tracker That Thinks Like an Investor"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-        loading="lazy"></iframe>
-    </div>
   </div>
 </section>
 
