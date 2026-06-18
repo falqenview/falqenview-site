@@ -277,16 +277,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 /* TRUST BAND (above products) */
 .trust-band{padding:8px 0 0;}
 .trust-band .section-title{margin-bottom:0;}
-.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;}
-.trust-cell{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 20px;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s;}
-.trust-cell::after{content:'';position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(56,189,248,0.12) 0%,transparent 60%);opacity:0;transition:opacity 0.35s ease;pointer-events:none;z-index:0;}
-.trust-cell:hover{transform:translateY(-3px);border-color:var(--border-2);box-shadow:0 16px 40px rgba(0,0,0,0.32);}
-.trust-cell:hover::after{opacity:1;}
-.trust-cell > *{position:relative;z-index:1;}
-.trust-cell .ti{width:32px;height:32px;border-radius:9px;background:rgba(34,197,94,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
-.trust-cell .ti svg{width:17px;height:17px;color:var(--green-2);}
-.trust-cell h4{font-family:var(--font-display);font-weight:700;font-size:0.96rem;margin-bottom:6px;}
-.trust-cell p{font-size:0.84rem;color:var(--text-dim);font-weight:300;line-height:1.5;}
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:22px;border-top:1px solid var(--border);}
+.trust-cell{display:flex;align-items:center;gap:10px;padding:14px 14px 14px 0;border-right:1px solid var(--border);}
+.trust-grid .trust-cell:last-child{border-right:none;}
+.trust-cell .ti{width:26px;height:26px;border-radius:7px;background:rgba(34,197,94,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.trust-cell .ti svg{width:14px;height:14px;color:var(--green-2);}
+.trust-cell p{font-size:0.82rem;color:var(--text-dim);font-weight:300;line-height:1.4;margin:0;}
+.trust-cell p strong{color:var(--text);font-weight:600;}
 
 /* UPGRADE NOTE */
 .upgrade-note{max-width:720px;margin:48px auto 0;text-align:center;background:rgba(26,115,232,0.06);border:1px solid rgba(26,115,232,0.22);border-radius:14px;padding:22px 28px;color:var(--text-dim);font-weight:300;font-size:0.95rem;line-height:1.6;}
@@ -327,6 +324,8 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   .fcard{padding:24px 22px;}
   .fcard-bg{height:50%;}
   .trust-grid{grid-template-columns:1fr;}
+  .trust-cell{border-right:none;border-bottom:1px solid var(--border);padding:12px 0;}
+  .trust-grid .trust-cell:last-child{border-bottom:none;}
   .qcard{flex-direction:column;text-align:center;align-items:center;padding:28px 22px;}
   .qcard-hero{padding:30px 22px;gap:0;}
   .qcard-hero .qcard-icon{margin-bottom:18px;}
@@ -398,18 +397,15 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     <div class="trust-grid">
       <div class="trust-cell reveal">
         <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-        <h4>No accounts, no logins</h4>
-        <p>Nothing to sign up for. The tools live inside your own Google Sheet — no FalqenView account ever required.</p>
+        <p><strong>No accounts, no logins</strong> — lives inside your own Google Sheet.</p>
       </div>
       <div class="trust-cell reveal">
         <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-        <h4>No subscriptions, no API keys</h4>
-        <p>One-time purchase, not a subscription. No external API keys to wire up, no recurring charges, no surprise renewals.</p>
+        <p><strong>No subscriptions, no API keys</strong> — one-time purchase, nothing recurring.</p>
       </div>
       <div class="trust-cell reveal">
         <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-        <h4>Your data stays yours</h4>
-        <p>Everything stays inside your own Google account. Your numbers never leave your Drive and never come to us.</p>
+        <p><strong>Your data stays yours</strong> — never leaves your Drive, never comes to us.</p>
       </div>
     </div>
   </div>
@@ -663,7 +659,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     entries.forEach(function (e, i) { if (e.isIntersecting) { setTimeout(function () { e.target.classList.add('visible'); }, i * 60); io.unobserve(e.target); } });
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-  document.querySelectorAll('.fcard, .trust-cell').forEach(function (card) {
+  document.querySelectorAll('.fcard').forEach(function (card) {
     card.addEventListener('mousemove', function (e) {
       var r = card.getBoundingClientRect();
       card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
