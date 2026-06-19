@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FalqenView — Google Sheets Portfolio Tracker & Bills Manager</title>
-<meta name="description" content="FalqenView builds sharp Google Sheets tools you own outright. VuePoint tracks your investment portfolio with drift alerts, health scores, and buy/sell signals. Talon manages bills and cash flow. No accounts, no subscriptions — your data never leaves your Drive.">
+<title>FalqenView — Sharp Tools You Own Outright</title>
+<meta name="description" content="FalqenView builds sharp, elegant tools you own completely. VuePoint tracks your investment portfolio. Talon manages bills and cash flow. Free tools for developers and writers. No accounts, no subscriptions — your data never leaves your Drive.">
 <meta name="keywords" content="Google Sheets portfolio tracker, bills manager Google Sheets, VuePoint, Talon, FalqenView, investment tracker, drift alerts, portfolio health score, personal finance spreadsheet">
 <meta name="author" content="FalqenView">
 <meta name="theme-color" content="#1A73E8">
@@ -14,7 +14,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://falqenview.com/">
-<meta property="og:title" content="FalqenView — Google Sheets Portfolio Tracker & Bills Manager">
+<meta property="og:title" content="FalqenView — Sharp Tools You Own Outright">
 <meta property="og:description" content="Sharp Google Sheets tools you own outright. Track your portfolio, grip your bills — no accounts, no subscriptions, your data never leaves your Drive.">
 <meta property="og:image" content="https://falqenview.com/assets/fvLogo.png">
 <meta property="og:image:width" content="1200">
@@ -926,8 +926,8 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
   <div class="hero-grid"></div>
   <div class="hero-inner">
     <div class="eyebrow"><span class="pulse-dot"></span>Built with intention · owned by you</div>
-    <h1>Your money, finally <span class="accent">legible.</span></h1>
-    <p class="sub">Small, sharp Google Sheets tools that each do one thing exceptionally well. Track your portfolio with <strong style="color:var(--text);font-weight:500">VuePoint</strong>. Grip your bills with <strong style="color:var(--text);font-weight:500">Talon</strong>. No accounts, no subscriptions, no data ever leaving your hands — buy once, own it forever.</p>
+    <h1>Sharper tools. Cleaner answers. <span class="accent">Yours completely.</span></h1>
+    <p class="sub">Small, sharp tools that each do one thing exceptionally well — yours to own, forever. Track your portfolio with <strong style="color:var(--text);font-weight:500">VuePoint</strong>. Grip your bills with <strong style="color:var(--text);font-weight:500">Talon</strong>.</p>
     <div class="hero-actions">
       <a href="/products/" class="btn-primary">See all products & tools <span aria-hidden="true">→</span></a>
       <a href="/videos.html" class="btn-ghost">Watch the tour</a>
@@ -953,12 +953,50 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
   </div>
 </section>
 
+<!-- ============ ALERT TICKER ============ -->
+<div class="alert-strip reveal">
+  <div class="alert-strip-inner">
+    <div class="alert-scroll-wrap">
+      <div class="alert-track alert-track-left">
+        <div class="alert-pill drift"><span class="adot amber"></span><strong>TSLA</strong> drifted +8.2% above target</div>
+        <div class="alert-pill cap"><span class="adot red"></span><strong>MSFT</strong> exceeds 25% position cap</div>
+        <div class="alert-pill ok"><span class="adot green"></span><strong>AAPL</strong> within target range</div>
+        <div class="alert-pill drift"><span class="adot amber"></span>Cash drag · IRA at 12%</div>
+        <div class="alert-pill ok"><span class="adot green"></span>Portfolio Health: <strong>A</strong></div>
+        <div class="alert-pill ok"><span class="adot green"></span><strong>AMZN</strong> · LTCG opens in 14 days</div>
+        <div class="alert-pill drift"><span class="adot amber"></span><strong>TSLA</strong> drifted +8.2% above target</div>
+        <div class="alert-pill cap"><span class="adot red"></span><strong>MSFT</strong> exceeds 25% position cap</div>
+        <div class="alert-pill ok"><span class="adot green"></span><strong>AAPL</strong> within target range</div>
+        <div class="alert-pill drift"><span class="adot amber"></span>Cash drag · IRA at 12%</div>
+        <div class="alert-pill ok"><span class="adot green"></span>Portfolio Health: <strong>A</strong></div>
+        <div class="alert-pill ok"><span class="adot green"></span><strong>AMZN</strong> · LTCG opens in 14 days</div>
+      </div>
+    </div>
+    <div class="alert-scroll-wrap">
+      <div class="alert-track alert-track-right">
+        <div class="alert-pill drift"><span class="adot amber"></span><strong>GOOGL</strong> drifted −9.1% below target</div>
+        <div class="alert-pill cap"><span class="adot red"></span>Sector cap · Tech at 64%</div>
+        <div class="alert-pill ok"><span class="adot green"></span><strong>NVDA</strong> · LTCG cleared ✓</div>
+        <div class="alert-pill cap"><span class="adot red"></span>Portfolio −2.3% today</div>
+        <div class="alert-pill ok"><span class="adot green"></span><strong>META</strong> within target range</div>
+        <div class="alert-pill cap"><span class="adot red"></span>Momentum: <strong>NFLX</strong> −11% in 5 days</div>
+        <div class="alert-pill drift"><span class="adot amber"></span><strong>GOOGL</strong> drifted −9.1% below target</div>
+        <div class="alert-pill cap"><span class="adot red"></span>Sector cap · Tech at 64%</div>
+        <div class="alert-pill ok"><span class="adot green"></span><strong>NVDA</strong> · LTCG cleared ✓</div>
+        <div class="alert-pill cap"><span class="adot red"></span>Portfolio −2.3% today</div>
+        <div class="alert-pill ok"><span class="adot green"></span><strong>META</strong> within target range</div>
+        <div class="alert-pill cap"><span class="adot red"></span>Momentum: <strong>NFLX</strong> −11% in 5 days</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ============ PRODUCTS ============ -->
 <section class="section-pad" id="tools">
   <div class="wrap">
-    <p class="section-label reveal">The tools</p>
+    <p class="section-label reveal">Your money, finally legible.</p>
     <h2 class="section-title reveal">Built for your money first.</h2>
-    <p class="section-sub reveal">A small family of Google Sheets tools — your data never leaves your Drive. Two are here today; two are on the way.</p>
+    <p class="section-sub reveal">Two are here today. Two more are on the way.</p>
 
     <div class="prod-grid">
       <!-- VuePoint -->
@@ -1084,7 +1122,7 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 
   </div>
 
-  <p class="diff-foot reveal">No subscription &middot; no logins &middot; no data ever leaves your Drive &middot; <strong>yours forever</strong></p>
+  <p class="diff-foot reveal">No subscription &middot; no logins &middot; yours forever</p>
 </section>
 
 <!-- ============ INVESTING (The View line) ============ -->
@@ -1144,44 +1182,6 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
     </div>
   </div>
 
-  <!-- ALERT STRIP -->
-  <div class="alert-strip reveal">
-    <p class="section-label" style="margin-bottom: 20px;">Smart alerts built in</p>
-    <div class="alert-strip-inner">
-      <div class="alert-scroll-wrap">
-        <div class="alert-track alert-track-left">
-          <div class="alert-pill drift"><span class="adot amber"></span><strong>TSLA</strong> drifted +8.2% above target</div>
-          <div class="alert-pill cap"><span class="adot red"></span><strong>MSFT</strong> exceeds 25% position cap</div>
-          <div class="alert-pill ok"><span class="adot green"></span><strong>AAPL</strong> within target range</div>
-          <div class="alert-pill drift"><span class="adot amber"></span>Cash drag · IRA at 12%</div>
-          <div class="alert-pill ok"><span class="adot green"></span>Portfolio Health: <strong>A</strong></div>
-          <div class="alert-pill ok"><span class="adot green"></span><strong>AMZN</strong> · LTCG opens in 14 days</div>
-          <div class="alert-pill drift"><span class="adot amber"></span><strong>TSLA</strong> drifted +8.2% above target</div>
-          <div class="alert-pill cap"><span class="adot red"></span><strong>MSFT</strong> exceeds 25% position cap</div>
-          <div class="alert-pill ok"><span class="adot green"></span><strong>AAPL</strong> within target range</div>
-          <div class="alert-pill drift"><span class="adot amber"></span>Cash drag · IRA at 12%</div>
-          <div class="alert-pill ok"><span class="adot green"></span>Portfolio Health: <strong>A</strong></div>
-          <div class="alert-pill ok"><span class="adot green"></span><strong>AMZN</strong> · LTCG opens in 14 days</div>
-        </div>
-      </div>
-      <div class="alert-scroll-wrap">
-        <div class="alert-track alert-track-right">
-          <div class="alert-pill drift"><span class="adot amber"></span><strong>GOOGL</strong> drifted −9.1% below target</div>
-          <div class="alert-pill cap"><span class="adot red"></span>Sector cap · Tech at 64%</div>
-          <div class="alert-pill ok"><span class="adot green"></span><strong>NVDA</strong> · LTCG cleared ✓</div>
-          <div class="alert-pill cap"><span class="adot red"></span>Portfolio −2.3% today</div>
-          <div class="alert-pill ok"><span class="adot green"></span><strong>META</strong> within target range</div>
-          <div class="alert-pill cap"><span class="adot red"></span>Momentum: <strong>NFLX</strong> −11% in 5 days</div>
-          <div class="alert-pill drift"><span class="adot amber"></span><strong>GOOGL</strong> drifted −9.1% below target</div>
-          <div class="alert-pill cap"><span class="adot red"></span>Sector cap · Tech at 64%</div>
-          <div class="alert-pill ok"><span class="adot green"></span><strong>NVDA</strong> · LTCG cleared ✓</div>
-          <div class="alert-pill cap"><span class="adot red"></span>Portfolio −2.3% today</div>
-          <div class="alert-pill ok"><span class="adot green"></span><strong>META</strong> within target range</div>
-          <div class="alert-pill cap"><span class="adot red"></span>Momentum: <strong>NFLX</strong> −11% in 5 days</div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- ============ TALON SHOWCASE ============ -->
@@ -1269,12 +1269,6 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
   </div>
 </section>
 
-<!-- ============ TRUST STRIP ============ -->
-<section class="trust-strip">
-  <div class="wrap">
-    <p class="line reveal"><strong>No accounts. No subscriptions.</strong> Your data stays in your own Google account — always.</p>
-  </div>
-</section>
 
 <!-- ============ FOOTER ============ -->
 <footer>
