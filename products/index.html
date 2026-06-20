@@ -240,6 +240,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .ft-divider span{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-dim);white-space:nowrap;}
 .ft-divider::before,.ft-divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);}
 .ft-wrap{max-width:1000px;margin:30px auto 0;padding:0 24px;}
+#free-tools.ft-wrap .section-title{margin-bottom:32px;}
 /* FREE SECTION: Quba hero + condensed dev-tools shelf */
 .ft-wrap{max-width:1000px;}
 
@@ -274,9 +275,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .dt-dot{animation:dtPulse 2s ease-in-out infinite;}
 @media (prefers-reduced-motion:reduce){.ai-caret,.dt-dot{animation:none;opacity:1;}}
 
-/* TRUST BAND (above products) */
+/* TRUST BAND (now nested inside the financial section) */
 .trust-band{padding:8px 0 0;}
 .trust-band .section-title{margin-bottom:0;}
+#financial .trust-band{margin-bottom:36px;}
 .trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:22px;border-top:1px solid var(--border);}
 .trust-cell{display:flex;align-items:center;gap:10px;padding:14px 18px;border-right:1px solid var(--border);}
 .trust-grid .trust-cell:first-child{padding-left:0;}
@@ -387,28 +389,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   <div class="inner">
     <div class="eyebrow"><span class="pulse-dot"></span>The full lineup</div>
     <h1>Every tool, <span class="accent">one place.</span></h1>
-    <p class="lead">Buy once, own forever. No accounts, no subscriptions, no data leaving your Drive. Here's everything FalqenView makes — and what's still on the way.</p>
-  </div>
-</section>
-
-<!-- ============ TRUST BAND (moved above products) ============ -->
-<section class="trust-band" id="trust">
-  <div class="wrap">
-    <h2 class="section-title reveal">Your money. Your sheet. <span class="ac-cyan">Your rules.</span></h2>
-    <div class="trust-grid">
-      <div class="trust-cell reveal">
-        <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-        <p><strong>No accounts, no logins</strong> — lives inside your own Google Sheet.</p>
-      </div>
-      <div class="trust-cell reveal">
-        <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-        <p><strong>No subscriptions, no API keys</strong> — one-time purchase, nothing recurring.</p>
-      </div>
-      <div class="trust-cell reveal">
-        <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-        <p><strong>Your data stays yours</strong> — never leaves your Drive, never comes to us.</p>
-      </div>
-    </div>
+    <p class="lead">No accounts, no subscriptions, nothing leaves your device. Here's everything FalqenView makes — and what's still on the way.</p>
   </div>
 </section>
 
@@ -416,6 +397,23 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 <section class="section-pad" id="financial">
   <div class="wrap">
     <p class="group-label reveal">For your money</p>
+    <div class="trust-band" id="trust">
+      <h2 class="section-title reveal">Your money. Your sheet. <span class="ac-cyan">Your rules.</span></h2>
+      <div class="trust-grid">
+        <div class="trust-cell reveal">
+          <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <p><strong>No accounts, no logins</strong> — lives inside your own Google Sheet.</p>
+        </div>
+        <div class="trust-cell reveal">
+          <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <p><strong>No subscriptions, no API keys</strong> — one-time purchase, nothing recurring.</p>
+        </div>
+        <div class="trust-cell reveal">
+          <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <p><strong>Your data stays yours</strong> — never leaves your Drive, never comes to us.</p>
+        </div>
+      </div>
+    </div>
     <div class="fin-grid">
 
       <!-- VuePoint -->
@@ -503,8 +501,10 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 </section>
 
 <!-- ============ FREE TOOLS & APPS ============ -->
-<div class="ft-divider reveal"><span>Free tools and apps</span></div>
+<div class="ft-divider reveal"><span>Free, always.</span></div>
 <section class="ft-wrap" id="free-tools">
+
+  <h2 class="section-title reveal">No ads. No accounts. <span class="ac-cyan">No catch.</span></h2>
 
   <!-- Quba — hero treatment (a real app, given freely) -->
   <div class="qcard qcard-hero reveal" id="quba">
@@ -575,11 +575,11 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
         </div>
         <div class="tcard-headtext">
           <div class="tcard-name">AI Prompt Architect<span class="dot">.</span></div>
-          <div class="tcard-subtitle">Structured prompt engineering</div>
+          <div class="tcard-subtitle">Prompts, custom instructions &amp; skills</div>
         </div>
       </div>
       <div class="tcard-body">
-        <p class="tcard-desc">Pick a role, task, tone and format, and get a clean, structured prompt tuned for Claude, ChatGPT, Gemini, Perplexity, Copilot or Grok.</p>
+        <p class="tcard-desc">Three modes in one tool: build a structured prompt, write standing custom instructions for ChatGPT, Claude, Gemini or Copilot, or package a reusable skill for Claude, ChatGPT or Gemini.</p>
         <div class="tcard-foot">
           <a href="https://tools.falqenview.com/prompt-architect/" class="tcard-cta">Open Prompt Architect →</a>
         </div>
