@@ -251,6 +251,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .qcard-hero .qcard-name{font-size:1.85rem;}
 .qcard-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;width:100%;}
 .gift-pill{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;background:rgba(82,183,136,0.14);border:1px solid rgba(82,183,136,0.42);color:#7fd6a4;font-family:var(--font-body);font-size:0.7rem;font-weight:600;letter-spacing:0.01em;padding:5px 12px;border-radius:100px;}
+.ext-pill{display:inline-flex;align-items:center;gap:5px;white-space:nowrap;background:rgba(26,115,232,0.14);border:1px solid rgba(26,115,232,0.38);color:#7ab4f5;font-family:var(--font-body);font-size:0.7rem;font-weight:600;letter-spacing:0.01em;padding:5px 12px;border-radius:100px;margin-top:6px;}
 
 /* dev-tools sub-shelf */
 .ft-sublabel{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin:40px 0 18px;display:flex;align-items:center;gap:12px;}
@@ -586,32 +587,6 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       </div>
     </div>
 
-    <!-- Swoop · Chat Exporter -->
-    <div class="tcard reveal" id="swoop">
-      <div class="tcard-head">
-        <div class="tcard-icon">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="6" y="8" width="19" height="14" rx="3.5" stroke="#38bdf8" stroke-width="2" fill="rgba(56,189,248,0.08)"/>
-            <path d="M11 22 L11 26.5 L16 22 Z" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="2" stroke-linejoin="round"/>
-            <line x1="10.5" y1="13" x2="20.5" y2="13" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
-            <line x1="10.5" y1="17" x2="17.5" y2="17" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
-            <path d="M19 24 C24 31 28 35 37 36" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" fill="none"/>
-            <path d="M32 32 L38.5 36 L33 40.5" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          </svg>
-        </div>
-        <div class="tcard-headtext">
-          <div class="tcard-name">Swoop · Chat Exporter<span class="dot">.</span></div>
-          <div class="tcard-subtitle">Export your Claude chats</div>
-        </div>
-      </div>
-      <div class="tcard-body">
-        <p class="tcard-desc">A browser extension that exports your Claude conversations to clean JSON or Markdown, or hands them straight to Session Handoff. Runs entirely in your browser — nothing you export ever leaves your device.</p>
-        <div class="tcard-foot">
-          <a href="https://tools.falqenview.com/chat-exporter/" class="tcard-cta">Open Swoop →</a>
-        </div>
-      </div>
-    </div>
-
     <!-- AI Session Handoff -->
     <div class="tcard reveal" id="sessionhandoff">
       <div class="tcard-head">
@@ -636,6 +611,33 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
         <p class="tcard-desc">Paste a long AI conversation and get a clean, accurate primer for a new session — no re-explaining, no re-burning tokens. Two modes: a fast extract-and-clean pass, or a guided worksheet for sharper results.</p>
         <div class="tcard-foot">
           <a href="https://tools.falqenview.com/session-handoff/" class="tcard-cta">Open Session Handoff →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Chat Exporter -->
+    <div class="tcard reveal" id="aichatexporter">
+      <div class="tcard-head">
+        <div class="tcard-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="6" y="8" width="19" height="14" rx="3.5" stroke="#38bdf8" stroke-width="2" fill="rgba(56,189,248,0.08)"/>
+            <path d="M11 22 L11 26.5 L16 22 Z" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="2" stroke-linejoin="round"/>
+            <line x1="10.5" y1="13" x2="20.5" y2="13" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+            <line x1="10.5" y1="17" x2="17.5" y2="17" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+            <path d="M19 24 C24 31 28 35 37 36" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+            <path d="M32 32 L38.5 36 L33 40.5" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="tcard-headtext">
+          <div class="tcard-name">AI Chat Exporter<span class="dot">.</span></div>
+          <div class="tcard-subtitle">Export your AI chat sessions</div>
+          <span class="ext-pill">🧩 Browser Extension</span>
+        </div>
+      </div>
+      <div class="tcard-body">
+        <p class="tcard-desc">A browser extension that exports your AI conversations to clean JSON or Markdown, or hands them straight to Session Handoff. Runs entirely in your browser — nothing you export ever leaves your device.</p>
+        <div class="tcard-foot">
+          <a href="https://tools.falqenview.com/chat-exporter/" class="tcard-cta">Install AI Chat Exporter →</a>
         </div>
       </div>
     </div>
