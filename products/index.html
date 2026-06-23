@@ -274,7 +274,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .ai-caret{animation:aiBlink 1.15s steps(1,end) infinite;transform-origin:center;}
 @keyframes dtPulse{0%,100%{opacity:0.45;}50%{opacity:1;}}
 .dt-dot{animation:dtPulse 2s ease-in-out infinite;}
-@media (prefers-reduced-motion:reduce){.ai-caret,.dt-dot{animation:none;opacity:1;}}
+@keyframes crArrow{0%,100%{transform:translateX(0);}50%{transform:translateX(4px);}}
+.cr-arrow{animation:crArrow 1.4s ease-in-out infinite;}
+@keyframes ceArrow{0%,100%{transform:translateY(0);}50%{transform:translateY(4px);}}
+.ce-arrow{animation:ceArrow 1.4s ease-in-out infinite;}
+@keyframes sqPop{0%,100%{opacity:0.35;}25%{opacity:1;}50%{opacity:0.6;}75%{opacity:0.9;}}
+.gen-sq1{animation:sqPop 1.6s 0.0s ease-in-out infinite;}
+.gen-sq2{animation:sqPop 1.6s 0.4s ease-in-out infinite;}
+.gen-sq3{animation:sqPop 1.6s 0.8s ease-in-out infinite;}
+.gen-sq4{animation:sqPop 1.6s 1.2s ease-in-out infinite;}
+@keyframes wtLine{0%,100%{opacity:0.5;}50%{opacity:1;}}
+.wt-line{animation:wtLine 1.3s ease-in-out infinite;}
+@media (prefers-reduced-motion:reduce){.ai-caret,.dt-dot,.cr-arrow,.ce-arrow,.gen-sq1,.gen-sq2,.gen-sq3,.gen-sq4,.wt-line{animation:none;opacity:1;}}
 
 /* TRUST BAND (now nested inside the financial section) */
 .trust-band{padding:8px 0 0;}
@@ -588,7 +599,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     </div>
 
     <!-- AI: Chat Refresh -->
-    <div class="tcard reveal" id="sessionhandoff">
+    <div class="tcard reveal" id="chatrefresh">
       <div class="tcard-head">
         <div class="tcard-icon">
           <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -596,8 +607,8 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
             <line x1="9" y1="14" x2="17" y2="14" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
             <line x1="9" y1="19" x2="17" y2="19" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
             <line x1="9" y1="24" x2="14" y2="24" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
-            <path d="M24 24 L34 24" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round"/>
-            <path d="M29 18 L36 24 L29 30" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <g class="cr-arrow"><path d="M24 24 L34 24" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M29 18 L36 24 L29 30" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
             <rect x="27" y="7" width="16" height="34" rx="3" stroke="#38bdf8" stroke-width="2" fill="rgba(56,189,248,0.14)"/>
             <line x1="31" y1="33" x2="39" y2="33" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round"/>
           </svg>
@@ -624,8 +635,8 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
             <path d="M11 22 L11 26.5 L16 22 Z" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="2" stroke-linejoin="round"/>
             <line x1="10.5" y1="13" x2="20.5" y2="13" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
             <line x1="10.5" y1="17" x2="17.5" y2="17" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
-            <path d="M19 24 C24 31 28 35 37 36" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" fill="none"/>
-            <path d="M32 32 L38.5 36 L33 40.5" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <g class="ce-arrow"><path d="M19 24 C24 31 28 35 37 36" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+            <path d="M32 32 L38.5 36 L33 40.5" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
           </svg>
         </div>
         <div class="tcard-headtext">
@@ -653,10 +664,10 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
             <rect x="10.5" y="10.5" width="8" height="8" rx="1" fill="#38bdf8" opacity="0.5"/>
             <rect x="10.5" y="29.5" width="8" height="8" rx="1" fill="#38bdf8" opacity="0.5"/>
             <rect x="29.5" y="10.5" width="8" height="8" rx="1" fill="#38bdf8" opacity="0.5"/>
-            <rect x="27" y="27" width="5" height="5" rx="1" fill="#38bdf8"/>
-            <rect x="35" y="27" width="5" height="5" rx="1" fill="#38bdf8" opacity="0.6"/>
-            <rect x="27" y="35" width="5" height="5" rx="1" fill="#38bdf8" opacity="0.6"/>
-            <rect x="35" y="35" width="5" height="5" rx="1" fill="#38bdf8" opacity="0.35"/>
+            <rect class="gen-sq1" x="27" y="27" width="5" height="5" rx="1" fill="#38bdf8"/>
+            <rect class="gen-sq2" x="35" y="27" width="5" height="5" rx="1" fill="#38bdf8" opacity="0.6"/>
+            <rect class="gen-sq3" x="27" y="35" width="5" height="5" rx="1" fill="#38bdf8" opacity="0.6"/>
+            <rect class="gen-sq4" x="35" y="35" width="5" height="5" rx="1" fill="#38bdf8" opacity="0.35"/>
           </svg>
         </div>
         <div class="tcard-headtext">
@@ -702,7 +713,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
           <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M10 32 L10 38 L16 38 L34 20 L28 14 Z" stroke="#38bdf8" stroke-width="2.2" stroke-linejoin="round" fill="rgba(56,189,248,0.08)"/>
             <line x1="24" y1="18" x2="30" y2="24" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round"/>
-            <line x1="10" y1="38" x2="38" y2="38" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" opacity="0.5"/>
+            <line class="wt-line" x1="10" y1="38" x2="38" y2="38" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" opacity="0.5"/>
           </svg>
         </div>
         <div class="tcard-headtext">
