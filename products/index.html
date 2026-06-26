@@ -138,6 +138,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .fcard.ghost .fcard-cta{background:transparent;color:var(--text-dim);border:1px solid var(--border-2);}
 .fcard.ghost .fcard-cta:hover{color:var(--text);border-color:rgba(255,255,255,0.25);}
 
+/* COLLAPSIBLE GHOST CARDS (Updraft / Apex — not yet released) */
+.fcard-summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;}
+.fcard-summary::-webkit-details-marker{display:none;}
+.fcard-summary .fcard-top{flex:1;margin:0;}
+.fcard-summary .fcard-chev{flex:none;color:var(--muted);transition:transform 0.22s ease;}
+details.fcard-details[open] .fcard-summary .fcard-chev{transform:rotate(180deg);}
+.fcard-details-body{margin-top:0;}
+
 /* CARD BACKGROUND ART */
 .fcard-bg{position:absolute;left:0;bottom:0;width:90%;height:60%;pointer-events:none;z-index:0;opacity:0.14;mask-image:radial-gradient(ellipse 90% 90% at 0% 100%,black 40%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 90% 90% at 0% 100%,black 40%,transparent 80%);}
 .fcard-bg img{width:100%;height:100%;object-fit:cover;object-position:left center;display:block;}
@@ -461,40 +469,50 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       </div>
 
       <!-- Updraft -->
-      <div class="fcard ghost reveal" style="--accent: var(--blue);">
+      <details class="fcard ghost reveal fcard-details" style="--accent: var(--blue);">
         <div class="fcard-bg"><img src="/assets/fv-updraft.svg" alt="" aria-hidden="true" width="400" height="140"></div>
-        <div class="fcard-top">
-          <div class="fcard-name">Updraft<span class="dot">.</span></div>
-          <span class="coming-pill">Coming Q4 2026</span>
+        <summary class="fcard-summary">
+          <div class="fcard-top">
+            <div class="fcard-name">Updraft<span class="dot">.</span></div>
+            <span class="coming-pill">Coming Q4 2026</span>
+          </div>
+          <svg class="fcard-chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6 L8 11 L13 6"/></svg>
+        </summary>
+        <div class="fcard-details-body">
+          <p class="fcard-tagline">The next lift in the View line — automated portfolio intelligence that does the heavy work for you.</p>
+          <div class="fcard-eta">⏱ Estimated Q4 2026</div>
+          <ul class="fcard-features">
+            <li><span class="chk">✓</span>Automated rebalancing guidance</li>
+            <li><span class="chk">✓</span>Deeper signal engine, less manual upkeep</li>
+            <li><span class="chk">✓</span>Built on everything VuePoint does well</li>
+            <li><span class="chk">✓</span>Same one-time deal — no subscription</li>
+          </ul>
+          <a href="https://falqenview.gumroad.com/l/mqookv" class="fcard-cta">Start with VuePoint →</a>
         </div>
-        <p class="fcard-tagline">The next lift in the View line — automated portfolio intelligence that does the heavy work for you.</p>
-        <div class="fcard-eta">⏱ Estimated Q4 2026</div>
-        <ul class="fcard-features">
-          <li><span class="chk">✓</span>Automated rebalancing guidance</li>
-          <li><span class="chk">✓</span>Deeper signal engine, less manual upkeep</li>
-          <li><span class="chk">✓</span>Built on everything VuePoint does well</li>
-          <li><span class="chk">✓</span>Same one-time deal — no subscription</li>
-        </ul>
-        <a href="https://falqenview.gumroad.com/l/mqookv" class="fcard-cta">Start with VuePoint →</a>
-      </div>
+      </details>
 
       <!-- Apex -->
-      <div class="fcard ghost reveal" style="--accent: var(--gold);">
+      <details class="fcard ghost reveal fcard-details" style="--accent: var(--gold);">
         <div class="fcard-bg"><img src="/assets/fv-apex.svg" alt="" aria-hidden="true" width="400" height="140"></div>
-        <div class="fcard-top">
-          <div class="fcard-name">Apex<span class="dot">.</span></div>
-          <span class="coming-pill">Coming Q4 2026</span>
+        <summary class="fcard-summary">
+          <div class="fcard-top">
+            <div class="fcard-name">Apex<span class="dot">.</span></div>
+            <span class="coming-pill">Coming Q4 2026</span>
+          </div>
+          <svg class="fcard-chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6 L8 11 L13 6"/></svg>
+        </summary>
+        <div class="fcard-details-body">
+          <p class="fcard-tagline">The full arsenal — every FalqenView tool working together as a single workspace.</p>
+          <div class="fcard-eta">⏱ Estimated Q4 2026</div>
+          <ul class="fcard-features">
+            <li><span class="chk">✓</span>VuePoint + Talon + Updraft, unified</li>
+            <li><span class="chk">✓</span>One workspace for everything you own &amp; owe</li>
+            <li><span class="chk">✓</span>Talon included free with Apex</li>
+            <li><span class="chk">✓</span>Best value for the whole toolkit</li>
+          </ul>
+          <a href="https://falqenview.gumroad.com/l/mqookv" class="fcard-cta">Start with VuePoint →</a>
         </div>
-        <p class="fcard-tagline">The full arsenal — every FalqenView tool working together as a single workspace.</p>
-        <div class="fcard-eta">⏱ Estimated Q4 2026</div>
-        <ul class="fcard-features">
-          <li><span class="chk">✓</span>VuePoint + Talon + Updraft, unified</li>
-          <li><span class="chk">✓</span>One workspace for everything you own &amp; owe</li>
-          <li><span class="chk">✓</span>Talon included free with Apex</li>
-          <li><span class="chk">✓</span>Best value for the whole toolkit</li>
-        </ul>
-        <a href="https://falqenview.gumroad.com/l/mqookv" class="fcard-cta">Start with VuePoint →</a>
-      </div>
+      </details>
     </div>
 
     <!-- Upgrade note -->
