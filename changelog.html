@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Changelog — FalqenView</title>
-  <meta name="description" content="FalqenView product changelog — new features, improvements, and fixes across VuePoint, Updraft, Apex, and Talon — Bills & Cash.">
+  <meta name="description" content="FalqenView product changelog — new features, improvements, and fixes across VuePoint, Talon, Swoop, Updraft, and Apex.">
   <meta name="theme-color" content="#1A73E8">
 
   <link rel="icon" type="image/png" href="assets/fvIcon.png">
@@ -128,11 +128,34 @@
     .jump-btn.talon { color: #34d399; border-color: rgba(16,185,129,0.5); background: rgba(16,185,129,0.06); }
     .jump-btn.talon:hover { background: rgba(16,185,129,0.16); border-color: #34d399; }
     .jump-btn.talon .dot { background: #10b981; }
+    .jump-btn.swoop { color: #e8885a; border-color: rgba(232,136,90,0.5); background: rgba(232,136,90,0.06); }
+    .jump-btn.swoop:hover { background: rgba(232,136,90,0.16); border-color: #e8885a; }
+    .jump-btn.swoop .dot { background: #e8885a; }
 
     /* TIMELINE */
-    .cl-wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; position: relative; z-index: 1; }
+    .cl-wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px 80px; position: relative; z-index: 1; }
 
-    .product-section { margin-bottom: 56px; }
+    /* Category band (groups products: Finance / Browser / Coming soon) */
+    .cat-band { margin-bottom: 52px; }
+    .cat-label {
+      display: flex; align-items: center; gap: 14px;
+      font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+      margin: 0 0 26px;
+    }
+    .cat-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .cat-label .cat-tag {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em;
+      padding: 3px 9px; border-radius: 100px;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border-2);
+      color: var(--text-dim);
+    }
+
+    /* Two-column split. Columns stack their product sections vertically. */
+    .cl-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; align-items: start; }
+    .cl-cols.single { grid-template-columns: minmax(0, 1fr); max-width: 640px; }
+
+    .product-section { margin-bottom: 0; }
     .product-header {
       display: flex; align-items: center; gap: 14px;
       margin-bottom: 24px; padding-bottom: 14px;
@@ -143,6 +166,7 @@
     .product-header-name.updraft { color: #93c5fd; }
     .product-header-name.apex { color: var(--gold); }
     .product-header-name.talon { color: #34d399; }
+    .product-header-name.swoop { color: #e8885a; }
     .coming-soon-tag {
       font-family: var(--font-mono); font-size: 0.66rem; font-weight: 700;
       letter-spacing: 0.1em; text-transform: uppercase;
@@ -249,6 +273,11 @@
       .nav-links { display: none; }
       .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
     }
+    @media (max-width: 860px) {
+      .cl-cols { grid-template-columns: minmax(0, 1fr); gap: 0; }
+      .product-section { margin-bottom: 36px; }
+      .cl-cols .product-section:last-child { margin-bottom: 0; }
+    }
     @media (max-width: 768px) {
       nav { padding: 0 18px; }
       footer { padding: 28px 18px; }
@@ -340,13 +369,19 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   <p class="cl-sub">New features, fixes, and improvements — grouped by what changed.</p>
   <div class="jump-btns">
     <a href="#vuepoint" class="jump-btn vuepoint"><span class="dot"></span> VuePoint</a>
+    <a href="#talon" class="jump-btn talon"><span class="dot"></span> Talon</a>
+    <a href="#swoop" class="jump-btn swoop"><span class="dot"></span> Swoop</a>
     <a href="#updraft" class="jump-btn updraft"><span class="dot"></span> Updraft</a>
     <a href="#apex" class="jump-btn apex"><span class="dot"></span> Apex</a>
-    <a href="#talon" class="jump-btn talon"><span class="dot"></span> Talon</a>
   </div>
 </div>
 
 <div class="cl-wrap">
+
+  <!-- ════ FINANCE TOOLS ════ -->
+  <div class="cat-band">
+    <p class="cat-label">Finance Tools <span class="cat-tag">Google Sheets · Paid</span></p>
+    <div class="cl-cols">
 
   <!-- VUEPOINT -->
   <div class="product-section" id="vuepoint">
@@ -495,6 +530,62 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       </div>
     </div>
   </div>
+    </div><!-- /cl-cols -->
+  </div><!-- /cat-band Finance -->
+
+  <!-- ════ BROWSER TOOLS ════ -->
+  <div class="cat-band">
+    <p class="cat-label">Browser Tools <span class="cat-tag">Free &amp; Paid</span></p>
+    <div class="cl-cols single">
+
+  <!-- SWOOP -->
+  <div class="product-section" id="swoop">
+    <div class="product-header">
+      <span class="product-header-name swoop">Swoop</span>
+      <span class="coming-soon-tag" style="color:#e8885a;background:rgba(232,136,90,0.1);border-color:rgba(232,136,90,0.4);">Chat Exporter</span>
+    </div>
+
+    <div class="cl-entry">
+      <div class="cl-dot latest" style="background:#e8885a;box-shadow:0 0 0 4px rgba(232,136,90,0.18),0 0 8px rgba(232,136,90,0.6);"></div>
+      <div class="cl-body">
+        <div class="cl-toprow">
+          <span class="cl-ver">v1.5</span>
+          <span class="cl-latest-tag" style="color:#e8885a;background:rgba(232,136,90,0.1);border-color:rgba(232,136,90,0.4);">Latest</span>
+        </div>
+        <div class="cl-heading">Swoop Pro — Claude &amp; Grok export</div>
+        <ul class="cl-items">
+          <li>add: Swoop Pro — a one-time unlock that adds Claude and Grok to your export options</li>
+          <li>change: ChatGPT, Gemini, and Copilot stay completely free — no account, no key</li>
+          <li>add: paste your license key once and Pro stays active on that browser, no sign-in to repeat</li>
+          <li>add: clear in-product cues — locked platforms are marked, with a one-tap path to unlock</li>
+          <li>change: one key unlocks both Claude and Grok — one-time, no subscription</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cl-entry">
+      <div class="cl-dot" style="background:#e8885a;"></div>
+      <div class="cl-body">
+        <div class="cl-toprow">
+          <span class="cl-ver">v1.4</span>
+        </div>
+        <div class="cl-heading">More chat platforms, clearer detection</div>
+        <ul class="cl-items">
+          <li>add: support expanded beyond a single platform — ChatGPT, Gemini, and Copilot now export too</li>
+          <li>add: automatic platform detection — Swoop recognizes the chat you're on and shows it in that platform's color</li>
+          <li>change: export to clean Markdown or JSON, ready to hand off to AI: Chat Refresh for a fresh-session primer</li>
+          <li>change: refreshed footer and version display so you always know what you're running</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    </div><!-- /cl-cols -->
+  </div><!-- /cat-band Browser -->
+
+  <!-- ════ COMING SOON ════ -->
+  <div class="cat-band">
+    <p class="cat-label">On The Horizon <span class="cat-tag">Q4 2026</span></p>
+    <div class="cl-cols">
 
 <!-- UPDRAFT -->
   <div class="product-section" id="updraft">
@@ -516,6 +607,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   </div>
 
   <!-- APEX -->
+  <div class="product-section" id="apex">
     <div class="product-header">
       <span class="product-header-name apex">Apex</span>
       <span class="coming-soon-tag">Coming · Q4 2026</span>
@@ -532,6 +624,8 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       <div class="waitlist-confirm">✓ You're on the list.</div>
     </div>
   </div>
+    </div><!-- /cl-cols -->
+  </div><!-- /cat-band Coming Soon -->
 
 </div>
 
