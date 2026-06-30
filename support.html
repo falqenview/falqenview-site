@@ -165,12 +165,12 @@ window.addEventListener('error', function(e) {
         </div>
         <div class="form-group"><label>Email</label><input type="email" id="emailField" name="email" placeholder="you@email.com"></div>
         <div class="form-group">
-          <label for="packageField">Package</label>
+          <label for="packageField">Product</label>
           <select id="packageField" name="package">
-            <option value="">Select your package</option>
+            <option value="">Select your product</option>
             <option value="vuepoint">VuePoint</option>
             <option value="talon">Talon — Bills &amp; Cash</option>
-            <option value="swoop">Swoop</option>
+            <option value="swoop">Swoop Pro</option>
             <option value="none">Not yet a customer</option>
           </select>
         </div>
@@ -317,7 +317,7 @@ window.addEventListener('error', function(e) {
     if (fn.length < 2)        errors.push('First name must be at least 2 characters.');
     if (ln.length < 2)        errors.push('Last name must be at least 2 characters.');
     if (!validEmail(email))   errors.push('Please enter a valid email address.');
-    if (!pkg)                 errors.push('Please select your package.');
+    if (!pkg)                 errors.push('Please select your product.');
     if (!topic)               errors.push('Please select a topic.');
     if (message.length < 10)  errors.push('Message must be at least 10 characters.');
 
