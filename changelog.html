@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Changelog — FalqenView</title>
-  <meta name="description" content="FalqenView product changelog — new features, improvements, and fixes across VuePoint, Talon, Swoop, Updraft, and Apex.">
+  <meta name="description" content="FalqenView product changelog — new features, improvements, and fixes across VuePoint, Talon, Swoop, and Swoop Recall.">
   <meta name="theme-color" content="#1A73E8">
 
   <link rel="icon" type="image/png" href="assets/fvIcon.png">
@@ -117,20 +117,17 @@
     }
     .jump-btn.vuepoint { color: var(--cyan); border-color: rgba(56,189,248,0.5); background: rgba(56,189,248,0.06); }
     .jump-btn.vuepoint:hover { background: rgba(56,189,248,0.16); border-color: var(--cyan); }
-    .jump-btn.updraft { color: #93c5fd; border-color: rgba(96,165,250,0.5); background: rgba(96,165,250,0.06); }
-    .jump-btn.updraft:hover { background: rgba(96,165,250,0.16); border-color: #93c5fd; }
-    .jump-btn.apex { color: var(--gold); border-color: rgba(245,158,11,0.5); background: rgba(245,158,11,0.06); }
-    .jump-btn.apex:hover { background: rgba(245,158,11,0.16); border-color: var(--gold); }
     .jump-btn .dot { width: 7px; height: 7px; border-radius: 50%; }
     .jump-btn.vuepoint .dot { background: var(--cyan); }
-    .jump-btn.updraft .dot { background: #93c5fd; }
-    .jump-btn.apex .dot { background: var(--gold); }
     .jump-btn.talon { color: #34d399; border-color: rgba(16,185,129,0.5); background: rgba(16,185,129,0.06); }
     .jump-btn.talon:hover { background: rgba(16,185,129,0.16); border-color: #34d399; }
     .jump-btn.talon .dot { background: #10b981; }
     .jump-btn.swoop { color: #e8885a; border-color: rgba(232,136,90,0.5); background: rgba(232,136,90,0.06); }
     .jump-btn.swoop:hover { background: rgba(232,136,90,0.16); border-color: #e8885a; }
     .jump-btn.swoop .dot { background: #e8885a; }
+    .jump-btn.recall { color: #a78bfa; border-color: rgba(167,139,250,0.5); background: rgba(167,139,250,0.06); }
+    .jump-btn.recall:hover { background: rgba(167,139,250,0.16); border-color: #a78bfa; }
+    .jump-btn.recall .dot { background: #a78bfa; }
 
     /* TIMELINE */
     .cl-wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px 80px; position: relative; z-index: 1; }
@@ -163,10 +160,9 @@
     }
     .product-header-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 900; letter-spacing: 0.02em; }
     .product-header-name.vuepoint { color: var(--cyan); }
-    .product-header-name.updraft { color: #93c5fd; }
-    .product-header-name.apex { color: var(--gold); }
     .product-header-name.talon { color: #34d399; }
     .product-header-name.swoop { color: #e8885a; }
+    .product-header-name.recall { color: #a78bfa; }
     .coming-soon-tag {
       font-family: var(--font-mono); font-size: 0.66rem; font-weight: 700;
       letter-spacing: 0.1em; text-transform: uppercase;
@@ -207,49 +203,6 @@
     .cl-items li:last-child { border-bottom: none; }
     .cl-items li::before { content: '→'; color: var(--cyan); flex-shrink: 0; font-size: 0.78rem; font-family: var(--font-mono); margin-top: 1px; }
 
-    /* Coming soon block */
-    .coming-soon-block {
-      background: var(--surface);
-      border: 1px dashed var(--border-2);
-      border-radius: 12px;
-      padding: 28px 24px;
-      text-align: center;
-    }
-    .coming-soon-block p { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 14px; }
-    .coming-soon-block .waitlist-mini {
-      display: flex; flex-direction: column; gap: 10px;
-      max-width: 380px; margin: 0 auto;
-    }
-    .coming-soon-block .waitlist-row {
-      display: flex; gap: 6px;
-      background: rgba(0,0,0,0.25);
-      border: 1px solid var(--border);
-      border-radius: 10px; padding: 4px;
-    }
-    .coming-soon-block .waitlist-row input {
-      flex: 1; min-width: 0;
-      background: transparent; border: none;
-      color: var(--text); font-family: var(--font-body); font-size: 0.84rem;
-      padding: 8px 10px; outline: none;
-    }
-    .coming-soon-block .waitlist-row input::placeholder { color: var(--muted); }
-    .coming-soon-block .waitlist-row button {
-      background: rgba(245,158,11,0.2); color: var(--gold);
-      border: 1px solid rgba(245,158,11,0.35);
-      border-radius: 7px; padding: 7px 14px;
-      font-family: var(--font-body); font-size: 0.78rem; font-weight: 600;
-      cursor: pointer; white-space: nowrap;
-      transition: background 0.2s;
-    }
-    .coming-soon-block .waitlist-row button:hover { background: rgba(245,158,11,0.32); }
-    .coming-soon-block .waitlist-row button:disabled { opacity: 0.55; cursor: wait; }
-    .coming-soon-block .cf-turnstile {
-      display: flex; justify-content: center; align-items: center;
-      min-height: 65px;
-      padding: 6px;
-    }
-    .waitlist-confirm { margin-top: 10px; font-size: 0.74rem; color: var(--green-2); font-family: var(--font-mono); display: none; letter-spacing: 0.04em; line-height: 1.5; }
-    .waitlist-confirm.shown { display: block; }
 
     /* FOOTER */
     footer { border-top: 1px solid var(--border); padding: 36px 32px; position: relative; z-index: 1; }
@@ -371,8 +324,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     <a href="#vuepoint" class="jump-btn vuepoint"><span class="dot"></span> VuePoint</a>
     <a href="#talon" class="jump-btn talon"><span class="dot"></span> Talon</a>
     <a href="#swoop" class="jump-btn swoop"><span class="dot"></span> Swoop</a>
-    <a href="#updraft" class="jump-btn updraft"><span class="dot"></span> Updraft</a>
-    <a href="#apex" class="jump-btn apex"><span class="dot"></span> Apex</a>
+    <a href="#recall" class="jump-btn recall"><span class="dot"></span> Swoop Recall</a>
   </div>
 </div>
 
@@ -587,53 +539,34 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       </div>
     </div>
   </div>
+
+  <!-- SWOOP RECALL -->
+  <div class="product-section" id="recall">
+    <div class="product-header">
+      <span class="product-header-name recall">Swoop Recall</span>
+      <span class="coming-soon-tag" style="color:#a78bfa;background:rgba(167,139,250,0.1);border-color:rgba(167,139,250,0.4);">AI Chat Archive</span>
+    </div>
+
+    <div class="cl-entry">
+      <div class="cl-dot latest" style="background:#a78bfa;box-shadow:0 0 0 4px rgba(167,139,250,0.18),0 0 8px rgba(167,139,250,0.6);"></div>
+      <div class="cl-body">
+        <div class="cl-toprow">
+          <span class="cl-ver">v1.0</span>
+          <span class="cl-latest-tag" style="color:#a78bfa;background:rgba(167,139,250,0.1);border-color:rgba(167,139,250,0.4);">Latest</span>
+        </div>
+        <div class="cl-heading">Launch — your AI conversations, archived and searchable</div>
+        <ul class="cl-items">
+          <li>init: a local-first archive for your AI chat exports — searchable, private, entirely on your device</li>
+          <li>add: import conversations exported from Swoop and search across your full history instantly</li>
+          <li>add: Free tier — archive up to 10 conversations, no account required</li>
+          <li>add: Pro — a one-time unlock for an unlimited local archive on one device</li>
+          <li>add: Cloud Sync — an optional subscription to back up and sync your archive across devices</li>
+        </ul>
+      </div>
+    </div>
+  </div>
     </div><!-- /cl-cols -->
   </div><!-- /cat-band Browser -->
-
-  <!-- ════ COMING SOON ════ -->
-  <div class="cat-band">
-    <p class="cat-label">On The Horizon <span class="cat-tag">Q4 2026</span></p>
-    <div class="cl-cols">
-
-<!-- UPDRAFT -->
-  <div class="product-section" id="updraft">
-    <div class="product-header">
-      <span class="product-header-name updraft">Updraft</span>
-      <span class="coming-soon-tag">Coming · Q4 2026</span>
-    </div>
-    <div class="coming-soon-block">
-      <p>Updraft is in development. Release notes will appear here at launch.<br>Want to know the moment it ships?</p>
-      <form class="waitlist-mini" data-tier="updraft">
-        <div class="waitlist-row">
-          <input type="email" name="email" placeholder="you@email.com" required aria-label="Updraft waitlist email" autocomplete="email">
-          <button type="submit">Notify me</button>
-        </div>
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAADlbtpcMN3MxkDSX" data-theme="dark"></div>
-      </form>
-      <div class="waitlist-confirm">✓ You're on the list.</div>
-    </div>
-  </div>
-
-  <!-- APEX -->
-  <div class="product-section" id="apex">
-    <div class="product-header">
-      <span class="product-header-name apex">Apex</span>
-      <span class="coming-soon-tag">Coming · Q4 2026</span>
-    </div>
-    <div class="coming-soon-block">
-      <p>Apex is in development. Release notes will appear here at launch.<br>Want first access?</p>
-      <form class="waitlist-mini" data-tier="apex">
-        <div class="waitlist-row">
-          <input type="email" name="email" placeholder="you@email.com" required aria-label="Apex waitlist email" autocomplete="email">
-          <button type="submit">Notify me</button>
-        </div>
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAADlbtpcMN3MxkDSX" data-theme="dark"></div>
-      </form>
-      <div class="waitlist-confirm">✓ You're on the list.</div>
-    </div>
-  </div>
-    </div><!-- /cl-cols -->
-  </div><!-- /cat-band Coming Soon -->
 
 </div>
 
@@ -678,78 +611,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     menuToggle.setAttribute('aria-expanded', 'false');
     menuToggle.textContent = '≡';
   }));
-
-  // Waitlist → fv-forms Worker
-  document.querySelectorAll('form.waitlist-mini').forEach(form => {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const tier = form.dataset.tier;
-      const emailInput = form.querySelector('input[type=email]');
-      const email = emailInput.value.trim();
-      const btn = form.querySelector('button[type=submit]');
-      const msg = form.nextElementSibling;
-      const origBtn = btn.textContent;
-
-      if (msg) { msg.style.color = ''; msg.classList.remove('shown'); }
-
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        emailInput.focus();
-        emailInput.setCustomValidity('Please enter a valid email address.');
-        emailInput.reportValidity();
-        setTimeout(() => emailInput.setCustomValidity(''), 1800);
-        return;
-      }
-
-      const tsToken = form.querySelector('[name="cf-turnstile-response"]');
-      if (!tsToken || !tsToken.value) {
-        if (msg) {
-          msg.style.color = 'var(--gold)';
-          msg.textContent = '⚠ Please complete the verification challenge.';
-          msg.classList.add('shown');
-        }
-        return;
-      }
-
-      btn.disabled = true;
-      btn.textContent = 'Sending…';
-
-      try {
-        const res = await fetch('https://fv-forms.falqenview.workers.dev/submit/waitlist', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, tier, 'cf-turnstile-response': tsToken.value })
-        });
-        const data = await res.json().catch(() => ({}));
-        if (res.ok && data.success) {
-          form.style.display = 'none';
-          if (msg && msg.classList.contains('waitlist-confirm')) {
-            msg.textContent = `✓ You're on the ${tier === 'updraft' ? 'Updraft' : 'Apex'} list.`;
-            msg.classList.add('shown');
-          }
-        } else {
-          btn.textContent = origBtn;
-          btn.disabled = false;
-          if (window.turnstile) window.turnstile.reset();
-          if (msg) {
-            msg.style.color = 'var(--gold)';
-            msg.textContent = '⚠ ' + (data.message || 'Submission failed. Please try again.');
-            msg.classList.add('shown');
-          }
-        }
-      } catch (err) {
-        btn.textContent = origBtn;
-        btn.disabled = false;
-        if (window.turnstile) window.turnstile.reset();
-        if (msg) {
-          msg.style.color = 'var(--gold)';
-          msg.textContent = '⚠ Network error. Please try again in a moment.';
-          msg.classList.add('shown');
-        }
-      }
-    });
-  });
 </script>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 </body>
 </html>
