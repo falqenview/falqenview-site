@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>FalqenView — Sharp Tools You Own Outright</title>
-<meta name="description" content="FalqenView builds sharp, elegant tools you own completely. VuePoint tracks your investment portfolio. Talon manages bills and cash flow. Free tools for developers and writers. No accounts, no subscriptions — your data never leaves your Drive.">
-<meta name="keywords" content="Google Sheets portfolio tracker, bills manager Google Sheets, VuePoint, Talon, FalqenView, investment tracker, drift alerts, portfolio health score, personal finance spreadsheet">
+<meta name="description" content="FalqenView builds sharp, elegant tools you own completely. Track your portfolio with VuePoint, grip your bills with Talon, archive your AI chats with Swoop Recall, export them with Swoop. No accounts, no subscriptions — your data stays on your device.">
+<meta name="keywords" content="FalqenView, VuePoint, Talon, Swoop, Swoop Recall, portfolio tracker, bills manager, AI chat exporter, AI conversation archive, privacy-first tools, one-time purchase software">
 <meta name="author" content="FalqenView">
 <meta name="theme-color" content="#1A73E8">
 <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://falqenview.com/">
 <meta property="og:title" content="FalqenView — Sharp Tools You Own Outright">
-<meta property="og:description" content="Sharp Google Sheets tools you own outright. Track your portfolio, grip your bills — no accounts, no subscriptions, your data never leaves your Drive.">
+<meta property="og:description" content="Sharp, elegant tools you own outright. Track your portfolio, grip your bills, archive your AI chats — no accounts, no subscriptions, your data stays on your device.">
 <meta property="og:image" content="https://falqenview.com/assets/fvLogo.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -36,7 +36,7 @@
       },
       "email": "hello@falqenview.com",
       "slogan": "See clearly. Hold tight. Own it completely.",
-      "description": "FalqenView builds small, sharp Google Sheets tools for personal finance. No accounts, no subscriptions — your data stays in your own Google Drive.",
+      "description": "FalqenView builds small, sharp, privacy-first tools you own completely — from portfolio and bills trackers to AI chat tools. No accounts, no subscriptions — your data stays on your device.",
       "sameAs": ["https://www.youtube.com/@falqenview"]
     },
     {
@@ -101,6 +101,10 @@ window.addEventListener('error', function(e) {
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=optional" rel="stylesheet"></noscript>
 
+<!-- Shared foundation (tokens, resets, nav, footer, buttons, pills, layout) -->
+<link rel="stylesheet" href="/assets/fvmain.css">
+
+<!-- Page-specific styling (kept inline; safe to dedupe against fvmain.css in a later pass) -->
 <style>
 /* ============ TOKENS ============ */
 :root {
@@ -1064,7 +1068,7 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
   <div class="hero-inner">
     <div class="eyebrow"><span class="pulse-dot"></span>Built with intention · owned by you</div>
     <h1>Sharper tools. Cleaner answers. <span class="accent">Yours completely.</span></h1>
-    <p class="sub">Small, sharp tools that each do one thing exceptionally well — yours to own, forever. Track your portfolio with <strong style="color:var(--text);font-weight:500">VuePoint</strong>. Grip your bills with <strong style="color:var(--text);font-weight:500">Talon</strong>.</p>
+    <p class="sub">Small, sharp tools that each do one thing exceptionally well — yours to own, forever. Track your portfolio with <strong style="color:var(--text);font-weight:500">VuePoint</strong>, grip your bills with <strong style="color:var(--text);font-weight:500">Talon</strong>, and archive every AI chat with <strong style="color:var(--text);font-weight:500">Swoop Recall</strong>.</p>
     <div class="hero-actions">
       <a href="/products/" class="btn-primary">See all products & tools <span aria-hidden="true">→</span></a>
       <a href="/videos.html" class="btn-ghost">Watch the tour</a>
@@ -1114,9 +1118,9 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 <!-- ============ PRODUCTS ============ -->
 <section class="section-pad" id="tools">
   <div class="wrap">
-    <p class="section-label reveal">Your money, finally legible.</p>
-    <h2 class="section-title reveal">Built for your money first.</h2>
-    <p class="section-sub reveal">One-time purchase. Yours to own, forever.</p>
+    <p class="section-label reveal">For your money</p>
+    <h2 class="section-title reveal">Your finances, finally legible.</h2>
+    <p class="section-sub reveal">One-time purchase. Runs in your Drive. Yours to own, forever.</p>
 
     <div class="prod-grid">
       <!-- VuePoint -->
@@ -1127,7 +1131,7 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
         </div>
         <p class="pcard-desc">The portfolio tracker for Google Sheets — drift alerts, a portfolio health score, sector concentration, and buy/sell signals. The whole portfolio, one pane.</p>
         <div class="pcard-foot">
-          <a href="https://falqenview.gumroad.com/l/vuepoint" class="pcard-cta" target="_blank" rel="noopener noreferrer">Get VuePoint →</a>
+          <a href="/vuepoint/" class="pcard-cta">Explore VuePoint →</a>
         </div>
       </div>
 
@@ -1139,7 +1143,7 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
         </div>
         <p class="pcard-desc">Bills &amp; cash, gripped tight — due dates, categories, and a clear read on exactly what's left to spend before the next paycheck lands.</p>
         <div class="pcard-foot">
-          <a href="https://falqenview.gumroad.com/l/talon" class="pcard-cta" target="_blank" rel="noopener noreferrer">Get Talon →</a>
+          <a href="/talon/" class="pcard-cta">Explore Talon →</a>
         </div>
       </div>
 
@@ -1358,6 +1362,42 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
         <div class="ft-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
         <div class="ft-text"><strong>Electric · past due</strong><small>reminder sent · pay by Fri</small></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AI TOOLS (Swoop + Swoop Recall) ============ -->
+<section class="section-pad" id="ai-tools">
+  <div class="wrap">
+    <p class="section-label reveal">Swoop exports it. Swoop Recall finds it.</p>
+    <h2 class="section-title reveal">Two tools, one continuous memory.</h2>
+    <p class="section-sub reveal">Export any AI conversation, then search everything you've ever discussed. All of it stays on your device.</p>
+
+    <div class="prod-grid">
+      <!-- Swoop -->
+      <div class="pcard reveal" style="--accent: var(--cyan);">
+        <div class="pcard-top">
+          <div class="pcard-name">Swoop<span class="dot">.</span></div>
+          <span class="launch-pill">Browser Extension</span>
+        </div>
+        <p class="pcard-desc">Export any AI chat as clean Markdown or JSON, or hand it straight to a fresh session. Free for ChatGPT, Gemini &amp; Copilot. Claude &amp; Grok unlock with Swoop Pro.</p>
+        <div class="pcard-foot">
+          <a href="/swoop/" class="pcard-cta">Explore Swoop →</a>
+        </div>
+      </div>
+
+      <!-- Swoop Recall -->
+      <div class="pcard reveal" style="--accent: var(--blue);">
+        <div class="pcard-top">
+          <div class="pcard-name">Swoop Recall<span class="dot">.</span></div>
+          <span class="launch-pill">New</span>
+        </div>
+        <p class="pcard-desc">A private, searchable archive of every conversation you've exported with Swoop. Instant full-text search across your whole history — and Recall, done right: everything stays on your device.</p>
+        <div class="pcard-foot">
+          <a href="/recall/" class="pcard-cta">Explore Swoop Recall →</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
