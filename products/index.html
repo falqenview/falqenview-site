@@ -42,6 +42,10 @@ window.addEventListener('error', function(e) {
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=optional" rel="stylesheet"></noscript>
 
+<!-- Shared foundation (tokens, resets, nav, footer, buttons, pills, layout) -->
+<link rel="stylesheet" href="/assets/fvmain.css">
+
+<!-- Page-specific styling (kept inline; safe to dedupe against fvmain.css in a later pass) -->
 <style>
 :root {
   --bg:#141820; --bg-deep:#0e1118; --surface:#1c2230; --surface2:#232b3e;
@@ -441,7 +445,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
           <li><span class="chk">✓</span>Gain/loss, LTCG dates &amp; tax-loss scanner</li>
           <li><span class="chk">✓</span>Buy / Sell decision helper &amp; CAGR per position</li>
         </ul>
-        <a href="https://falqenview.gumroad.com/l/vuepoint" class="fcard-cta">Get VuePoint →</a>
+        <a href="/vuepoint/" class="fcard-cta">Explore VuePoint →</a>
       </div>
 
       <!-- Talon -->
@@ -461,7 +465,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
           <li><span class="chk">✓</span>Filter bar · bill history · variable-amount payment prompt</li>
           <li><span class="chk">✓</span>Backup &amp; restore — survives any reset, yours forever</li>
         </ul>
-        <a href="https://falqenview.gumroad.com/l/talon" class="fcard-cta">Get Talon →</a>
+        <a href="/talon/" class="fcard-cta">Explore Talon →</a>
       </div>
 
       <!-- Updraft -->
@@ -483,7 +487,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
             <li><span class="chk">✓</span>Built on everything VuePoint does well</li>
             <li><span class="chk">✓</span>Same one-time deal — no subscription</li>
           </ul>
-          <a href="https://falqenview.gumroad.com/l/vuepoint" class="fcard-cta">Start with VuePoint →</a>
+          <a href="/updraft/" class="fcard-cta">Learn about Updraft →</a>
         </div>
       </details>
 
@@ -506,13 +510,57 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
             <li><span class="chk">✓</span>Talon included free with Apex</li>
             <li><span class="chk">✓</span>Best value for the whole toolkit</li>
           </ul>
-          <a href="https://falqenview.gumroad.com/l/vuepoint" class="fcard-cta">Start with VuePoint →</a>
+          <a href="/apex/" class="fcard-cta">Learn about Apex →</a>
         </div>
       </details>
     </div>
 
     <!-- Upgrade note -->
     <p class="upgrade-note reveal">Already a <strong>VuePoint</strong> buyer? <a href="/support.html">Contact us</a> with your order # for upgrade pricing when Updraft and <span class="apex-word">Apex</span> ship.</p>
+  </div>
+</section>
+
+<!-- ============ AI TOOLS (Swoop + Swoop Recall) ============ -->
+<section class="section-pad" id="ai-tools" style="scroll-margin-top: calc(var(--nav-h) + 24px);">
+  <div class="wrap">
+    <p class="group-label reveal">For your AI chats</p>
+    <h2 class="section-title reveal">Export it, then <span class="ac-cyan">find it forever.</span></h2>
+    <div class="fin-grid">
+
+      <!-- Swoop -->
+      <div class="fcard reveal" id="swoop" style="--accent: var(--cyan); scroll-margin-top: calc(var(--nav-h) + 24px);">
+        <div class="fcard-top">
+          <div class="fcard-name">Swoop<span class="dot">.</span></div>
+        </div>
+        <p class="fcard-tagline">A browser extension that exports your AI conversations to clean JSON or Markdown, or hands them straight to <span class="ai-prefix">AI:</span> Chat Refresh.</p>
+        <div class="fcard-once">free · Pro unlock, one-time</div>
+        <ul class="fcard-features">
+          <li><span class="chk">✓</span>Free for ChatGPT, Gemini &amp; Copilot</li>
+          <li><span class="chk">✓</span>Claude &amp; Grok unlock with Swoop Pro</li>
+          <li><span class="chk">✓</span>Clean Markdown or JSON, on your device</li>
+          <li><span class="chk">✓</span>Chrome &amp; Edge · nothing leaves your browser</li>
+        </ul>
+        <a href="/swoop/" class="fcard-cta">Explore Swoop →</a>
+      </div>
+
+      <!-- Swoop Recall -->
+      <div class="fcard reveal" id="swoop-recall" style="--accent: var(--blue); scroll-margin-top: calc(var(--nav-h) + 24px);">
+        <div class="fcard-top">
+          <div class="fcard-name">Swoop Recall<span class="dot">.</span></div>
+        </div>
+        <p class="fcard-tagline">A private, searchable archive of every conversation you've exported with Swoop. Recall, done right — everything stays on your device.</p>
+        <div class="fcard-once">Free · Pro · Cloud</div>
+        <ul class="fcard-features">
+          <li><span class="chk">✓</span><strong>Free</strong> — up to 10 conversations, fully featured</li>
+          <li><span class="chk">✓</span><strong>Pro</strong> — unlimited local archive, one-time</li>
+          <li><span class="chk">✓</span><strong>Cloud</strong> — encrypted off-device backup, yearly</li>
+          <li><span class="chk">✓</span>Instant full-text search across your whole history</li>
+          <li><span class="chk">✓</span>Zero server-side storage on Free &amp; Pro</li>
+        </ul>
+        <a href="/recall/" class="fcard-cta">Explore Swoop Recall →</a>
+      </div>
+
+    </div>
   </div>
 </section>
 
