@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Talon — Keep Your Bills in Your Grip | FalqenView</title>
+<meta name="description" content="Talon is a bills and cash-flow tracker for Google Sheets — due dates, categories, autopay tracking, a bills health score, and a clear read on exactly what's left to spend. One-time purchase, your data never leaves your Drive.">
+<meta name="keywords" content="bills tracker Google Sheets, cash flow tracker, due date reminders, bill management, autopay tracking, Talon, FalqenView">
+<meta name="author" content="FalqenView">
+<meta name="theme-color" content="#1A73E8">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://falqenview.com/talon/">
+<link rel="icon" type="image/webp" href="/assets/fvIcon-32.webp">
+<link rel="icon" type="image/png" href="/assets/fvIcon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://falqenview.com/talon/">
+<meta property="og:title" content="Talon — Keep Your Bills in Your Grip">
+<meta property="og:description" content="Bills and cash, gripped tight — due dates, categories, autopay tracking, and a clear read on exactly what's left to spend before the next paycheck.">
+<meta property="og:image" content="https://falqenview.com/assets/fvLogo.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="FalqenView">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Talon — Keep Your Bills in Your Grip">
+<meta name="twitter:description" content="Due dates, categories, autopay tracking, and a clear read on exactly what's left to spend. Your data stays in your Drive.">
+<meta name="twitter:image" content="https://falqenview.com/assets/fvLogo.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "FalqenView Talon",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Google Sheets",
+  "url": "https://falqenview.com/talon/",
+  "description": "A bills and cash-flow tracker for Google Sheets with due-date tracking, categories, autopay tracking, a bills health score, and Google Calendar sync. One-time purchase, runs entirely in your own Google Drive.",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "24",
+    "url": "https://falqenview.gumroad.com/l/talon"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "FalqenView",
+    "url": "https://falqenview.com",
+    "email": "hello@falqenview.com"
+  }
+}
+</script>
+
+<!-- Preview-only fallback: swap missing /assets/ images for an inline SVG so the layout stays clean. -->
+<script>
+window.addEventListener('error', function(e) {
+  var t = e.target;
+  if (!t || t.tagName !== 'IMG') return;
+  var s = t.getAttribute('src') || '';
+  if (!/^\/?assets\//.test(s) || t.dataset.fb) return;
+  t.dataset.fb = '1';
+  var pic = t.parentNode;
+  if (pic && pic.tagName === 'PICTURE') { pic.querySelectorAll('source').forEach(function (so) { so.remove(); }); }
+  t.srcset = '';
+  t.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%2338bdf8'/><stop offset='1' stop-color='%231A73E8'/></linearGradient></defs><path d='M4 6 L11 6 L16 22 L21 6 L28 6 L19 28 L13 28 Z' fill='url(%23g)'/><circle cx='16' cy='11' r='1.3' fill='%23fff' fill-opacity='0.85'/></svg>";
+}, true);
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=optional" rel="stylesheet"></noscript>
+
+<!-- Shared foundation -->
+<link rel="stylesheet" href="/assets/fvmain.css">
+
+<!-- Page-specific styling only (Talon accent = --talon green) -->
+<style>
+  .tl-hero { position: relative; padding: calc(var(--nav-h) + 72px) 0 72px; overflow: hidden; }
+  .tl-hero .wrap { position: relative; z-index: 1; text-align: center; }
+  .tl-hero-inner { max-width: 760px; margin: 0 auto; }
+  .tl-h1 { font-family: var(--font-display); font-weight: 900; font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.05; letter-spacing: -0.03em; margin: 22px 0 0; }
+  .tl-lede { margin: 22px auto 0; max-width: 620px; color: var(--text-dim); font-weight: 300; font-size: 1.1rem; line-height: 1.6; }
+  .tl-hero-actions { margin-top: 34px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .tl-cta { background: var(--talon); color: #04140d; box-shadow: 0 4px 24px rgba(16,185,129,0.35); }
+  .tl-cta:hover { background: var(--talon-2); box-shadow: 0 8px 32px rgba(16,185,129,0.5); }
+  .tl-cta-ghost { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 10px; border: 1px solid var(--border-2); color: var(--text-dim); text-decoration: none; font-weight: 600; font-size: 0.92rem; transition: color 0.2s, border-color 0.2s; }
+  .tl-cta-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
+  .tl-note { margin-top: 22px; font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.04em; color: var(--muted); }
+  .ac-talon { background: linear-gradient(120deg, var(--talon-2), var(--talon)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+  .tl-feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 52px; }
+  .tl-feat { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; }
+  .tl-feat-icon { width: 46px; height: 46px; border-radius: 12px; background: rgba(16,185,129,0.12); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .tl-feat-icon svg { width: 26px; height: 26px; stroke: var(--talon-2); fill: none; }
+  .tl-feat h3 { font-family: var(--font-display); font-weight: 800; font-size: 1.12rem; margin: 0 0 8px; letter-spacing: -0.01em; }
+  .tl-feat p { color: var(--text-dim); font-weight: 300; font-size: 0.92rem; line-height: 1.6; margin: 0; }
+
+  .tl-how { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 52px; }
+  .tl-step { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 26px 24px; }
+  .tl-step-num { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 600; color: var(--talon-2); letter-spacing: 0.08em; }
+  .tl-step h3 { font-family: var(--font-display); font-weight: 800; font-size: 1.08rem; margin: 10px 0 8px; }
+  .tl-step p { color: var(--text-dim); font-weight: 300; font-size: 0.9rem; line-height: 1.55; margin: 0; }
+
+  .tl-own { background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(52,211,153,0.05)); border: 1px solid rgba(52,211,153,0.22); border-radius: 20px; padding: 44px 40px; margin-top: 52px; text-align: center; }
+  .tl-own h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -0.02em; margin: 0 0 14px; }
+  .tl-own p { max-width: 620px; margin: 0 auto; color: var(--text-dim); font-weight: 300; font-size: 1rem; line-height: 1.65; }
+
+  .tl-faq { max-width: 760px; margin: 44px auto 0; }
+  .tl-faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden; transition: border-color 0.2s; }
+  .tl-faq-item:hover { border-color: rgba(16,185,129,0.28); }
+  .tl-faq-q { display: flex; align-items: center; justify-content: space-between; padding: 18px 22px; cursor: pointer; font-size: 0.92rem; font-weight: 500; gap: 12px; }
+  .tl-faq-q .arrow { font-size: 0.7rem; color: var(--muted); transition: transform 0.25s; flex-shrink: 0; }
+  .tl-faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.2s; font-size: 0.88rem; color: var(--text-dim); line-height: 1.7; font-weight: 300; padding: 0 22px; }
+  .tl-faq-item.open .tl-faq-a { max-height: 360px; padding: 0 22px 20px; }
+  .tl-faq-item.open .arrow { transform: rotate(180deg); }
+
+  .tl-final { text-align: center; }
+  .tl-final h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.6rem, 3.4vw, 2.4rem); letter-spacing: -0.02em; margin: 0 0 16px; }
+  .tl-final p { max-width: 520px; margin: 0 auto 30px; color: var(--text-dim); font-weight: 300; font-size: 1.02rem; line-height: 1.6; }
+
+  @media (max-width: 860px) {
+    .tl-feat-grid, .tl-how { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div id="fv-nav"></div>
+
+<!-- ============ HERO ============ -->
+<section class="tl-hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-grid"></div>
+  <div class="wrap">
+    <div class="tl-hero-inner">
+      <span class="eyebrow"><span class="pulse-dot"></span> Bills &amp; cash-flow · Google Sheets</span>
+      <h1 class="tl-h1">Keep your bills <span class="ac-talon">in your grip.</span></h1>
+      <p class="tl-lede">Talon tracks every bill, due date, and category, then gives you a clear read on exactly what's left to spend before the next paycheck lands. Bills and cash, gripped tight. One-time purchase, yours forever.</p>
+      <div class="tl-hero-actions">
+        <a href="https://falqenview.gumroad.com/l/talon" class="btn-primary tl-cta" target="_blank" rel="noopener noreferrer">Download FalqenView Talon</a>
+        <a href="#features" class="tl-cta-ghost">See what it does →</a>
+      </div>
+      <p class="tl-note">No accounts · no subscriptions · your data never leaves your Drive</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section class="section-pad" id="features">
+  <div class="wrap">
+    <p class="section-label reveal">Everything, gripped tight</p>
+    <h2 class="section-title reveal">Never miss a due date <span class="ac-talon">again.</span></h2>
+    <p class="section-sub reveal">Talon keeps every bill, its due date, and its category in one place — and tells you what's paid, what's past due, and what's coming.</p>
+
+    <div class="tl-feat-grid">
+      <div class="tl-feat reveal">
+        <div class="tl-feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/><path d="M9 15l2 2 4-4"/></svg></div>
+        <h3>Due-date calendar &amp; reminders</h3>
+        <p>Every bill's next due date, tracked automatically — with reminders and optional Google Calendar sync so nothing slips.</p>
+      </div>
+      <div class="tl-feat reveal">
+        <div class="tl-feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h4l3-8 4 16 3-8h2"/></svg></div>
+        <h3>Cash-flow read</h3>
+        <p>7-day, 30-day, and monthly views of what's due, so you always know exactly what's left to spend before the next paycheck.</p>
+      </div>
+      <div class="tl-feat reveal">
+        <div class="tl-feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Autopay tracking</h3>
+        <p>Mark which bills are on autopay and which need a manual push, so automated and hands-on payments never get confused.</p>
+      </div>
+      <div class="tl-feat reveal">
+        <div class="tl-feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h3>Bills Health Score</h3>
+        <p>A single A–F grade on how well your bills are under control, shown on an at-a-glance dashboard with past-due and due-soon alerts.</p>
+      </div>
+      <div class="tl-feat reveal">
+        <div class="tl-feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/><path d="M14 3l7 7"/></svg></div>
+        <h3>Mark-paid with undo</h3>
+        <p>One tap to mark a bill paid, with undo if you slip — plus one-time bill archiving to keep your active list clean.</p>
+      </div>
+      <div class="tl-feat reveal">
+        <div class="tl-feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><rect x="4" y="19" width="16" height="2" rx="1"/></svg></div>
+        <h3>Backup &amp; restore</h3>
+        <p>Your bill history and settings survive any reset. Back up and restore in a click — it's yours, forever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section-pad" id="how" style="padding-top: 0;">
+  <div class="wrap">
+    <p class="section-label reveal">Up and running in minutes</p>
+    <h2 class="section-title reveal">Yours in three steps.</h2>
+
+    <div class="tl-how">
+      <div class="tl-step reveal">
+        <span class="tl-step-num">01</span>
+        <h3>Download your copy</h3>
+        <p>Download FalqenView Talon from your purchase link — it lands as your own private Google Sheet.</p>
+      </div>
+      <div class="tl-step reveal">
+        <span class="tl-step-num">02</span>
+        <h3>Authorize once</h3>
+        <p>Open the FalqenView menu and approve access once. Everything runs inside your own Google account.</p>
+      </div>
+      <div class="tl-step reveal">
+        <span class="tl-step-num">03</span>
+        <h3>Add your bills</h3>
+        <p>Enter each bill, its amount, and its due day. Talon computes what's next, what's due, and your health score automatically.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OWNERSHIP CALLOUT ============ -->
+<section class="section-pad" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="tl-own reveal">
+      <h2>Own it completely.</h2>
+      <p>Talon lives inside your own Google Drive. No account to create, no subscription to renew, and no server that ever sees your finances. You pay once, and the sheet is yours to keep and use for as long as you like.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section-pad" id="faq" style="padding-top: 0;">
+  <div class="wrap">
+    <p class="section-label reveal">Questions</p>
+    <h2 class="section-title reveal">Good to know.</h2>
+
+    <div class="tl-faq">
+      <div class="tl-faq-item reveal open">
+        <div class="tl-faq-q">Where does my bill data live? <span class="arrow">▼</span></div>
+        <div class="tl-faq-a">Entirely in your own Google Drive. Talon is a Google Sheet with built-in FalqenView automation that runs inside your Google account. Your finances are never transmitted to FalqenView or any third party.</div>
+      </div>
+      <div class="tl-faq-item reveal">
+        <div class="tl-faq-q">Is this a subscription? <span class="arrow">▼</span></div>
+        <div class="tl-faq-a">No. Talon is a one-time purchase, the same as VuePoint. You download your copy and it's yours to use indefinitely — no recurring charges.</div>
+      </div>
+      <div class="tl-faq-item reveal">
+        <div class="tl-faq-q">How many bills can I track? <span class="arrow">▼</span></div>
+        <div class="tl-faq-a">Unlimited. Add as many bills as you need — automatic or manual, one-time or recurring. Talon sorts and tracks them all by what's due next.</div>
+      </div>
+      <div class="tl-faq-item reveal">
+        <div class="tl-faq-q">Does it sync with my calendar? <span class="arrow">▼</span></div>
+        <div class="tl-faq-a">Yes. Talon can push bill due dates to your Google Calendar so reminders show up alongside the rest of your schedule. It's optional and runs entirely inside your own Google account.</div>
+      </div>
+      <div class="tl-faq-item reveal">
+        <div class="tl-faq-q">What happens to my data if I reset the sheet? <span class="arrow">▼</span></div>
+        <div class="tl-faq-a">Your bill history and settings are preserved in hidden backup sheets that survive a factory reset, and you can back up and restore your full data in a click.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="section-pad" style="padding-top: 0;">
+  <div class="wrap tl-final">
+    <h2 class="reveal">Take hold of your <span class="ac-talon">cash flow.</span></h2>
+    <p class="reveal">One-time purchase. Runs in your Drive. Yours to own, completely.</p>
+    <div class="reveal" style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+      <a href="https://falqenview.gumroad.com/l/talon" class="btn-primary tl-cta" target="_blank" rel="noopener noreferrer">Download FalqenView Talon</a>
+      <a href="/products/" class="tl-cta-ghost">See all FalqenView tools →</a>
+    </div>
+  </div>
+</section>
+
+<div id="fv-footer"></div>
+
+<script>
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e, i) { if (e.isIntersecting) { setTimeout(function () { e.target.classList.add('visible'); }, i * 70); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  document.querySelectorAll('.tl-faq-item').forEach(function (item) {
+    item.querySelector('.tl-faq-q').addEventListener('click', function () {
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.tl-faq-item').forEach(function (i) { i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+<script src="/assets/components.js"></script>
+</body>
+</html>
