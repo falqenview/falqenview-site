@@ -121,11 +121,51 @@ window.addEventListener('error', function(e) {
 
   /* ── Feature grid ── */
   .rc-feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 52px; }
-  .rc-feat { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; }
-  .rc-feat-icon { width: 46px; height: 46px; border-radius: 12px; background: rgba(56,189,248,0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
-  .rc-feat-icon svg { width: 26px; height: 26px; stroke: var(--cyan); fill: none; }
-  .rc-feat h3 { font-family: var(--font-display); font-weight: 800; font-size: 1.12rem; margin: 0 0 8px; letter-spacing: -0.01em; }
-  .rc-feat p { color: var(--text-dim); font-weight: 300; font-size: 0.92rem; line-height: 1.6; margin: 0; }
+  .rc-feat {
+    position: relative;
+    background: linear-gradient(160deg, var(--surface2) 0%, var(--surface) 65%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    overflow: hidden;
+    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+  }
+  .rc-feat::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 15% -10%, var(--feat-glow, rgba(56,189,248,0.10)) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .rc-feat:hover {
+    transform: translateY(-3px);
+    border-color: var(--feat-accent, rgba(56,189,248,0.4));
+    box-shadow: 0 16px 32px rgba(0,0,0,0.28), 0 0 0 1px var(--feat-accent, rgba(56,189,248,0.15));
+  }
+  .rc-feat-icon {
+    position: relative; z-index: 1;
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--feat-glow, rgba(56,189,248,0.1));
+    border: 1px solid var(--feat-accent, rgba(56,189,248,0.25));
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+    transition: transform 0.22s ease;
+  }
+  .rc-feat:hover .rc-feat-icon { transform: scale(1.06); }
+  .rc-feat-icon svg { width: 22px; height: 22px; stroke: var(--feat-accent-solid, var(--cyan)); fill: none; }
+  .rc-feat h3 { position: relative; z-index: 1; font-family: var(--font-display); font-weight: 800; font-size: 1.08rem; margin: 0 0 8px; letter-spacing: -0.01em; }
+  .rc-feat p { position: relative; z-index: 1; color: var(--text-dim); font-weight: 300; font-size: 0.9rem; line-height: 1.6; margin: 0; }
+
+  /* ── Recall-specific accent (violet, matches the product's own brand color
+     used in the ecosystem card and Cloud tier elsewhere on the site) ── */
+  .ac-violet { color: #a78bfa; }
+
+  /* Inline product-link style — body copy stays readable prose, not a
+     button; just enough color + underline-on-hover to read as clickable. */
+  .rc-plink { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(56,189,248,0.35); transition: border-color 0.18s, color 0.18s; }
+  .rc-plink:hover { border-color: var(--cyan); color: #93e3ff; }
+
+  /* Tier section heading emphasis */
+  .rc-tiers-emph { color: var(--cyan); }
 
   /* ── Tiers ── */
   .rc-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 52px; }
@@ -180,7 +220,7 @@ window.addEventListener('error', function(e) {
     <div class="rc-hero-inner">
       <span class="eyebrow"><span class="pulse-dot"></span> New from FalqenView</span>
       <h1 class="rc-h1">Find anything you've <span class="ac-cyan">ever discussed.</span></h1>
-      <p class="rc-lede">Swoop Recall turns the conversations you export with Swoop into a private, searchable archive. One continuous memory across every AI chat — and all of it stays on your device.</p>
+      <p class="rc-lede">Swoop Recall turns the conversations you export with <a href="https://tools.falqenview.com/chat-exporter/" class="rc-plink">Swoop</a> into a private, searchable archive. One continuous memory across every AI chat — and all of it stays on your device.</p>
       <div class="rc-hero-actions">
         <a href="https://tools.falqenview.com/recall/" class="btn-primary" target="_blank" rel="noopener noreferrer">Open Swoop Recall</a>
         <a href="#tiers" class="rc-cta-ghost">See the tiers →</a>
@@ -249,7 +289,7 @@ window.addEventListener('error', function(e) {
   </div>
 
   <div class="eco-independent">
-    <strong>Use one, use all four.</strong> Prompt Architect engineers the input. Swoop exports the chat. Chat Refresh resets the tokens. Recall keeps it searchable — then feeds your next prompt.<br>No accounts, no subscriptions to string them together — just four FalqenView tools that happen to fit like one.
+    <strong>Use one, use all four.</strong> <a href="https://tools.falqenview.com/prompt-architect/" class="rc-plink">Prompt Architect</a> engineers the input. <a href="https://tools.falqenview.com/chat-exporter/" class="rc-plink">Swoop</a> exports the chat. <a href="https://tools.falqenview.com/chat-refresh/" class="rc-plink">Chat Refresh</a> resets the tokens. Recall keeps it searchable — then feeds your next prompt.<br>No accounts, no subscriptions to string them together — just four FalqenView tools that happen to fit like one.
   </div>
 </section>
 
@@ -261,42 +301,42 @@ window.addEventListener('error', function(e) {
     <p class="section-sub reveal">Swoop solves the token-mountain problem for one conversation. Swoop Recall solves the "I know I discussed this somewhere" problem across all of them.</p>
 
     <div class="rc-feat-grid">
-      <div class="rc-feat reveal">
+      <div class="rc-feat reveal" style="--feat-accent:rgba(56,189,248,0.3);--feat-glow:rgba(56,189,248,0.09);--feat-accent-solid:#38bdf8;">
         <div class="rc-feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
         <h3>Instant full-text search</h3>
         <p>Search across every conversation you've ever imported — platform-agnostic, ranked, and fast. Find the chat you half-remember in seconds.</p>
       </div>
-      <div class="rc-feat reveal">
+      <div class="rc-feat reveal" style="--feat-accent:rgba(56,189,248,0.3);--feat-glow:rgba(56,189,248,0.09);--feat-accent-solid:#38bdf8;">
         <div class="rc-feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M8 4v16"/></svg></div>
         <h3>One archive, every platform</h3>
-        <p>ChatGPT, Claude, Gemini, Grok, Copilot — whatever Swoop can export, Swoop Recall can archive. Your entire history in one searchable place.</p>
+        <p>ChatGPT, Claude, Gemini, Grok, Copilot — whatever <a href="https://tools.falqenview.com/chat-exporter/" class="rc-plink">Swoop</a> can export, Swoop Recall can archive. Your entire history in one searchable place.</p>
       </div>
-      <div class="rc-feat reveal">
+      <div class="rc-feat reveal" style="--feat-accent:rgba(167,139,250,0.32);--feat-glow:rgba(167,139,250,0.1);--feat-accent-solid:#a78bfa;">
         <div class="rc-feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L4 6 v6 c0 5 3.5 9 8 10 4.5-1 8-5 8-10 V6 z"/></svg></div>
         <h3>Everything stays local</h3>
-        <p>Your conversations, the search index, and your license all live in your own browser. Nothing is uploaded. Recall, done right.</p>
+        <p>Your conversations, the search index, and your license all live in your own browser. Nothing is uploaded. <span class="ac-violet">Recall</span>, done right.</p>
       </div>
-      <div class="rc-feat reveal">
+      <div class="rc-feat reveal" style="--feat-accent:rgba(167,139,250,0.32);--feat-glow:rgba(167,139,250,0.1);--feat-accent-solid:#a78bfa;">
         <div class="rc-feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
         <h3>Its own Mobile Dashboard (WebApp)</h3>
         <p>Install Swoop Recall on desktop or mobile and it opens in its own window, with its own icon — no browser tab to hunt for. One tap from your home screen or app tray.</p>
       </div>
-      <div class="rc-feat reveal">
+      <div class="rc-feat reveal" style="--feat-accent:rgba(167,139,250,0.32);--feat-glow:rgba(167,139,250,0.1);--feat-accent-solid:#a78bfa;">
         <div class="rc-feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><path d="M12 2v10"/></svg></div>
         <h3>Works with no connection</h3>
         <p>Once you've opened it, Swoop Recall keeps working with no internet at all — your full archive stays searchable, on a plane, on the subway, anywhere.</p>
       </div>
-      <div class="rc-feat reveal">
+      <div class="rc-feat reveal" style="--feat-accent:rgba(56,189,248,0.3);--feat-glow:rgba(56,189,248,0.09);--feat-accent-solid:#38bdf8;">
         <div class="rc-feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg></div>
         <h3>Import in one drop</h3>
-        <p>Drag and drop one Swoop export or a whole batch. Swoop Recall normalizes and indexes them automatically.</p>
+        <p>Drag and drop one <a href="https://tools.falqenview.com/chat-exporter/" class="rc-plink">Swoop</a> export or a whole batch. Swoop Recall normalizes and indexes them automatically.</p>
       </div>
-      <div class="rc-feat reveal">
+      <div class="rc-feat reveal" style="--feat-accent:rgba(56,189,248,0.3);--feat-glow:rgba(56,189,248,0.09);--feat-accent-solid:#38bdf8;">
         <div class="rc-feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><rect x="4" y="19" width="16" height="2" rx="1"/></svg></div>
         <h3>Backup &amp; restore</h3>
         <p>Export your full archive to a single file and restore it anywhere. Your memory survives any browser reset — yours to keep.</p>
       </div>
-      <div class="rc-feat reveal">
+      <div class="rc-feat reveal" style="--feat-accent:rgba(167,139,250,0.32);--feat-glow:rgba(167,139,250,0.1);--feat-accent-solid:#a78bfa;">
         <div class="rc-feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M22 2 12 12"/><path d="M16 2h6v6"/></svg></div>
         <h3>No accounts, no setup</h3>
         <p>Open it and go. No sign-up, no configuration, no dependency on anyone else's servers to read your own conversations.</p>
@@ -309,7 +349,7 @@ window.addEventListener('error', function(e) {
 <section class="section-pad" id="tiers">
   <div class="wrap">
     <p class="section-label reveal">Simple tiers</p>
-    <h2 class="section-title reveal">Start free. Grow when you need to.</h2>
+    <h2 class="section-title reveal"><span class="ac-cyan">Start free.</span> Grow when you need to.</h2>
     <p class="section-sub reveal">The free tier is fully featured below its cap — no locked functions, just a conversation count. Upgrade only when your archive outgrows it.</p>
 
     <div class="rc-tiers">
@@ -355,7 +395,7 @@ window.addEventListener('error', function(e) {
 <section class="section-pad" style="padding-top: 0;">
   <div class="wrap">
     <div class="rc-privacy reveal">
-      <h2>Recall, done right.</h2>
+      <h2><span class="ac-violet">Recall</span>, done right.</h2>
       <p>The name is shared with a certain much-discussed feature. The architecture is the opposite. On Free and Pro, everything Swoop Recall knows lives in your own browser and never leaves it. When you choose Cloud, your archive is encrypted on your device before a single byte is uploaded — so even the backup is unreadable to anyone but you.</p>
     </div>
   </div>
@@ -370,7 +410,7 @@ window.addEventListener('error', function(e) {
     <div class="rc-faq">
       <div class="rc-faq-item reveal open">
         <div class="rc-faq-q">Do I need Swoop to use Swoop Recall? <span class="arrow">▼</span></div>
-        <div class="rc-faq-a">Swoop Recall imports the conversation files that Swoop exports, so Swoop is how you get your conversations out of each AI platform. Swoop's free tier covers ChatGPT, Gemini, and Copilot; Swoop Pro adds Claude and Grok. Once you have export files, Swoop Recall archives and searches them.</div>
+        <div class="rc-faq-a">Swoop Recall imports the conversation files that <a href="https://tools.falqenview.com/chat-exporter/" class="rc-plink">Swoop</a> exports, so Swoop is how you get your conversations out of each AI platform. Swoop's free tier covers ChatGPT, Gemini, and Copilot; Swoop Pro adds Claude and Grok. Once you have export files, Swoop Recall archives and searches them.</div>
       </div>
       <div class="rc-faq-item reveal">
         <div class="rc-faq-q">Where is my data stored? <span class="arrow">▼</span></div>
@@ -382,11 +422,11 @@ window.addEventListener('error', function(e) {
       </div>
       <div class="rc-faq-item reveal">
         <div class="rc-faq-q">What happens when I hit the free 10-conversation limit? <span class="arrow">▼</span></div>
-        <div class="rc-faq-a">Your existing conversations stay fully searchable and usable — nothing is deleted. To archive more than 10, upgrade to Swoop Recall Pro for an unlimited local archive.</div>
+        <div class="rc-faq-a">Nothing breaks and nothing is deleted — all 10 stay fully searchable, viewable, and exportable, exactly as before. The cap only affects importing an 11th conversation; everything else about Free keeps working at full strength. If your archive naturally grows past that — which tends to happen once you're regularly using <a href="https://tools.falqenview.com/chat-exporter/" class="rc-plink">Swoop</a> and <a href="https://tools.falqenview.com/chat-refresh/" class="rc-plink">Chat Refresh</a> together — Pro removes the cap entirely with a one-time purchase, no subscription.</div>
       </div>
       <div class="rc-faq-item reveal">
         <div class="rc-faq-q">Can I buy Cloud without Pro? <span class="arrow">▼</span></div>
-        <div class="rc-faq-a">No. Cloud is an add-on to Pro, not a standalone tier — it requires an active Pro license on the same device to sync. If Pro ever lapses on a device, Cloud sync stops on that device too, though your existing cloud backup isn't deleted.</div>
+        <div class="rc-faq-a">Cloud sync is available exclusively with an active Pro license — it's built as an enhancement to Pro's unlimited local archive, not a separate standalone tier. Pairing them together gets you an unlimited archive on this device, plus encrypted backup and sync across two devices.</div>
       </div>
       <div class="rc-faq-item reveal">
         <div class="rc-faq-q">Is Swoop Recall a browser extension? <span class="arrow">▼</span></div>
@@ -394,8 +434,8 @@ window.addEventListener('error', function(e) {
       </div>
 
       <div class="rc-faq-item reveal">
-        <div class="rc-faq-q">How do I install it? <span class="arrow">▼</span></div>
-        <div class="rc-faq-a">On desktop Chrome or Edge, look for the install icon in your address bar and click it. On Android, your browser will typically offer to add it to your home screen. On iPhone, open Swoop Recall in Safari, tap Share, then Add to Home Screen — iOS doesn't support the one-click prompt the other platforms do, but the result is the same: its own icon, its own window. Either way, once you've opened it, it also works with no internet connection at all.</div>
+        <div class="rc-faq-q">Do I need to install it? <span class="arrow">▼</span></div>
+        <div class="rc-faq-a">No — Swoop Recall is 100% functional right in your browser, no install required. If you'd like, you also have the option to install it as its own <span class="ac-violet">Mobile Dashboard (WebApp)</span>, which adds a desktop or home-screen icon and gives you full offline access to your archive. It's entirely optional, and either way, all your data and functionality stay exactly the same.</div>
       </div>
     </div>
   </div>
