@@ -155,6 +155,19 @@ window.addEventListener('error', function(e) {
   .rc-feat h3 { position: relative; z-index: 1; font-family: var(--font-display); font-weight: 800; font-size: 1.08rem; margin: 0 0 8px; letter-spacing: -0.01em; }
   .rc-feat p { position: relative; z-index: 1; color: var(--text-dim); font-weight: 300; font-size: 0.9rem; line-height: 1.6; margin: 0; }
 
+  /* ── "Why it matters" — the centralized-memory pitch, given real visual
+     weight since it's the core reason this product exists. ── */
+  .rc-why { position: relative; max-width: 980px; margin: 0 auto; padding: 48px 44px; border-radius: 24px; overflow: hidden; background: linear-gradient(135deg, rgba(56,189,248,0.09) 0%, rgba(167,139,250,0.09) 100%); border: 1px solid rgba(167,139,250,0.25); }
+  .rc-why::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 85% 0%, rgba(167,139,250,0.18) 0%, transparent 60%), radial-gradient(ellipse 60% 70% at 15% 100%, rgba(56,189,248,0.14) 0%, transparent 60%); pointer-events: none; }
+  .rc-why-kicker { position: relative; z-index: 1; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #a78bfa; margin-bottom: 14px; }
+  .rc-why h2 { position: relative; z-index: 1; font-family: var(--font-display); font-weight: 900; font-size: clamp(1.5rem, 3.2vw, 2.1rem); letter-spacing: -0.02em; line-height: 1.2; margin: 0 0 18px; }
+  .rc-why-flow { position: relative; z-index: 1; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 22px 0 26px; font-family: var(--font-mono); font-size: 0.82rem; }
+  .rc-why-step { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 100px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-2); color: var(--text); font-weight: 600; }
+  .rc-why-arrow { color: var(--muted); font-size: 0.9rem; }
+  .rc-why p { position: relative; z-index: 1; max-width: 680px; color: var(--text-dim); font-weight: 300; font-size: 1rem; line-height: 1.7; margin: 0 0 14px; }
+  .rc-why p:last-of-type { margin-bottom: 0; }
+  .rc-why strong { color: var(--text); font-weight: 700; }
+
   /* ── Recall-specific accent (violet, matches the product's own brand color
      used in the ecosystem card and Cloud tier elsewhere on the site) ── */
   .ac-violet { color: #a78bfa; }
@@ -177,6 +190,7 @@ window.addEventListener('error', function(e) {
   .rc-tier-feats { list-style: none; margin: 20px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; flex: 1; }
   .rc-tier-feats li { display: flex; gap: 10px; font-size: 0.9rem; color: var(--text-dim); line-height: 1.45; }
   .rc-tier-feats .chk { color: var(--cyan); font-weight: 700; flex-shrink: 0; }
+  .rc-tier-note { margin: 16px 0 0; padding-top: 14px; border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--muted); line-height: 1.55; font-weight: 300; }
 
   /* ── Privacy callout ── */
   .rc-privacy { background: linear-gradient(135deg, rgba(26,115,232,0.08), rgba(56,189,248,0.05)); border: 1px solid rgba(56,189,248,0.22); border-radius: 20px; padding: 44px 40px; margin-top: 52px; text-align: center; }
@@ -293,6 +307,28 @@ window.addEventListener('error', function(e) {
   </div>
 </section>
 
+<!-- ============ WHY IT MATTERS ============ -->
+<section class="section-pad" style="padding-top: 44px;">
+  <div class="wrap">
+    <div class="rc-why reveal">
+      <div class="rc-why-kicker">Why this exists</div>
+      <h2>If you talk to AI every day — especially more than one — <span class="ac-violet">your history is scattered.</span></h2>
+      <p>ChatGPT for one thing, Claude for another, Gemini for a third — the conversation you need is always in whichever tab you didn't open. Multiply that across weeks or months, and "I know I discussed this somewhere" becomes a daily tax on your time.</p>
+      <p>Swoop Recall is the fix: <strong>one centralized, searchable home for every AI conversation you've ever had</strong>, regardless of which platform it happened on.</p>
+
+      <div class="rc-why-flow">
+        <span class="rc-why-step">💬 Any AI chat</span>
+        <span class="rc-why-arrow">→</span>
+        <span class="rc-why-step">🧩 Swoop, one click</span>
+        <span class="rc-why-arrow">→</span>
+        <span class="rc-why-step">🗂️ Recall, instantly searchable</span>
+      </div>
+
+      <p><strong>Swoop sends any chat straight to Recall with a single click</strong> — no exporting files, no manual uploads. From there, Recall makes it searchable whether you're online or completely offline — and with Cloud, it's backed up and synced across your devices too, <strong>so the one time you actually need that old conversation is never the one time you don't have it.</strong></p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ FEATURES ============ -->
 <section class="section-pad" id="features">
   <div class="wrap">
@@ -364,8 +400,7 @@ window.addEventListener('error', function(e) {
         </ul>
       </div>
 
-      <div class="rc-tier featured reveal">
-        <span class="rc-tier-badge">Most popular</span>
+      <div class="rc-tier reveal">
         <div class="rc-tier-name">Pro</div>
         <div class="rc-tier-kind">one-time purchase</div>
         <ul class="rc-tier-feats">
@@ -375,12 +410,15 @@ window.addEventListener('error', function(e) {
           <li><span class="chk">✓</span>No subscription, ever</li>
           <li><span class="chk">✓</span>Use on 1 device</li>
         </ul>
+        <p class="rc-tier-note">Local-only means one device by design — without a Cloud backup to sync from, there's nothing to keep a second device in step with. Add Cloud any time to sync across two.</p>
       </div>
 
-      <div class="rc-tier reveal">
+      <div class="rc-tier featured reveal">
+        <span class="rc-tier-badge">Most popular</span>
         <div class="rc-tier-name">Cloud</div>
-        <div class="rc-tier-kind">yearly · requires Pro</div>
+        <div class="rc-tier-kind">requires Pro</div>
         <ul class="rc-tier-feats">
+          <li><span class="chk">✓</span>Everything in Pro, plus:</li>
           <li><span class="chk">✓</span>Encrypted off-device backup</li>
           <li><span class="chk">✓</span>Encrypted on your device first</li>
           <li><span class="chk">✓</span>Restore across your devices</li>
