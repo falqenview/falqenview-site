@@ -316,6 +316,7 @@ nav {
 .section-sub { margin: 18px auto 0; max-width: 560px; text-align: center; color: var(--text-dim); font-weight: 300; font-size: 1.02rem; line-height: 1.6; }
 .section-title em { font-family: var(--font-body); font-style: italic; font-weight: 300; letter-spacing: -0.01em; }
 .ac-cyan { background: linear-gradient(120deg, var(--cyan), var(--blue)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.ac-gold { background: linear-gradient(120deg, #fbbf24, var(--gold)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 
 /* ============ PRODUCT HIGHLIGHT CARDS ============ */
 .prod-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 52px; }
@@ -356,6 +357,35 @@ nav {
 .pcard.ghost .pcard-cta { background: transparent; color: var(--text-dim) !important; border: 1px solid var(--border-2); box-shadow: none; }
 .pcard.ghost .pcard-cta:hover { color: var(--text) !important; border-color: rgba(255,255,255,0.25); }
 
+/* ---- SCRUBR SHOWCASE (wide, feature-rich card) ---- */
+.scrubr-showcase {
+  position: relative; overflow: hidden;
+  max-width: 980px; margin: 0 auto;
+  background: linear-gradient(165deg, var(--surface) 0%, var(--surface2) 100%);
+  border: 1px solid rgba(245,158,11,0.22);
+  border-radius: 24px; padding: 40px 44px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 1px 2px rgba(0,0,0,0.2);
+  transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s ease;
+}
+.scrubr-showcase:hover { transform: translateY(-4px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 22px 50px rgba(0,0,0,0.35); }
+.scrubr-showcase::before { content: ''; position: absolute; top: 0; left: 34px; right: 34px; height: 2.5px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.9; border-radius: 3px; }
+.scrubr-showcase::after { content: ''; position: absolute; top: -100px; right: -80px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(245,158,11,0.14), transparent 70%); pointer-events: none; }
+.scrubr-top { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 16px; }
+.scrubr-name { font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; letter-spacing: -0.02em; color: var(--text); }
+.scrubr-name .dot { color: var(--gold); }
+.scrubr-lead { position: relative; z-index: 1; color: var(--text-dim); font-size: 1.02rem; font-weight: 300; line-height: 1.7; max-width: 640px; margin-bottom: 34px; }
+.scrubr-feat-row { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-bottom: 32px; }
+.scrubr-feat-icon { width: 42px; height: 42px; border-radius: 11px; background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3); color: var(--gold); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+.scrubr-feat-icon svg { width: 21px; height: 21px; }
+.scrubr-feat-t { font-family: var(--font-display); font-weight: 700; font-size: 1rem; margin-bottom: 7px; letter-spacing: -0.01em; }
+.scrubr-feat-d { color: var(--text-dim); font-size: 0.86rem; font-weight: 300; line-height: 1.6; }
+.scrubr-foot { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; padding-top: 26px; border-top: 1px solid var(--border); }
+.scrubr-foot-note { font-family: var(--font-mono); font-size: 0.74rem; color: var(--muted); letter-spacing: 0.02em; line-height: 1.6; max-width: 460px; }
+@media (max-width: 760px) {
+  .scrubr-feat-row { grid-template-columns: 1fr; }
+  .scrubr-showcase { padding: 32px 26px; }
+}
+
 /* ---- PROMINENCE TIERS: AI Tools > Scrubr > Finance ---- */
 #ai-tools .section-title { font-size: clamp(2rem, 4vw, 3rem); }
 #ai-tools .pcard { padding: 34px 30px; box-shadow: 0 10px 34px rgba(56,189,248,0.07); }
@@ -364,9 +394,6 @@ nav {
 #ai-tools .pcard:hover { box-shadow: 0 20px 48px rgba(56,189,248,0.14); }
 
 #privacy-tools .section-title { font-size: clamp(1.9rem, 3.8vw, 2.85rem); }
-#privacy-tools .pcard { padding: 32px 30px; }
-#privacy-tools .pcard-name { font-size: 1.36rem; }
-#privacy-tools .pcard::before { height: 2.5px; }
 
 #tools .section-title { font-size: clamp(1.6rem, 3.2vw, 2.35rem); }
 #tools .pcard { padding: 25px 23px; }
@@ -1203,22 +1230,38 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 <section class="section-pad" id="privacy-tools">
   <div class="wrap">
     <p class="section-label reveal">For your files</p>
-    <h2 class="section-title reveal">See what's hidden. Then decide.</h2>
+    <h2 class="section-title reveal">See what's hidden. <em class="ac-gold">Then decide.</em></h2>
     <p class="section-sub reveal">Every photo and PDF carries a quiet paper trail. Scrubr shows you what's there before you share it.</p>
 
-    <div class="prod-grid" style="max-width:640px;margin:0 auto;">
-      <!-- Scrubr -->
-      <div class="pcard reveal" style="--accent: var(--gold);">
-        <div class="pcard-top">
-          <div class="pcard-name">Scrubr<span class="dot">.</span></div>
-          <span class="launch-pill">Web App</span>
+    <div class="scrubr-showcase reveal">
+      <div class="scrubr-top">
+        <div class="scrubr-name">Scrubr<span class="dot">.</span></div>
+        <span class="launch-pill">Web App</span>
+      </div>
+      <p class="scrubr-lead">Every photo and PDF carries a quiet paper trail — where it was taken, what device made it, who touched it last. Scrubr surfaces all of it first, so the choice to remove it is informed, not assumed. Entirely in your browser. Nothing ever uploads.</p>
+
+      <div class="scrubr-feat-row">
+        <div class="scrubr-feat">
+          <div class="scrubr-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="scrubr-feat-t">Inspect</div>
+          <div class="scrubr-feat-d">Reveal hidden metadata — location, device, timestamps, author — with plain-language explanations of what each one means.</div>
         </div>
-        <p class="pcard-desc">Inspect hidden metadata, redact with blackout/blur/pixelate, and annotate images and PDFs — entirely in your browser. Nothing ever uploads.</p>
-        <div class="pcard-foot">
-          <a href="https://tools.falqenview.com/scrubr/" class="pcard-cta">Explore Scrubr →</a>
+        <div class="scrubr-feat">
+          <div class="scrubr-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8" stroke-dasharray="1.5 2.5"/></svg></div>
+          <div class="scrubr-feat-t">Redact</div>
+          <div class="scrubr-feat-d">Blackout, blur, pixelate, or freeform lasso — plus a Select tool to move, resize, or delete any edit after the fact.</div>
+        </div>
+        <div class="scrubr-feat">
+          <div class="scrubr-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 1 1 4 4L7 21l-4 1 1-4Z"/></svg></div>
+          <div class="scrubr-feat-t">Annotate</div>
+          <div class="scrubr-feat-d">Arrows, boxes, lines, freehand pen, and stamps like CONFIDENTIAL or DRAFT — until export flattens them in.</div>
         </div>
       </div>
 
+      <div class="scrubr-foot">
+        <div class="scrubr-foot-note">Multi-page PDF export reassembles into one file · install as a Mobile Dashboard (WebApp) and work offline · Inspect and basic Annotate at no cost, Pro unlocks full Redact and Annotate</div>
+        <a href="https://tools.falqenview.com/scrubr/" class="pcard-cta" style="--accent: var(--gold);">Explore Scrubr →</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1249,7 +1292,7 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 <section class="section-pad" id="tools">
   <div class="wrap">
     <p class="section-label reveal">For your money</p>
-    <h2 class="section-title reveal">Your finances, finally legible.</h2>
+    <h2 class="section-title reveal">Your finances, <em class="ac-cyan">finally legible.</em></h2>
     <p class="section-sub reveal">One-time purchase. Runs in your Drive. Yours to own, forever.</p>
 
     <div class="prod-grid">
@@ -1291,7 +1334,7 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 <section id="free-tools">
   <div class="wrap">
     <p class="section-label reveal">On the house.</p>
-    <h2 class="section-title reveal">Tools that cost nothing.<br><em class="ac-cyan">Built like they don't.</em></h2>
+    <h2 class="section-title reveal">Costs nothing.<br><em class="ac-cyan">Cuts no corners.</em></h2>
     <p class="section-sub reveal">No account, no setup, nothing leaves your browser.</p>
 
     <div class="ftool-grid">
