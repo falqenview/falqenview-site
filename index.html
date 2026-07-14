@@ -350,6 +350,24 @@ nav {
 .pcard.ghost .pcard-cta { background: transparent; color: var(--text-dim) !important; border: 1px solid var(--border-2); }
 .pcard.ghost .pcard-cta:hover { color: var(--text) !important; border-color: rgba(255,255,255,0.25); }
 
+/* ---- PROMINENCE TIERS: AI Tools > Scrubr > Finance ---- */
+#ai-tools .section-title { font-size: clamp(2rem, 4vw, 3rem); }
+#ai-tools .pcard { padding: 34px 30px; box-shadow: 0 10px 34px rgba(56,189,248,0.07); }
+#ai-tools .pcard-name { font-size: 1.42rem; }
+#ai-tools .pcard::before { height: 3px; }
+#ai-tools .pcard:hover { box-shadow: 0 20px 48px rgba(56,189,248,0.14); }
+
+#privacy-tools .section-title { font-size: clamp(1.9rem, 3.8vw, 2.85rem); }
+#privacy-tools .pcard { padding: 32px 30px; }
+#privacy-tools .pcard-name { font-size: 1.36rem; }
+#privacy-tools .pcard::before { height: 2.5px; }
+
+#tools .section-title { font-size: clamp(1.6rem, 3.2vw, 2.35rem); }
+#tools .pcard { padding: 25px 23px; }
+#tools .pcard-name { font-size: 1.2rem; }
+#tools .pcard::before { opacity: 0.5; }
+#tools .pcard-desc { font-size: 0.9rem; }
+
 /* quiet quba line */
 .quba-quiet { text-align: center; margin-top: 40px; font-size: 0.96rem; color: var(--muted); font-weight: 300; }
 .quba-quiet a { color: var(--quba-mid); text-decoration: none; font-weight: 500; border-bottom: 1px solid rgba(82,183,136,0.35); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s; }
@@ -603,34 +621,6 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 .score-copy h3 { font-family: var(--font-display); font-size: 1.7rem; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 14px; line-height: 1.15; }
 .score-copy p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.7; font-weight: 300; }
 
-/* ALERT STRIP — scrolling */
-.alert-strip { width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; margin-top: 72px; padding: 0; }
-.alert-strip-inner { position: relative; }
-.alert-strip::before, .alert-strip::after { content: ''; position: absolute; top: 0; bottom: 0; width: 160px; z-index: 10; pointer-events: none; }
-.alert-strip::before { left: 0; background: linear-gradient(90deg, var(--bg) 0%, transparent 100%); }
-.alert-strip::after { right: 0; background: linear-gradient(270deg, var(--bg) 0%, transparent 100%); }
-.alert-scroll-wrap { overflow: hidden; width: 100%; margin-bottom: 12px; }
-.alert-scroll-wrap:hover .alert-track { animation-play-state: paused; }
-.alert-track { display: flex; gap: 12px; width: max-content; }
-.alert-track-left  { animation: scrollLeft 28s linear infinite; }
-.alert-track-right { animation: scrollRight 28s linear infinite; }
-@keyframes scrollLeft  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@keyframes scrollRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
-.alert-pill {
-  display: flex; align-items: center; gap: 10px;
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: 100px; padding: 9px 16px;
-  font-size: 0.8rem; font-weight: 400; color: var(--text-dim);
-  cursor: default; flex-shrink: 0;
-}
-.alert-pill strong { color: var(--text); font-weight: 600; font-family: var(--font-display); }
-.alert-pill.drift { border-color: rgba(245,158,11,0.35); }
-.alert-pill.cap   { border-color: rgba(239,68,68,0.35); }
-.alert-pill.ok    { border-color: rgba(34,197,94,0.35); }
-.adot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-.adot.amber { background: var(--amber); box-shadow: 0 0 6px var(--amber); }
-.adot.red   { background: var(--red);   box-shadow: 0 0 6px var(--red); }
-.adot.green { background: var(--green); box-shadow: 0 0 6px var(--green); }
 
 .mock {
   position: relative; z-index: 1;
@@ -1119,85 +1109,65 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
   </div>
 </section>
 
-<!-- ============ ALERT TICKER ============ -->
-<div class="alert-strip reveal">
-  <div class="alert-strip-inner">
-    <div class="alert-scroll-wrap">
-      <div class="alert-track alert-track-left">
-        <div class="alert-pill drift"><span class="adot amber"></span><strong>TSLA</strong> drifted +8.2% above target</div>
-        <div class="alert-pill cap"><span class="adot red"></span><strong>MSFT</strong> exceeds 25% position cap</div>
-        <div class="alert-pill ok"><span class="adot green"></span><strong>AAPL</strong> within target range</div>
-        <div class="alert-pill drift"><span class="adot amber"></span>Cash drag · IRA at 12%</div>
-        <div class="alert-pill ok"><span class="adot green"></span>Portfolio Health: <strong>A</strong></div>
-        <div class="alert-pill ok"><span class="adot green"></span><strong>AMZN</strong> · LTCG opens in 14 days</div>
-        <div class="alert-pill drift"><span class="adot amber"></span><strong>TSLA</strong> drifted +8.2% above target</div>
-        <div class="alert-pill cap"><span class="adot red"></span><strong>MSFT</strong> exceeds 25% position cap</div>
-        <div class="alert-pill ok"><span class="adot green"></span><strong>AAPL</strong> within target range</div>
-        <div class="alert-pill drift"><span class="adot amber"></span>Cash drag · IRA at 12%</div>
-        <div class="alert-pill ok"><span class="adot green"></span>Portfolio Health: <strong>A</strong></div>
-        <div class="alert-pill ok"><span class="adot green"></span><strong>AMZN</strong> · LTCG opens in 14 days</div>
-      </div>
-    </div>
-    <div class="alert-scroll-wrap">
-      <div class="alert-track alert-track-right">
-        <div class="alert-pill drift"><span class="adot amber"></span><strong>GOOGL</strong> drifted −9.1% below target</div>
-        <div class="alert-pill cap"><span class="adot red"></span>Sector cap · Tech at 64%</div>
-        <div class="alert-pill ok"><span class="adot green"></span><strong>NVDA</strong> · LTCG cleared ✓</div>
-        <div class="alert-pill cap"><span class="adot red"></span>Portfolio −2.3% today</div>
-        <div class="alert-pill ok"><span class="adot green"></span><strong>META</strong> within target range</div>
-        <div class="alert-pill cap"><span class="adot red"></span>Momentum: <strong>NFLX</strong> −11% in 5 days</div>
-        <div class="alert-pill drift"><span class="adot amber"></span><strong>GOOGL</strong> drifted −9.1% below target</div>
-        <div class="alert-pill cap"><span class="adot red"></span>Sector cap · Tech at 64%</div>
-        <div class="alert-pill ok"><span class="adot green"></span><strong>NVDA</strong> · LTCG cleared ✓</div>
-        <div class="alert-pill cap"><span class="adot red"></span>Portfolio −2.3% today</div>
-        <div class="alert-pill ok"><span class="adot green"></span><strong>META</strong> within target range</div>
-        <div class="alert-pill cap"><span class="adot red"></span>Momentum: <strong>NFLX</strong> −11% in 5 days</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ============ PRODUCTS ============ -->
-<section class="section-pad" id="tools">
+<!-- ============ AI TOOLS (Swoop + Swoop Recall) ============ -->
+<section class="section-pad" id="ai-tools">
   <div class="wrap">
-    <p class="section-label reveal">For your money</p>
-    <h2 class="section-title reveal">Your finances, finally legible.</h2>
-    <p class="section-sub reveal">One-time purchase. Runs in your Drive. Yours to own, forever.</p>
+    <p class="section-label reveal">Swoop exports it. Swoop Recall finds it.</p>
+    <h2 class="section-title reveal">Two tools, one continuous memory.</h2>
+    <p class="section-sub reveal">Export any AI conversation, then search everything you've ever discussed. All of it stays on your device.</p>
 
     <div class="prod-grid">
-      <!-- VuePoint -->
+      <!-- Swoop -->
       <div class="pcard reveal" style="--accent: var(--cyan);">
         <div class="pcard-top">
-          <div class="pcard-name">VuePoint<span class="dot">.</span></div>
-          <span class="launch-pill">Limited Launch</span>
+          <div class="pcard-name">Swoop<span class="dot">.</span></div>
+          <span class="launch-pill">Browser Extension</span>
         </div>
-        <p class="pcard-desc">The portfolio tracker for Google Sheets — drift alerts, a portfolio health score, sector concentration, and buy/sell signals. The whole portfolio, one pane.</p>
+        <p class="pcard-desc">Export any AI chat as clean Markdown or JSON, or hand it straight to a fresh session. Free for ChatGPT, Gemini &amp; Copilot. Claude &amp; Grok unlock with Swoop Pro.</p>
         <div class="pcard-foot">
-          <a href="/vuepoint/" class="pcard-cta">Explore VuePoint →</a>
+          <a href="/swoop/" class="pcard-cta">Explore Swoop →</a>
         </div>
       </div>
 
-      <!-- Talon -->
-      <div class="pcard reveal" style="--accent: var(--talon);">
+      <!-- Swoop Recall -->
+      <div class="pcard reveal" style="--accent: var(--cyan);">
         <div class="pcard-top">
-          <div class="pcard-name">Talon<span class="dot">.</span></div>
-          <span class="launch-pill">Limited Launch</span>
+          <div class="pcard-name">Swoop <span class="ac-cyan">Recall</span><span class="dot">.</span></div>
+          <span class="launch-pill">New</span>
         </div>
-        <p class="pcard-desc">Bills &amp; cash, gripped tight — due dates, categories, and a clear read on exactly what's left to spend before the next paycheck lands.</p>
+        <p class="pcard-desc">A private, searchable archive of every conversation you've exported with Swoop. Instant full-text search across your whole history — and Recall, done right: everything stays on your device.</p>
         <div class="pcard-foot">
-          <a href="/talon/" class="pcard-cta">Explore Talon →</a>
+          <a href="/recall/" class="pcard-cta">Explore Swoop Recall →</a>
         </div>
       </div>
 
     </div>
-
-    <div class="prod-foot-cta reveal"><a href="/products/">Compare every tool, side by side →</a></div>
-
-    <!-- quiet quba + free tools line -->
   </div>
 </section>
 
+<!-- ============ PRIVACY TOOLS (Scrubr) ============ -->
+<section class="section-pad" id="privacy-tools">
+  <div class="wrap">
+    <p class="section-label reveal">For your files</p>
+    <h2 class="section-title reveal">See what's hidden. Then decide.</h2>
+    <p class="section-sub reveal">Every photo and PDF carries a quiet paper trail. Scrubr shows you what's there before you share it.</p>
 
+    <div class="prod-grid" style="max-width:640px;margin:0 auto;">
+      <!-- Scrubr -->
+      <div class="pcard reveal" style="--accent: var(--gold);">
+        <div class="pcard-top">
+          <div class="pcard-name">Scrubr<span class="dot">.</span></div>
+          <span class="launch-pill">Web App</span>
+        </div>
+        <p class="pcard-desc">Inspect hidden metadata, redact with blackout/blur/pixelate, and annotate images and PDFs — entirely in your browser. Nothing ever uploads.</p>
+        <div class="pcard-foot">
+          <a href="https://tools.falqenview.com/scrubr/" class="pcard-cta">Explore Scrubr →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- ============ TRUST STRIP ============ -->
 <div class="trust-band">
@@ -1264,65 +1234,47 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
   <p class="diff-foot reveal">No subscription &middot; no logins &middot; yours forever</p>
 </section>
 
-<!-- ============ AI TOOLS (Swoop + Swoop Recall) ============ -->
-<section class="section-pad" id="ai-tools">
+<!-- ============ PRODUCTS ============ -->
+<section class="section-pad" id="tools">
   <div class="wrap">
-    <p class="section-label reveal">Swoop exports it. Swoop Recall finds it.</p>
-    <h2 class="section-title reveal">Two tools, one continuous memory.</h2>
-    <p class="section-sub reveal">Export any AI conversation, then search everything you've ever discussed. All of it stays on your device.</p>
+    <p class="section-label reveal">For your money</p>
+    <h2 class="section-title reveal">Your finances, finally legible.</h2>
+    <p class="section-sub reveal">One-time purchase. Runs in your Drive. Yours to own, forever.</p>
 
     <div class="prod-grid">
-      <!-- Swoop -->
+      <!-- VuePoint -->
       <div class="pcard reveal" style="--accent: var(--cyan);">
         <div class="pcard-top">
-          <div class="pcard-name">Swoop<span class="dot">.</span></div>
-          <span class="launch-pill">Browser Extension</span>
+          <div class="pcard-name">VuePoint<span class="dot">.</span></div>
+          <span class="launch-pill">Limited Launch</span>
         </div>
-        <p class="pcard-desc">Export any AI chat as clean Markdown or JSON, or hand it straight to a fresh session. Free for ChatGPT, Gemini &amp; Copilot. Claude &amp; Grok unlock with Swoop Pro.</p>
+        <p class="pcard-desc">The portfolio tracker for Google Sheets — drift alerts, a portfolio health score, sector concentration, and buy/sell signals. The whole portfolio, one pane.</p>
         <div class="pcard-foot">
-          <a href="/swoop/" class="pcard-cta">Explore Swoop →</a>
+          <a href="/vuepoint/" class="pcard-cta">Explore VuePoint →</a>
         </div>
       </div>
 
-      <!-- Swoop Recall -->
-      <div class="pcard reveal" style="--accent: var(--cyan);">
+      <!-- Talon -->
+      <div class="pcard reveal" style="--accent: var(--talon);">
         <div class="pcard-top">
-          <div class="pcard-name">Swoop <span class="ac-cyan">Recall</span><span class="dot">.</span></div>
-          <span class="launch-pill">New</span>
+          <div class="pcard-name">Talon<span class="dot">.</span></div>
+          <span class="launch-pill">Limited Launch</span>
         </div>
-        <p class="pcard-desc">A private, searchable archive of every conversation you've exported with Swoop. Instant full-text search across your whole history — and Recall, done right: everything stays on your device.</p>
+        <p class="pcard-desc">Bills &amp; cash, gripped tight — due dates, categories, and a clear read on exactly what's left to spend before the next paycheck lands.</p>
         <div class="pcard-foot">
-          <a href="/recall/" class="pcard-cta">Explore Swoop Recall →</a>
+          <a href="/talon/" class="pcard-cta">Explore Talon →</a>
         </div>
       </div>
 
     </div>
+
+    <div class="prod-foot-cta reveal"><a href="/products/">Compare every tool, side by side →</a></div>
+
+    <!-- quiet quba + free tools line -->
   </div>
 </section>
 
-<!-- ============ PRIVACY TOOLS (Scrubr) ============ -->
-<section class="section-pad" id="privacy-tools">
-  <div class="wrap">
-    <p class="section-label reveal">For your files</p>
-    <h2 class="section-title reveal">See what's hidden. Then decide.</h2>
-    <p class="section-sub reveal">Every photo and PDF carries a quiet paper trail. Scrubr shows you what's there before you share it.</p>
 
-    <div class="prod-grid" style="max-width:640px;margin:0 auto;">
-      <!-- Scrubr -->
-      <div class="pcard reveal" style="--accent: var(--gold);">
-        <div class="pcard-top">
-          <div class="pcard-name">Scrubr<span class="dot">.</span></div>
-          <span class="launch-pill">Web App</span>
-        </div>
-        <p class="pcard-desc">Inspect hidden metadata, redact with blackout/blur/pixelate, and annotate images and PDFs — entirely in your browser. Nothing ever uploads.</p>
-        <div class="pcard-foot">
-          <a href="https://tools.falqenview.com/scrubr/" class="pcard-cta">Explore Scrubr →</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 <!-- ============ FREE TOOLS ============ -->
 <section id="free-tools">
