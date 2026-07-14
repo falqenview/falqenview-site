@@ -94,7 +94,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 @keyframes meshPulse{from{opacity:0.7;transform:scale(1);}to{opacity:1;transform:scale(1.04);}}
 .hero-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 80% 80% at 50% 40%,black 30%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 40%,black 30%,transparent 100%);}
 .page-hero .inner{position:relative;z-index:1;max-width:760px;margin:0 auto;}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--blue-dim);border:1px solid rgba(56,189,248,0.3);border-radius:100px;padding:6px 14px;font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:24px;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--blue-dim);border:1px solid rgba(56,189,248,0.3);border-radius:100px;padding:6px 14px;font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px;}
+.privacy-tag{display:flex;align-items:center;justify-content:center;gap:7px;margin:0 0 20px;font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.05em;color:var(--green-2);opacity:0.95;}
+.privacy-tag svg{width:14px;height:14px;stroke:var(--green-2);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
 .pulse-dot{width:6px;height:6px;border-radius:50%;background:var(--green);position:relative;}
 .pulse-dot::after{content:'';position:absolute;inset:0;border-radius:50%;background:rgba(34,197,94,0.6);animation:pulse 2s infinite;}
 @keyframes pulse{0%{transform:scale(1);opacity:0.6;}70%{transform:scale(2.6);opacity:0;}100%{transform:scale(1);opacity:0;}}
@@ -130,12 +132,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .wf-step{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
 .wf-num{font-family:var(--font-mono);font-size:0.62rem;font-weight:700;letter-spacing:0.1em;color:var(--wf-accent,var(--cyan));background:var(--wf-glow,rgba(56,189,248,0.1));border:1px solid var(--wf-accent,rgba(56,189,248,0.4));border-radius:999px;padding:3px 9px;text-transform:uppercase;}
 .wf-buzz{font-family:var(--font-mono);font-size:0.56rem;letter-spacing:0.06em;color:var(--muted);text-transform:uppercase;text-align:right;}
-.wf-ic{position:relative;z-index:1;width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--wf-glow,rgba(56,189,248,0.12));margin-bottom:12px;}
-.wf-ic svg{width:21px;height:21px;stroke:var(--wf-accent,var(--cyan));fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.wf-ic{position:relative;z-index:1;width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,color-mix(in srgb,var(--wf-accent,var(--cyan)) 30%,transparent),rgba(14,17,24,0.6));border:1px solid color-mix(in srgb,var(--wf-accent,var(--cyan)) 40%,transparent);box-shadow:0 3px 14px rgba(0,0,0,0.35),inset 0 1px 0 color-mix(in srgb,var(--wf-accent,var(--cyan)) 25%,transparent);margin-bottom:12px;}
+.wf-ic svg{width:24px;height:24px;stroke:var(--wf-accent,var(--cyan));fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 .wf-name{position:relative;z-index:1;font-family:var(--font-display);font-weight:800;font-size:1.02rem;letter-spacing:-0.01em;margin-bottom:6px;}
 .wf-name .ai-prefix{font-style:italic;color:var(--wf-accent,var(--cyan));}
 .wf-desc{position:relative;z-index:1;font-size:0.8rem;color:var(--text-dim);line-height:1.55;}
-.wf-tier{position:relative;z-index:1;margin-top:10px;font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.04em;color:var(--muted);}
 .wf-features{position:relative;z-index:1;list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px;flex:1;}
 .wf-features li{display:flex;gap:7px;font-size:0.74rem;color:var(--text-dim);line-height:1.4;}
 .wf-features .chk{color:var(--wf-accent,var(--cyan));font-weight:700;flex-shrink:0;}
@@ -203,6 +204,7 @@ details.fcard-details[open] .fcard-summary .fcard-chev{transform:rotate(180deg);
 /* CARD BACKGROUND ART */
 .fcard-bg{position:absolute;left:0;bottom:0;width:90%;height:60%;pointer-events:none;z-index:0;opacity:0.14;mask-image:radial-gradient(ellipse 90% 90% at 0% 100%,black 40%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 90% 90% at 0% 100%,black 40%,transparent 80%);}
 .fcard-bg img{width:100%;height:100%;object-fit:cover;object-position:left center;display:block;}
+.fcard-bg svg{width:100%;height:100%;object-fit:cover;object-position:left center;display:block;color:var(--accent);}
 .qcard-bg{position:absolute;left:0;right:0;bottom:0;width:100%;height:42%;pointer-events:none;z-index:0;color:var(--qibla-mid);opacity:0.16;overflow:hidden;mask-image:linear-gradient(to bottom,transparent 0%,black 38%,black 100%);-webkit-mask-image:linear-gradient(to bottom,transparent 0%,black 38%,black 100%);}
 .qcard-bg svg{width:100%;height:100%;display:block;}
 
@@ -293,6 +295,9 @@ details.fcard-details[open] .fcard-summary .fcard-chev{transform:rotate(180deg);
 .tcard-name .dot{color:var(--cyan);}
 .tcard-subtitle{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);margin-top:4px;opacity:0.9;}
 .tcard-desc{margin-top:10px;color:var(--text-dim);font-weight:300;font-size:0.96rem;line-height:1.65;}
+.tcard-features{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:7px;}
+.tcard-features li{display:flex;gap:9px;font-size:0.85rem;color:var(--text-dim);line-height:1.4;}
+.tcard-features .chk{color:var(--cyan);font-weight:700;flex-shrink:0;}
 .tcard-foot{margin-top:22px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
 .tcard-price{font-family:var(--font-mono);font-size:0.86rem;color:var(--cyan);font-weight:600;letter-spacing:0.04em;}
 .tcard-cta{display:inline-flex;align-items:center;gap:8px;background:rgba(56,189,248,0.14);border:1px solid rgba(56,189,248,0.45);color:var(--cyan);text-decoration:none;font-weight:600;font-size:0.88rem;padding:11px 22px;border-radius:10px;transition:background 0.2s,color 0.2s,border-color 0.2s,box-shadow 0.2s;}
@@ -452,6 +457,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   <div class="hero-grid"></div>
   <div class="inner">
     <div class="eyebrow"><span class="pulse-dot"></span>The FalqenView Suite</div>
+    <div class="privacy-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Privacy-first, by design</div>
     <h1>Every tool, <span class="accent">one place.</span></h1>
     <p class="lead">No accounts, no subscriptions, nothing leaves your device. Here's everything FalqenView makes — and what's still on the way.</p>
   </div>
@@ -573,8 +579,8 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 <!-- ============ AI WORKFLOW LIFECYCLE — Prompt Architect -> Swoop -> Chat Refresh -> Recall ============ -->
 <section class="wf-section" id="ai-workflow" style="scroll-margin-top: calc(var(--nav-h) + 24px);">
   <div class="wrap">
+    <p class="group-label reveal">For your AI chats</p>
     <div class="wf-head reveal">
-      <span class="eyebrow" style="margin-bottom:16px;">For your AI chats</span>
       <div class="wf-kicker">The AI context lifecycle · four independent tools</div>
       <h2 class="wf-title">Prompt it. Export it. Reboot it. <span class="accent">Keep it forever.</span></h2>
       <p class="wf-sub">Every AI conversation moves through the same lifecycle — a prompt goes in, context builds up, tokens pile on, and eventually you need to start fresh without losing what mattered. <strong>Four FalqenView tools, each independent, built for one stage of that loop.</strong></p>
@@ -588,7 +594,6 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
         <div class="wf-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M7 10l3 2-3 2"/><path d="M12 14h4"/></svg></div>
         <div class="wf-name"><span class="ai-prefix">AI:</span> Prompt Architect</div>
         <div class="wf-desc">Engineer the input before you ever hit send — structured prompts, custom instructions, and packaged skills, tuned per platform.</div>
-        <div class="wf-tier">Free · no account</div>
         <ul class="wf-features">
           <li><span class="chk">✓</span>Structured prompt builder</li>
           <li><span class="chk">✓</span>Custom instructions for ChatGPT, Claude, Gemini &amp; Copilot</li>
@@ -601,12 +606,11 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       <div class="wf-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h14"/><path d="M13 6l6 6-6 6"/></svg></div>
 
       <!-- 2 · SWOOP -->
-      <a href="/swoop/" class="wf-node" id="swoop" style="--wf-accent:#38bdf8;--wf-glow:rgba(56,189,248,0.14);">
+      <a href="/swoop/" class="wf-node" id="swoop" style="--wf-accent:#10b981;--wf-glow:rgba(16,185,129,0.14);">
         <div class="wf-step"><span class="wf-num">Step 2</span><span class="wf-buzz">Context Export</span></div>
         <div class="wf-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg></div>
         <div class="wf-name">Swoop</div>
         <div class="wf-desc">Snatch any AI conversation out of the page as clean JSON or Markdown, in a single swoop. Runs on-device.</div>
-        <div class="wf-tier">Free · Pro unlock, one-time</div>
         <ul class="wf-features">
           <li><span class="chk">✓</span>Free for ChatGPT, Gemini &amp; Copilot</li>
           <li><span class="chk">✓</span>Claude &amp; Grok unlock with Swoop Pro</li>
@@ -619,12 +623,11 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       <div class="wf-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h14"/><path d="M13 6l6 6-6 6"/></svg></div>
 
       <!-- 3 · CHAT REFRESH -->
-      <a href="https://tools.falqenview.com/chat-refresh/" class="wf-node" id="chat-refresh" style="--wf-accent:#38bdf8;--wf-glow:rgba(56,189,248,0.12);">
+      <a href="https://tools.falqenview.com/chat-refresh/" class="wf-node" id="chat-refresh" style="--wf-accent:#f59e0b;--wf-glow:rgba(245,158,11,0.14);">
         <div class="wf-step"><span class="wf-num">Step 3</span><span class="wf-buzz">Token Reset</span></div>
         <div class="wf-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></div>
         <div class="wf-name"><span class="ai-prefix">AI:</span> Chat Refresh</div>
         <div class="wf-desc">Distill a long, token-heavy thread into a tight context primer. Start a new session with a fresh count and the same hard-won context.</div>
-        <div class="wf-tier">Free · no account</div>
         <ul class="wf-features">
           <li><span class="chk">✓</span>Fast extract-and-clean pass</li>
           <li><span class="chk">✓</span>Guided primer mode for sharper results</li>
@@ -642,7 +645,6 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
         <div class="wf-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v13l-4-2-4 2-4-2-4 2Z"/><path d="M8 9h8"/><path d="M8 13h5"/></svg></div>
         <div class="wf-name">Swoop Recall</div>
         <div class="wf-desc">Archive every exported chat in a private, searchable library — the persistent memory your AI itself doesn't keep.</div>
-        <div class="wf-tier">Free · Pro · Cloud</div>
         <ul class="wf-features">
           <li><span class="chk">✓</span>Free — up to 10 conversations</li>
           <li><span class="chk">✓</span>Pro — unlimited local archive</li>
@@ -670,12 +672,25 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 
       <!-- Scrubr -->
       <div class="fcard reveal" id="scrubr" style="--accent: var(--gold); scroll-margin-top: calc(var(--nav-h) + 24px);">
+        <div class="fcard-bg">
+          <svg viewBox="0 0 400 140" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="40" y="18" width="150" height="104" rx="8" fill="currentColor" opacity="0.16"/>
+            <rect x="40" y="18" width="150" height="104" rx="8" stroke="currentColor" stroke-width="2" opacity="0.32"/>
+            <rect x="58" y="38" width="80" height="6" rx="3" fill="currentColor" opacity="0.32"/>
+            <rect x="58" y="52" width="110" height="6" rx="3" fill="currentColor" opacity="0.24"/>
+            <rect x="58" y="68" width="114" height="10" rx="2" fill="currentColor" opacity="0.55"/>
+            <rect x="58" y="84" width="90" height="10" rx="2" fill="currentColor" opacity="0.55"/>
+            <rect x="58" y="100" width="60" height="6" rx="3" fill="currentColor" opacity="0.24"/>
+            <circle cx="272" cy="60" r="46" stroke="currentColor" stroke-width="3" opacity="0.35"/>
+            <line x1="304" y1="92" x2="347" y2="132" stroke="currentColor" stroke-width="10" stroke-linecap="round" opacity="0.35"/>
+            <line x1="244" y1="30" x2="300" y2="90" stroke="currentColor" stroke-width="2" opacity="0.28" stroke-linecap="round"/>
+          </svg>
+        </div>
         <div class="fcard-top">
           <div class="fcard-name">Scrubr<span class="dot">.</span></div>
           <span class="launch-pill"><span class="pulse-dot"></span>New</span>
         </div>
         <p class="fcard-tagline">See everything hidden inside a photo or PDF — location, device, author, edit trail — then remove exactly what you choose before the file ever leaves your hands. Runs entirely in your browser; nothing is ever uploaded.</p>
-        <div class="fcard-once">Free · Pro unlock, one-time</div>
         <ul class="fcard-features">
           <li><span class="chk">✓</span>Inspect hidden metadata &amp; flag PII — free</li>
           <li><span class="chk">✓</span>Redact, black out, blur &amp; pixelate — Pro</li>
@@ -724,6 +739,12 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       </div>
       <div class="tcard-body">
         <p class="tcard-desc">A strong password or passphrase in one click, and a clean QR code from any URL or text. Nothing you enter ever leaves your browser.</p>
+        <ul class="tcard-features">
+          <li><span class="chk">✓</span>Strong password generator, adjustable length &amp; character sets</li>
+          <li><span class="chk">✓</span>Passphrase mode for memorable, secure passwords</li>
+          <li><span class="chk">✓</span>Instant QR code from any URL or text</li>
+          <li><span class="chk">✓</span>Nothing you enter ever leaves your browser</li>
+        </ul>
         <div class="tcard-foot">
           <a href="https://tools.falqenview.com/generator/" class="tcard-cta">Open Generator →</a>
         </div>
@@ -747,6 +768,13 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       </div>
       <div class="tcard-body">
         <p class="tcard-desc">JSON &amp; CSV formatting, Base64, URL encoding, YAML ⇄ JSON, a regex tester and an epoch converter. Everything runs in your browser — nothing you paste ever leaves your device.</p>
+        <ul class="tcard-features">
+          <li><span class="chk">✓</span>JSON &amp; CSV formatting and validation</li>
+          <li><span class="chk">✓</span>Base64 encode &amp; decode</li>
+          <li><span class="chk">✓</span>URL encoding &amp; decoding</li>
+          <li><span class="chk">✓</span>YAML ⇄ JSON conversion</li>
+          <li><span class="chk">✓</span>Regex tester &amp; epoch/timestamp converter</li>
+        </ul>
         <div class="tcard-foot">
           <a href="https://tools.falqenview.com/dev-toolkit/" class="tcard-cta">Open Dev Toolkit →</a>
         </div>
@@ -770,6 +798,12 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       </div>
       <div class="tcard-body">
         <p class="tcard-desc">Live Markdown preview, a word-level diff checker, a text case converter, and a word counter with readability scoring. Nothing you paste ever leaves your device.</p>
+        <ul class="tcard-features">
+          <li><span class="chk">✓</span>Live Markdown preview</li>
+          <li><span class="chk">✓</span>Word-level diff checker</li>
+          <li><span class="chk">✓</span>Text case converter</li>
+          <li><span class="chk">✓</span>Word counter with readability scoring</li>
+        </ul>
         <div class="tcard-foot">
           <a href="https://tools.falqenview.com/writer-toolkit/" class="tcard-cta">Open Writer's Toolkit →</a>
         </div>
@@ -779,7 +813,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   </div>
 
   <!-- Quba — hero treatment (a real app, given freely) -->
-  <div class="qibla-divider reveal"><span>A free app</span></div>
+  <div class="qibla-divider reveal"><span>A free app, on any device</span></div>
   <div class="quba-wrap" style="max-width:760px;margin:30px auto 0;padding:0 24px;">
   <div class="qcard qcard-hero reveal" id="quba">
     <svg class="qcard-bg" viewBox="0 0 400 140" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
