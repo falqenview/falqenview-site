@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>FalqenView — Sharp Tools You Own Outright</title>
-<meta name="description" content="FalqenView builds sharp, elegant tools you own completely. Track your portfolio with VuePoint, grip your bills with Talon, archive your AI chats with Swoop Recall, export them with Swoop. No accounts, no subscriptions — your data stays on your device.">
-<meta name="keywords" content="FalqenView, VuePoint, Talon, Swoop, Swoop Recall, portfolio tracker, bills manager, AI chat exporter, AI conversation archive, privacy-first tools, one-time purchase software">
+<meta name="description" content="FalqenView builds sharp, elegant tools you own completely. Track your portfolio with VuePoint, grip your bills with Talon, export AI chats with Swoop, archive them with Swoop Recall, and protect your files with Scrubr. No accounts, no subscriptions — your data stays on your device.">
+<meta name="keywords" content="FalqenView, VuePoint, Talon, Swoop, Swoop Recall, Scrubr, portfolio tracker, bills manager, AI chat exporter, AI conversation archive, file privacy tool, metadata removal, privacy-first tools, one-time purchase software">
 <meta name="author" content="FalqenView">
 <meta name="theme-color" content="#1A73E8">
 <meta name="robots" content="index, follow">
@@ -72,6 +72,48 @@
         "url": "https://falqenview.gumroad.com/l/talon"
       },
       "description": "Google Sheets bills and cash flow manager with due-date calendar, autopay tracking, categories, and a bills health score.",
+      "publisher": { "@id": "https://falqenview.com/#organization" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Swoop",
+      "applicationCategory": "BrowserApplication",
+      "operatingSystem": "Chrome, Edge, Firefox",
+      "offers": {
+        "@type": "Offer",
+        "price": "14",
+        "priceCurrency": "USD",
+        "url": "https://tools.falqenview.com/chat-exporter/"
+      },
+      "description": "Browser extension that exports AI chat conversations as clean Markdown or JSON. Free for ChatGPT, Gemini, and Copilot; Pro unlocks Claude and Grok.",
+      "publisher": { "@id": "https://falqenview.com/#organization" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Swoop Recall",
+      "applicationCategory": "BrowserApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "19",
+        "priceCurrency": "USD",
+        "url": "https://falqenview.com/recall/"
+      },
+      "description": "Private, searchable archive of your exported AI conversations. Local-first with an optional encrypted Cloud backup tier.",
+      "publisher": { "@id": "https://falqenview.com/#organization" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Scrubr",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "19",
+        "priceCurrency": "USD",
+        "url": "https://falqenview.gumroad.com/l/scrubr"
+      },
+      "description": "Client-side tool to inspect, redact, and annotate hidden metadata in images and PDFs before you share them. Nothing ever uploads.",
       "publisher": { "@id": "https://falqenview.com/#organization" }
     }
   ]
@@ -1402,12 +1444,36 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
   </div>
 </section>
 
+<!-- ============ PRIVACY TOOLS (Scrubr) ============ -->
+<section class="section-pad" id="privacy-tools">
+  <div class="wrap">
+    <p class="section-label reveal">For your files</p>
+    <h2 class="section-title reveal">See what's hidden. Then decide.</h2>
+    <p class="section-sub reveal">Every photo and PDF carries a quiet paper trail. Scrubr shows you what's there before you share it.</p>
+
+    <div class="prod-grid" style="max-width:640px;margin:0 auto;">
+      <!-- Scrubr -->
+      <div class="pcard reveal" style="--accent: var(--gold);">
+        <div class="pcard-top">
+          <div class="pcard-name">Scrubr<span class="dot">.</span></div>
+          <span class="launch-pill">Web App</span>
+        </div>
+        <p class="pcard-desc">Inspect hidden metadata, redact with blackout/blur/pixelate, and annotate images and PDFs — entirely in your browser. Nothing ever uploads.</p>
+        <div class="pcard-foot">
+          <a href="https://tools.falqenview.com/scrubr/" class="pcard-cta">Explore Scrubr →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ============ FREE TOOLS ============ -->
 <section id="free-tools">
   <div class="wrap">
     <p class="section-label reveal">Free, always.</p>
     <h2 class="section-title reveal">Tools that cost nothing.<br>Built like they do.</h2>
-    <p class="section-sub reveal">No account, no setup, nothing leaves your browser. Six tools and a prayer app — free because they should be.</p>
+    <p class="section-sub reveal">No account, no setup, nothing leaves your browser. Free because they should be.</p>
 
     <div class="ftool-grid">
 
@@ -1459,33 +1525,6 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
           <p class="fts-desc">Extract and compress a long AI session into a tight primer. Fresh token count, same context.</p>
           <div class="fts-foot">
             <span class="fts-cta">Open →</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Swoop — AI Chat Exporter -->
-      <a href="https://tools.falqenview.com/chat-exporter/" class="fts-tcard reveal" target="_blank" rel="noopener noreferrer">
-        <div class="fts-head">
-          <div class="fts-icon">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="6" y="8" width="19" height="14" rx="3.5" stroke="#38bdf8" stroke-width="2" fill="rgba(56,189,248,0.08)"/>
-              <path d="M11 22 L11 26.5 L16 22 Z" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="2" stroke-linejoin="round"/>
-              <line x1="10.5" y1="13" x2="20.5" y2="13" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
-              <line x1="10.5" y1="17" x2="17.5" y2="17" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
-              <path d="M19 24 C24 31 28 35 37 36" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" fill="none"/>
-              <path d="M32 32 L38.5 36 L33 40.5" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            </svg>
-          </div>
-          <div class="fts-headtext">
-            <div class="fts-name"><span class="ai-prefix">AI:</span> Chat Exporter</div>
-            <div class="fts-subtitle">Export your AI chat sessions</div>
-            <span class="fts-ext-pill">🧩 Browser Extension</span>
-          </div>
-        </div>
-        <div class="fts-body">
-          <p class="fts-desc">Export any AI chat as clean Markdown or JSON. Free for ChatGPT, Gemini &amp; Copilot. Claude &amp; Grok unlock with Swoop Pro.</p>
-          <div class="fts-foot">
-            <span class="fts-cta">Add Swoop — Free →</span>
           </div>
         </div>
       </a>
