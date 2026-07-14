@@ -739,7 +739,7 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
   box-shadow: 0 4px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(82,183,136,0.2);
   color: var(--quba-mid);
 }
-.quba-card-icon svg { width: 32px; height: 32px; }
+.quba-card-icon img { width: 40px; height: 40px; object-fit: contain; display: block; }
 .quba-card-name {
   position: relative; z-index: 1;
   font-family: var(--font-display); font-weight: 800; font-size: 1.5rem;
@@ -852,7 +852,7 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 
     <!-- PILLAR: ZERO NOISE -->
     <div class="std-card p3 reveal">
-      <div class="std-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11v2a1 1 0 0 0 1 1h2.5L11 17.5v-11L6.5 10H4a1 1 0 0 0-1 1z"/><line x1="15.5" y1="9" x2="20.5" y2="14"/><line x1="20.5" y1="9" x2="15.5" y2="14"/></svg></div>
+      <div class="std-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M6.5 14.5 L9 9 l2.5 5.5"/><path d="M7.3 12.8 h3.4"/><path d="M14 14.5 V9 h2.2 a2.75 2.75 0 0 1 0 5.5 Z"/><line x1="3.5" y1="20.5" x2="20.5" y2="3.5" stroke-width="2.1"/></svg></div>
       <p class="std-kicker">Zero noise</p>
       <h3>Open it. Use it. <em>That's it.</em></h3>
       <p>No ads, no nags, no pop-ups asking how it's going. No dark patterns steering you anywhere. Every tool does one thing, does it well, and then gets out of your way — the way software used to work.</p>
@@ -1129,41 +1129,38 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
               <stop offset="1" stop-color="#6fcf9f" stop-opacity="0.12"/>
             </linearGradient>
           </defs>
-          <g fill="url(#qubaArtFade)" stroke="url(#qubaArtLine)" stroke-width="1.6" stroke-linejoin="round">
-            <!-- left minaret -->
-            <path d="M104 300 V150 h20 V300 Z"/>
-            <path d="M114 118 l14 22 h-28 Z"/>
-            <rect x="100" y="140" width="28" height="8" rx="2"/>
+          <g fill="url(#qubaArtFade)" stroke="url(#qubaArtLine)" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+            <!-- left minaret: tiered shaft, balcony, onion cap, crescent -->
+            <path d="M96 300 V166 h30 V300 Z"/>
+            <path d="M92 160 h38 v8 h-38 Z"/>
+            <path d="M111 108 c-13 8 -15 26 -4 34 h8 c11 -8 9 -26 -4 -34 Z"/>
+            <path d="M111 100 v8"/>
+            <path d="M111 92 a5 5 0 1 0 3.6 8.6 a4 4 0 1 1 -3.6 -8.6 Z"/>
             <!-- right minaret -->
-            <path d="M476 300 V150 h20 V300 Z"/>
-            <path d="M486 118 l14 22 h-28 Z"/>
-            <rect x="472" y="140" width="28" height="8" rx="2"/>
-            <!-- main hall + central dome -->
-            <path d="M170 300 V196 h260 V300 Z"/>
-            <path d="M300 108 c-46 0 -78 38 -78 88 h156 c0 -50 -32 -88 -78 -88 Z"/>
-            <path d="M300 92 v16"/>
-            <circle cx="300" cy="86" r="6"/>
-            <!-- flanking small domes -->
-            <path d="M212 196 c0 -30 -19 -46 -40 -46 s-40 16 -40 46 Z"/>
-            <path d="M468 196 c0 -30 -19 -46 -40 -46 s-40 16 -40 46 Z"/>
+            <path d="M474 300 V166 h30 V300 Z"/>
+            <path d="M470 160 h38 v8 h-38 Z"/>
+            <path d="M489 108 c-13 8 -15 26 -4 34 h8 c11 -8 9 -26 -4 -34 Z"/>
+            <path d="M489 100 v8"/>
+            <path d="M489 92 a5 5 0 1 0 3.6 8.6 a4 4 0 1 1 -3.6 -8.6 Z"/>
+            <!-- main hall -->
+            <path d="M162 300 V212 h276 V300 Z"/>
+            <!-- central onion dome + drum -->
+            <path d="M232 212 h136 v-10 h-136 Z"/>
+            <path d="M300 96 c-34 22 -48 60 -34 84 c8 14 22 22 34 22 s26 -8 34 -22 c14 -24 0 -62 -34 -84 Z"/>
+            <path d="M300 84 v12"/>
+            <path d="M300 72 a7 7 0 1 0 5 12 a5.6 5.6 0 1 1 -5 -12 Z"/>
+            <!-- flanking small onion domes -->
+            <path d="M196 202 c-16 10 -22 28 -16 40 h32 c6 -12 0 -30 -16 -40 Z"/>
+            <path d="M404 202 c-16 10 -22 28 -16 40 h32 c6 -12 0 -30 -16 -40 Z"/>
             <!-- keyhole arches -->
-            <path d="M264 300 v-52 c0 -20 16 -34 36 -34 s36 14 36 34 v52 Z"/>
-            <path d="M198 300 v-40 c0 -15 11 -25 25 -25 s25 10 25 25 v40 Z"/>
-            <path d="M352 300 v-40 c0 -15 11 -25 25 -25 s25 10 25 25 v40 Z"/>
+            <path d="M268 300 v-44 c0 -22 14 -38 32 -38 s32 16 32 38 v44 Z"/>
+            <path d="M196 300 v-32 c0 -16 10 -27 22 -27 s22 11 22 27 v32 Z"/>
+            <path d="M360 300 v-32 c0 -16 10 -27 22 -27 s22 11 22 27 v32 Z"/>
           </g>
         </svg>
       </div>
       <div class="quba-card-icon">
-        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="4" y1="44" x2="44" y2="44"/>
-          <line x1="4" y1="22" x2="44" y2="22"/>
-          <path d="M8 14 L24 8 L40 14"/>
-          <line x1="8" y1="22" x2="8" y2="44"/>
-          <line x1="40" y1="22" x2="40" y2="44"/>
-          <line x1="16" y1="30" x2="16" y2="38"/>
-          <line x1="24" y1="30" x2="24" y2="38"/>
-          <line x1="32" y1="30" x2="32" y2="38"/>
-        </svg>
+        <img src="https://quba.falqenview.com/quba-logo.webp" alt="" width="40" height="40" loading="lazy" decoding="async">
       </div>
       <div class="quba-card-name">Quba<span class="quba-dot">.</span></div>
       <p class="quba-card-desc">An Islamic prayer guide with accurate times, a Qibla compass, and prayer tracking. No ads, no nags, no account — just the essentials, wherever you are.</p>
