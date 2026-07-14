@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Changelog — FalqenView</title>
-  <meta name="description" content="FalqenView product changelog — new features, improvements, and fixes across VuePoint, Talon, Swoop, and Swoop Recall.">
+  <meta name="description" content="FalqenView product changelog — new features, improvements, and fixes across VuePoint, Talon, Swoop, Swoop Recall, and Scrubr.">
   <meta name="theme-color" content="#1A73E8">
 
   <link rel="icon" type="image/png" href="assets/fvIcon.png">
@@ -128,6 +128,9 @@
     .jump-btn.recall { color: #a78bfa; border-color: rgba(167,139,250,0.5); background: rgba(167,139,250,0.06); }
     .jump-btn.recall:hover { background: rgba(167,139,250,0.16); border-color: #a78bfa; }
     .jump-btn.recall .dot { background: #a78bfa; }
+    .jump-btn.scrubr { color: #f59e0b; border-color: rgba(245,158,11,0.5); background: rgba(245,158,11,0.06); }
+    .jump-btn.scrubr:hover { background: rgba(245,158,11,0.16); border-color: #f59e0b; }
+    .jump-btn.scrubr .dot { background: #f59e0b; }
 
     /* TIMELINE */
     .cl-wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px 80px; position: relative; z-index: 1; }
@@ -163,6 +166,7 @@
     .product-header-name.talon { color: #34d399; }
     .product-header-name.swoop { color: #e8885a; }
     .product-header-name.recall { color: #a78bfa; }
+    .product-header-name.scrubr { color: #f59e0b; }
     .coming-soon-tag {
       font-family: var(--font-mono); font-size: 0.66rem; font-weight: 700;
       letter-spacing: 0.1em; text-transform: uppercase;
@@ -325,6 +329,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     <a href="#talon" class="jump-btn talon"><span class="dot"></span> Talon</a>
     <a href="#swoop" class="jump-btn swoop"><span class="dot"></span> Swoop</a>
     <a href="#recall" class="jump-btn recall"><span class="dot"></span> Swoop Recall</a>
+    <a href="#scrubr" class="jump-btn scrubr"><span class="dot"></span> Scrubr</a>
   </div>
 </div>
 
@@ -499,6 +504,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
           <li>add: the popup now shows your most recent export at a glance</li>
           <li>fix: a stray line could occasionally sneak into a Claude export — cleaned up</li>
           <li>fix: exported files now label the source platform correctly in every case</li>
+          <li>add: now available on Firefox via Mozilla Add-ons, alongside Chrome and Edge</li>
         </ul>
       </div>
     </div>
@@ -681,6 +687,42 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   </div>
     </div><!-- /cl-cols -->
   </div><!-- /cat-band Browser -->
+
+  <!-- ════ PRIVACY TOOLS ════ -->
+  <div class="cat-band">
+    <p class="cat-label">Privacy Tools <span class="cat-tag">Web App · Free &amp; Pro</span></p>
+    <div class="cl-cols single">
+
+  <!-- SCRUBR -->
+  <div class="product-section" id="scrubr">
+    <div class="product-header">
+      <span class="product-header-name scrubr">Scrubr</span>
+      <span class="coming-soon-tag" style="color:#f59e0b;background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.4);">File Privacy</span>
+    </div>
+
+    <div class="cl-entry">
+      <div class="cl-dot latest" style="background:#f59e0b;box-shadow:0 0 0 4px rgba(245,158,11,0.18),0 0 8px rgba(245,158,11,0.6);"></div>
+      <div class="cl-body">
+        <div class="cl-toprow">
+          <span class="cl-ver">v1.0 – v1.5</span>
+          <span class="cl-latest-tag" style="color:#f59e0b;background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.4);">Latest</span>
+        </div>
+        <div class="cl-heading">Launch — see what's hidden in your files, then decide what stays</div>
+        <ul class="cl-items">
+          <li>init: Inspect, Redact, and Annotate on one shared canvas for images and PDFs — entirely in your browser, nothing ever uploads</li>
+          <li>add: Inspect reveals hidden metadata — location, device, timestamps, author — before you decide what to remove</li>
+          <li>add: Redact with blackout, blur, pixelate, or a freeform lasso, plus a Select tool to move, resize, or delete any edit after the fact</li>
+          <li>add: Annotate with arrows, boxes, lines, freehand pen, and stamps (CONFIDENTIAL, DRAFT, and more)</li>
+          <li>add: exporting a multi-page PDF reassembles every page into one file, not one image per page</li>
+          <li>add: install Scrubr as its own Mobile Dashboard (WebApp) — works offline once you've opened it</li>
+          <li>change: Free covers Inspect plus basic Annotate; Pro ($19 one-time) unlocks full Redact and full Annotate</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+    </div><!-- /cl-cols -->
+  </div><!-- /cat-band Privacy -->
 
 </div>
 
