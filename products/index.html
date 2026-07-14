@@ -134,7 +134,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .wf-ic svg{width:21px;height:21px;stroke:var(--wf-accent,var(--cyan));fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 .wf-name{position:relative;z-index:1;font-family:var(--font-display);font-weight:800;font-size:1.02rem;letter-spacing:-0.01em;margin-bottom:6px;}
 .wf-name .ai-prefix{font-style:italic;color:var(--wf-accent,var(--cyan));}
-.wf-desc{position:relative;z-index:1;font-size:0.8rem;color:var(--text-dim);line-height:1.55;flex:1;}
+.wf-desc{position:relative;z-index:1;font-size:0.8rem;color:var(--text-dim);line-height:1.55;}
+.wf-tier{position:relative;z-index:1;margin-top:10px;font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.04em;color:var(--muted);}
+.wf-features{position:relative;z-index:1;list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px;flex:1;}
+.wf-features li{display:flex;gap:7px;font-size:0.74rem;color:var(--text-dim);line-height:1.4;}
+.wf-features .chk{color:var(--wf-accent,var(--cyan));font-weight:700;flex-shrink:0;}
 .wf-link{position:relative;z-index:1;margin-top:14px;display:inline-flex;align-items:center;gap:6px;font-family:var(--font-body);font-size:0.76rem;font-weight:600;color:var(--wf-accent,var(--cyan));}
 .wf-link .arr{transition:transform 0.18s;}
 .wf-node:hover .wf-link .arr{transform:translateX(4px);}
@@ -167,8 +171,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .fcard:hover::before{opacity:1;left:20px;right:20px;box-shadow:0 0 16px color-mix(in srgb,var(--accent) 60%,transparent);transition:left 0.3s ease,right 0.3s ease,opacity 0.3s ease,box-shadow 0.3s ease;}
 .fcard::before{transition:left 0.3s ease,right 0.3s ease,opacity 0.3s ease,box-shadow 0.3s ease;}
 /* single-card row: don't stretch full width */
-.fin-grid--single{grid-template-columns:minmax(0,1fr);max-width:620px;}
-@media (min-width:721px){.fin-grid--single{margin-inline:0;}}
+.fin-grid--single{grid-template-columns:minmax(0,1fr);max-width:620px;margin:0 auto;}
 .fcard.ghost{background:rgba(28,34,48,0.45);border-style:dashed;}
 .fcard.ghost::before{opacity:0.4;}
 .fcard-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
@@ -448,7 +451,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   <div class="hero-mesh"></div>
   <div class="hero-grid"></div>
   <div class="inner">
-    <div class="eyebrow"><span class="pulse-dot"></span>The full lineup</div>
+    <div class="eyebrow"><span class="pulse-dot"></span>The FalqenView Suite</div>
     <h1>Every tool, <span class="accent">one place.</span></h1>
     <p class="lead">No accounts, no subscriptions, nothing leaves your device. Here's everything FalqenView makes — and what's still on the way.</p>
   </div>
@@ -571,6 +574,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 <section class="wf-section" id="ai-workflow" style="scroll-margin-top: calc(var(--nav-h) + 24px);">
   <div class="wrap">
     <div class="wf-head reveal">
+      <span class="eyebrow" style="margin-bottom:16px;">For your AI chats</span>
       <div class="wf-kicker">The AI context lifecycle · four independent tools</div>
       <h2 class="wf-title">Prompt it. Export it. Reboot it. <span class="accent">Keep it forever.</span></h2>
       <p class="wf-sub">Every AI conversation moves through the same lifecycle — a prompt goes in, context builds up, tokens pile on, and eventually you need to start fresh without losing what mattered. <strong>Four FalqenView tools, each independent, built for one stage of that loop.</strong></p>
@@ -579,44 +583,72 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     <div class="wf-flow reveal">
 
       <!-- 1 · PROMPT ARCHITECT -->
-      <a href="https://tools.falqenview.com/prompt-architect/" class="wf-node" style="--wf-accent:#38bdf8;--wf-glow:rgba(56,189,248,0.14);">
+      <a href="https://tools.falqenview.com/prompt-architect/" class="wf-node" id="prompt-architect" style="--wf-accent:#38bdf8;--wf-glow:rgba(56,189,248,0.14);">
         <div class="wf-step"><span class="wf-num">Step 1</span><span class="wf-buzz">Prompt Engineering</span></div>
         <div class="wf-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M7 10l3 2-3 2"/><path d="M12 14h4"/></svg></div>
         <div class="wf-name"><span class="ai-prefix">AI:</span> Prompt Architect</div>
         <div class="wf-desc">Engineer the input before you ever hit send — structured prompts, custom instructions, and packaged skills, tuned per platform.</div>
+        <div class="wf-tier">Free · no account</div>
+        <ul class="wf-features">
+          <li><span class="chk">✓</span>Structured prompt builder</li>
+          <li><span class="chk">✓</span>Custom instructions for ChatGPT, Claude, Gemini &amp; Copilot</li>
+          <li><span class="chk">✓</span>Reusable skill packaging</li>
+          <li><span class="chk">✓</span>Nothing you write ever leaves your browser</li>
+        </ul>
         <span class="wf-link">Open Prompt Architect <span class="arr" aria-hidden="true">→</span></span>
       </a>
 
       <div class="wf-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h14"/><path d="M13 6l6 6-6 6"/></svg></div>
 
       <!-- 2 · SWOOP -->
-      <a href="/swoop/" class="wf-node" style="--wf-accent:#38bdf8;--wf-glow:rgba(56,189,248,0.14);">
+      <a href="/swoop/" class="wf-node" id="swoop" style="--wf-accent:#38bdf8;--wf-glow:rgba(56,189,248,0.14);">
         <div class="wf-step"><span class="wf-num">Step 2</span><span class="wf-buzz">Context Export</span></div>
         <div class="wf-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg></div>
         <div class="wf-name">Swoop</div>
         <div class="wf-desc">Snatch any AI conversation out of the page as clean JSON or Markdown, in a single swoop. Runs on-device.</div>
+        <div class="wf-tier">Free · Pro unlock, one-time</div>
+        <ul class="wf-features">
+          <li><span class="chk">✓</span>Free for ChatGPT, Gemini &amp; Copilot</li>
+          <li><span class="chk">✓</span>Claude &amp; Grok unlock with Swoop Pro</li>
+          <li><span class="chk">✓</span>Clean Markdown or JSON, on your device</li>
+          <li><span class="chk">✓</span>Chrome, Edge &amp; Firefox</li>
+        </ul>
         <span class="wf-link">Explore Swoop <span class="arr" aria-hidden="true">→</span></span>
       </a>
 
       <div class="wf-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h14"/><path d="M13 6l6 6-6 6"/></svg></div>
 
       <!-- 3 · CHAT REFRESH -->
-      <a href="https://tools.falqenview.com/chat-refresh/" class="wf-node" style="--wf-accent:#38bdf8;--wf-glow:rgba(56,189,248,0.12);">
+      <a href="https://tools.falqenview.com/chat-refresh/" class="wf-node" id="chat-refresh" style="--wf-accent:#38bdf8;--wf-glow:rgba(56,189,248,0.12);">
         <div class="wf-step"><span class="wf-num">Step 3</span><span class="wf-buzz">Token Reset</span></div>
         <div class="wf-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></div>
         <div class="wf-name"><span class="ai-prefix">AI:</span> Chat Refresh</div>
         <div class="wf-desc">Distill a long, token-heavy thread into a tight context primer. Start a new session with a fresh count and the same hard-won context.</div>
+        <div class="wf-tier">Free · no account</div>
+        <ul class="wf-features">
+          <li><span class="chk">✓</span>Fast extract-and-clean pass</li>
+          <li><span class="chk">✓</span>Guided primer mode for sharper results</li>
+          <li><span class="chk">✓</span>Paste in, fresh primer out</li>
+          <li><span class="chk">✓</span>Nothing you paste ever leaves your device</li>
+        </ul>
         <span class="wf-link">Open Chat Refresh <span class="arr" aria-hidden="true">→</span></span>
       </a>
 
       <div class="wf-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h14"/><path d="M13 6l6 6-6 6"/></svg></div>
 
       <!-- 4 · RECALL -->
-      <a href="/recall/" class="wf-node" style="--wf-accent:#a78bfa;--wf-glow:rgba(167,139,250,0.16);">
+      <a href="/recall/" class="wf-node" id="swoop-recall" style="--wf-accent:#a78bfa;--wf-glow:rgba(167,139,250,0.16);">
         <div class="wf-step"><span class="wf-num">Step 4</span><span class="wf-buzz">Persistent Memory</span></div>
         <div class="wf-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v13l-4-2-4 2-4-2-4 2Z"/><path d="M8 9h8"/><path d="M8 13h5"/></svg></div>
         <div class="wf-name">Swoop Recall</div>
         <div class="wf-desc">Archive every exported chat in a private, searchable library — the persistent memory your AI itself doesn't keep.</div>
+        <div class="wf-tier">Free · Pro · Cloud</div>
+        <ul class="wf-features">
+          <li><span class="chk">✓</span>Free — up to 10 conversations</li>
+          <li><span class="chk">✓</span>Pro — unlimited local archive</li>
+          <li><span class="chk">✓</span>Cloud — encrypted off-device backup</li>
+          <li><span class="chk">✓</span>Instant full-text search, zero server-side storage on Free &amp; Pro</li>
+        </ul>
         <span class="wf-link">Explore Swoop Recall <span class="arr" aria-hidden="true">→</span></span>
       </a>
 
@@ -625,50 +657,6 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     <div class="wf-loop reveal">
       <strong>The loop closes itself:</strong> search Recall for a past answer, feed it back into your next prompt with Prompt Architect.<br>
       No accounts required to connect them <span class="loop-arr">↻</span> use one tool or all four — each stands completely on its own.
-    </div>
-  </div>
-</section>
-
-<!-- ============ AI TOOLS (Swoop + Swoop Recall) ============ -->
-<section class="section-pad" id="ai-tools" style="scroll-margin-top: calc(var(--nav-h) + 24px);">
-  <div class="wrap">
-    <p class="group-label reveal">For your AI chats</p>
-    <h2 class="section-title reveal">Export it, then <span class="ac-cyan">find it forever.</span></h2>
-    <div class="fin-grid">
-
-      <!-- Swoop -->
-      <div class="fcard reveal" id="swoop" style="--accent: var(--cyan); scroll-margin-top: calc(var(--nav-h) + 24px);">
-        <div class="fcard-top">
-          <div class="fcard-name">Swoop<span class="dot">.</span></div>
-        </div>
-        <p class="fcard-tagline">A browser extension that exports your AI conversations to clean JSON or Markdown, or hands them straight to <span class="ai-prefix">AI:</span> Chat Refresh.</p>
-        <div class="fcard-once">free · Pro unlock, one-time</div>
-        <ul class="fcard-features">
-          <li><span class="chk">✓</span>Free for ChatGPT, Gemini &amp; Copilot</li>
-          <li><span class="chk">✓</span>Claude &amp; Grok unlock with Swoop Pro</li>
-          <li><span class="chk">✓</span>Clean Markdown or JSON, on your device</li>
-          <li><span class="chk">✓</span>Chrome &amp; Edge · nothing leaves your browser</li>
-        </ul>
-        <a href="/swoop/" class="fcard-cta">Explore Swoop →</a>
-      </div>
-
-      <!-- Swoop Recall -->
-      <div class="fcard reveal" id="swoop-recall" style="--accent: var(--cyan); scroll-margin-top: calc(var(--nav-h) + 24px);">
-        <div class="fcard-top">
-          <div class="fcard-name">Swoop <span class="ac-cyan">Recall</span><span class="dot">.</span></div>
-        </div>
-        <p class="fcard-tagline">A private, searchable archive of every conversation you've exported with Swoop. Recall, done right — everything stays on your device.</p>
-        <div class="fcard-once">Free · Pro · Cloud</div>
-        <ul class="fcard-features">
-          <li><span class="chk">✓</span>Free — up to 10 conversations</li>
-          <li><span class="chk">✓</span>Pro — unlimited local archive</li>
-          <li><span class="chk">✓</span>Cloud — encrypted off-device backup</li>
-          <li><span class="chk">✓</span>Instant full-text search across your whole history</li>
-          <li><span class="chk">✓</span>Zero server-side storage on Free &amp; Pro</li>
-        </ul>
-        <a href="/recall/" class="fcard-cta">Explore Swoop Recall →</a>
-      </div>
-
     </div>
   </div>
 </section>
@@ -706,7 +694,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 <div class="ft-divider reveal"><span>Free, always.</span></div>
 <section class="ft-wrap" id="free-tools" style="scroll-margin-top: calc(var(--nav-h) + 24px);">
 
-  <h2 class="section-title reveal">No ads. No accounts. <span class="ac-cyan">No catch.</span></h2>
+  <h2 class="section-title reveal">Free, full stop. <span class="ac-cyan">No catch.</span></h2>
 
   <!-- Free dev tools — secondary shelf -->
   <p class="ft-sublabel reveal">Free dev tools</p>
