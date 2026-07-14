@@ -85,7 +85,7 @@
         "priceCurrency": "USD",
         "url": "https://tools.falqenview.com/chat-exporter/"
       },
-      "description": "Browser extension that exports AI chat conversations as clean Markdown or JSON. No cost for ChatGPT, Gemini, and Copilot; Pro unlocks Claude and Grok.",
+      "description": "Browser extension that exports AI chat conversations from ChatGPT, Claude, Gemini, Copilot, and Grok as clean Markdown or JSON.",
       "publisher": { "@id": "https://falqenview.com/#organization" }
     },
     {
@@ -297,16 +297,6 @@ nav {
 .hero-rotate { transition: opacity 0.5s ease, transform 0.5s ease; }
 .hero-rotate.fade-out { opacity: 0; transform: translateY(6px); }
 .hero-actions { margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
-.hero-cards { margin: 52px auto 0; max-width: 720px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.hero-card { display: flex; align-items: flex-start; gap: 14px; text-align: left; text-decoration: none; background: rgba(28,34,48,0.55); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transition: transform 0.18s, border-color 0.18s, background 0.18s; }
-.hero-card:hover { transform: translateY(-3px); border-color: var(--border-2); background: rgba(35,43,62,0.7); }
-.hero-card .hc-dot { flex: 0 0 auto; width: 10px; height: 10px; border-radius: 50%; margin-top: 6px; box-shadow: 0 0 10px currentColor; }
-.hero-card .hc-body { display: flex; flex-direction: column; gap: 3px; }
-.hero-card .hc-name { font-family: var(--font-display); font-weight: 800; font-size: 0.98rem; letter-spacing: -0.01em; }
-.hero-card .hc-desc { font-size: 0.8rem; font-weight: 300; color: var(--text-dim); line-height: 1.45; }
-.hero-card .hc-go { margin-top: 6px; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); transition: color 0.18s; }
-.hero-card:hover .hc-go { color: var(--text); }
-@media (max-width: 600px) { .hero-cards { grid-template-columns: 1fr; max-width: 380px; } }
 
 /* ============ SECTION SHELL ============ */
 .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
@@ -319,7 +309,7 @@ nav {
 .ac-gold { background: linear-gradient(120deg, #fbbf24, var(--gold)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 
 /* ============ PRODUCT HIGHLIGHT CARDS ============ */
-.prod-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 52px; }
+
 .pcard {
   position: relative;
   background: linear-gradient(165deg, var(--surface) 0%, var(--surface2) 100%);
@@ -357,49 +347,18 @@ nav {
 .pcard.ghost .pcard-cta { background: transparent; color: var(--text-dim) !important; border: 1px solid var(--border-2); box-shadow: none; }
 .pcard.ghost .pcard-cta:hover { color: var(--text) !important; border-color: rgba(255,255,255,0.25); }
 
-/* ---- SCRUBR SHOWCASE (wide, feature-rich card) ---- */
-.scrubr-showcase {
-  position: relative; overflow: hidden;
-  max-width: 980px; margin: 0 auto;
-  background: linear-gradient(165deg, var(--surface) 0%, var(--surface2) 100%);
-  border: 1px solid rgba(245,158,11,0.22);
-  border-radius: 24px; padding: 40px 44px;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 1px 2px rgba(0,0,0,0.2);
-  transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s ease;
+/* ---- THE LINEUP: 5 equal product cards ---- */
+.lineup-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; margin-top: 52px; max-width: 1180px; margin-left: auto; margin-right: auto; }
+.lineup-grid .pcard { min-height: 100%; }
+.cat-pill {
+  display: inline-flex; align-items: center; white-space: nowrap;
+  font-family: var(--font-mono); font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 5px 11px; border-radius: 100px;
+  background: color-mix(in srgb, var(--accent) 9%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent);
+  color: color-mix(in srgb, var(--accent) 88%, white);
 }
-.scrubr-showcase:hover { transform: translateY(-4px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 22px 50px rgba(0,0,0,0.35); }
-.scrubr-showcase::before { content: ''; position: absolute; top: 0; left: 34px; right: 34px; height: 2.5px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.9; border-radius: 3px; }
-.scrubr-showcase::after { content: ''; position: absolute; top: -100px; right: -80px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(245,158,11,0.14), transparent 70%); pointer-events: none; }
-.scrubr-top { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 16px; }
-.scrubr-name { font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; letter-spacing: -0.02em; color: var(--text); }
-.scrubr-name .dot { color: var(--gold); }
-.scrubr-lead { position: relative; z-index: 1; color: var(--text-dim); font-size: 1.02rem; font-weight: 300; line-height: 1.7; max-width: 640px; margin-bottom: 34px; }
-.scrubr-feat-row { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-bottom: 32px; }
-.scrubr-feat-icon { width: 42px; height: 42px; border-radius: 11px; background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3); color: var(--gold); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
-.scrubr-feat-icon svg { width: 21px; height: 21px; }
-.scrubr-feat-t { font-family: var(--font-display); font-weight: 700; font-size: 1rem; margin-bottom: 7px; letter-spacing: -0.01em; }
-.scrubr-feat-d { color: var(--text-dim); font-size: 0.86rem; font-weight: 300; line-height: 1.6; }
-.scrubr-foot { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; padding-top: 26px; border-top: 1px solid var(--border); }
-.scrubr-foot-note { font-family: var(--font-mono); font-size: 0.74rem; color: var(--muted); letter-spacing: 0.02em; line-height: 1.6; max-width: 460px; }
-@media (max-width: 760px) {
-  .scrubr-feat-row { grid-template-columns: 1fr; }
-  .scrubr-showcase { padding: 32px 26px; }
-}
-
-/* ---- PROMINENCE TIERS: AI Tools > Scrubr > Finance ---- */
-#ai-tools .section-title { font-size: clamp(2rem, 4vw, 3rem); }
-#ai-tools .pcard { padding: 34px 30px; box-shadow: 0 10px 34px rgba(56,189,248,0.07); }
-#ai-tools .pcard-name { font-size: 1.42rem; }
-#ai-tools .pcard::before { height: 3px; }
-#ai-tools .pcard:hover { box-shadow: 0 20px 48px rgba(56,189,248,0.14); }
-
-#privacy-tools .section-title { font-size: clamp(1.9rem, 3.8vw, 2.85rem); }
-
-#tools .section-title { font-size: clamp(1.6rem, 3.2vw, 2.35rem); }
-#tools .pcard { padding: 25px 23px; }
-#tools .pcard-name { font-size: 1.2rem; }
-#tools .pcard::before { opacity: 0.5; }
-#tools .pcard-desc { font-size: 0.9rem; }
 
 /* quiet quba line */
 .quba-quiet { text-align: center; margin-top: 40px; font-size: 0.96rem; color: var(--muted); font-weight: 300; }
@@ -475,7 +434,6 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 /* ============ RESPONSIVE ============ */
 @media (max-width: 760px) {
   nav { padding: 0 18px; }
-  .prod-grid { grid-template-columns: 1fr; }
   .yt-card { grid-template-columns: 1fr; }
   .yt-thumb { min-height: 200px; }
   .yt-meta { padding: 30px 26px; }
@@ -498,352 +456,82 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 .trust-item svg { width: 18px; height: 18px; color: var(--cyan); flex-shrink: 0; }
 .trust-item strong { color: var(--text); font-weight: 500; }
 
-/* ============ WHY IT'S DIFFERENT (privacy + craft) ============ */
-#different { padding: 104px 24px 96px; max-width: 1180px; margin: 0 auto; scroll-margin-top: 72px; }
-.diff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 52px; }
-.diff-card {
+/* ============ THE FALQENVIEW STANDARD (3 pillars) ============ */
+#standard { padding: 104px 24px 96px; max-width: 1220px; margin: 0 auto; scroll-margin-top: 72px; }
+.std-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 52px; }
+.std-card {
   position: relative; overflow: hidden;
   background: linear-gradient(165deg, var(--surface) 0%, var(--surface2) 100%);
   border: 1px solid var(--border);
-  border-radius: 22px; padding: 36px 34px 30px;
+  border-radius: 22px; padding: 32px 28px 26px;
   display: flex; flex-direction: column;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.045), 0 1px 2px rgba(0,0,0,0.2);
   transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s ease;
 }
-.diff-card:hover { transform: translateY(-4px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 20px 44px rgba(0,0,0,0.32); }
-.diff-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2.5px; }
-.diff-card.privacy { border-color: rgba(56,189,248,0.26); }
-.diff-card.privacy::before { background: linear-gradient(90deg, transparent, var(--cyan), transparent); }
-.diff-card.privacy::after {
-  content:''; position:absolute; top:-90px; right:-70px; width:300px; height:300px; border-radius:50%;
-  background: radial-gradient(circle, rgba(56,189,248,0.16), transparent 70%); pointer-events:none;
-}
-.diff-card.craft { border-color: rgba(167,139,250,0.28); }
-.diff-card.craft::before { background: linear-gradient(90deg, transparent, #a78bfa, transparent); }
-.diff-card.craft::after {
-  content:''; position:absolute; bottom:-100px; left:-70px; width:300px; height:300px; border-radius:50%;
-  background: radial-gradient(circle, rgba(167,139,250,0.16), transparent 70%); pointer-events:none;
-}
-.diff-ico {
+.std-card:hover { transform: translateY(-4px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 20px 44px rgba(0,0,0,0.32); }
+.std-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2.5px; }
+.std-card.p1 { border-color: rgba(56,189,248,0.26); }
+.std-card.p1::before { background: linear-gradient(90deg, transparent, var(--cyan), transparent); }
+.std-card.p1::after { content:''; position:absolute; top:-90px; right:-70px; width:280px; height:280px; border-radius:50%; background: radial-gradient(circle, rgba(56,189,248,0.14), transparent 70%); pointer-events:none; }
+.std-card.p2 { border-color: rgba(167,139,250,0.28); }
+.std-card.p2::before { background: linear-gradient(90deg, transparent, #a78bfa, transparent); }
+.std-card.p2::after { content:''; position:absolute; bottom:-100px; left:-70px; width:280px; height:280px; border-radius:50%; background: radial-gradient(circle, rgba(167,139,250,0.14), transparent 70%); pointer-events:none; }
+.std-card.p3 { border-color: rgba(245,158,11,0.26); }
+.std-card.p3::before { background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+.std-card.p3::after { content:''; position:absolute; top:-90px; left:-70px; width:280px; height:280px; border-radius:50%; background: radial-gradient(circle, rgba(245,158,11,0.12), transparent 70%); pointer-events:none; }
+.std-ico {
   position: relative; z-index:1;
-  width: 56px; height: 56px; border-radius: 15px;
-  display: flex; align-items: center; justify-content: center; margin-bottom: 22px;
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
 }
-.diff-card.privacy .diff-ico { background: rgba(56,189,248,0.12); border: 1px solid rgba(56,189,248,0.32); color: var(--cyan); }
-.diff-card.craft .diff-ico { background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.34); color: #c4b5fd; }
-.diff-ico svg { width: 28px; height: 28px; }
-.diff-kicker {
+.std-card.p1 .std-ico { background: rgba(56,189,248,0.12); border: 1px solid rgba(56,189,248,0.32); color: var(--cyan); }
+.std-card.p2 .std-ico { background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.34); color: #c4b5fd; }
+.std-card.p3 .std-ico { background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.32); color: var(--gold); }
+.std-ico svg { width: 26px; height: 26px; }
+.std-kicker {
   position: relative; z-index:1;
-  font-family: var(--font-mono); font-size: 0.64rem; font-weight: 600;
-  letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 12px;
+  font-family: var(--font-mono); font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 11px;
 }
-.diff-card.privacy .diff-kicker { color: var(--cyan); }
-.diff-card.craft .diff-kicker { color: #c4b5fd; }
-.diff-card h3 {
+.std-card.p1 .std-kicker { color: var(--cyan); }
+.std-card.p2 .std-kicker { color: #c4b5fd; }
+.std-card.p3 .std-kicker { color: var(--gold); }
+.std-card h3 {
   position: relative; z-index:1;
-  font-family: var(--font-display); font-weight: 800; font-size: 1.7rem;
-  letter-spacing: -0.025em; line-height: 1.12; margin-bottom: 16px;
+  font-family: var(--font-display); font-weight: 800; font-size: 1.4rem;
+  letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 13px;
 }
-.diff-card h3 em { font-family: var(--font-body); font-style: italic; font-weight: 300; }
-.diff-card.privacy h3 em { color: var(--cyan); }
-.diff-card.craft h3 em { color: #c4b5fd; }
-.diff-card p { position: relative; z-index:1; color: var(--text-dim); font-size: 0.98rem; line-height: 1.72; font-weight: 300; margin-bottom: 14px; }
-.diff-card p strong { color: var(--text); font-weight: 600; }
-.diff-card p:last-of-type { margin-bottom: 22px; }
-.diff-chips { position: relative; z-index:1; display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
-.diff-chip {
-  display: inline-flex; align-items: center; gap: 7px;
-  font-family: var(--font-mono); font-size: 0.66rem; font-weight: 600;
-  letter-spacing: 0.04em; padding: 6px 12px; border-radius: 100px;
+.std-card h3 em { font-family: var(--font-body); font-style: italic; font-weight: 300; }
+.std-card.p1 h3 em { color: var(--cyan); }
+.std-card.p2 h3 em { color: #c4b5fd; }
+.std-card.p3 h3 em { color: var(--gold); }
+.std-card p { position: relative; z-index:1; color: var(--text-dim); font-size: 0.9rem; line-height: 1.7; font-weight: 300; margin-bottom: 20px; }
+.std-chips { position: relative; z-index:1; display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; }
+.std-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.04em; padding: 5px 11px; border-radius: 100px;
   background: rgba(255,255,255,0.03);
   border: 1px solid var(--border-2); color: var(--text-dim);
 }
-.diff-chip svg { width: 13px; height: 13px; flex-shrink: 0; }
-.diff-card.privacy .diff-chip svg { color: var(--cyan); }
-.diff-card.craft .diff-chip svg { color: #c4b5fd; }
-.diff-foot {
+.std-chip svg { width: 12px; height: 12px; flex-shrink: 0; }
+.std-card.p1 .std-chip svg { color: var(--cyan); }
+.std-card.p2 .std-chip svg { color: #c4b5fd; }
+.std-card.p3 .std-chip svg { color: var(--gold); }
+.std-foot {
   text-align: center; margin-top: 34px;
   font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.05em;
   color: var(--muted);
 }
-.diff-foot strong { color: var(--text-dim); font-weight: 600; }
-@media (max-width: 860px) {
-  .diff-grid { grid-template-columns: 1fr; }
-  #different { padding: 80px 20px 72px; }
+@media (max-width: 960px) {
+  .std-grid { grid-template-columns: 1fr; }
+  #standard { padding: 80px 20px 72px; }
 }
-
-/* ============ INVESTING (View line) ============ */
-#investing { padding: 100px 24px; max-width: 1200px; margin: 0 auto; scroll-margin-top: 72px; }
-#investing .section-label { text-align: center; }
-#investing .section-title { text-align: center; margin-bottom: 0; }
-#investing .section-sub { margin-bottom: 52px; }
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
-  margin-bottom: 64px;
-}
-.feat-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 22px 22px 20px;
-  position: relative; overflow: hidden;
-  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
-}
-.feat-card::before {
-  content: ''; position: absolute; inset: 0; border-radius: 14px;
-  background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(56,189,248,0.08) 0%, transparent 60%);
-  opacity: 0; transition: opacity 0.3s; pointer-events: none;
-}
-.feat-card:hover { transform: translateY(-3px); border-color: rgba(56,189,248,0.3); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
-.feat-card:hover::before { opacity: 1; }
-.feat-card.feat-gold { border-color: rgba(96,165,250,0.25); }
-.feat-card.feat-platinum { border-color: rgba(245,158,11,0.25); }
-.feat-icon {
-  width: 42px; height: 42px; border-radius: 11px;
-  background: var(--blue-dim); border: 1px solid rgba(26,115,232,0.25);
-  color: var(--cyan);
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 16px;
-  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
-}
-.feat-icon svg { width: 20px; height: 20px; }
-.feat-card:hover .feat-icon, .feat-card:focus-within .feat-icon { transform: scale(1.06) rotate(-2deg); }
-.feat-card.feat-gold .feat-icon { background: rgba(96,165,250,0.12); border-color: rgba(96,165,250,0.3); color: #93c5fd; }
-.feat-card.feat-platinum .feat-icon { background: rgba(245,158,11,0.12); border-color: rgba(245,158,11,0.35); color: var(--amber); }
-.feat-title { font-family: var(--font-display); font-weight: 700; font-size: 1rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.feat-tier {
-  font-family: var(--font-mono); font-size: 0.58rem; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 2px 8px; border-radius: 100px;
-  background: rgba(96,165,250,0.15); color: #93c5fd;
-}
-.feat-tier.feat-tier-plat { background: rgba(245,158,11,0.15); color: #fbbf24; }
-.feat-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; font-weight: 300; }
-
-/* HEALTH SCORE DEMO */
-.score-demo {
-  max-width: 1100px; margin: 24px auto 0;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
-  align-items: stretch;
-}
-.score-visual {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: 16px; padding: 32px; position: relative; overflow: hidden;
-}
-.score-visual::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--green), transparent);
-}
-.score-grade {
-  font-family: var(--font-display); font-size: 5.2rem; font-weight: 900;
-  color: var(--green-2); line-height: 1;
-  text-shadow: 0 0 40px rgba(34,197,94,0.4);
-  letter-spacing: -0.04em;
-}
-.score-label { font-size: 0.78rem; color: var(--muted); margin-top: 6px; letter-spacing: 0.08em; text-transform: uppercase; }
-.score-bars { margin-top: 28px; display: flex; flex-direction: column; gap: 10px; }
-.score-bar-row { display: flex; align-items: center; gap: 12px; }
-.score-bar-label { font-size: 0.74rem; color: var(--text-dim); width: 100px; flex-shrink: 0; }
-.score-bar-track { flex: 1; height: 6px; background: var(--surface2); border-radius: 3px; overflow: hidden; }
-.score-bar-fill {
-  height: 100%; border-radius: 3px;
-  background: linear-gradient(90deg, var(--blue), var(--cyan));
-  animation: barGrow 1.5s ease forwards; transform-origin: left;
-}
-@keyframes barGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-.score-pct { font-size: 0.72rem; color: var(--muted); width: 36px; text-align: right; font-family: var(--font-mono); }
-.score-copy { padding: 8px; display: flex; flex-direction: column; justify-content: center; }
-.score-copy h3 { font-family: var(--font-display); font-size: 1.7rem; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 14px; line-height: 1.15; }
-.score-copy p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.7; font-weight: 300; }
-
-
-.mock {
-  position: relative; z-index: 1;
-  background: var(--bg-deep);
-  border: 1px solid var(--border-2);
-  border-radius: 14px;
-  box-shadow:
-    0 30px 80px rgba(0,0,0,0.55),
-    0 8px 28px rgba(0,0,0,0.4),
-    inset 0 1px 0 rgba(255,255,255,0.05);
-  overflow: hidden;
-  transform: rotateY(-6deg) rotateX(2deg);
-  transition: transform 0.5s ease;
-}
-.mock:hover { transform: rotateY(-3deg) rotateX(1deg); }
-.mock-chrome {
-  display: flex; align-items: center; gap: 10px;
-  padding: 11px 14px;
-  background: linear-gradient(180deg, #232a37 0%, #1a2029 100%);
-  border-bottom: 1px solid var(--border);
-}
-.mock-dot { width: 10px; height: 10px; border-radius: 50%; }
-.mock-dot.r { background: #ef4444; } .mock-dot.y { background: #f59e0b; } .mock-dot.g { background: #22c55e; }
-.mock-url {
-  flex: 1; text-align: center;
-  font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted);
-  background: rgba(0,0,0,0.25); padding: 5px 12px; border-radius: 6px;
-  margin: 0 32px; max-width: 320px;
-}
-.mock-tabs {
-  display: flex; gap: 0;
-  padding: 0 14px;
-  background: var(--bg-deep);
-  border-bottom: 1px solid var(--border);
-}
-.mock-tab {
-  font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500;
-  padding: 9px 14px; color: var(--muted);
-  border-bottom: 2px solid transparent;
-  cursor: default;
-}
-.mock-tab.active { color: var(--cyan); border-bottom-color: var(--cyan); }
-.mock-body { padding: 18px; }
-
-.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
-.kpi {
-  background: rgba(255,255,255,0.025);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 12px;
-}
-.kpi-label { font-size: 0.6rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-.kpi-val { font-family: var(--font-display); font-size: 1rem; font-weight: 800; margin-top: 3px; letter-spacing: -0.02em; }
-.kpi-val.pos { color: var(--green-2); }
-.kpi-grade { font-family: var(--font-display); font-size: 1.5rem; font-weight: 900; line-height: 1; margin-top: 0; color: var(--green-2); }
-
-.tbl { width: 100%; border-collapse: collapse; }
-.tbl th {
-  font-family: var(--font-mono); font-size: 0.6rem;
-  font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em;
-  color: var(--muted); text-align: left;
-  padding: 6px 8px; border-bottom: 1px solid var(--border);
-}
-.tbl th.r { text-align: right; }
-.tbl td {
-  font-size: 0.72rem; padding: 8px;
-  border-bottom: 1px solid rgba(255,255,255,0.03);
-}
-.tbl td.r { text-align: right; font-family: var(--font-mono); font-weight: 500; }
-.tbl tr:last-child td { border-bottom: none; }
-.tkr { font-family: var(--font-display); font-weight: 700; font-size: 0.78rem; }
-.chip { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 100px; font-family: var(--font-mono); font-size: 0.62rem; font-weight: 600; }
-.chip.ok    { background: rgba(34,197,94,0.12);  color: var(--green-2); }
-.chip.warn  { background: rgba(245,158,11,0.14); color: #fbbf24; }
-.chip.bad   { background: rgba(239,68,68,0.14);  color: #f87171; }
-.signal { font-family: var(--font-mono); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em; padding: 3px 10px; border-radius: 6px; }
-.signal.buy   { background: rgba(34,197,94,0.18);  color: var(--green-2); border: 1px solid rgba(34,197,94,0.3); }
-.signal.hold  { background: rgba(56,189,248,0.14); color: var(--cyan);    border: 1px solid rgba(56,189,248,0.3); }
-.signal.trim  { background: rgba(245,158,11,0.16); color: #fbbf24;        border: 1px solid rgba(245,158,11,0.3); }
-.signal.review{ background: rgba(239,68,68,0.16);  color: #f87171;        border: 1px solid rgba(239,68,68,0.3); }
-
-/* Floating tags overlapping the mock */
-.float-tag {
-  position: absolute; z-index: 3;
-  background: var(--surface);
-  border: 1px solid var(--border-2);
-  border-radius: 10px;
-  padding: 10px 14px;
-  font-size: 0.78rem;
-  display: flex; align-items: center; gap: 10px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.45);
-  animation: floatTag 5s ease-in-out infinite;
-}
-.float-tag .ft-icon { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.float-tag .ft-icon svg { width: 16px; height: 16px; }
-.float-tag .ft-text { line-height: 1.25; }
-.float-tag .ft-text strong { display: block; font-weight: 600; font-size: 0.78rem; }
-.float-tag .ft-text small { font-size: 0.66rem; color: var(--muted); }
-.float-tag.t1 { top: -18px; left: -32px; animation-delay: 0s; }
-.float-tag.t1 .ft-icon { background: rgba(245,158,11,0.18); color: #fbbf24; }
-.float-tag.t2 { bottom: 60px; right: -38px; animation-delay: 1.5s; }
-.float-tag.t2 .ft-icon { background: rgba(34,197,94,0.18); color: var(--green-2); }
-@keyframes floatTag { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-
-#talon { position:relative; padding:100px 24px; overflow:hidden; border-top:1px solid var(--border); scroll-margin-top:64px; }
-.talon-plate { position:absolute; inset:0; z-index:0; background:radial-gradient(ellipse 55% 50% at 82% 18%,rgba(16,185,129,0.13),transparent 60%),radial-gradient(ellipse 40% 40% at 4% 92%,rgba(16,185,129,0.06),transparent 60%); }
-.talon-inner { position:relative; z-index:1; max-width:1180px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); gap:56px; align-items:center; }
-.talon-label { color:var(--talon-2) !important; text-align:left; }
-.talon-copy h2 { font-family:var(--font-display); font-weight:800; font-size:clamp(2rem,4.2vw,3rem); letter-spacing:-0.03em; line-height:1.05; margin-bottom:16px; }
-.talon-copy h2 span { color:var(--talon-2); }
-.talon-lead { font-size:1.02rem; color:var(--text-dim); font-weight:300; line-height:1.65; margin-bottom:26px; max-width:480px; }
-.talon-lead strong { color:var(--text); font-weight:500; }
-.talon-feats { display:grid; grid-template-columns:1fr 1fr; gap:16px 18px; margin-bottom:28px; }
-.talon-feat { display:flex; gap:12px; align-items:flex-start; }
-.talon-feat .tf-ico { width:38px; height:38px; border-radius:10px; background:var(--talon-dim); border:1px solid rgba(16,185,129,0.28); color:var(--talon-2); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-.talon-feat .tf-ico svg { width:19px; height:19px; }
-.talon-feat .tf-t { font-family:var(--font-display); font-weight:700; font-size:0.92rem; }
-.talon-feat .tf-d { font-size:0.78rem; color:var(--text-dim); font-weight:300; line-height:1.45; margin-top:3px; }
-.talon-actions { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:14px; }
-.btn-talon { background:var(--talon); color:#04150f; font-family:var(--font-body); font-weight:600; font-size:0.92rem; padding:14px 26px; border-radius:10px; text-decoration:none; display:inline-flex; align-items:center; gap:8px; box-shadow:0 4px 22px rgba(16,185,129,0.32); transition:transform .15s, box-shadow .2s, background .2s; }
-.btn-talon:hover { background:var(--talon-2); transform:translateY(-2px); box-shadow:0 8px 30px rgba(16,185,129,0.48); }
-.talon-bundle { font-size:0.82rem; color:var(--text-dim); }
-.talon-bundle strong { color:var(--talon-2); font-weight:600; }
-.talon-trust { font-family:var(--font-mono); font-size:0.7rem; color:var(--muted); letter-spacing:0.05em; }
-.talon-mock-wrap { position:relative; }
-.talon-mock-glow { position:absolute; inset:-30px; z-index:0; background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(16,185,129,0.22),transparent 70%); filter:blur(40px); }
-.talon-mock-wrap .mock { position:relative; z-index:1; transform:rotateY(4deg) rotateX(2deg); }
-.talon-mock-wrap .mock:hover { transform:rotateY(2deg) rotateX(1deg); }
-#talon .mock-tab.active { color:var(--talon-2); border-bottom-color:var(--talon-2); }
-#talon .kpi-grade { color:var(--talon-2); }
-
-.bcat { display:inline-flex; align-items:center; gap:6px; }
-.bcat .cdot { width:7px; height:7px; border-radius:2px; flex-shrink:0; }
-.bchip { display:inline-flex; align-items:center; font-family:var(--font-mono); font-size:0.6rem; font-weight:600; padding:2px 8px; border-radius:6px; letter-spacing:0.02em; }
-.bchip.auto { background:rgba(16,185,129,0.14); color:var(--talon-2); }
-.bchip.man  { background:rgba(122,132,153,0.18); color:#aeb6c7; }
-.bchip.soon { background:rgba(245,158,11,0.16); color:#fbbf24; }
-.bchip.past { background:rgba(239,68,68,0.16); color:#f87171; }
-.bchip.paid { background:rgba(34,197,94,0.14); color:var(--green-2); }
-.float-tag.talon-ft .ft-icon { background:rgba(16,185,129,0.18); color:var(--talon-2); }
-
-/* ---- Pricing groups + Talon card ---- */
-.pricing-group-label { display:flex; align-items:center; gap:14px; font-family:var(--font-mono); font-size:0.72rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin:0 0 22px; }
-.pricing-group-label::after { content:''; flex:1; height:1px; background:var(--border); }
-.pricing-group-label .pgl-note { font-weight:400; letter-spacing:0.04em; text-transform:none; color:var(--muted); }
-.pricing-group-label.talon { color:var(--talon-2); margin-top:54px; }
-.pricing-grid--talon { display:flex; justify-content:center; }
-
-@keyframes floatTag { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-
-
-.apex-word { color:#e6c068; font-weight:700; }
 
 /* ============ MOBILE — ADDITIONAL BREAKPOINTS ============ */
 
-/* 860px — talon, investing score, trust band */
+/* 860px — trust band */
 @media (max-width: 860px) {
-  .talon-inner {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-  .talon-feats {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-  .talon-mock-wrap {
-    max-width: 560px;
-    margin: 0 auto;
-  }
-  .float-tag {
-    display: none;
-  }
-  .score-demo {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  .score-copy h3 {
-    font-size: 1.4rem;
-  }
-  #investing {
-    padding: 72px 20px;
-  }
-  #talon {
-    padding: 72px 20px;
-  }
   .trust-inner {
     justify-content: center;
     gap: 18px;
@@ -854,44 +542,6 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
   }
 }
 
-/* 760px — already existing breakpoint extended */
-@media (max-width: 760px) {
-  .mock-url {
-    margin: 0 12px;
-    font-size: 0.62rem;
-    max-width: none;
-  }
-  .mock-chrome {
-    padding: 9px 10px;
-    gap: 7px;
-  }
-  .talon-copy h2 {
-    font-size: clamp(1.7rem, 6vw, 2.4rem);
-  }
-  .score-bar-label {
-    width: 80px;
-    font-size: 0.7rem;
-  }
-  .features-grid {
-    grid-template-columns: 1fr;
-  }
-  .kpi-row {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-  }
-  .talon-mock-wrap .mock {
-    transform: none;
-  }
-  .talon-mock-wrap .mock:hover {
-    transform: none;
-  }
-  .mock {
-    transform: none;
-  }
-  .mock:hover {
-    transform: none;
-  }
-}
 
 /* 480px — small phones */
 @media (max-width: 480px) {
@@ -911,30 +561,17 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
     text-align: center;
     justify-content: center;
   }
-  #different {
+  #standard {
     padding: 60px 16px 52px;
   }
-  .diff-card {
+  .std-card {
     padding: 26px 22px 24px;
   }
-  .diff-card h3 {
-    font-size: 1.4rem;
-  }
-  .talon-actions {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-  .btn-talon {
-    width: 100%;
-    justify-content: center;
+  .std-card h3 {
+    font-size: 1.3rem;
   }
   .trust-item {
     flex: 0 0 100%;
-  }
-  .alert-strip::before,
-  .alert-strip::after {
-    width: 60px;
   }
   .pcard {
     padding: 22px 20px;
@@ -1137,8 +774,8 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
   <div class="hero-grid"></div>
   <div class="hero-inner">
     <div class="eyebrow"><span class="pulse-dot"></span>Built with intention · owned by you</div>
-    <h1 class="hero-rotate"><span id="hero-pre">Sharp tools, </span><span class="accent" id="hero-accent">elegantly simple.</span></h1>
-    <p class="sub hero-rotate" id="hero-sub">Clean interfaces, smooth interactions, and zero ads or nags — software built to feel effortless.</p>
+    <h1 class="hero-rotate"><span id="hero-pre">No mothership. </span><span class="accent" id="hero-accent">No noise.</span></h1>
+    <p class="sub hero-rotate" id="hero-sub">No accounts, no servers, no tracking — every tool runs entirely on your side, and stays there.</p>
     <div class="hero-actions">
       <a href="/products/" class="btn-primary">See all products & tools <span aria-hidden="true">→</span></a>
       <a href="/videos.html" class="btn-ghost">Watch the tour</a>
@@ -1147,122 +784,130 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
   </div>
 </section>
 
-<!-- ============ WHY IT'S DIFFERENT ============ -->
-<section id="different" data-screen-label="Why it's different">
-  <p class="section-label reveal">Why it's different</p>
-  <h2 class="section-title reveal">Two things every other<br>tool gets <em class="ac-cyan">wrong.</em></h2>
-  <p class="section-sub reveal">Your data should be yours alone — and the tool you keep it in should feel like a joy to use. FalqenView is built on both.</p>
+<!-- ============ THE FALQENVIEW STANDARD ============ -->
+<section id="standard" data-screen-label="The FalqenView Standard">
+  <p class="section-label reveal">One studio. One standard.</p>
+  <h2 class="section-title reveal">Different tools. <em class="ac-cyan">Same promises.</em></h2>
+  <p class="section-sub reveal">Every FalqenView tool is held to the same three promises, no matter what it does.</p>
 
-  <div class="diff-grid">
+  <div class="std-grid">
 
-    <!-- PRIVACY -->
-    <div class="diff-card privacy reveal">
-      <div class="diff-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 L4 6 v6 c0 5 3.5 9 8 10 4.5-1 8-5 8-10 V6 z"/><path d="M9 12l2 2 4-4"/></svg></div>
-      <p class="diff-kicker">Your data, only yours. Full stop.</p>
-      <h3>It stays on <em>your</em> side — and never leaves.</h3>
-      <p>No account. No server. No FalqenView database anywhere in the loop. Every tool runs where you already are — your Google Drive, your browser, your device — and <strong>nothing phones home</strong>. We cannot see your numbers, your files, or your conversations, because they never reach us.</p>
-      <p>That makes every FalqenView tool exactly <strong>as private and secure as the account or device it lives on</strong>. With most software, you can never really know what's happening to your data behind the scenes. Here there is no behind the scenes.</p>
-      <div class="diff-chips">
-        <span class="diff-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No accounts</span>
-        <span class="diff-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No servers</span>
-        <span class="diff-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No telemetry</span>
-        <span class="diff-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Zero reach-back</span>
+    <!-- PILLAR: PRIVATE BY ARCHITECTURE -->
+    <div class="std-card p1 reveal">
+      <div class="std-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 L4 6 v6 c0 5 3.5 9 8 10 4.5-1 8-5 8-10 V6 z"/><path d="M9 12l2 2 4-4"/></svg></div>
+      <p class="std-kicker">Private by architecture</p>
+      <h3>Your data has <em>nowhere else</em> to go.</h3>
+      <p>Not private by policy — private by design. There is no FalqenView server to send anything to, no account to create, no database holding a copy. Everything runs where you already are: your device, your browser, your Drive.</p>
+      <div class="std-chips">
+        <span class="std-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No accounts</span>
+        <span class="std-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No servers</span>
+        <span class="std-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Nothing phones home</span>
       </div>
     </div>
 
-    <!-- CRAFT -->
-    <div class="diff-card craft reveal">
-      <div class="diff-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
-		<p class="diff-kicker">Looks refined. Feels effortless.</p>
-      <h3>Every tool is designed like software, <em>not a template.</em></h3>
-		<p>Whether it's a Google Sheet, a browser extension, or a web app, every FalqenView tool gets the same treatment: clean dashboards, smooth interactions, and an interface that never feels like an afterthought.</p>
-		<p>Install any of them as a real Mobile Dashboard (WebApp), and there's only <strong>one version to use</strong> — the polished one. No stripped-down mode, no "upgrade to see the real thing."</p>
-		<div class="diff-chips">
-        <span class="diff-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Clean interfaces</span>
-        <span class="diff-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 7v5l3 2"/></svg>Smooth interactions</span>
-        <span class="diff-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg>Installable web apps</span>
-        <span class="diff-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Zero clutter</span>
+    <!-- PILLAR: DESIGNED, NOT TEMPLATED -->
+    <div class="std-card p2 reveal">
+      <div class="std-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+      <p class="std-kicker">Designed, not templated</p>
+      <h3>Software that <em>feels</em> finished.</h3>
+      <p>Clean dashboards, smooth interactions, and interfaces that were designed — never assembled. Most tools install as their own Mobile Dashboard (WebApp), with its own icon and window. Nothing here looks like a form someone forgot to style.</p>
+      <div class="std-chips">
+        <span class="std-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Elegant UI</span>
+        <span class="std-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Smooth UX</span>
+        <span class="std-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Installable apps</span>
+      </div>
+    </div>
+
+    <!-- PILLAR: ZERO NOISE -->
+    <div class="std-card p3 reveal">
+      <div class="std-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="2" y1="2" x2="22" y2="22"/></svg></div>
+      <p class="std-kicker">Zero noise</p>
+      <h3>Open it. Use it. <em>That's it.</em></h3>
+      <p>No ads, no nags, no pop-ups asking how it's going. No dark patterns steering you anywhere. Every tool does one thing, does it well, and then gets out of your way — the way software used to work.</p>
+      <div class="std-chips">
+        <span class="std-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No ads</span>
+        <span class="std-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No nags</span>
+        <span class="std-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No clutter</span>
       </div>
     </div>
 
   </div>
 
-  <p class="diff-foot reveal">No ads &middot; no nags &middot; no clutter</p>
+  <p class="std-foot reveal">Local-first &middot; no mothership &middot; built to be quiet</p>
 </section>
 
-<!-- ============ AI TOOLS (Swoop + Swoop Recall) ============ -->
-<section class="section-pad" id="ai-tools">
+<!-- ============ THE LINEUP ============ -->
+<section class="section-pad" id="lineup">
   <div class="wrap">
-    <p class="section-label reveal">Swoop exports it. Swoop Recall finds it.</p>
-    <h2 class="section-title reveal">Two tools, one continuous memory.</h2>
-    <p class="section-sub reveal">Export any AI conversation, then search everything you've ever discussed. All of it stays on your device.</p>
+    <p class="section-label reveal">The lineup</p>
+    <h2 class="section-title reveal">Five tools. <em class="ac-cyan">One standard.</em></h2>
+    <p class="section-sub reveal">Each one does a single job exceptionally well — and every one keeps the promises above.</p>
 
-    <div class="prod-grid">
-      <!-- Swoop -->
+    <div class="lineup-grid">
+
+      <!-- VuePoint -->
       <div class="pcard reveal" style="--accent: var(--cyan);">
         <div class="pcard-top">
-          <div class="pcard-name">Swoop<span class="dot">.</span></div>
-          <span class="launch-pill">Browser Extension</span>
+          <div class="pcard-name">VuePoint<span class="dot">.</span></div>
+          <span class="cat-pill">Portfolio &middot; Google Sheets</span>
         </div>
-        <p class="pcard-desc">Export any AI chat as clean Markdown or JSON, or hand it straight to a fresh session. No cost for ChatGPT, Gemini &amp; Copilot. Claude &amp; Grok unlock with Swoop Pro.</p>
+        <p class="pcard-desc">The whole portfolio in one pane — drift, signals, and a health score that reads at a glance.</p>
         <div class="pcard-foot">
-          <a href="/swoop/" class="pcard-cta">Explore Swoop →</a>
+          <a href="/vuepoint/" class="pcard-cta">Explore VuePoint &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Talon -->
+      <div class="pcard reveal" style="--accent: var(--talon);">
+        <div class="pcard-top">
+          <div class="pcard-name">Talon<span class="dot">.</span></div>
+          <span class="cat-pill">Bills &amp; cash &middot; Google Sheets</span>
+        </div>
+        <p class="pcard-desc">Every bill, due date, and category gripped tight — so nothing slips past due again.</p>
+        <div class="pcard-foot">
+          <a href="/talon/" class="pcard-cta">Explore Talon &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Swoop -->
+      <div class="pcard reveal" style="--accent: #e8885a;">
+        <div class="pcard-top">
+          <div class="pcard-name">Swoop<span class="dot">.</span></div>
+          <span class="cat-pill">AI chat exporter &middot; Extension</span>
+        </div>
+        <p class="pcard-desc">Pull any AI conversation out of your browser in one click — clean Markdown or JSON, yours to keep.</p>
+        <div class="pcard-foot">
+          <a href="/swoop/" class="pcard-cta">Explore Swoop &rarr;</a>
         </div>
       </div>
 
       <!-- Swoop Recall -->
-      <div class="pcard reveal" style="--accent: var(--cyan);">
+      <div class="pcard reveal" style="--accent: #a78bfa;">
         <div class="pcard-top">
           <div class="pcard-name">Swoop <span class="ac-cyan">Recall</span><span class="dot">.</span></div>
-          <span class="launch-pill">Web App</span>
+          <span class="cat-pill">AI chat archive &middot; Web App</span>
         </div>
-        <p class="pcard-desc">A private, searchable archive of every conversation you've exported with Swoop. Instant full-text search across your whole history — and Recall, done right: everything stays on your device.</p>
+        <p class="pcard-desc">Every conversation you've ever exported, searchable in an instant — an archive that lives on your device.</p>
         <div class="pcard-foot">
-          <a href="/recall/" class="pcard-cta">Explore Swoop Recall →</a>
+          <a href="/recall/" class="pcard-cta">Explore Swoop Recall &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Scrubr -->
+      <div class="pcard reveal" style="--accent: var(--gold);">
+        <div class="pcard-top">
+          <div class="pcard-name">Scrubr<span class="dot">.</span></div>
+          <span class="cat-pill">File privacy &middot; Web App</span>
+        </div>
+        <p class="pcard-desc">Every file carries a hidden paper trail. See it, scrub it, and mark it up — before you share it.</p>
+        <div class="pcard-foot">
+          <a href="https://tools.falqenview.com/scrubr/" class="pcard-cta">Explore Scrubr &rarr;</a>
         </div>
       </div>
 
     </div>
-  </div>
-</section>
 
-<!-- ============ PRIVACY TOOLS (Scrubr) ============ -->
-<section class="section-pad" id="privacy-tools">
-  <div class="wrap">
-    <p class="section-label reveal">For your files</p>
-    <h2 class="section-title reveal">See what's hidden. <em class="ac-gold">Then decide.</em></h2>
-    <p class="section-sub reveal">Every photo and PDF carries a quiet paper trail. Scrubr shows you what's there before you share it.</p>
-
-    <div class="scrubr-showcase reveal">
-      <div class="scrubr-top">
-        <div class="scrubr-name">Scrubr<span class="dot">.</span></div>
-        <span class="launch-pill">Web App</span>
-      </div>
-      <p class="scrubr-lead">Every photo and PDF carries a quiet paper trail — where it was taken, what device made it, who touched it last. Scrubr surfaces all of it first, so the choice to remove it is informed, not assumed. Entirely in your browser. Nothing ever uploads.</p>
-
-      <div class="scrubr-feat-row">
-        <div class="scrubr-feat">
-          <div class="scrubr-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
-          <div class="scrubr-feat-t">Inspect</div>
-          <div class="scrubr-feat-d">Reveal hidden metadata — location, device, timestamps, author — with plain-language explanations of what each one means.</div>
-        </div>
-        <div class="scrubr-feat">
-          <div class="scrubr-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8" stroke-dasharray="1.5 2.5"/></svg></div>
-          <div class="scrubr-feat-t">Redact</div>
-          <div class="scrubr-feat-d">Blackout, blur, pixelate, or freeform lasso — plus a Select tool to move, resize, or delete any edit after the fact.</div>
-        </div>
-        <div class="scrubr-feat">
-          <div class="scrubr-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 1 1 4 4L7 21l-4 1 1-4Z"/></svg></div>
-          <div class="scrubr-feat-t">Annotate</div>
-          <div class="scrubr-feat-d">Arrows, boxes, lines, freehand pen, and stamps like CONFIDENTIAL or DRAFT — until export flattens them in.</div>
-        </div>
-      </div>
-
-      <div class="scrubr-foot">
-        <div class="scrubr-foot-note">Multi-page PDF export reassembles into one file · install as a Mobile Dashboard (WebApp) and work offline · Inspect and basic Annotate at no cost, Pro unlocks full Redact and Annotate</div>
-        <a href="https://tools.falqenview.com/scrubr/" class="pcard-cta" style="--accent: var(--gold);">Explore Scrubr →</a>
-      </div>
-    </div>
+    <div class="prod-foot-cta reveal"><a href="/products/">Compare every tool, side by side &rarr;</a></div>
   </div>
 </section>
 
@@ -1271,15 +916,15 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
   <div class="trust-inner">
     <div class="trust-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      <span><strong>SSL Secured</strong> · 256-bit</span>
+      <span><strong>SSL Secured</strong> &middot; 256-bit</span>
     </div>
     <div class="trust-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L4 6 v6 c0 5 3.5 9 8 10 4.5-1 8-5 8-10 V6 z"/></svg>
-      <span><strong>Privacy first</strong> · stays in your Drive</span>
+      <span><strong>Privacy first</strong> &middot; stays on your side</span>
     </div>
     <div class="trust-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 12l-4 4-4-4"/><path d="M12 8v8"/></svg>
-      <span><strong>Works in</strong> your Google account</span>
+      <span><strong>Runs local</strong> &middot; your device, your account</span>
     </div>
 	<div class="trust-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 11h20"/></svg>
@@ -1287,48 +932,6 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
     </div>
   </div>
 </div>
-
-<!-- ============ PRODUCTS ============ -->
-<section class="section-pad" id="tools">
-  <div class="wrap">
-    <p class="section-label reveal">For your money</p>
-    <h2 class="section-title reveal">Your finances, <em class="ac-cyan">finally legible.</em></h2>
-    <p class="section-sub reveal">One-time purchase. Runs in your Drive. Yours to own, forever.</p>
-
-    <div class="prod-grid">
-      <!-- VuePoint -->
-      <div class="pcard reveal" style="--accent: var(--cyan);">
-        <div class="pcard-top">
-          <div class="pcard-name">VuePoint<span class="dot">.</span></div>
-          <span class="launch-pill">Limited Launch</span>
-        </div>
-        <p class="pcard-desc">The portfolio tracker for Google Sheets — drift alerts, a portfolio health score, sector concentration, and buy/sell signals. The whole portfolio, one pane.</p>
-        <div class="pcard-foot">
-          <a href="/vuepoint/" class="pcard-cta">Explore VuePoint →</a>
-        </div>
-      </div>
-
-      <!-- Talon -->
-      <div class="pcard reveal" style="--accent: var(--talon);">
-        <div class="pcard-top">
-          <div class="pcard-name">Talon<span class="dot">.</span></div>
-          <span class="launch-pill">Limited Launch</span>
-        </div>
-        <p class="pcard-desc">Bills &amp; cash, gripped tight — due dates, categories, and a clear read on exactly what's left to spend before the next paycheck lands.</p>
-        <div class="pcard-foot">
-          <a href="/talon/" class="pcard-cta">Explore Talon →</a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="prod-foot-cta reveal"><a href="/products/">Compare every tool, side by side →</a></div>
-
-    <!-- quiet quba + free tools line -->
-  </div>
-</section>
-
-
 
 <!-- ============ FREE TOOLS ============ -->
 <section id="free-tools">
@@ -1513,11 +1116,11 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
   });
   // Hero tagline rotation
   var heroTaglines = [
+    { pre: "No mothership. ", accent: "No noise.", sub: "No accounts, no servers, no tracking — every tool runs entirely on your side, and stays there." },
     { pre: "Sharp tools, ", accent: "elegantly simple.", sub: "Clean interfaces, smooth interactions, and zero ads or nags — software built to feel effortless." },
-    { pre: "No mothership. ", accent: "No noise.", sub: "No accounts, no servers, no tracking — every tool runs quietly on your side." },
-    { pre: "Small tools, ", accent: "sharply made.", sub: "Privacy-first design with an elegant UI and a smooth, uncluttered experience throughout." },
-    { pre: "Quietly powerful. ", accent: "Radically private.", sub: "No ads, no nags, no phoning home — just clean, focused software that works for you." },
-    { pre: "Software with ", accent: "nothing to hide.", sub: "Elegant interfaces, smooth workflows, and total privacy — no catch, ever." }
+    { pre: "Local by design. ", accent: "Private by default.", sub: "Your data never leaves your device, your browser, or your Drive — because there's nowhere else for it to go." },
+    { pre: "Quietly powerful. ", accent: "Radically private.", sub: "Genuinely useful tools that do one thing exceptionally well — and never phone home." },
+    { pre: "Software with ", accent: "nothing to hide.", sub: "Thoughtful, modern, straight to the point — no dark patterns, no data grabs, no catch." }
   ];
   var heroPreEl = document.getElementById('hero-pre');
   var heroAccentEl = document.getElementById('hero-accent');
