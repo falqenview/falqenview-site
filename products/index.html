@@ -109,6 +109,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .section-sub{margin:16px auto 0;max-width:560px;text-align:center;color:var(--text-dim);font-weight:300;font-size:1.0rem;line-height:1.6;}
 .section-title em{font-family:var(--font-body);font-style:italic;font-weight:300;letter-spacing:-0.01em;}
 .ac-cyan{background:linear-gradient(120deg,var(--cyan),var(--blue));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.ac-gold{background:linear-gradient(120deg,var(--gold),#fbbf24);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
 
 /* ============================================================
    AI WORKFLOW LIFECYCLE — 4-tool unifying section
@@ -162,7 +163,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .fcard::after{content:'';position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--accent) 16%,transparent) 0%,transparent 60%);opacity:0;transition:opacity 0.35s ease;pointer-events:none;z-index:0;}
 .fcard:hover::after{opacity:1;}
 .fcard > *{position:relative;z-index:1;}
-.fcard:hover{transform:translateY(-4px);border-color:var(--border-2);box-shadow:0 20px 48px rgba(0,0,0,0.42);}
+.fcard:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 45%,var(--border-2));box-shadow:0 20px 48px rgba(0,0,0,0.42),0 0 46px color-mix(in srgb,var(--accent) 20%,transparent);}
+.fcard:hover::before{opacity:1;left:20px;right:20px;box-shadow:0 0 16px color-mix(in srgb,var(--accent) 60%,transparent);transition:left 0.3s ease,right 0.3s ease,opacity 0.3s ease,box-shadow 0.3s ease;}
+.fcard::before{transition:left 0.3s ease,right 0.3s ease,opacity 0.3s ease,box-shadow 0.3s ease;}
+/* single-card row: don't stretch full width */
+.fin-grid--single{grid-template-columns:minmax(0,1fr);max-width:620px;}
+@media (min-width:721px){.fin-grid--single{margin-inline:0;}}
 .fcard.ghost{background:rgba(28,34,48,0.45);border-style:dashed;}
 .fcard.ghost::before{opacity:0.4;}
 .fcard-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
@@ -667,6 +673,35 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   </div>
 </section>
 
+<!-- ============ PRIVACY & FILES (Scrubr) ============ -->
+<section class="section-pad" id="privacy-tools" style="scroll-margin-top: calc(var(--nav-h) + 24px);">
+  <div class="wrap">
+    <p class="group-label reveal">For your files</p>
+    <h2 class="section-title reveal">See everything. <span class="ac-gold">Hide what matters.</span></h2>
+    <div class="fin-grid fin-grid--single">
+
+      <!-- Scrubr -->
+      <div class="fcard reveal" id="scrubr" style="--accent: var(--gold); scroll-margin-top: calc(var(--nav-h) + 24px);">
+        <div class="fcard-top">
+          <div class="fcard-name">Scrubr<span class="dot">.</span></div>
+          <span class="launch-pill"><span class="pulse-dot"></span>New</span>
+        </div>
+        <p class="fcard-tagline">See everything hidden inside a photo or PDF — location, device, author, edit trail — then remove exactly what you choose before the file ever leaves your hands. Runs entirely in your browser; nothing is ever uploaded.</p>
+        <div class="fcard-once">Free · Pro unlock, one-time</div>
+        <ul class="fcard-features">
+          <li><span class="chk">✓</span>Inspect hidden metadata &amp; flag PII — free</li>
+          <li><span class="chk">✓</span>Redact, black out, blur &amp; pixelate — Pro</li>
+          <li><span class="chk">✓</span>Strip all metadata on export — Pro</li>
+          <li><span class="chk">✓</span>Annotate with arrows, boxes &amp; notes</li>
+          <li><span class="chk">✓</span>Works on images &amp; PDFs · 100% on your device</li>
+        </ul>
+        <a href="/scrubr/" class="fcard-cta">Explore Scrubr →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ============ FREE TOOLS & APPS ============ -->
 <div class="ft-divider reveal"><span>Free, always.</span></div>
 <section class="ft-wrap" id="free-tools" style="scroll-margin-top: calc(var(--nav-h) + 24px);">
@@ -676,110 +711,6 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
   <!-- Free dev tools — secondary shelf -->
   <p class="ft-sublabel reveal">Free dev tools</p>
   <div class="ft-grid">
-
-    <!-- AI: Prompt Architect -->
-    <div class="tcard reveal" id="tools">
-      <div class="tcard-head">
-        <div class="tcard-icon">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="5" y="9" width="38" height="30" rx="5" stroke="#38bdf8" stroke-width="2" fill="rgba(56,189,248,0.08)"/>
-            <path d="M12 19 L18 24 L12 29" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <line x1="22" y1="29" x2="30" y2="29" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round"/>
-            <rect class="ai-caret" x="33" y="24.4" width="2.6" height="9.2" rx="1.3" fill="#38bdf8"/>
-          </svg>
-        </div>
-        <div class="tcard-headtext">
-          <div class="tcard-name"><span class="ai-prefix">AI:</span> Prompt Architect<span class="dot">.</span></div>
-          <div class="tcard-subtitle">Prompts, custom instructions &amp; skills</div>
-        </div>
-      </div>
-      <div class="tcard-body">
-        <p class="tcard-desc">Three modes in one tool: build a structured prompt, write standing custom instructions for ChatGPT, Claude, Gemini or Copilot, or package a reusable skill for Claude, ChatGPT or Gemini.</p>
-        <div class="tcard-foot">
-          <a href="https://tools.falqenview.com/prompt-architect/" class="tcard-cta">Open Prompt Architect →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- AI: Chat Refresh -->
-    <div class="tcard reveal" id="sessionhandoff">
-      <div class="tcard-head">
-        <div class="tcard-icon">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="5" y="7" width="16" height="34" rx="3" stroke="#38bdf8" stroke-width="2" fill="rgba(56,189,248,0.08)"/>
-            <line x1="9" y1="14" x2="17" y2="14" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
-            <line x1="9" y1="19" x2="17" y2="19" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
-            <line x1="9" y1="24" x2="14" y2="24" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
-            <path d="M24 24 L34 24" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round"/>
-            <path d="M29 18 L36 24 L29 30" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <rect x="27" y="7" width="16" height="34" rx="3" stroke="#38bdf8" stroke-width="2" fill="rgba(56,189,248,0.14)"/>
-            <line x1="31" y1="33" x2="39" y2="33" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="tcard-headtext">
-          <div class="tcard-name"><span class="ai-prefix">AI:</span> Chat Refresh<span class="dot">.</span></div>
-          <div class="tcard-subtitle">Carry a long chat into a fresh one</div>
-        </div>
-      </div>
-      <div class="tcard-body">
-        <p class="tcard-desc">Paste a long AI conversation and get a clean, accurate primer for a new session — no re-explaining, no re-burning tokens. Two modes: a fast extract-and-clean pass, or a guided primer for sharper results.</p>
-        <div class="tcard-foot">
-          <a href="https://tools.falqenview.com/chat-refresh/" class="tcard-cta">Open Chat Refresh →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- AI: Chat Exporter (Swoop) -->
-    <div class="tcard reveal" id="aichatexporter">
-      <div class="tcard-head">
-        <div class="tcard-icon">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="6" y="8" width="19" height="14" rx="3.5" stroke="#38bdf8" stroke-width="2" fill="rgba(56,189,248,0.08)"/>
-            <path d="M11 22 L11 26.5 L16 22 Z" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="2" stroke-linejoin="round"/>
-            <line x1="10.5" y1="13" x2="20.5" y2="13" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
-            <line x1="10.5" y1="17" x2="17.5" y2="17" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
-            <path d="M19 24 C24 31 28 35 37 36" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" fill="none"/>
-            <path d="M32 32 L38.5 36 L33 40.5" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          </svg>
-        </div>
-        <div class="tcard-headtext">
-          <div class="tcard-name"><span class="ai-prefix">AI:</span> Chat Exporter<span class="dot">.</span></div>
-          <div class="tcard-subtitle">Export your AI chat sessions</div>
-          <span class="ext-pill">🧩 Browser Extension</span>
-        </div>
-      </div>
-      <div class="tcard-body">
-        <p class="tcard-desc">A browser extension that exports your AI conversations to clean JSON or Markdown, or hands them straight to <span class="ai-prefix">AI:</span> Chat Refresh. Free for ChatGPT, Gemini &amp; Copilot. Claude &amp; Grok unlock with Swoop Pro.</p>
-        <div class="tcard-foot">
-          <a href="https://tools.falqenview.com/chat-exporter/" class="tcard-cta">Add Swoop — Free →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Swoop Recall -->
-    <div class="tcard reveal" id="swooprecall-tool">
-      <div class="tcard-head">
-        <div class="tcard-icon" style="background:rgba(167,139,250,0.1);">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M9 12a3 3 0 0 1 3-3h24a3 3 0 0 1 3 3v20l-6-3-6 3-6-3-6 3-6-3Z" stroke="#a78bfa" stroke-width="2" fill="rgba(167,139,250,0.08)" stroke-linejoin="round"/>
-            <line x1="14.5" y1="15.5" x2="30.5" y2="15.5" stroke="#a78bfa" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
-            <line x1="14.5" y1="20.5" x2="26" y2="20.5" stroke="#a78bfa" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
-            <circle cx="33" cy="30" r="6.4" stroke="#a78bfa" stroke-width="2.3" fill="rgba(167,139,250,0.1)"/>
-            <line x1="37.6" y1="34.6" x2="42" y2="39" stroke="#a78bfa" stroke-width="2.4" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="tcard-headtext">
-          <div class="tcard-name">Swoop <span class="ac-cyan" style="background:linear-gradient(120deg,#a78bfa,#38bdf8);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Recall</span><span class="dot">.</span></div>
-          <div class="tcard-subtitle">Search every chat you've exported</div>
-        </div>
-      </div>
-      <div class="tcard-body">
-        <p class="tcard-desc">A private, searchable archive for everything you export with Swoop. Instant full-text search across your whole AI history — all on your own device, no account required.</p>
-        <div class="tcard-foot">
-          <a href="https://tools.falqenview.com/recall/" class="tcard-cta">Try Swoop Recall — Free →</a>
-        </div>
-      </div>
-    </div>
 
     <!-- Generator -->
     <div class="tcard reveal" id="generator">
