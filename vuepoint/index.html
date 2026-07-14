@@ -94,6 +94,29 @@ window.addEventListener('error', function(e) {
   .vp-feat h3 { font-family: var(--font-display); font-weight: 800; font-size: 1.12rem; margin: 0 0 8px; letter-spacing: -0.01em; }
   .vp-feat p { color: var(--text-dim); font-weight: 300; font-size: 0.92rem; line-height: 1.6; margin: 0; }
 
+  /* ALERT STRIP — scrolling (moved from homepage) */
+  .alert-strip { width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; margin-top: 0; padding: 0; }
+  .alert-strip-inner { position: relative; }
+  .alert-strip::before, .alert-strip::after { content: ''; position: absolute; top: 0; bottom: 0; width: 160px; z-index: 10; pointer-events: none; }
+  .alert-strip::before { left: 0; background: linear-gradient(90deg, var(--bg) 0%, transparent 100%); }
+  .alert-strip::after { right: 0; background: linear-gradient(270deg, var(--bg) 0%, transparent 100%); }
+  .alert-scroll-wrap { overflow: hidden; width: 100%; margin-bottom: 12px; }
+  .alert-scroll-wrap:hover .alert-track { animation-play-state: paused; }
+  .alert-track { display: flex; gap: 12px; width: max-content; }
+  .alert-track-left  { animation: scrollLeft 28s linear infinite; }
+  .alert-track-right { animation: scrollRight 28s linear infinite; }
+  @keyframes scrollLeft  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes scrollRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+  .alert-pill { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 9px 16px; font-size: 0.8rem; font-weight: 400; color: var(--text-dim); cursor: default; flex-shrink: 0; }
+  .alert-pill strong { color: var(--text); font-weight: 600; font-family: var(--font-display); }
+  .alert-pill.drift { border-color: rgba(245,158,11,0.35); }
+  .alert-pill.cap   { border-color: rgba(239,68,68,0.35); }
+  .alert-pill.ok    { border-color: rgba(34,197,94,0.35); }
+  .adot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .adot.amber { background: var(--amber); box-shadow: 0 0 6px var(--amber); }
+  .adot.red   { background: var(--red);   box-shadow: 0 0 6px var(--red); }
+  .adot.green { background: var(--green); box-shadow: 0 0 6px var(--green); }
+
   /* HEALTH SCORE DEMO (moved from homepage) */
   .score-demo { max-width: 1100px; margin: 40px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: stretch; }
   .score-visual { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; position: relative; overflow: hidden; }
@@ -166,6 +189,44 @@ window.addEventListener('error', function(e) {
     </div>
   </div>
 </section>
+
+<!-- ============ ALERT TICKER ============ -->
+<div class="alert-strip reveal">
+  <div class="alert-strip-inner">
+    <div class="alert-scroll-wrap">
+      <div class="alert-track alert-track-left">
+        <div class="alert-pill drift"><span class="adot amber"></span><strong>TSLA</strong> drifted +8.2% above target</div>
+        <div class="alert-pill cap"><span class="adot red"></span><strong>MSFT</strong> exceeds 25% position cap</div>
+        <div class="alert-pill ok"><span class="adot green"></span><strong>AAPL</strong> within target range</div>
+        <div class="alert-pill drift"><span class="adot amber"></span>Cash drag · IRA at 12%</div>
+        <div class="alert-pill ok"><span class="adot green"></span>Portfolio Health: <strong>A</strong></div>
+        <div class="alert-pill ok"><span class="adot green"></span><strong>AMZN</strong> · LTCG opens in 14 days</div>
+        <div class="alert-pill drift"><span class="adot amber"></span><strong>TSLA</strong> drifted +8.2% above target</div>
+        <div class="alert-pill cap"><span class="adot red"></span><strong>MSFT</strong> exceeds 25% position cap</div>
+        <div class="alert-pill ok"><span class="adot green"></span><strong>AAPL</strong> within target range</div>
+        <div class="alert-pill drift"><span class="adot amber"></span>Cash drag · IRA at 12%</div>
+        <div class="alert-pill ok"><span class="adot green"></span>Portfolio Health: <strong>A</strong></div>
+        <div class="alert-pill ok"><span class="adot green"></span><strong>AMZN</strong> · LTCG opens in 14 days</div>
+      </div>
+    </div>
+    <div class="alert-scroll-wrap">
+      <div class="alert-track alert-track-right">
+        <div class="alert-pill drift"><span class="adot amber"></span><strong>GOOGL</strong> drifted −9.1% below target</div>
+        <div class="alert-pill cap"><span class="adot red"></span>Sector cap · Tech at 64%</div>
+        <div class="alert-pill ok"><span class="adot green"></span><strong>NVDA</strong> · LTCG cleared ✓</div>
+        <div class="alert-pill cap"><span class="adot red"></span>Portfolio −2.3% today</div>
+        <div class="alert-pill ok"><span class="adot green"></span><strong>META</strong> within target range</div>
+        <div class="alert-pill cap"><span class="adot red"></span>Momentum: <strong>NFLX</strong> −11% in 5 days</div>
+        <div class="alert-pill drift"><span class="adot amber"></span><strong>GOOGL</strong> drifted −9.1% below target</div>
+        <div class="alert-pill cap"><span class="adot red"></span>Sector cap · Tech at 64%</div>
+        <div class="alert-pill ok"><span class="adot green"></span><strong>NVDA</strong> · LTCG cleared ✓</div>
+        <div class="alert-pill cap"><span class="adot red"></span>Portfolio −2.3% today</div>
+        <div class="alert-pill ok"><span class="adot green"></span><strong>META</strong> within target range</div>
+        <div class="alert-pill cap"><span class="adot red"></span>Momentum: <strong>NFLX</strong> −11% in 5 days</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ============ FEATURES ============ -->
 <section class="section-pad" id="features">
