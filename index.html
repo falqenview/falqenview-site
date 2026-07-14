@@ -711,13 +711,25 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 }
 .quba-card::after {
   content: ''; position: absolute; inset: 0;
-  background-image: radial-gradient(circle at 1px 1px, rgba(82,183,136,0.07) 1px, transparent 0);
+  background-image: radial-gradient(circle at 1px 1px, rgba(82,183,136,0.06) 1px, transparent 0);
   background-size: 22px 22px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent 75%);
-  pointer-events: none;
+  mask-image: radial-gradient(ellipse 80% 45% at 50% 0%, black, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 45% at 50% 0%, black, transparent 75%);
+  pointer-events: none; z-index: 0;
 }
 .quba-card:hover { transform: translateY(-4px); border-color: rgba(82,183,136,0.6); box-shadow: inset 0 1px 0 rgba(82,183,136,0.2), 0 24px 56px rgba(0,0,0,0.5); }
+.quba-card-art {
+  position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+  width: 108%; height: 68%;
+  z-index: 0; pointer-events: none;
+  mask-image: linear-gradient(to top, black 30%, transparent 96%);
+  -webkit-mask-image: linear-gradient(to top, black 30%, transparent 96%);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  opacity: 0.85;
+}
+.quba-card-art svg { width: 100%; height: 100%; display: block; }
+.quba-card:hover .quba-card-art { opacity: 1; transform: translateX(-50%) translateY(-4px); }
+@media (prefers-reduced-motion: reduce) { .quba-card:hover .quba-card-art { transform: translateX(-50%); } }
 .quba-card-icon {
   position: relative; z-index: 1;
   width: 62px; height: 62px; border-radius: 16px; margin: 0 auto 20px;
@@ -1104,6 +1116,43 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
     <p class="section-sub reveal">The same standard, pointed somewhere more personal.</p>
 
     <a href="/quba/" class="quba-card reveal">
+      <div class="quba-card-art" aria-hidden="true">
+        <svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="qubaArtFade" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#52b788" stop-opacity="0.30"/>
+              <stop offset="0.72" stop-color="#52b788" stop-opacity="0.10"/>
+              <stop offset="1" stop-color="#52b788" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="qubaArtLine" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#6fcf9f" stop-opacity="0.55"/>
+              <stop offset="1" stop-color="#6fcf9f" stop-opacity="0.12"/>
+            </linearGradient>
+          </defs>
+          <g fill="url(#qubaArtFade)" stroke="url(#qubaArtLine)" stroke-width="1.6" stroke-linejoin="round">
+            <!-- left minaret -->
+            <path d="M104 300 V150 h20 V300 Z"/>
+            <path d="M114 118 l14 22 h-28 Z"/>
+            <rect x="100" y="140" width="28" height="8" rx="2"/>
+            <!-- right minaret -->
+            <path d="M476 300 V150 h20 V300 Z"/>
+            <path d="M486 118 l14 22 h-28 Z"/>
+            <rect x="472" y="140" width="28" height="8" rx="2"/>
+            <!-- main hall + central dome -->
+            <path d="M170 300 V196 h260 V300 Z"/>
+            <path d="M300 108 c-46 0 -78 38 -78 88 h156 c0 -50 -32 -88 -78 -88 Z"/>
+            <path d="M300 92 v16"/>
+            <circle cx="300" cy="86" r="6"/>
+            <!-- flanking small domes -->
+            <path d="M212 196 c0 -30 -19 -46 -40 -46 s-40 16 -40 46 Z"/>
+            <path d="M468 196 c0 -30 -19 -46 -40 -46 s-40 16 -40 46 Z"/>
+            <!-- keyhole arches -->
+            <path d="M264 300 v-52 c0 -20 16 -34 36 -34 s36 14 36 34 v52 Z"/>
+            <path d="M198 300 v-40 c0 -15 11 -25 25 -25 s25 10 25 25 v40 Z"/>
+            <path d="M352 300 v-40 c0 -15 11 -25 25 -25 s25 10 25 25 v40 Z"/>
+          </g>
+        </svg>
+      </div>
       <div class="quba-card-icon">
         <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="4" y1="44" x2="44" y2="44"/>
