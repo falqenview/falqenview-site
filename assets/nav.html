@@ -8,7 +8,100 @@
   </a>
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
-    <li><a href="/products/">Products</a></li>
+    <li class="nav-drop">
+      <button class="nav-drop-btn" id="navDropBtn" aria-expanded="false" aria-haspopup="true" aria-controls="navDropPanel">
+        Products
+        <svg class="nav-drop-caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="nav-drop-panel" id="navDropPanel" role="menu" aria-labelledby="navDropBtn">
+        <div class="nav-drop-inner">
+
+          <div class="nav-drop-col">
+            <p class="nav-drop-label">The Suite</p>
+            <a href="/vuepoint/" role="menuitem" class="nav-drop-item" style="--nd:#38bdf8;">
+              <span class="nav-drop-dot" aria-hidden="true"></span>
+              <span class="nav-drop-txt">
+                <span class="nav-drop-name">VuePoint</span>
+                <span class="nav-drop-desc">Portfolio tracker</span>
+              </span>
+            </a>
+            <a href="/talon/" role="menuitem" class="nav-drop-item" style="--nd:#10b981;">
+              <span class="nav-drop-dot" aria-hidden="true"></span>
+              <span class="nav-drop-txt">
+                <span class="nav-drop-name">Talon</span>
+                <span class="nav-drop-desc">Bills &amp; cash flow</span>
+              </span>
+            </a>
+            <a href="/swoop/" role="menuitem" class="nav-drop-item" style="--nd:#e8885a;">
+              <span class="nav-drop-dot" aria-hidden="true"></span>
+              <span class="nav-drop-txt">
+                <span class="nav-drop-name">Swoop</span>
+                <span class="nav-drop-desc">AI chat exporter</span>
+              </span>
+            </a>
+            <a href="/recall/" role="menuitem" class="nav-drop-item" style="--nd:#a78bfa;">
+              <span class="nav-drop-dot" aria-hidden="true"></span>
+              <span class="nav-drop-txt">
+                <span class="nav-drop-name">Swoop Recall</span>
+                <span class="nav-drop-desc">AI chat archive</span>
+              </span>
+            </a>
+            <a href="https://tools.falqenview.com/scrubr/" role="menuitem" class="nav-drop-item" style="--nd:#f59e0b;">
+              <span class="nav-drop-dot" aria-hidden="true"></span>
+              <span class="nav-drop-txt">
+                <span class="nav-drop-name">Scrubr</span>
+                <span class="nav-drop-desc">File privacy</span>
+              </span>
+            </a>
+          </div>
+
+          <div class="nav-drop-col">
+            <p class="nav-drop-label">Free Tools</p>
+            <a href="https://tools.falqenview.com/prompt-architect/" role="menuitem" class="nav-drop-item" style="--nd:#38bdf8;">
+              <span class="nav-drop-dot" aria-hidden="true"></span>
+              <span class="nav-drop-txt">
+                <span class="nav-drop-name"><em class="nd-ai">AI:</em> Prompt Architect</span>
+                <span class="nav-drop-desc">Prompts &amp; instructions</span>
+              </span>
+            </a>
+            <a href="https://tools.falqenview.com/chat-refresh/" role="menuitem" class="nav-drop-item" style="--nd:#38bdf8;">
+              <span class="nav-drop-dot" aria-hidden="true"></span>
+              <span class="nav-drop-txt">
+                <span class="nav-drop-name"><em class="nd-ai">AI:</em> Chat Refresh</span>
+                <span class="nav-drop-desc">Token reset</span>
+              </span>
+            </a>
+            <a href="https://tools.falqenview.com/generator/" role="menuitem" class="nav-drop-item" style="--nd:#38bdf8;">
+              <span class="nav-drop-dot" aria-hidden="true"></span>
+              <span class="nav-drop-txt">
+                <span class="nav-drop-name">Generator</span>
+                <span class="nav-drop-desc">Quick generators</span>
+              </span>
+            </a>
+            <a href="https://tools.falqenview.com/dev-toolkit/" role="menuitem" class="nav-drop-item" style="--nd:#38bdf8;">
+              <span class="nav-drop-dot" aria-hidden="true"></span>
+              <span class="nav-drop-txt">
+                <span class="nav-drop-name">Dev &amp; Data Toolkit</span>
+                <span class="nav-drop-desc">Developer utilities</span>
+              </span>
+            </a>
+            <a href="https://tools.falqenview.com/writer-toolkit/" role="menuitem" class="nav-drop-item" style="--nd:#38bdf8;">
+              <span class="nav-drop-dot" aria-hidden="true"></span>
+              <span class="nav-drop-txt">
+                <span class="nav-drop-name">Writer's Toolkit</span>
+                <span class="nav-drop-desc">Writing utilities</span>
+              </span>
+            </a>
+          </div>
+
+        </div>
+        <a href="https://quba.falqenview.com" class="nav-drop-foot" role="menuitem">
+          <span class="nav-drop-foot-name">Quba</span>
+          <span class="nav-drop-foot-desc">A free Islamic prayer guide, on any device</span>
+          <span class="nav-drop-foot-arr" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </li>
     <li><a href="/videos.html">Videos</a></li>
     <li><a href="/about.html">About</a></li>
     <li><a href="/support.html">Support</a></li>
@@ -17,8 +110,71 @@
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="/">Home</a>
-  <a href="/products/">Products</a>
+
+  <button class="mm-acc-btn" id="mmAccBtn" aria-expanded="false" aria-controls="mmAccPanel">
+    Products
+    <svg class="mm-acc-caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </button>
+  <div class="mm-acc-panel" id="mmAccPanel">
+    <p class="mm-acc-label">The Suite</p>
+    <a href="/vuepoint/" class="mm-sub">VuePoint</a>
+    <a href="/talon/" class="mm-sub">Talon</a>
+    <a href="/swoop/" class="mm-sub">Swoop</a>
+    <a href="/recall/" class="mm-sub">Swoop Recall</a>
+    <a href="https://tools.falqenview.com/scrubr/" class="mm-sub">Scrubr</a>
+
+    <p class="mm-acc-label">Free Tools</p>
+    <a href="https://tools.falqenview.com/prompt-architect/" class="mm-sub"><em class="nd-ai">AI:</em> Prompt Architect</a>
+    <a href="https://tools.falqenview.com/chat-refresh/" class="mm-sub"><em class="nd-ai">AI:</em> Chat Refresh</a>
+    <a href="https://tools.falqenview.com/generator/" class="mm-sub">Generator</a>
+    <a href="https://tools.falqenview.com/dev-toolkit/" class="mm-sub">Dev &amp; Data Toolkit</a>
+    <a href="https://tools.falqenview.com/writer-toolkit/" class="mm-sub">Writer's Toolkit</a>
+
+    <p class="mm-acc-label">Also free</p>
+    <a href="https://quba.falqenview.com" class="mm-sub">Quba</a>
+  </div>
+
   <a href="/videos.html">Videos</a>
   <a href="/about.html">About</a>
   <a href="/support.html">Support</a>
 </div>
+<script>
+(function () {
+  /* Self-initializing: runs on injection by components.js, no external hook needed. */
+  var btn   = document.getElementById('navDropBtn');
+  var panel = document.getElementById('navDropPanel');
+  var wrap  = btn ? btn.closest('.nav-drop') : null;
+
+  if (btn && panel && wrap) {
+    var open = function (state) {
+      wrap.classList.toggle('open', state);
+      btn.setAttribute('aria-expanded', state ? 'true' : 'false');
+    };
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      open(!wrap.classList.contains('open'));
+    });
+    document.addEventListener('click', function (e) {
+      if (!wrap.contains(e.target)) { open(false); }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { open(false); }
+    });
+    wrap.addEventListener('focusout', function () {
+      setTimeout(function () {
+        if (!wrap.contains(document.activeElement)) { open(false); }
+      }, 0);
+    });
+  }
+
+  var accBtn   = document.getElementById('mmAccBtn');
+  var accPanel = document.getElementById('mmAccPanel');
+  if (accBtn && accPanel) {
+    accBtn.addEventListener('click', function () {
+      var isOpen = accPanel.classList.toggle('shown');
+      accBtn.classList.toggle('open', isOpen);
+      accBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+})();
+</script>
