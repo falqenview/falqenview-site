@@ -89,6 +89,17 @@
     panel.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', function () { open(false); });
     });
+
+    /* Hover is the primary desktop interaction (pure CSS :hover on
+       .nav-drop). Clicking the trigger sets .open, which would then
+       survive after the cursor leaves and stay stuck until an outside
+       click. Clearing .open on mouseleave hands control back to :hover
+       so both behave as one menu. Pointer-devices only — this never
+       fires on touch, where .open is the only way the panel opens. */
+    wrap.addEventListener('mouseleave', function () {
+      if (wrap.contains(document.activeElement)) return;
+      open(false);
+    });
   }
 
   /* Products accordion (mobile menu). */
