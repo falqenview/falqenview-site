@@ -170,6 +170,22 @@ nav {
   z-index: 101;
 }
 
+/* Hover bridge — LOAD-BEARING. The panel sits 14px below the trigger;
+   that gap is dead space, so a cursor travelling from "Products" down
+   to the panel exits .nav-drop mid-flight and :hover drops the menu
+   before it can be clicked. This transparent ::before spans the gap
+   (plus the trigger's own row) so the pointer never leaves the
+   hoverable region. Do not remove without also removing the gap. */
+.nav-drop-panel::before {
+  content: ""; position: absolute;
+  top: -20px; left: 0; right: 0; height: 20px;
+}
+
+/* Hover is the primary interaction; .open exists for keyboard/touch
+   and for clicking the trigger. Because both drive the same panel,
+   a click while hovering could otherwise leave .open stuck on after
+   the cursor leaves. initNavDropdown() clears .open on mouseleave to
+   hand control back to :hover. */
 .nav-drop.open .nav-drop-panel,
 .nav-drop:hover .nav-drop-panel,
 .nav-drop:focus-within .nav-drop-panel {
