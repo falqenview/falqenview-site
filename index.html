@@ -452,6 +452,14 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   padding: 20px 24px;
+  /* Symmetric margin — LOAD-BEARING. Without this, the band's
+     border-bottom sits flush against #free-tools' border-top with
+     zero gap, while .wf-section above only leaves 8px. That asymmetry
+     made the band read as #free-tools' header rather than a divider
+     floating between the paid run and the free tier. 48px of base
+     background on both sides fixes the coupling regardless of either
+     neighboring section's own padding. */
+  margin: 48px 0;
 }
 .trust-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; color: var(--text-dim); font-weight: 400; }
@@ -534,6 +542,9 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 
 /* 860px — trust band */
 @media (max-width: 860px) {
+  .trust-band {
+    margin: 32px 0;
+  }
   .trust-inner {
     justify-content: center;
     gap: 18px;
