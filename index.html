@@ -468,46 +468,60 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 
 /* ============ THE FALQENVIEW STANDARD (3 pillars) ============ */
 #standard { padding: 104px 24px 96px; max-width: 1220px; margin: 0 auto; scroll-margin-top: 72px; }
-.std-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 52px; }
-.std-card {
+/* ── #standard: unified panel, NOT separate cards. ────────────────
+   LOAD-BEARING: this section must never regain per-item border +
+   top-gradient-line + radial-glow + hover-lift — that is the exact
+   .pcard recipe (see #lineup), and a visitor's eye categorizes "boxes
+   with borders and glow" as one kind of thing regardless of content.
+   These are three parts of ONE claim, not three choices — the layout
+   says so via a single connected panel with internal dividers, so
+   #lineup's actual product cards are the first "these are separate
+   choices" moment on the page, not the third repeat of it.
+   2026-07-15: replaced 3-separate-.std-card recipe that duplicated
+   .pcard almost line for line (own border, own ::before gradient bar,
+   own ::after radial glow, own hover translateY). */
+.std-panel {
   position: relative; overflow: hidden;
   background: linear-gradient(165deg, var(--surface) 0%, var(--surface2) 100%);
   border: 1px solid var(--border);
-  border-radius: 22px; padding: 32px 28px 26px;
-  display: flex; flex-direction: column;
+  border-radius: 22px;
+  margin-top: 52px;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.045), 0 1px 2px rgba(0,0,0,0.2);
-  transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s ease;
 }
-.std-card:hover { transform: translateY(-4px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 20px 44px rgba(0,0,0,0.32); }
-.std-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2.5px; }
-.std-card.p1 { border-color: rgba(56,189,248,0.26); }
-.std-card.p1::before { background: linear-gradient(90deg, transparent, var(--cyan), transparent); }
-.std-card.p1::after { content:''; position:absolute; top:-90px; right:-70px; width:280px; height:280px; border-radius:50%; background: radial-gradient(circle, rgba(56,189,248,0.14), transparent 70%); pointer-events:none; }
-.std-card.p2 { border-color: rgba(167,139,250,0.28); }
-.std-card.p2::before { background: linear-gradient(90deg, transparent, #a78bfa, transparent); }
-.std-card.p2::after { content:''; position:absolute; bottom:-100px; left:-70px; width:280px; height:280px; border-radius:50%; background: radial-gradient(circle, rgba(167,139,250,0.14), transparent 70%); pointer-events:none; }
-.std-card.p3 { border-color: rgba(245,158,11,0.26); }
-.std-card.p3::before { background: linear-gradient(90deg, transparent, var(--gold), transparent); }
-.std-card.p3::after { content:''; position:absolute; top:-90px; left:-70px; width:280px; height:280px; border-radius:50%; background: radial-gradient(circle, rgba(245,158,11,0.12), transparent 70%); pointer-events:none; }
+.std-panel::before {
+  /* ONE multi-color line spans the whole panel — signals "one
+     connected thing," the opposite of .pcard's per-card single-hue
+     accent line signalling "pick one of these." */
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--cyan), #a78bfa, var(--gold));
+  opacity: 0.7;
+}
+.std-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+.std-card {
+  position: relative;
+  padding: 34px 28px 28px;
+  display: flex; flex-direction: column;
+}
+.std-card:not(:first-child) { border-left: 1px solid var(--border); }
+.std-pillar-head {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+}
 .std-ico {
-  position: relative; z-index:1;
-  width: 52px; height: 52px; border-radius: 14px;
-  display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+  width: 20px; height: 20px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
 }
-.std-card.p1 .std-ico { background: rgba(56,189,248,0.12); border: 1px solid rgba(56,189,248,0.32); color: var(--cyan); }
-.std-card.p2 .std-ico { background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.34); color: #c4b5fd; }
-.std-card.p3 .std-ico { background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.32); color: var(--gold); }
-.std-ico svg { width: 26px; height: 26px; }
+.std-card.p1 .std-ico { color: var(--cyan); }
+.std-card.p2 .std-ico { color: #c4b5fd; }
+.std-card.p3 .std-ico { color: var(--gold); }
+.std-ico svg { width: 20px; height: 20px; }
 .std-kicker {
-  position: relative; z-index:1;
   font-family: var(--font-mono); font-size: 0.62rem; font-weight: 600;
-  letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 11px;
+  letter-spacing: 0.16em; text-transform: uppercase;
 }
 .std-card.p1 .std-kicker { color: var(--cyan); }
 .std-card.p2 .std-kicker { color: #c4b5fd; }
 .std-card.p3 .std-kicker { color: var(--gold); }
 .std-card h3 {
-  position: relative; z-index:1;
   font-family: var(--font-display); font-weight: 800; font-size: 1.4rem;
   letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 13px;
 }
@@ -515,8 +529,8 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 .std-card.p1 h3 em { color: var(--cyan); }
 .std-card.p2 h3 em { color: #c4b5fd; }
 .std-card.p3 h3 em { color: var(--gold); }
-.std-card p { position: relative; z-index:1; color: var(--text-dim); font-size: 0.9rem; line-height: 1.7; font-weight: 300; margin-bottom: 20px; }
-.std-chips { position: relative; z-index:1; display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; }
+.std-card p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.7; font-weight: 300; margin-bottom: 20px; }
+.std-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; }
 .std-chip {
   display: inline-flex; align-items: center; gap: 6px;
   font-family: var(--font-mono); font-size: 0.62rem; font-weight: 600;
@@ -535,7 +549,7 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 }
 @media (max-width: 960px) {
   .std-grid { grid-template-columns: 1fr; }
-  #standard { padding: 80px 20px 72px; }
+  .std-card:not(:first-child) { border-left: none; border-top: 1px solid var(--border); }
 }
 
 /* ============ MOBILE — ADDITIONAL BREAKPOINTS ============ */
@@ -885,12 +899,15 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
   <h2 class="section-title reveal">Different tools. <em class="ac-cyan">Same promises.</em></h2>
   <p class="section-sub reveal">Every FalqenView tool is held to the same three promises, no matter what it does.</p>
 
+  <div class="std-panel">
   <div class="std-grid">
 
     <!-- PILLAR: PRIVATE BY ARCHITECTURE -->
     <div class="std-card p1 reveal">
-      <div class="std-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 L4 6 v6 c0 5 3.5 9 8 10 4.5-1 8-5 8-10 V6 z"/><path d="M9 12l2 2 4-4"/></svg></div>
-      <p class="std-kicker">Private by architecture</p>
+      <div class="std-pillar-head">
+        <div class="std-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 L4 6 v6 c0 5 3.5 9 8 10 4.5-1 8-5 8-10 V6 z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <p class="std-kicker">Private by architecture</p>
+      </div>
       <h3>Your data has <em>nowhere else</em> to go.</h3>
       <p>Not private by policy — private by design. There is no FalqenView server to send anything to, no account to create, no database holding a copy. Everything runs where you already are: your device, your browser, your Drive.</p>
       <div class="std-chips">
@@ -902,8 +919,10 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 
     <!-- PILLAR: DESIGNED, NOT TEMPLATED -->
     <div class="std-card p2 reveal">
-      <div class="std-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
-      <p class="std-kicker">Designed, not templated</p>
+      <div class="std-pillar-head">
+        <div class="std-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+        <p class="std-kicker">Designed, not templated</p>
+      </div>
       <h3>Software that <em>feels</em> finished.</h3>
       <p>Clean dashboards, smooth interactions, and interfaces that were designed — never assembled. Most tools install as their own Mobile Dashboard (WebApp), with its own icon and window. Nothing here looks like a form someone forgot to style.</p>
       <div class="std-chips">
@@ -915,8 +934,10 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 
     <!-- PILLAR: ZERO NOISE -->
     <div class="std-card p3 reveal">
-      <div class="std-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M6.5 14.5 L9 9 l2.5 5.5"/><path d="M7.3 12.8 h3.4"/><path d="M14 14.5 V9 h2.2 a2.75 2.75 0 0 1 0 5.5 Z"/><line x1="3.5" y1="20.5" x2="20.5" y2="3.5" stroke-width="2.1"/></svg></div>
-      <p class="std-kicker">Zero noise</p>
+      <div class="std-pillar-head">
+        <div class="std-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M6.5 14.5 L9 9 l2.5 5.5"/><path d="M7.3 12.8 h3.4"/><path d="M14 14.5 V9 h2.2 a2.75 2.75 0 0 1 0 5.5 Z"/><line x1="3.5" y1="20.5" x2="20.5" y2="3.5" stroke-width="2.1"/></svg></div>
+        <p class="std-kicker">Zero noise</p>
+      </div>
       <h3>Open it. Use it. <em>That's it.</em></h3>
       <p>No ads, no nags, no pop-ups asking how it's going. No dark patterns steering you anywhere. Every tool does one thing, does it well, and then gets out of your way — the way software used to work.</p>
       <div class="std-chips">
@@ -926,6 +947,7 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
       </div>
     </div>
 
+  </div>
   </div>
 
   <p class="std-foot reveal">Local-first &middot; no mothership &middot; built to be quiet</p>
