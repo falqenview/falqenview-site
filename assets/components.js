@@ -19,9 +19,22 @@
    was shipped inside nav.html. It never fired. Symptom presented as
    "the dropdown doesn't exist," which reads like a CSS or caching
    problem, not a JS one.
+
+   ── ABSOLUTE URLS — required for cross-origin use (2026-07-16) ──
+   The two fetch URLs below are absolute (https://falqenview.com/...),
+   not relative. This file is loaded from BOTH falqenview.com pages
+   AND tools.falqenview.com pages. A relative path like '/assets/nav.html'
+   resolves against whichever origin is currently running the script —
+   on tools.falqenview.com that would 404, since that path doesn't exist
+   there. Absolute URLs resolve identically regardless of the calling
+   origin, so this file stays a single shared source with no forking.
+   GitHub Pages serves all public content with Access-Control-Allow-Origin: *
+   by default, so no CORS configuration is needed for this to work.
 */
 (function () {
   'use strict';
+
+  var ASSET_BASE = 'https://falqenview.com/assets/';
 
   function loadComponent(id, url, callback) {
     var el = document.getElementById(id);
@@ -147,12 +160,12 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    loadComponent('fv-nav', '/assets/nav.html', function () {
+    loadComponent('fv-nav', ASSET_BASE + 'nav.html', function () {
       setActiveNav();
       initMobileMenu();
       initNavDropdown();
       initMobileAccordion();
     });
-    loadComponent('fv-footer', '/assets/footer.html');
+    loadComponent('fv-footer', ASSET_BASE + 'footer.html');
   });
 })();
