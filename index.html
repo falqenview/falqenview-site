@@ -792,6 +792,58 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 @media (max-width: 560px) {
   .ftool-grid { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   AI WORKFLOW LIFECYCLE — migrated from products/index.html
+   Prompt Architect -> Swoop -> Chat Refresh -> Recall -> (loops)
+   ============================================================ */
+/* ============================================================
+   AI WORKFLOW LIFECYCLE — 4-tool unifying section
+   Prompt Architect -> Swoop -> Chat Refresh -> Recall -> (loops back)
+   ============================================================ */
+.wf-section{padding:56px 0 8px;}
+.wf-head{text-align:center;max-width:680px;margin:0 auto;}
+.wf-kicker{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--cyan);opacity:0.9;}
+.wf-title{font-family:var(--font-display);font-weight:900;font-size:clamp(1.7rem,3.6vw,2.6rem);letter-spacing:-0.03em;line-height:1.08;margin-top:12px;}
+.wf-title .accent{background:linear-gradient(135deg,var(--blue) 0%,var(--cyan) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.wf-sub{margin:16px auto 0;color:var(--text-dim);font-weight:300;font-size:1rem;line-height:1.65;}
+.wf-sub strong{color:var(--text);font-weight:600;}
+
+.wf-flow{position:relative;margin-top:48px;display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;align-items:stretch;gap:0;}
+.wf-node{position:relative;background:linear-gradient(160deg,var(--surface2) 0%,var(--bg-deep) 100%);border:1px solid var(--border-2);border-radius:16px;padding:22px 18px;display:flex;flex-direction:column;overflow:hidden;transition:transform 0.18s,box-shadow 0.25s,border-color 0.25s;text-decoration:none;color:inherit;}
+.wf-node::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% -10%,var(--wf-glow,rgba(56,189,248,0.14)) 0%,transparent 65%);pointer-events:none;}
+.wf-node:hover{transform:translateY(-4px);border-color:var(--wf-accent,var(--cyan));box-shadow:0 14px 34px rgba(0,0,0,0.35),0 0 26px var(--wf-glow,rgba(56,189,248,0.16));}
+.wf-step{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.wf-num{font-family:var(--font-mono);font-size:0.62rem;font-weight:700;letter-spacing:0.1em;color:var(--wf-accent,var(--cyan));background:var(--wf-glow,rgba(56,189,248,0.1));border:1px solid var(--wf-accent,rgba(56,189,248,0.4));border-radius:999px;padding:3px 9px;text-transform:uppercase;}
+.wf-buzz{font-family:var(--font-mono);font-size:0.56rem;letter-spacing:0.06em;color:var(--muted);text-transform:uppercase;text-align:right;}
+.wf-ic{position:relative;z-index:1;width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,color-mix(in srgb,var(--wf-accent,var(--cyan)) 30%,transparent),rgba(14,17,24,0.6));border:1px solid color-mix(in srgb,var(--wf-accent,var(--cyan)) 40%,transparent);box-shadow:0 3px 14px rgba(0,0,0,0.35),inset 0 1px 0 color-mix(in srgb,var(--wf-accent,var(--cyan)) 25%,transparent);margin-bottom:12px;}
+.wf-ic svg{width:24px;height:24px;stroke:var(--wf-accent,var(--cyan));fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.wf-name{position:relative;z-index:1;font-family:var(--font-display);font-weight:800;font-size:1.02rem;letter-spacing:-0.01em;margin-bottom:6px;}
+.wf-name .ai-prefix{font-style:italic;color:var(--wf-accent,var(--cyan));}
+.wf-desc{position:relative;z-index:1;font-size:0.8rem;color:var(--text-dim);line-height:1.55;}
+.wf-features{position:relative;z-index:1;list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px;flex:1;}
+.wf-features li{display:flex;gap:7px;font-size:0.74rem;color:var(--text-dim);line-height:1.4;}
+.wf-features .chk{color:var(--wf-accent,var(--cyan));font-weight:700;flex-shrink:0;}
+.wf-link{position:relative;z-index:1;margin-top:14px;display:inline-flex;align-items:center;gap:6px;font-family:var(--font-body);font-size:0.76rem;font-weight:600;color:var(--wf-accent,var(--cyan));}
+.wf-link .arr{transition:transform 0.18s;}
+.wf-node:hover .wf-link .arr{transform:translateX(4px);}
+
+.wf-arrow{display:flex;align-items:center;justify-content:center;padding:0 2px;color:var(--muted);}
+.wf-arrow svg{width:20px;height:20px;stroke:var(--cyan);fill:none;stroke-width:1.6;opacity:0.5;}
+
+.wf-loop{margin-top:22px;text-align:center;font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.04em;color:var(--muted);line-height:1.7;}
+.wf-loop strong{color:var(--text-dim);font-weight:600;}
+.wf-loop .loop-arr{display:inline-block;color:var(--cyan);opacity:0.7;}
+
+@media (max-width:980px){
+  .wf-flow{grid-template-columns:1fr;gap:12px;}
+  .wf-arrow{transform:rotate(90deg);padding:2px 0;}
+}
+
+.apex-word{color:#e6c068;font-weight:700;}
+
+.group-label{font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin:0 0 22px;display:flex;align-items:center;gap:12px;}
+.group-label::after{content:'';flex:1;height:1px;background:var(--border);}
 </style>
 </head>
 <body>
@@ -808,7 +860,7 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
     <h1 class="hero-rotate"><span id="hero-pre">No mothership. </span><span class="accent" id="hero-accent">No <em class="hero-em">noise</em>.</span></h1>
     <p class="sub hero-rotate" id="hero-sub">No accounts, no servers, no tracking — every tool runs entirely on your side, and stays there.</p>
     <div class="hero-actions">
-      <a href="/products/" class="btn-primary">See all products & tools <span aria-hidden="true">→</span></a>
+      <a href="#lineup" class="btn-primary">See all products &amp; tools <span aria-hidden="true">→</span></a>
       <a href="/videos.html" class="btn-ghost">Watch the tour</a>
     </div>
     <p class="hero-note reveal">A small independent studio · every tool runs on your device</p>
@@ -939,9 +991,96 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 
     </div>
 
-    <div class="prod-foot-cta reveal"><a href="/products/">Compare every tool, side by side &rarr;</a></div>
   </div>
 </section>
+
+<!-- ============ AI WORKFLOW LIFECYCLE ============ -->
+<section class="wf-section" id="ai-workflow" style="scroll-margin-top: calc(var(--nav-h) + 24px);">
+  <div class="wrap">
+    <p class="group-label reveal">For your AI chats</p>
+    <div class="wf-head reveal">
+      <div class="wf-kicker">The AI context lifecycle · four independent tools</div>
+      <h2 class="wf-title">Prompt it. Export it. Reboot it. <span class="accent">Keep it forever.</span></h2>
+      <p class="wf-sub">Every AI conversation moves through the same lifecycle — a prompt goes in, context builds up, tokens pile on, and eventually you need to start fresh without losing what mattered. <strong>Four FalqenView tools, each independent, built for one stage of that loop.</strong></p>
+    </div>
+
+    <div class="wf-flow reveal">
+
+      <!-- 1 · PROMPT ARCHITECT -->
+      <a href="https://tools.falqenview.com/prompt-architect/" class="wf-node" id="prompt-architect" style="--wf-accent:#38bdf8;--wf-glow:rgba(56,189,248,0.14);">
+        <div class="wf-step"><span class="wf-num">Step 1</span><span class="wf-buzz">Prompt Engineering</span></div>
+        <div class="wf-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M7 10l3 2-3 2"/><path d="M12 14h4"/></svg></div>
+        <div class="wf-name"><span class="ai-prefix">AI:</span> Prompt Architect</div>
+        <div class="wf-desc">Engineer the input before you ever hit send — structured prompts, custom instructions, and packaged skills, tuned per platform.</div>
+        <ul class="wf-features">
+          <li><span class="chk">✓</span>Structured prompt builder</li>
+          <li><span class="chk">✓</span>Custom instructions for ChatGPT, Claude, Gemini &amp; Copilot</li>
+          <li><span class="chk">✓</span>Reusable skill packaging</li>
+          <li><span class="chk">✓</span>Nothing you write ever leaves your browser</li>
+        </ul>
+        <span class="wf-link">Open Prompt Architect <span class="arr" aria-hidden="true">→</span></span>
+      </a>
+
+      <div class="wf-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h14"/><path d="M13 6l6 6-6 6"/></svg></div>
+
+      <!-- 2 · SWOOP -->
+      <a href="https://tools.falqenview.com/chat-exporter/" class="wf-node" id="swoop" style="--wf-accent:#10b981;--wf-glow:rgba(16,185,129,0.14);">
+        <div class="wf-step"><span class="wf-num">Step 2</span><span class="wf-buzz">Context Export</span></div>
+        <div class="wf-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg></div>
+        <div class="wf-name">Swoop</div>
+        <div class="wf-desc">Snatch any AI conversation out of the page as clean JSON or Markdown, in a single swoop. Runs on-device.</div>
+        <ul class="wf-features">
+          <li><span class="chk">✓</span>Free for ChatGPT, Gemini &amp; Copilot</li>
+          <li><span class="chk">✓</span>Claude &amp; Grok unlock with Swoop Pro</li>
+          <li><span class="chk">✓</span>Clean Markdown or JSON, on your device</li>
+          <li><span class="chk">✓</span>Chrome, Edge &amp; Firefox</li>
+        </ul>
+        <span class="wf-link">Explore Swoop <span class="arr" aria-hidden="true">→</span></span>
+      </a>
+
+      <div class="wf-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h14"/><path d="M13 6l6 6-6 6"/></svg></div>
+
+      <!-- 3 · CHAT REFRESH -->
+      <a href="https://tools.falqenview.com/chat-refresh/" class="wf-node" id="chat-refresh" style="--wf-accent:#f59e0b;--wf-glow:rgba(245,158,11,0.14);">
+        <div class="wf-step"><span class="wf-num">Step 3</span><span class="wf-buzz">Token Reset</span></div>
+        <div class="wf-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></div>
+        <div class="wf-name"><span class="ai-prefix">AI:</span> Chat Refresh</div>
+        <div class="wf-desc">Distill a long, token-heavy thread into a tight context primer. Start a new session with a fresh count and the same hard-won context.</div>
+        <ul class="wf-features">
+          <li><span class="chk">✓</span>Fast extract-and-clean pass</li>
+          <li><span class="chk">✓</span>Guided primer mode for sharper results</li>
+          <li><span class="chk">✓</span>Paste in, fresh primer out</li>
+          <li><span class="chk">✓</span>Nothing you paste ever leaves your device</li>
+        </ul>
+        <span class="wf-link">Open Chat Refresh <span class="arr" aria-hidden="true">→</span></span>
+      </a>
+
+      <div class="wf-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h14"/><path d="M13 6l6 6-6 6"/></svg></div>
+
+      <!-- 4 · RECALL -->
+      <a href="/recall/" class="wf-node" id="swoop-recall" style="--wf-accent:#a78bfa;--wf-glow:rgba(167,139,250,0.16);">
+        <div class="wf-step"><span class="wf-num">Step 4</span><span class="wf-buzz">Persistent Memory</span></div>
+        <div class="wf-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v13l-4-2-4 2-4-2-4 2Z"/><path d="M8 9h8"/><path d="M8 13h5"/></svg></div>
+        <div class="wf-name">Swoop Recall</div>
+        <div class="wf-desc">Archive every exported chat in a private, searchable library — the persistent memory your AI itself doesn't keep.</div>
+        <ul class="wf-features">
+          <li><span class="chk">✓</span>Free — up to 10 conversations</li>
+          <li><span class="chk">✓</span>Pro — unlimited local archive</li>
+          <li><span class="chk">✓</span>Cloud — encrypted off-device backup</li>
+          <li><span class="chk">✓</span>Instant full-text search, zero server-side storage on Free &amp; Pro</li>
+        </ul>
+        <span class="wf-link">Explore Swoop Recall <span class="arr" aria-hidden="true">→</span></span>
+      </a>
+
+    </div>
+
+    <div class="wf-loop reveal">
+      <strong>The loop closes itself:</strong> search Recall for a past answer, feed it back into your next prompt with Prompt Architect.<br>
+      No accounts required to connect them <span class="loop-arr">↻</span> use one tool or all four — each stands completely on its own.
+    </div>
+  </div>
+</section>
+
 
 <!-- ============ TRUST STRIP ============ -->
 <div class="trust-band">
@@ -973,58 +1112,6 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
     <p class="section-sub reveal">Quick utilities that open instantly, ask for nothing, and keep everything in your browser.</p>
 
     <div class="ftool-grid">
-
-      <!-- AI: Prompt Architect -->
-      <a href="https://tools.falqenview.com/prompt-architect/" class="fts-tcard reveal" target="_blank" rel="noopener noreferrer">
-        <div class="fts-head">
-          <div class="fts-icon">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="5" y="9" width="38" height="30" rx="5" stroke="#38bdf8" stroke-width="2" fill="rgba(56,189,248,0.08)"/>
-              <path d="M12 19 L18 24 L12 29" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <line x1="22" y1="29" x2="30" y2="29" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round"/>
-              <rect class="fts-ai-caret" x="33" y="24.4" width="2.6" height="9.2" rx="1.3" fill="#38bdf8"/>
-            </svg>
-          </div>
-          <div class="fts-headtext">
-            <div class="fts-name"><span class="ai-prefix">AI:</span> Prompt Architect</div>
-            <div class="fts-subtitle">Prompts &amp; custom instructions</div>
-          </div>
-        </div>
-        <div class="fts-body">
-          <p class="fts-desc">Build structured, platform-aware prompts for ChatGPT, Claude, Gemini, and more — in seconds.</p>
-          <div class="fts-foot">
-            <span class="fts-cta">Open →</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- AI: Chat Refresh -->
-      <a href="https://tools.falqenview.com/chat-refresh/" class="fts-tcard reveal" target="_blank" rel="noopener noreferrer">
-        <div class="fts-head">
-          <div class="fts-icon">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="5" y="7" width="16" height="34" rx="3" stroke="#38bdf8" stroke-width="2" fill="rgba(56,189,248,0.08)"/>
-              <line x1="9" y1="14" x2="17" y2="14" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
-              <line x1="9" y1="19" x2="17" y2="19" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
-              <line x1="9" y1="24" x2="14" y2="24" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
-              <path d="M24 24 L34 24" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round"/>
-              <path d="M29 18 L36 24 L29 30" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <rect x="27" y="7" width="16" height="34" rx="3" stroke="#38bdf8" stroke-width="2" fill="rgba(56,189,248,0.14)"/>
-              <line x1="31" y1="33" x2="39" y2="33" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="fts-headtext">
-            <div class="fts-name"><span class="ai-prefix">AI:</span> Chat Refresh</div>
-            <div class="fts-subtitle">Carry a long chat into a fresh one</div>
-          </div>
-        </div>
-        <div class="fts-body">
-          <p class="fts-desc">Extract and compress a long AI session into a tight primer. Fresh token count, same context.</p>
-          <div class="fts-foot">
-            <span class="fts-cta">Open →</span>
-          </div>
-        </div>
-      </a>
 
       <!-- Generator -->
       <a href="https://tools.falqenview.com/generator/" class="fts-tcard reveal" target="_blank" rel="noopener noreferrer">
@@ -1104,7 +1191,6 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
 
     </div>
 
-    <div class="ftool-foot reveal"><a href="/products/#free-tools">See every tool &rarr;</a></div>
   </div>
 </section>
 
@@ -1180,7 +1266,7 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
     <p class="closing-creed reveal">See clearly. Hold tight. <em class="ac-cyan">Own it completely.</em></p>
     <p class="closing-body reveal">FalqenView is a small independent studio building the kind of software we wanted to use ourselves: sharp, quiet, and answerable to no one but you. No investors to satisfy, no growth metrics to chase, no reason to ever want your data.</p>
     <div class="closing-actions reveal">
-      <a href="/products/" class="btn-primary">Browse the lineup <span aria-hidden="true">&rarr;</span></a>
+      <a href="#lineup" class="btn-primary">Browse the lineup <span aria-hidden="true">&rarr;</span></a>
       <a href="/about.html" class="btn-ghost">Read the story</a>
     </div>
   </div>
