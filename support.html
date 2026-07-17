@@ -21,8 +21,8 @@ window.addEventListener('error', function(e) {
 
 <!-- Primary SEO -->
 <title>Support — FalqenView</title>
-<meta name="description" content="Get help with FalqenView products — VuePoint, Talon, Swoop, and Swoop Recall. Browse FAQs on setup, licensing, and features, or send us a message. We respond as fast as possible.">
-<meta name="keywords" content="FalqenView support, VuePoint help, Talon help, Swoop extension support, Swoop Recall help, portfolio tracker help, license activation, FalqenView FAQ">
+<meta name="description" content="Get help with FalqenView products — VuePoint, Talon, Scrubr, Swoop, and Swoop Recall. Browse FAQs on setup, licensing, and features, or send us a message. We respond as fast as possible.">
+<meta name="keywords" content="FalqenView support, VuePoint help, Talon help, Scrubr help, Swoop extension support, Swoop Recall help, portfolio tracker help, license activation, FalqenView FAQ">
 <meta name="author" content="FalqenView">
 <meta name="copyright" content="© 2026 FalqenView. All rights reserved.">
 <meta name="robots" content="index, follow">
@@ -35,7 +35,7 @@ window.addEventListener('error', function(e) {
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://falqenview.com/support.html">
 <meta property="og:title" content="Support — FalqenView">
-<meta property="og:description" content="Get help with VuePoint, Talon, Swoop, and Swoop Recall. Browse FAQs or send us a message — we'll get back to you as soon as possible.">
+<meta property="og:description" content="Get help with VuePoint, Talon, Scrubr, Swoop, and Swoop Recall. Browse FAQs or send us a message — we'll get back to you as soon as possible.">
 <meta property="og:image" content="https://falqenview.com/assets/fvLogo.png">
 <meta property="og:site_name" content="FalqenView">
 <meta property="og:locale" content="en_US">
@@ -43,7 +43,7 @@ window.addEventListener('error', function(e) {
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Support — FalqenView">
-<meta name="twitter:description" content="Get help with VuePoint, Talon, Swoop, and Swoop Recall. We'll get back to you as soon as possible.">
+<meta name="twitter:description" content="Get help with VuePoint, Talon, Scrubr, Swoop, and Swoop Recall. We'll get back to you as soon as possible.">
 <meta name="twitter:image" content="https://falqenview.com/assets/fvLogo.png">
 
 <!-- JSON-LD -->
@@ -53,8 +53,8 @@ window.addEventListener('error', function(e) {
   "@type": "ContactPage",
   "name": "FalqenView Support",
   "url": "https://falqenview.com/support.html",
-  "description": "Support page for FalqenView products — VuePoint, Talon, Swoop, and Swoop Recall. Submit questions or browse FAQs.",
-  "publisher": {"@type": "Organization", "name": "FalqenView", "url": "https://falqenview.com", "email": "hello@falqenview.com"}
+  "description": "Support page for FalqenView products — VuePoint, Talon, Swoop, Scrubr, and Swoop Recall. Submit questions or browse FAQs.",
+  "publisher": {"@type": "Organization", "name": "FalqenView", "url": "https://falqenview.com", "email": "support@falqenview.com"}
 }
 </script>
 
@@ -150,7 +150,7 @@ window.addEventListener('error', function(e) {
   <div class="page-hero reveal">
     <div class="page-eyebrow">🛟 Support</div>
     <h1>How can we help?</h1>
-    <p>Fill out the form and we'll get back to you as soon as humanly possible. Or reach us at <a href="mailto:hello@falqenview.com" style="text-decoration:underline;">hello@falqenview.com</a>.</p>
+    <p>Fill out the form and we'll get back to you as soon as humanly possible. Or reach us at <a href="mailto:support@falqenview.com" style="text-decoration:underline;">support@falqenview.com</a>.</p>
   </div>
 
   <div class="support-grid">
@@ -170,8 +170,9 @@ window.addEventListener('error', function(e) {
             <option value="">Select your product</option>
             <option value="vuepoint">VuePoint</option>
             <option value="talon">Talon — Bills &amp; Cash</option>
-            <option value="swoop">Swoop Pro</option>
+            <option value="swoop">Swoop</option>
             <option value="recall">Swoop Recall</option>
+            <option value="scrubr">Scrubr</option>
             <option value="none">Not yet a customer</option>
           </select>
         </div>
@@ -181,7 +182,6 @@ window.addEventListener('error', function(e) {
             <option value="">Select a topic</option>
             <option>Getting started / setup</option>
             <option>License / activation issue</option>
-            <option>Pricing question</option>
             <option>Bug report</option>
             <option>Feature request</option>
             <option>Other</option>
@@ -387,7 +387,7 @@ window.addEventListener('error', function(e) {
         if (window.turnstile) window.turnstile.reset();
       }
     } catch(err) {
-      errBox.innerHTML = '• Something went wrong. Please try again or email us at <a href="mailto:hello@falqenview.com">hello@falqenview.com</a>.';
+      errBox.innerHTML = '• Something went wrong. Please try again or email us at <a href="mailto:support@falqenview.com">support@falqenview.com</a>.';
       errBox.style.display = 'block';
       if (window.turnstile) window.turnstile.reset();
     } finally {
