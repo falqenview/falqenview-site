@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Quba — Free Prayer Guide, Wudu Steps &amp; Qibla Compass</title>
-<meta name="description" content="Learn to pray, step by step. Free guide to the five daily prayers, wudu, du'ās, prayer times, mosque finder, and a live Qibla compass. No ads. No accounts. No cost.">
-<meta name="keywords" content="prayer guide, learn salah, how to pray, wudu steps, Qibla compass, prayer times, mosque finder, du'a, adhkar, new Muslim, beginner prayer app, free Islamic app, salah for beginners, English Arabic Bengali Turkish Urdu prayer app, Quba">
+<meta name="description" content="Learn to pray, step by step. Free guide to the five daily prayers, wudu, du'ās, prayer times, mosque finder, Zakat calculator, and a live Qibla compass. No ads. No accounts. No cost.">
+<meta name="keywords" content="prayer guide, learn salah, how to pray, wudu steps, Qibla compass, prayer times, mosque finder, du'a, adhkar, zakat calculator, new Muslim, beginner prayer app, free Islamic app, salah for beginners, English Arabic Bengali Turkish Urdu prayer app, Quba">
 <meta name="author" content="FalqenView">
 <meta name="theme-color" content="#1a4d3a">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -15,12 +15,12 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://falqenview.com/quba/">
 <meta property="og:title" content="Quba — Free Prayer Guide, Wudu Steps & Qibla Compass">
-<meta property="og:description" content="Learn to pray, step by step. The five daily prayers, wudu, du'ās, prayer times, mosque finder, and a live Qibla compass. Free, with no ads or accounts.">
+<meta property="og:description" content="Learn to pray, step by step. The five daily prayers, wudu, du'ās, prayer times, mosque finder, Zakat calculator, and a live Qibla compass. Free, with no ads or accounts.">
 <meta property="og:image" content="https://falqenview.com/assets/quba.png">
 <meta property="og:site_name" content="FalqenView">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Quba — Free Prayer Guide, Wudu Steps & Qibla Compass">
-<meta name="twitter:description" content="Learn to pray, step by step. Prayers, wudu, du'ās, prayer times, mosque finder, and a live Qibla compass. Free, with no ads or accounts.">
+<meta name="twitter:description" content="Learn to pray, step by step. Prayers, wudu, du'ās, prayer times, mosque finder, Zakat calculator, and a live Qibla compass. Free, with no ads or accounts.">
 <meta name="twitter:image" content="https://falqenview.com/assets/quba.png">
 
 <script type="application/ld+json">
@@ -29,7 +29,7 @@
   "@type": "WebApplication",
   "name": "Quba",
   "url": "https://quba.falqenview.com/",
-  "description": "A free, beginner-friendly guide to the five daily prayers, wudu, du'ās and post-prayer adhkar, with prayer times, a nearby mosque finder, and a live Qibla compass. Available in English, Arabic, Bengali, Turkish and Urdu.",
+  "description": "A free, beginner-friendly guide to the five daily prayers, wudu, du'ās and post-prayer adhkar, with prayer times, a nearby mosque finder, a Zakat calculator, and a live Qibla compass. Available in English, Arabic, Bengali, Turkish and Urdu.",
   "applicationCategory": "LifestyleApplication",
   "operatingSystem": "Any",
   "browserRequirements": "Requires a modern web browser",
@@ -79,7 +79,7 @@ window.addEventListener('error', function(e) {
   --talon:#10b981; --talon-2:#34d399; --gold:#f59e0b;
   /* Qibla green identity */
   --q-deep:#1a4d3a; --q-mid:#52b788; --q-light:#7fd6a4;
-  --q-dim:rgba(82,183,136,0.12); --q-bg:#10241b;
+  --q-dim:rgba(82,183,136,0.12); --q-bg:#10241b; --q-gold:#c9a227;
   --text:#e8ecf4; --text-dim:rgba(232,236,244,0.80); --muted:#7a8499; --nav-h:64px;
   --font-display:'Montserrat',sans-serif; --font-body:'Lexend',sans-serif; --font-mono:'JetBrains Mono',ui-monospace,monospace;
 }
@@ -121,7 +121,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .q-crest{width:78px;height:78px;margin:0 auto 26px;display:flex;align-items:center;justify-content:center;}
 .q-crest svg{width:78px;height:78px;filter:drop-shadow(0 0 18px rgba(82,183,136,0.45));}
 .q-crest img{filter:drop-shadow(0 0 14px rgba(230,185,80,0.65)) drop-shadow(0 0 36px rgba(200,155,50,0.35));}
-.q-eyebrow{display:inline-block;font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--q-mid);margin-bottom:20px;}
+.q-eyebrow-wrap{display:flex;align-items:center;justify-content:center;gap:8px;}
+.q-eyebrow{display:inline-block;font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--q-mid);}
+.q-star-seal{display:inline-flex;width:13px;height:13px;color:var(--q-gold);opacity:0.85;flex-shrink:0;}
+.q-star-seal svg{width:100%;height:100%;}
+.q-hairline-gold{width:46px;height:1px;background:linear-gradient(90deg,transparent,var(--q-gold),transparent);margin:10px auto 20px;opacity:0.55;}
 /* language selector */
 .q-lang{display:flex;justify-content:center;gap:8px;margin:0 auto 22px;}
 .q-lang-btn{font-family:var(--font-body);font-size:0.82rem;font-weight:500;color:var(--text-dim);background:rgba(82,183,136,0.08);border:1px solid rgba(82,183,136,0.28);border-radius:100px;padding:6px 16px;cursor:pointer;transition:color .18s,background .18s,border-color .18s,transform .15s;display:inline-flex;align-items:center;gap:0;}
@@ -165,7 +169,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 /* CONTENT BLOCKS */
 .q-block{padding:56px 0 0;}
 .q-block h3{font-family:var(--font-display);font-weight:700;font-size:1.5rem;letter-spacing:-0.02em;margin-bottom:18px;display:flex;align-items:center;gap:14px;}
-.q-block h3::before{content:'';width:26px;height:2px;background:var(--q-mid);border-radius:2px;flex-shrink:0;}
+.q-block h3::before{content:'';width:15px;height:15px;flex-shrink:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpath fill='%23c9a227' d='M40 4 L50 30 L76 40 L50 50 L40 76 L30 50 L4 40 L30 30 Z'/%3E%3C/svg%3E");background-size:contain;background-repeat:no-repeat;background-position:center;}
 .q-block p{color:var(--text-dim);font-weight:300;font-size:1.06rem;line-height:1.75;margin-bottom:16px;}
 .q-block p strong{color:var(--text);font-weight:600;}
 .q-block p a{color:var(--q-light);text-decoration:none;border-bottom:1px solid rgba(82,183,136,0.4);}
@@ -240,6 +244,8 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 .q-hero[dir="rtl"] .q-badge-sub{padding-left:0;padding-right:8px;border-left:none;border-right:1px solid rgba(122,132,153,0.3);}
 /* feature cards grid */
 .q-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;}
+.q-feature-grid>*:last-child:nth-child(3n+1){grid-column:2;}
+@media(max-width:860px){.q-feature-grid>*:last-child:nth-child(3n+1){grid-column:auto;}}
 .q-fcard{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 22px;transition:transform .2s,border-color .2s,box-shadow .2s;overflow:hidden;}
 .q-fcard-bg{position:absolute;right:-18px;bottom:-18px;width:150px;height:150px;z-index:0;color:var(--q-mid);opacity:0.13;pointer-events:none;
   -webkit-mask-image:radial-gradient(ellipse 130% 130% at 100% 100%,#000 32%,transparent 80%);
@@ -304,7 +310,11 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
     <div class="q-crest">
       <img src="/assets/quba.png" alt="Quba" width="78" height="78" style="object-fit:contain;border-radius:18px;">
     </div>
-    <div class="q-eyebrow">Quba</div>
+    <div class="q-eyebrow-wrap">
+      <span class="q-star-seal" aria-hidden="true"><svg viewBox="0 0 80 80" fill="currentColor"><path d="M40 4 L50 30 L76 40 L50 50 L40 76 L30 50 L4 40 L30 30 Z"/></svg></span>
+      <div class="q-eyebrow">Quba</div>
+    </div>
+    <div class="q-hairline-gold" aria-hidden="true"></div>
     <div class="q-lang" role="group" aria-label="Language">
       <button class="q-lang-btn active" data-lang="en" lang="en">English</button>
       <button class="q-lang-btn" data-lang="bn" lang="bn">বাংলা<span class="q-audio-icon" data-audio="bn" role="button" aria-label="বাংলায় শুনুন" title="বাংলায় শুনুন"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><polygon points="3,2 13,8 3,14"/><path class="q-arc" d="M13.5 4.5 a5 5 0 0 1 0 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></button>
@@ -385,8 +395,8 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       <div class="q-fcard">
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2z"/><path d="M8 8h8M8 12h6"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2z"/><path d="M8 8h8M8 12h6"/></svg></div>
-        <h4 data-i18n="c_lib_h">Surahs, du'ās &amp; adhkar</h4>
-        <p data-i18n="c_lib_p">Twenty short <span class='q-kw'>surahs</span> plus the everyday <span class='q-kw'>du'ās</span> and <span class='q-kw'>Post-Prayer Adhkar</span> you say after salah — each in Arabic with transliteration and translation, and a tap to listen. A built-in <span class='q-kw'>tasbih counter</span> on the Prayers tab counts your dhikr down from 33 with a gentle pulse.</p>
+        <h4 data-i18n="c_lib_h">Surahs, du'ās, adhkar &amp; more</h4>
+        <p data-i18n="c_lib_p">Twenty short <span class='q-kw'>surahs</span> plus the everyday <span class='q-kw'>du'ās</span> and <span class='q-kw'>Post-Prayer Adhkar</span> you say after salah — each in Arabic with transliteration and translation, and a tap to listen. A built-in <span class='q-kw'>tasbih counter</span> on the Prayers tab counts your dhikr down from 33 with a gentle pulse. The full library also holds the <span class='q-kw'>99 Names</span>, <span class='q-kw'>40 Hadith</span>, and the stories of the Prophets.</p>
       </div>
       <div class="q-fcard">
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></div>
@@ -398,7 +408,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
         <h4 data-i18n="c_mosques_h">Nearest mosques</h4>
-        <p data-i18n="c_mosques_p">The five <span class='q-kw'>closest masjids</span> to your current location, sorted by distance. Tap any one to open directions straight in Google Maps.</p>
+        <p data-i18n="c_mosques_p">Nearby <span class='q-kw'>masjids</span> within a search radius you control, sorted by distance. Tap any one to open directions straight in Google Maps.</p>
       </div>
       <div class="q-fcard">
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="8" cy="6" r="2" fill="currentColor"/><circle cx="16" cy="12" r="2" fill="currentColor"/><circle cx="8" cy="18" r="2" fill="currentColor"/></svg></div>
@@ -411,6 +421,12 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 6 3.8 9S14.5 18.3 12 21M12 3C9.5 5.7 8.2 9 8.2 12S9.5 18.3 12 21"/></svg></div>
         <h4 data-i18n="c_lang_h">Read it in your language</h4>
         <p data-i18n="c_lang_p">Use Quba in <span class='q-kw'>English, Arabic, Bengali, Turkish, or Urdu</span> — five of the most widely spoken languages across the Muslim world — with full right-to-left support.</p>
+      </div>
+      <div class="q-fcard">
+        <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></div>
+        <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></div>
+        <h4 data-i18n="c_zakat_h">Zakat, glossary &amp; learn to pray</h4>
+        <p data-i18n="c_zakat_p">A simple <span class='q-kw'>Zakat calculator</span> for when it's time to give, a plain-language <span class='q-kw'>glossary</span> for unfamiliar terms, and a four-step <span class='q-kw'>Learn to Pray</span> track for absolute beginners. Same as everything else — no accounts, no sign-up, just open and use.</p>
       </div>
     </div>
   </div>
@@ -512,16 +528,18 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       c_guided_p: "A full-screen <span class='q-kw'>guided mode</span> walks you through a whole prayer one move at a time, so the first time you stand to pray, you're never guessing what comes next.",
       c_wudu_h: "Wudu &amp; prayer tracking",
       c_wudu_p: "Every step of <span class='q-kw'>ablution</span> in order, with a progress tracker showing what's fard and what's sunnah. Then <span class='q-kw'>log each prayer</span> as you complete it, and tap back to any day in the past week to record missed prayers.",
-      c_lib_h: "Surahs, du'ās &amp; adhkar",
-      c_lib_p: "Twenty short <span class='q-kw'>surahs</span> plus the everyday <span class='q-kw'>du'ās</span> and <span class='q-kw'>Post-Prayer Adhkar</span> you say after salah — each in Arabic with transliteration and translation, and a tap to listen. A built-in <span class='q-kw'>tasbih counter</span> on the Prayers tab counts your dhikr down from 33 with a gentle pulse.",
+      c_lib_h: "Surahs, du'ās, adhkar &amp; more",
+      c_lib_p: "Twenty short <span class='q-kw'>surahs</span> plus the everyday <span class='q-kw'>du'ās</span> and <span class='q-kw'>Post-Prayer Adhkar</span> you say after salah — each in Arabic with transliteration and translation, and a tap to listen. A built-in <span class='q-kw'>tasbih counter</span> on the Prayers tab counts your dhikr down from 33 with a gentle pulse. The full library also holds the <span class='q-kw'>99 Names</span>, <span class='q-kw'>40 Hadith</span>, and the stories of the Prophets.",
       c_qibla_h: "Live Qibla compass",
       c_qibla_p: "A real-time <span class='q-kw'>compass</span> that points to the Kaaba from wherever you stand — calibrated to your device heading and current location.",
       c_mosques_h: "Nearest mosques",
-      c_mosques_p: "The five <span class='q-kw'>closest masjids</span> to your current location, sorted by distance. Tap any one to open directions straight in Google Maps.",
+      c_mosques_p: "Nearby <span class='q-kw'>masjids</span> within a search radius you control, sorted by distance. Tap any one to open directions straight in Google Maps.",
       c_madhab_h: "Your madhab, your settings",
       c_madhab_p: "Choose <span class='q-kw'>Hanafi, Shafi'i, Maliki, or Hanbali</span>, and your prayer times follow. Turn Sunnah Ghair Mu'akkadah (SGM) and Post-Prayer Adhkar (PPA) on or off per prayer or all at once, pick a system, dark, or light theme, and lean on beginner-first notes for common conditions and rulings. The app prays the way you pray.",
       c_lang_h: "Read it in your language",
       c_lang_p: "Use Quba in <span class='q-kw'>English, Arabic, Bengali, Turkish, or Urdu</span> — five of the most widely spoken languages across the Muslim world — with full right-to-left support.",
+      c_zakat_h: "Zakat, glossary &amp; learn to pray",
+      c_zakat_p: "A simple <span class='q-kw'>Zakat calculator</span> for when it's time to give, a plain-language <span class='q-kw'>glossary</span> for unfamiliar terms, and a four-step <span class='q-kw'>Learn to Pray</span> track for absolute beginners. Same as everything else — no accounts, no sign-up, just open and use.",
       real_h: "One app, on every device",
       real_p: "Add Quba to your phone or computer and it opens like any other app. There's never an app store to wait on, and never an update to chase. Prefer not to install? Just visit <strong>quba.falqenview.com</strong> in any browser. Adding it to your device is the best way to keep your settings exactly how you like them.",
       cta: "Open Quba"
@@ -557,16 +575,18 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       c_guided_p: "একটি ফুল-স্ক্রিন গাইডেড মোড আপনাকে পুরো নামাজে এক একটি ধাপে নিয়ে যায়, যাতে প্রথমবার নামাজে দাঁড়িয়ে পরের ধাপ নিয়ে আপনাকে ভাবতে না হয়।",
       c_wudu_h: "অজু ও নামাজ ট্র্যাকিং",
       c_wudu_p: "অজুর প্রতিটি ধাপ ক্রম অনুযায়ী, কোনটি ফরজ আর কোনটি সুন্নত তা দেখানো একটি অগ্রগতি নির্দেশকসহ। এরপর প্রতিদিনের পাঁচ ওয়াক্ত নামাজ পড়ার পর লগ করুন, আর গত সাত দিনের যেকোনো দিনে ফিরে গিয়ে ছুটে যাওয়া নামাজ রেকর্ড করুন।",
-      c_lib_h: "সূরা, দোয়া ও আযকার",
-      c_lib_p: "বিশটি ছোট সূরা, সঙ্গে প্রতিদিনের দোয়া আর নামাজের পরের আযকার (Post-Prayer Adhkar, PPA) — প্রতিটি আরবিতে, উচ্চারণ ও অর্থসহ, আর শোনার জন্য এক টোকা। নামাজ ট্যাবে একটি তাসবিহ কাউন্টার আপনার যিকির ৩৩ থেকে গুনে কমায়, একটি মৃদু স্পন্দনসহ।",
+      c_lib_h: "সূরা, দোয়া, আযকার ও আরও অনেক কিছু",
+      c_lib_p: "বিশটি ছোট সূরা, সঙ্গে প্রতিদিনের দোয়া আর নামাজের পরের আযকার (Post-Prayer Adhkar, PPA) — প্রতিটি আরবিতে, উচ্চারণ ও অর্থসহ, আর শোনার জন্য এক টোকা। নামাজ ট্যাবে একটি তাসবিহ কাউন্টার আপনার যিকির ৩৩ থেকে গুনে কমায়, একটি মৃদু স্পন্দনসহ। সম্পূর্ণ লাইব্রেরিতে আরও আছে ৯৯টি নাম, ৪০টি হাদিস, আর নবীদের কাহিনি।",
       c_qibla_h: "লাইভ কিবলা কম্পাস",
       c_qibla_p: "একটি রিয়েল-টাইম কম্পাস যা আপনি যেখানেই দাঁড়ান, কাবার দিকে নির্দেশ করে — আপনার ডিভাইসের দিক ও বর্তমান অবস্থান অনুযায়ী।",
       c_mosques_h: "নিকটবর্তী মসজিদ",
-      c_mosques_p: "আপনার বর্তমান অবস্থানের সবচেয়ে কাছের পাঁচটি মসজিদ, দূরত্ব অনুযায়ী সাজানো। যেকোনোটিতে টোকা দিলে সরাসরি Google Maps-এ পথনির্দেশ খুলবে।",
+      c_mosques_p: "আপনার নিয়ন্ত্রণ করা অনুসন্ধান পরিসীমার মধ্যে আশেপাশের মসজিদ, দূরত্ব অনুযায়ী সাজানো। যেকোনোটিতে টোকা দিলে সরাসরি Google Maps-এ পথনির্দেশ খুলবে।",
       c_madhab_h: "আপনার মাযহাব, আপনার সেটিংস",
       c_madhab_p: "হানাফি, শাফিঈ, মালিকি বা হাম্বলি বেছে নিন, আর সেই অনুযায়ী নামাজের সময় চলবে। প্রতিটি নামাজের জন্য আলাদা করে বা একসঙ্গে সুন্নত গাইর মুআক্কাদা (Sunnah Ghair Mu'akkadah, SGM) ও নামাজের পরের আযকার (Post-Prayer Adhkar, PPA) চালু বা বন্ধ করুন, সিস্টেম, ডার্ক বা লাইট থিম বেছে নিন, আর সাধারণ শর্ত ও মাসআলা নিয়ে নতুনদের উপযোগী নোটে ভরসা রাখুন। অ্যাপ আপনি যেভাবে নামাজ পড়েন সেভাবেই চলে।",
       c_lang_h: "আপনার ভাষায় পড়ুন",
       c_lang_p: "কুবা ব্যবহার করুন ইংরেজি, আরবি, বাংলা, তুর্কি বা উর্দুতে — মুসলিম বিশ্বে সবচেয়ে বেশি বলা ভাষাগুলোর মধ্যে পাঁচটি — পূর্ণ ডান-থেকে-বাম সমর্থনসহ।",
+      c_zakat_h: "যাকাত, শব্দকোষ ও নামাজ শেখা",
+      c_zakat_p: "দান করার সময় হলে একটি সহজ যাকাত ক্যালকুলেটর, অপরিচিত শব্দের জন্য সহজ ভাষায় একটি শব্দকোষ, আর একদম নতুনদের জন্য চার ধাপের নামাজ শেখার একটি ট্র্যাক। বাকি সবকিছুর মতোই — কোনো অ্যাকাউন্ট নেই, সাইন-আপ নেই, শুধু খুলুন আর ব্যবহার করুন।",
       real_h: "একটি অ্যাপ, প্রতিটি ডিভাইসে",
       real_p: "কুবা আপনার ফোন বা কম্পিউটারে যোগ করুন, এটি অন্য যেকোনো অ্যাপের মতোই খুলবে। কখনো কোনো অ্যাপ স্টোরের অপেক্ষা নেই, কোনো আপডেটের ঝামেলা নেই। ইনস্টল করতে চান না? যেকোনো ব্রাউজারে শুধু <strong><bdi dir='ltr'>quba.falqenview.com</bdi></strong> খুলুন। তবে আপনার সেটিংস ঠিক যেমন চান তেমন রাখার সবচেয়ে ভালো উপায় হলো এটি আপনার ডিভাইসে যোগ করা।",
       cta: "কুবা খুলুন"
@@ -602,16 +622,18 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       c_guided_p: "وضعٌ إرشاديٌّ بملء الشاشة يأخذك في الصلاة كاملةً حركةً بحركة، حتى لا تتساءل عمّا يأتي بعدُ حين تقوم للصلاة لأول مرة.",
       c_wudu_h: "الوضوء ومتابعة الصلوات",
       c_wudu_p: "كل خطوةٍ من الوضوء بترتيبها، مع متتبّعٍ للتقدّم يبيّن ما هو فرضٌ وما هو سنّة. ثم سجِّل كل صلاةٍ من الصلوات الخمس فور أدائها، وعُد إلى أي يومٍ من الأسبوع الماضي لتدوين الصلوات الفائتة.",
-      c_lib_h: "سُوَرٌ وأدعيةٌ وأذكار",
-      c_lib_p: "عشرون سورةً قصيرة، إضافةً إلى أدعية اليوم وأذكار ما بعد الصلاة (Post-Prayer Adhkar, PPA) — كلٌّ منها بالعربية مع النقل الصوتي والترجمة، ولمسةٌ واحدةٌ للاستماع. وفي تبويب الصلوات عدّادُ تسبيحٍ يعدّ ذِكرك تنازليًّا من ٣٣ بنبضةٍ لطيفة.",
+      c_lib_h: "سُوَرٌ وأدعيةٌ وأذكارٌ وأكثر",
+      c_lib_p: "عشرون سورةً قصيرة، إضافةً إلى أدعية اليوم وأذكار ما بعد الصلاة (Post-Prayer Adhkar, PPA) — كلٌّ منها بالعربية مع النقل الصوتي والترجمة، ولمسةٌ واحدةٌ للاستماع. وفي تبويب الصلوات عدّادُ تسبيحٍ يعدّ ذِكرك تنازليًّا من ٣٣ بنبضةٍ لطيفة. وتضمّ المكتبة الكاملة أيضًا الأسماء الحسنى التسعة والتسعين، والأربعين حديثًا النووية، وقصص الأنبياء.",
       c_qibla_h: "بوصلة قبلةٍ حيّة",
       c_qibla_p: "بوصلةٌ فوريّةٌ تشير إلى الكعبة أينما وقفت — مضبوطةٌ على اتجاه جهازك وموقعك الحالي.",
       c_mosques_h: "أقرب المساجد",
-      c_mosques_p: "أقرب خمسة مساجد إلى موقعك الحالي، مرتَّبةً حسب المسافة. المس أيًّا منها لفتح الاتجاهات مباشرةً في خرائط Google.",
+      c_mosques_p: "مساجدُ قريبةٌ ضمن نطاق بحثٍ تتحكّم فيه أنت، مرتَّبةً حسب المسافة. المس أيًّا منها لفتح الاتجاهات مباشرةً في خرائط Google.",
       c_madhab_h: "مذهبك، وإعداداتك",
       c_madhab_p: "اختر الحنفي أو الشافعي أو المالكي أو الحنبلي، فتتبع مواقيت صلاتك ذلك. فعِّل أو عطِّل سنّة غير المؤكَّدة (Sunnah Ghair Mu'akkadah, SGM) وأذكار ما بعد الصلاة (Post-Prayer Adhkar, PPA) لكل صلاةٍ على حدة أو دفعةً واحدة، واختر سمةً حسب النظام أو داكنةً أو فاتحة، واستعِن بملاحظاتٍ للمبتدئين عن الشروط والأحكام الشائعة. يصلّي التطبيق كما تصلّي أنت.",
       c_lang_h: "اقرأه بلغتك",
       c_lang_p: "استخدم قُباء بالإنجليزية أو العربية أو البنغالية أو التركية أو الأردية — خمسٌ من أكثر اللغات انتشارًا في العالم الإسلامي — مع دعمٍ كاملٍ للكتابة من اليمين إلى اليسار.",
+      c_zakat_h: "الزكاة والمعجم وتعلّم الصلاة",
+      c_zakat_p: "حاسبة زكاةٍ بسيطة عند حلول وقت العطاء، ومعجمٌ بلغةٍ واضحة للمصطلحات غير المألوفة، ومسارٌ من أربع خطواتٍ لتعلّم الصلاة للمبتدئين تمامًا. كبقية التطبيق — بلا حساباتٍ، وبلا تسجيل، فقط افتح واستخدم.",
       real_h: "تطبيقٌ واحد، على كل جهاز",
       real_p: "أضِف قُباء إلى هاتفك أو حاسوبك، فيُفتح كأي تطبيقٍ آخر. لا انتظار لمتجر تطبيقات، ولا تحديثٍ يلاحقك. لا تريد التثبيت؟ افتح <strong><bdi dir='ltr'>quba.falqenview.com</bdi></strong> في أي متصفّح. وأفضل طريقةٍ للحفاظ على إعداداتك تمامًا كما تريد هي إضافته إلى جهازك.",
       cta: "افتح قُباء"
