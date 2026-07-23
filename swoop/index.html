@@ -76,6 +76,9 @@ window.addEventListener('error', function(e) {
 <!-- Shared foundation -->
 <link rel="stylesheet" href="/assets/fvmain.css">
 
+<!-- Gumroad Overlay checkout — powers the Swoop Pro buy button below -->
+<script src="https://gumroad.com/js/gumroad.js"></script>
+
 <!-- Page-specific styling only -->
 <style>
   .sw-hero { position: relative; padding: calc(var(--nav-h) + 72px) 0 72px; overflow: hidden; }
@@ -113,6 +116,29 @@ window.addEventListener('error', function(e) {
   .sw-faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.2s; font-size: 0.88rem; color: var(--text-dim); line-height: 1.7; font-weight: 300; padding: 0 22px; }
   .sw-faq-item.open .sw-faq-a { max-height: 360px; padding: 0 22px 20px; }
   .sw-faq-item.open .arrow { transform: rotate(180deg); }
+
+  .sw-pro-panel { position: relative; overflow: hidden; background: linear-gradient(160deg, var(--surface) 0%, rgba(0,0,0,0.2) 100%); border: 1px solid var(--border-2); border-radius: 22px; padding: 44px 40px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center; max-width: 900px; margin: 52px auto 0; }
+  .sw-pro-panel::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 50% 60% at 80% -10%, rgba(56,189,248,0.14) 0%, transparent 60%); pointer-events: none; }
+  .sw-pro-left, .sw-pro-right { position: relative; z-index: 1; }
+  .sw-pro-kicker { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); margin-bottom: 12px; padding: 5px 11px; border: 1px solid rgba(56,189,248,0.3); border-radius: 999px; }
+  .sw-pro-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -0.02em; margin: 0 0 12px; }
+  .sw-pro-title em { font-style: italic; text-shadow: 0 0 20px rgba(56,189,248,0.3); }
+  .sw-pro-desc { font-size: 0.95rem; font-weight: 300; line-height: 1.65; color: var(--text-dim); margin: 0; }
+  .sw-pro-desc strong { color: var(--text); font-weight: 600; }
+  .sw-pro-list { list-style: none; margin: 18px 0 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+  .sw-pro-list li { display: flex; gap: 10px; font-size: 0.9rem; color: var(--text-dim); line-height: 1.4; }
+  .sw-pro-list .chk { color: var(--cyan); font-weight: 700; flex-shrink: 0; }
+  .sw-pro-right { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; padding: 26px 22px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 16px; }
+  .sw-pro-price { font-family: var(--font-display); font-weight: 900; font-size: 3rem; color: var(--text); line-height: 1; }
+  .sw-pro-price sup { font-size: 1.3rem; font-weight: 700; color: var(--muted); top: -1em; margin-right: 2px; }
+  .sw-pro-once { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.06em; color: var(--muted); margin-top: -4px; }
+  a.gumroad-button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; width: 100%; margin-top: 14px; background: var(--cyan); color: var(--bg-deep, #0e1118); font-family: var(--font-body); font-size: 0.98rem; font-weight: 700; padding: 15px 24px; border-radius: 12px; text-decoration: none; transition: transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 24px rgba(56,189,248,0.3); }
+  a.gumroad-button:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(56,189,248,0.45); }
+  .sw-pro-fine { margin-top: 14px; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.04em; color: var(--muted); line-height: 1.6; }
+
+  @media (max-width: 860px) {
+    .sw-pro-panel { grid-template-columns: 1fr; padding: 34px 26px; }
+  }
 
   .sw-final { text-align: center; }
   .sw-final h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.6rem, 3.4vw, 2.4rem); letter-spacing: -0.02em; margin: 0 0 16px; }
@@ -217,6 +243,32 @@ window.addEventListener('error', function(e) {
           <li><span class="chk">✓</span>One key unlocks both</li>
           <li><span class="chk">✓</span>No subscription, ever</li>
         </ul>
+        <a href="#swoop-pro" class="sw-cta-ghost" style="margin-top:18px;">Get Swoop Pro →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SWOOP PRO — BUY ============ -->
+<section class="section-pad" id="swoop-pro" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="sw-pro-panel reveal">
+      <div class="sw-pro-left">
+        <span class="sw-pro-kicker">Swoop Pro</span>
+        <h2 class="sw-pro-title">Unlock <em class="ac-cyan">Claude</em> &amp; <em style="color:#c9ced6;">Grok</em></h2>
+        <p class="sw-pro-desc">Claude and Grok hold some of the deepest, longest sessions you'll have — and neither gives you a clean way to export them. <strong>Swoop Pro fills that gap.</strong> One key, all platforms, no subscription.</p>
+        <ul class="sw-pro-list">
+          <li><span class="chk">✓</span>Export Claude and Grok to clean JSON or Markdown</li>
+          <li><span class="chk">✓</span>One-time purchase — no subscription, ever</li>
+          <li><span class="chk">✓</span>ChatGPT, Gemini, and Copilot stay free</li>
+          <li><span class="chk">✓</span>Same on-device privacy — nothing leaves your machine</li>
+        </ul>
+      </div>
+      <div class="sw-pro-right">
+        <div class="sw-pro-price"><sup>$</sup>14</div>
+        <div class="sw-pro-once">one-time · no subscription</div>
+        <a href="https://falqenview.gumroad.com/l/swooppro" class="gumroad-button" data-gumroad-overlay-checkout="true">Get Swoop Pro →</a>
+        <div class="sw-pro-fine">License key delivered by email<br>Paste into extension · activates in seconds</div>
       </div>
     </div>
   </div>
