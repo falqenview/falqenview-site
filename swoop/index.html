@@ -76,9 +76,6 @@ window.addEventListener('error', function(e) {
 <!-- Shared foundation -->
 <link rel="stylesheet" href="/assets/fvmain.css">
 
-<!-- Gumroad Overlay checkout — powers the Swoop Pro buy button below -->
-<script src="https://gumroad.com/js/gumroad.js"></script>
-
 <!-- Page-specific styling only -->
 <style>
   .sw-hero { position: relative; padding: calc(var(--nav-h) + 72px) 0 72px; overflow: hidden; }
@@ -132,8 +129,8 @@ window.addEventListener('error', function(e) {
   .sw-pro-price { font-family: var(--font-display); font-weight: 900; font-size: 3rem; color: var(--text); line-height: 1; }
   .sw-pro-price sup { font-size: 1.3rem; font-weight: 700; color: var(--muted); top: -1em; margin-right: 2px; }
   .sw-pro-once { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.06em; color: var(--muted); margin-top: -4px; }
-  a.gumroad-button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; width: 100%; margin-top: 14px; background: var(--cyan); color: var(--bg-deep, #0e1118); font-family: var(--font-body); font-size: 0.98rem; font-weight: 700; padding: 15px 24px; border-radius: 12px; text-decoration: none; transition: transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 24px rgba(56,189,248,0.3); }
-  a.gumroad-button:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(56,189,248,0.45); }
+  a.sw-pro-cta { display: inline-flex; align-items: center; justify-content: center; gap: 9px; width: 100%; margin-top: 14px; background: var(--cyan); color: var(--bg-deep, #0e1118); font-family: var(--font-body); font-size: 0.98rem; font-weight: 700; padding: 15px 24px; border-radius: 12px; text-decoration: none; transition: transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 24px rgba(56,189,248,0.3); }
+  a.sw-pro-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(56,189,248,0.45); }
   .sw-pro-fine { margin-top: 14px; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.04em; color: var(--muted); line-height: 1.6; }
 
   @media (max-width: 860px) {
@@ -267,7 +264,7 @@ window.addEventListener('error', function(e) {
       <div class="sw-pro-right">
         <div class="sw-pro-price"><sup>$</sup>14</div>
         <div class="sw-pro-once">one-time · no subscription</div>
-        <a href="https://falqenview.gumroad.com/l/swooppro" class="gumroad-button">Get Swoop Pro →</a>
+        <a href="https://falqenview.gumroad.com/l/swooppro" class="sw-pro-cta">Get Swoop Pro →</a>
         <div class="sw-pro-fine">License key delivered by email<br>Paste into extension · activates in seconds</div>
       </div>
     </div>
