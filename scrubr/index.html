@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Scrubr — See Everything. Hide What Matters. | FalqenView</title>
-<meta name="description" content="Scrubr prepares any image or PDF for safe sharing. Inspect hidden metadata, redact for real, annotate cleanly — 100% in your browser. Nothing uploads, ever. Free to start; Pro unlocks the full toolkit for $19 one-time.">
+<title>Scrubr: See Everything, Hide What Matters. | FalqenView</title>
+<meta name="description" content="Scrubr prepares any image or PDF for safe sharing. Inspect hidden metadata, redact for real, annotate cleanly. 100% in your browser. Nothing uploads, ever. Free to start; Pro unlocks the full toolkit, one-time purchase.">
 <meta name="keywords" content="remove metadata from photo, redact PDF, strip EXIF data, image privacy tool, PDF redaction, blur faces, black out text, FalqenView Scrubr">
 <meta name="author" content="FalqenView">
 <meta name="theme-color" content="#1A73E8">
@@ -16,16 +16,16 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://falqenview.com/scrubr/">
-<meta property="og:title" content="Scrubr — See Everything. Hide What Matters.">
-<meta property="og:description" content="Inspect hidden metadata, redact for real, annotate cleanly. 100% in your browser — nothing uploads, ever.">
+<meta property="og:title" content="Scrubr: See Everything, Hide What Matters.">
+<meta property="og:description" content="Inspect hidden metadata, redact for real, annotate cleanly. 100% in your browser, nothing uploads, ever.">
 <meta property="og:image" content="https://falqenview.com/assets/fvLogo.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="FalqenView">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Scrubr — See Everything. Hide What Matters.">
-<meta name="twitter:description" content="Inspect hidden metadata, redact for real, annotate cleanly. 100% in your browser — nothing uploads, ever.">
+<meta name="twitter:title" content="Scrubr: See Everything, Hide What Matters.">
+<meta name="twitter:description" content="Inspect hidden metadata, redact for real, annotate cleanly. 100% in your browser, nothing uploads, ever.">
 <meta name="twitter:image" content="https://falqenview.com/assets/fvLogo.png">
 
 <script type="application/ld+json">
@@ -36,7 +36,7 @@
   "applicationCategory": "BrowserApplication",
   "operatingSystem": "Any (runs in browser)",
   "url": "https://falqenview.com/scrubr/",
-  "description": "A browser-based tool that inspects hidden metadata in images and PDFs, then lets you redact or annotate before sharing. 100% client-side — nothing ever uploads.",
+  "description": "A browser-based tool that inspects hidden metadata in images and PDFs, then lets you redact or annotate before sharing. 100% client-side, nothing ever uploads.",
   "offers": {
     "@type": "AggregateOffer",
     "offerCount": "2",
@@ -88,9 +88,34 @@ window.addEventListener('error', function(e) {
   .sc-cta-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
   .sc-note { margin-top: 22px; font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.04em; color: var(--muted); }
 
+  /* ---- Signature moment: live metadata sweep demo ---- */
+  .sc-demo-wrap { margin: 52px auto 0; max-width: 560px; }
+  .sc-demo-card { display: flex; gap: 22px; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 26px 28px; text-align: left; box-shadow: 0 20px 48px rgba(0,0,0,0.35); }
+  .sc-demo-thumb { flex-shrink: 0; width: 84px; height: 84px; border-radius: 12px; background: linear-gradient(160deg, rgba(56,189,248,0.16), rgba(26,115,232,0.1)); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; }
+  .sc-demo-thumb svg { width: 34px; height: 34px; stroke: var(--cyan); fill: none; stroke-width: 1.6; }
+  .sc-demo-meta { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+  .sc-demo-row { display: flex; align-items: baseline; gap: 10px; font-family: var(--font-mono); font-size: 0.78rem; }
+  .sc-demo-label { color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; font-size: 0.62rem; width: 58px; flex-shrink: 0; }
+  .sc-demo-value { position: relative; display: inline-block; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sc-demo-bar { position: absolute; inset: -2px -3px; background: var(--text); border-radius: 3px; width: 0; animation: sc-sweep 6s ease-in-out infinite; }
+  .sc-demo-row:nth-child(2) .sc-demo-bar { animation-delay: 0.5s; }
+  .sc-demo-row:nth-child(3) .sc-demo-bar { animation-delay: 1s; }
+  .sc-demo-row:nth-child(4) .sc-demo-bar { animation-delay: 1.5s; }
+  @keyframes sc-sweep {
+    0%, 12% { width: 0; }
+    32%, 78% { width: 100%; }
+    98%, 100% { width: 0; }
+  }
+  .sc-demo-caption { margin-top: 14px; text-align: center; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.04em; color: var(--muted); }
+  @media (prefers-reduced-motion: reduce) {
+    .sc-demo-bar { animation: none; width: 100%; opacity: 0.85; }
+  }
+
   .sc-feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 52px; }
-  .sc-feat { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; }
-  .sc-feat-icon { width: 46px; height: 46px; border-radius: 12px; background: rgba(56,189,248,0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .sc-feat { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; transition: border-color 0.25s, transform 0.25s; }
+  .sc-feat:hover { border-color: rgba(56,189,248,0.35); transform: translateY(-3px); }
+  .sc-feat-icon { width: 46px; height: 46px; border-radius: 12px; background: rgba(56,189,248,0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; transition: background 0.25s, transform 0.25s; }
+  .sc-feat:hover .sc-feat-icon { background: rgba(56,189,248,0.2); transform: scale(1.06); }
   .sc-feat-icon svg { width: 26px; height: 26px; stroke: var(--cyan); fill: none; }
   .sc-feat h3 { font-family: var(--font-display); font-weight: 800; font-size: 1.12rem; margin: 0 0 8px; letter-spacing: -0.01em; }
   .sc-feat p { color: var(--text-dim); font-weight: 300; font-size: 0.92rem; line-height: 1.6; margin: 0; }
@@ -116,10 +141,16 @@ window.addEventListener('error', function(e) {
   .sc-pro-list { list-style: none; margin: 18px 0 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
   .sc-pro-list li { display: flex; gap: 10px; font-size: 0.9rem; color: var(--text-dim); line-height: 1.4; }
   .sc-pro-list .chk { color: var(--cyan); font-weight: 700; flex-shrink: 0; }
-  .sc-pro-right { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; padding: 26px 22px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 16px; }
-  .sc-pro-price { font-family: var(--font-display); font-weight: 900; font-size: 3rem; color: var(--text); line-height: 1; }
-  .sc-pro-price sup { font-size: 1.3rem; font-weight: 700; color: var(--muted); top: -1em; margin-right: 2px; }
-  .sc-pro-once { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.06em; color: var(--muted); margin-top: -4px; }
+  .sc-pro-right { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; padding: 30px 22px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 16px; }
+  .sc-pro-lock { width: 56px; height: 56px; border-radius: 14px; background: rgba(56,189,248,0.12); display: flex; align-items: center; justify-content: center; margin-bottom: 6px; }
+  .sc-pro-lock svg { width: 28px; height: 28px; stroke: var(--cyan); fill: none; stroke-width: 1.8; animation: sc-unlock 3.5s ease-in-out infinite; transform-origin: 50% 80%; }
+  @keyframes sc-unlock {
+    0%, 40% { transform: rotate(0deg); }
+    50% { transform: rotate(-8deg); }
+    60%, 100% { transform: rotate(0deg); }
+  }
+  .sc-pro-tagline { font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; color: var(--text); letter-spacing: -0.01em; }
+  .sc-pro-once { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.06em; color: var(--muted); margin-top: -2px; }
   a.sc-pro-cta { display: inline-flex; align-items: center; justify-content: center; gap: 9px; width: 100%; margin-top: 14px; background: var(--cyan); color: var(--bg-deep, #0e1118); font-family: var(--font-body); font-size: 0.98rem; font-weight: 700; padding: 15px 24px; border-radius: 12px; text-decoration: none; transition: transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 24px rgba(56,189,248,0.3); }
   a.sc-pro-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(56,189,248,0.45); }
   .sc-pro-fine { margin-top: 14px; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.04em; color: var(--muted); line-height: 1.6; }
@@ -142,6 +173,11 @@ window.addEventListener('error', function(e) {
     .sc-tiers { grid-template-columns: 1fr; }
     .sc-pro-panel { grid-template-columns: 1fr; padding: 34px 26px; }
   }
+  @media (max-width: 560px) {
+    .sc-demo-card { flex-direction: column; text-align: center; padding: 24px; }
+    .sc-demo-meta { width: 100%; }
+    .sc-demo-row { justify-content: center; }
+  }
 </style>
 </head>
 <body>
@@ -156,12 +192,28 @@ window.addEventListener('error', function(e) {
     <div class="sc-hero-inner">
       <span class="eyebrow"><span class="pulse-dot"></span> Web app · runs entirely in your browser</span>
       <h1 class="sc-h1">See everything. <span class="ac-cyan">Hide what matters.</span></h1>
-      <p class="sc-lede">Every photo and PDF carries a quiet paper trail — GPS location, device details, timestamps, edit history. Scrubr shows you all of it, then lets you decide what leaves. Nothing ever uploads — every operation runs on your own device.</p>
+      <p class="sc-lede">Every photo and PDF carries a quiet paper trail: GPS location, device details, timestamps, edit history. Scrubr shows you all of it, then lets you decide what leaves. Nothing ever uploads. Every operation runs on your own device.</p>
       <div class="sc-hero-actions">
-        <a href="https://tools.falqenview.com/scrubr/" class="btn-primary">Try Scrubr — Free</a>
+        <a href="https://tools.falqenview.com/scrubr/" class="btn-primary">Try Scrubr · Free</a>
         <a href="#tiers" class="sc-cta-ghost">Free vs Pro →</a>
       </div>
       <p class="sc-note">No account · no upload · nothing leaves your device</p>
+    </div>
+
+    <!-- Signature moment: what Scrubr finds, then removes -->
+    <div class="sc-demo-wrap reveal">
+      <div class="sc-demo-card">
+        <div class="sc-demo-thumb">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
+        </div>
+        <div class="sc-demo-meta">
+          <div class="sc-demo-row"><span class="sc-demo-label">GPS</span><span class="sc-demo-value">40.7128° N, 74.0060° W<span class="sc-demo-bar"></span></span></div>
+          <div class="sc-demo-row"><span class="sc-demo-label">Device</span><span class="sc-demo-value">iPhone 15 Pro<span class="sc-demo-bar"></span></span></div>
+          <div class="sc-demo-row"><span class="sc-demo-label">Modified</span><span class="sc-demo-value">2026-03-11 14:22<span class="sc-demo-bar"></span></span></div>
+          <div class="sc-demo-row"><span class="sc-demo-label">Author</span><span class="sc-demo-value">Sarah M. Chen<span class="sc-demo-bar"></span></span></div>
+        </div>
+      </div>
+      <p class="sc-demo-caption">What a typical photo is quietly carrying, and what Scrubr does with it</p>
     </div>
   </div>
 </section>
@@ -177,17 +229,17 @@ window.addEventListener('error', function(e) {
       <div class="sc-feat reveal">
         <div class="sc-feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/></svg></div>
         <h3>Inspect</h3>
-        <p>Reveals GPS coordinates, device info, author fields, and timestamps hiding inside any image or PDF — with plain-language reasons why each one matters.</p>
+        <p>Reveals GPS coordinates, device info, author fields, and timestamps hiding inside any image or PDF, with plain-language reasons why each one matters.</p>
       </div>
       <div class="sc-feat reveal">
         <div class="sc-feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8"/></svg></div>
         <h3>Scrub &amp; Redact <span class="pro-tag">Pro</span></h3>
-        <p>Black out, blur, or pixelate — for real. Redacted regions are rasterized on export, so what's underneath is physically gone, not just covered.</p>
+        <p>Black out, blur, or pixelate, for real. Redacted regions are rasterized on export, so what's underneath is physically gone, not just covered.</p>
       </div>
       <div class="sc-feat reveal">
         <div class="sc-feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div>
         <h3>Annotate</h3>
-        <p>Arrows, boxes, text, and more — non-destructive until you export. Mark up a screenshot or document without touching the original.</p>
+        <p>Arrows, boxes, text, and more, non-destructive until you export. Mark up a screenshot or document without touching the original.</p>
       </div>
     </div>
   </div>
@@ -198,7 +250,7 @@ window.addEventListener('error', function(e) {
   <div class="wrap">
     <p class="section-label reveal">Simple tiers</p>
     <h2 class="section-title reveal">Free to start. One key unlocks the rest.</h2>
-    <p class="section-sub reveal">The free tier is fully functional for basic use. Pro adds real redaction, the full annotate set, and batch/PDF export — one key, no subscription.</p>
+    <p class="section-sub reveal">The free tier is fully functional for basic use. Pro adds real redaction, the full annotate set, and batch/PDF export: one key, no subscription.</p>
 
     <div class="sc-tiers">
       <div class="sc-tier reveal">
@@ -206,7 +258,7 @@ window.addEventListener('error', function(e) {
         <div class="sc-tier-kind">Free · forever</div>
         <ul class="sc-tier-feats">
           <li><span class="chk">✓</span>Full metadata inspection</li>
-          <li><span class="chk">✓</span>Basic annotate — arrow, box, text</li>
+          <li><span class="chk">✓</span>Basic annotate: arrow, box, text</li>
           <li><span class="chk">✓</span>Single file at a time</li>
           <li><span class="chk">✓</span>No account, nothing uploads</li>
         </ul>
@@ -215,10 +267,10 @@ window.addEventListener('error', function(e) {
       <div class="sc-tier featured reveal">
         <span class="sc-tier-badge">Unlocks Redact + full toolkit</span>
         <div class="sc-tier-name">Scrubr Pro</div>
-        <div class="sc-tier-kind">one-time purchase</div>
+        <div class="sc-tier-kind">One-time purchase</div>
         <ul class="sc-tier-feats">
           <li><span class="chk">✓</span>Black out, blur &amp; pixelate redaction</li>
-          <li><span class="chk">✓</span>Full annotate set — line, pen, ellipse, highlight, stamps, crop</li>
+          <li><span class="chk">✓</span>Full annotate set: line, pen, ellipse, highlight, stamps, crop</li>
           <li><span class="chk">✓</span>Batch files &amp; multi-page PDF export</li>
           <li><span class="chk">✓</span>No subscription, ever</li>
         </ul>
@@ -235,19 +287,20 @@ window.addEventListener('error', function(e) {
       <div class="sc-pro-left">
         <span class="sc-pro-kicker">Scrubr Pro</span>
         <h2 class="sc-pro-title">Unlock the <em class="ac-cyan">full toolkit</em></h2>
-        <p class="sc-pro-desc">Free Scrubr covers the basics. <strong>Pro adds real redaction and the complete annotate set</strong> — everything you need to prepare a file properly before it leaves your hands. One key, no subscription.</p>
+        <p class="sc-pro-desc">Free Scrubr covers the basics. <strong>Pro adds real redaction and the complete annotate set:</strong> everything needed to prepare a file properly before it leaves your hands. One key, no subscription.</p>
         <ul class="sc-pro-list">
-          <li><span class="chk">✓</span>Black out, blur &amp; pixelate — removed for real, not just covered</li>
+          <li><span class="chk">✓</span>Black out, blur &amp; pixelate, removed for real, not just covered</li>
           <li><span class="chk">✓</span>Line, pen, ellipse, highlight, step badges, stamps &amp; crop</li>
           <li><span class="chk">✓</span>Batch files and multi-page PDF export</li>
-          <li><span class="chk">✓</span>Same on-device privacy — nothing ever uploads</li>
+          <li><span class="chk">✓</span>Same on-device privacy, nothing ever uploads</li>
         </ul>
       </div>
       <div class="sc-pro-right">
-        <div class="sc-pro-price"><sup>$</sup>19</div>
-        <div class="sc-pro-once">one-time · no subscription</div>
+        <div class="sc-pro-lock"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg></div>
+        <div class="sc-pro-tagline">One key. Full toolkit.</div>
+        <div class="sc-pro-once">One-time purchase · no subscription</div>
         <a href="https://falqenview.gumroad.com/l/scrubr?wanted=true" class="sc-pro-cta">Get Scrubr Pro →</a>
-        <div class="sc-pro-fine">License key delivered by email<br>Paste into Scrubr · activates in seconds</div>
+        <div class="sc-pro-fine">License key delivered by email<br>Paste into Scrubr, activates in seconds</div>
       </div>
     </div>
   </div>
@@ -262,23 +315,23 @@ window.addEventListener('error', function(e) {
     <div class="sc-faq">
       <div class="sc-faq-item reveal open">
         <div class="sc-faq-q">Does anything ever upload? <span class="arrow">▼</span></div>
-        <div class="sc-faq-a">No. Every operation — decode, inspect, redact, annotate, export — runs in your browser via canvas. The only network call Scrubr ever makes is a Pro license check, which sends a license key, never file content. "We never see your files" is a literal claim.</div>
+        <div class="sc-faq-a">No. Every operation, decode, inspect, redact, annotate, export, runs in your browser via canvas. The only network call Scrubr ever makes is a Pro license check, which sends a license key, never file content. "We never see your files" is a literal claim.</div>
       </div>
       <div class="sc-faq-item reveal">
         <div class="sc-faq-q">What's free and what needs Pro? <span class="arrow">▼</span></div>
-        <div class="sc-faq-a">Inspect is always free, along with basic annotate tools (arrow, box, text) on a single file. Pro unlocks real redaction (black out, blur, pixelate), the full annotate set, batch files, and multi-page PDF export — a one-time purchase whose single license key unlocks everything.</div>
+        <div class="sc-faq-a">Inspect is always free, along with basic annotate tools (arrow, box, text) on a single file. Pro unlocks real redaction (black out, blur, pixelate), the full annotate set, batch files, and multi-page PDF export, a one-time purchase whose single license key unlocks everything.</div>
       </div>
       <div class="sc-faq-item reveal">
         <div class="sc-faq-q">Is Scrubr Pro a subscription? <span class="arrow">▼</span></div>
-        <div class="sc-faq-a">No. Scrubr Pro is a one-time $19 purchase. One license key unlocks the full toolkit with no subscription and no renewal.</div>
+        <div class="sc-faq-a">No. Scrubr Pro is a one-time purchase. One license key unlocks the full toolkit with no subscription and no renewal.</div>
       </div>
       <div class="sc-faq-item reveal">
         <div class="sc-faq-q">Does redaction actually remove the data, or just cover it? <span class="arrow">▼</span></div>
-        <div class="sc-faq-a">It's removed for real. Redacted regions are rasterized into the exported file — the content underneath is physically gone, not layered over. This is different from tools that just draw a box on top and leave the original data intact underneath.</div>
+        <div class="sc-faq-a">It's removed for real. Redacted regions are rasterized into the exported file, so the content underneath is physically gone, not layered over. This is different from tools that just draw a box on top and leave the original data intact underneath.</div>
       </div>
       <div class="sc-faq-item reveal">
         <div class="sc-faq-q">Does it work on PDFs? <span class="arrow">▼</span></div>
-        <div class="sc-faq-a">Yes. PDF pages are rendered to canvas and treated like images, then reassembled into a single multi-page PDF on export. One honest note: exported PDF pages are flattened images, not searchable text — true text-layer redaction is on the roadmap.</div>
+        <div class="sc-faq-a">Yes. PDF pages are rendered to canvas and treated like images, then reassembled into a single multi-page PDF on export. One honest note: exported PDF pages are flattened images, not searchable text. True text-layer redaction is on the roadmap.</div>
       </div>
     </div>
   </div>
@@ -290,7 +343,7 @@ window.addEventListener('error', function(e) {
     <h2 class="reveal">Know what's hidden. <span class="ac-cyan">Then decide what leaves.</span></h2>
     <p class="reveal">Free to start, right in your browser. No account, no upload.</p>
     <div class="reveal" style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
-      <a href="https://tools.falqenview.com/scrubr/" class="btn-primary">Try Scrubr — Free</a>
+      <a href="https://tools.falqenview.com/scrubr/" class="btn-primary">Try Scrubr · Free</a>
       <a href="#scrubr-pro" class="sc-cta-ghost">Get Scrubr Pro →</a>
     </div>
   </div>
