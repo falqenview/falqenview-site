@@ -243,7 +243,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 .q-badge-sub{font-size:0.64rem;font-weight:400;letter-spacing:0.02em;color:rgba(122,132,153,0.7);text-transform:none;padding-left:8px;border-left:1px solid rgba(122,132,153,0.3);}
 .q-hero[dir="rtl"] .q-badge-sub{padding-left:0;padding-right:8px;border-left:none;border-right:1px solid rgba(122,132,153,0.3);}
 /* feature cards grid */
-.q-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;}
+.q-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;align-items:start;}
 .q-feature-grid>*:last-child:nth-child(3n+1){grid-column:2;}
 @media(max-width:860px){.q-feature-grid>*:last-child:nth-child(3n+1){grid-column:auto;}}
 .q-fcard{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 22px;transition:transform .2s,border-color .2s,box-shadow .2s;overflow:hidden;}
@@ -376,10 +376,10 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
         <p data-i18n="c_times_p">The five prayers for today, calculated from your current location, with a gentle <span class='q-kw'>countdown</span> to the next — Fajr through Isha, in your local time.</p>
       </div>
       <div class="q-fcard">
-        <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
-        <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
-        <h4 data-i18n="c_how_h">How to pray, prayer by prayer</h4>
-        <p data-i18n="c_how_p">Each of the five daily prayers shown exactly as it's performed — rak'ahs, what to say, and when to say it. No prior knowledge assumed.</p>
+        <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2z"/><path d="M8 8h8M8 12h6"/></svg></div>
+        <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2z"/><path d="M8 8h8M8 12h6"/></svg></div>
+        <h4 data-i18n="c_lib_h">A reference library, not a starter pack</h4>
+        <p data-i18n="c_lib_p">Twenty short <span class='q-kw'>surahs</span> with Arabic, transliteration, translation and a tap to listen — plus <span class='q-kw'>du'ās</span> for salah and daily life, <span class='q-kw'>Post-Prayer Adhkar</span>, and a morning-and-evening set. Then the parts you keep coming back to: the <span class='q-kw'>99 Names</span>, the <span class='q-kw'>42 Hadith</span> of an-Nawawi, the stories of the <span class='q-kw'>Prophets</span>, <span class='q-kw'>women in Islam</span>, and sixteen topics of <span class='q-kw'>madhhab difference</span> shown side by side.</p>
       </div>
       <div class="q-fcard">
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 9-14 9V3z"/></svg></div>
@@ -394,10 +394,10 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
         <p data-i18n="c_wudu_p">Every step of <span class='q-kw'>ablution</span> in order, with a progress tracker showing what's fard and what's sunnah. Then <span class='q-kw'>log each prayer</span> as you complete it, and tap back to any day in the past week to record missed prayers.</p>
       </div>
       <div class="q-fcard">
-        <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2z"/><path d="M8 8h8M8 12h6"/></svg></div>
-        <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2z"/><path d="M8 8h8M8 12h6"/></svg></div>
-        <h4 data-i18n="c_lib_h">A reference library, not a starter pack</h4>
-        <p data-i18n="c_lib_p">Twenty short <span class='q-kw'>surahs</span> with Arabic, transliteration, translation and a tap to listen. The <span class='q-kw'>du'ās</span> for salah and daily life, the <span class='q-kw'>Post-Prayer Adhkar</span>, and a separate set for <span class='q-kw'>morning and evening</span>. Then the parts you keep coming back to: the <span class='q-kw'>99 Names</span>, the <span class='q-kw'>42 Hadith</span> of an-Nawawi, the stories of the <span class='q-kw'>Prophets</span>, <span class='q-kw'>women in Islam</span>, and sixteen topics of <span class='q-kw'>madhhab difference</span> shown side by side. A <span class='q-kw'>tasbih counter</span> counts your dhikr down from 33 with a gentle pulse.</p>
+        <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
+        <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
+        <h4 data-i18n="c_how_h">How to pray, prayer by prayer</h4>
+        <p data-i18n="c_how_p">Each of the five daily prayers shown exactly as it's performed — rak'ahs, what to say, and when to say it. No prior knowledge assumed.</p>
       </div>
       <div class="q-fcard">
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></div>
@@ -415,7 +415,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="8" cy="6" r="2" fill="currentColor"/><circle cx="16" cy="12" r="2" fill="currentColor"/><circle cx="8" cy="18" r="2" fill="currentColor"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="8" cy="6" r="2" fill="currentColor"/><circle cx="16" cy="12" r="2" fill="currentColor"/><circle cx="8" cy="18" r="2" fill="currentColor"/></svg></div>
         <h4 data-i18n="c_madhab_h">Your madhab, your settings</h4>
-        <p data-i18n="c_madhab_p">Choose <span class='q-kw'>Hanafi, Shafi'i, Maliki, or Hanbali</span>, and your prayer times follow. Turn Sunnah Ghair Mu'akkadah (SGM) and Post-Prayer Adhkar (PPA) on or off per prayer or all at once, pick a system, dark, or light theme, and lean on beginner-first notes for common conditions and rulings. The app prays the way you pray.</p>
+        <p data-i18n="c_madhab_p">Choose <span class='q-kw'>Hanafi, Shafi'i, Maliki, or Hanbali</span>, and your prayer times, Sunnah toggles, and Post-Prayer Adhkar all follow — set per prayer or all at once, with beginner-first notes for common conditions and rulings. The app prays the way you pray.</p>
       </div>
       <div class="q-fcard">
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 6 3.8 9S14.5 18.3 12 21M12 3C9.5 5.7 8.2 9 8.2 12S9.5 18.3 12 21"/></svg></div>
@@ -427,7 +427,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></div>
         <h4 data-i18n="c_zakat_h">Zakat, ingredients &amp; learn to pray</h4>
-        <p data-i18n="c_zakat_p">A simple <span class='q-kw'>Zakat calculator</span> for when it's time to give. An <span class='q-kw'>ingredients reference</span> explaining what common additives and E-numbers actually are and where they come from, with a <span class='q-kw'>barcode scan</span> to pull up a product's list. A plain-language <span class='q-kw'>glossary</span>, a <span class='q-kw'>beginner FAQ</span>, <span class='q-kw'>guided paths</span> through the library, and a four-step <span class='q-kw'>Learn to Pray</span> track. Same as everything else — no accounts, no sign-up, just open and use.</p>
+        <p data-i18n="c_zakat_p">A simple <span class='q-kw'>Zakat calculator</span> for when it's time to give, an <span class='q-kw'>ingredients reference</span> explaining common additives and E-numbers with a <span class='q-kw'>barcode scan</span> to pull up a product's list, and a four-step <span class='q-kw'>Learn to Pray</span> track for absolute beginners. Same as everything else — no accounts, no sign-up, just open and use.</p>
       </div>
     </div>
   </div>
@@ -542,17 +542,17 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       c_wudu_h: "Wudu &amp; prayer tracking",
       c_wudu_p: "Every step of <span class='q-kw'>ablution</span> in order, with a progress tracker showing what's fard and what's sunnah. Then <span class='q-kw'>log each prayer</span> as you complete it, and tap back to any day in the past week to record missed prayers.",
       c_lib_h: "A reference library, not a starter pack",
-      c_lib_p: "Twenty short <span class='q-kw'>surahs</span> with Arabic, transliteration, translation and a tap to listen. The <span class='q-kw'>du'ās</span> for salah and daily life, the <span class='q-kw'>Post-Prayer Adhkar</span>, and a separate set for <span class='q-kw'>morning and evening</span>. Then the parts you keep coming back to: the <span class='q-kw'>99 Names</span>, the <span class='q-kw'>42 Hadith</span> of an-Nawawi, the stories of the <span class='q-kw'>Prophets</span>, <span class='q-kw'>women in Islam</span>, and sixteen topics of <span class='q-kw'>madhhab difference</span> shown side by side. A <span class='q-kw'>tasbih counter</span> counts your dhikr down from 33 with a gentle pulse.",
+      c_lib_p: "Twenty short <span class='q-kw'>surahs</span> with Arabic, transliteration, translation and a tap to listen — plus <span class='q-kw'>du'ās</span> for salah and daily life, <span class='q-kw'>Post-Prayer Adhkar</span>, and a morning-and-evening set. Then the parts you keep coming back to: the <span class='q-kw'>99 Names</span>, the <span class='q-kw'>42 Hadith</span> of an-Nawawi, the stories of the <span class='q-kw'>Prophets</span>, <span class='q-kw'>women in Islam</span>, and sixteen topics of <span class='q-kw'>madhhab difference</span> shown side by side.",
       c_qibla_h: "Live Qibla compass",
       c_qibla_p: "A real-time <span class='q-kw'>compass</span> that points to the Kaaba from wherever you stand — calibrated to your device heading and current location.",
       c_mosques_h: "Nearest mosques",
       c_mosques_p: "Nearby <span class='q-kw'>masjids</span> within a search radius you control, sorted by distance. Tap any one to open directions straight in Google Maps.",
       c_madhab_h: "Your madhab, your settings",
-      c_madhab_p: "Choose <span class='q-kw'>Hanafi, Shafi'i, Maliki, or Hanbali</span>, and your prayer times follow. Turn Sunnah Ghair Mu'akkadah (SGM) and Post-Prayer Adhkar (PPA) on or off per prayer or all at once, pick a system, dark, or light theme, and lean on beginner-first notes for common conditions and rulings. The app prays the way you pray.",
+      c_madhab_p: "Choose <span class='q-kw'>Hanafi, Shafi'i, Maliki, or Hanbali</span>, and your prayer times, Sunnah toggles, and Post-Prayer Adhkar all follow — set per prayer or all at once, with beginner-first notes for common conditions and rulings. The app prays the way you pray.",
       c_lang_h: "Read it in your language",
       c_lang_p: "Use Quba in <span class='q-kw'>English, Arabic, Bengali, Turkish, or Urdu</span> — five of the most widely spoken languages across the Muslim world — with full right-to-left support.",
       c_zakat_h: "Zakat, ingredients &amp; learn to pray",
-      c_zakat_p: "A simple <span class='q-kw'>Zakat calculator</span> for when it's time to give. An <span class='q-kw'>ingredients reference</span> explaining what common additives and E-numbers actually are and where they come from, with a <span class='q-kw'>barcode scan</span> to pull up a product's list. A plain-language <span class='q-kw'>glossary</span>, a <span class='q-kw'>beginner FAQ</span>, <span class='q-kw'>guided paths</span> through the library, and a four-step <span class='q-kw'>Learn to Pray</span> track. Same as everything else — no accounts, no sign-up, just open and use.",
+      c_zakat_p: "A simple <span class='q-kw'>Zakat calculator</span> for when it's time to give, an <span class='q-kw'>ingredients reference</span> explaining common additives and E-numbers with a <span class='q-kw'>barcode scan</span> to pull up a product's list, and a four-step <span class='q-kw'>Learn to Pray</span> track for absolute beginners. Same as everything else — no accounts, no sign-up, just open and use.",
       pill_library: "Sourced reference library",
       src_h: "Where the answers come from",
       src_intro: "Religious content is easy to get wrong and hard to check. These are the rules Quba holds itself to, and they are the reason it took as long to build as it did.",
