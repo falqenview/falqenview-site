@@ -243,10 +243,8 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 .q-badge-sub{font-size:0.64rem;font-weight:400;letter-spacing:0.02em;color:rgba(122,132,153,0.7);text-transform:none;padding-left:8px;border-left:1px solid rgba(122,132,153,0.3);}
 .q-hero[dir="rtl"] .q-badge-sub{padding-left:0;padding-right:8px;border-left:none;border-right:1px solid rgba(122,132,153,0.3);}
 /* feature cards grid */
-.q-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;align-items:start;}
-.q-feature-grid>*:last-child:nth-child(3n+1){grid-column:2;}
-@media(max-width:860px){.q-feature-grid>*:last-child:nth-child(3n+1){grid-column:auto;}}
-.q-fcard{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 22px;transition:transform .2s,border-color .2s,box-shadow .2s;overflow:hidden;}
+.q-feature-grid{columns:3;column-gap:16px;margin-top:8px;}
+.q-fcard{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 22px;transition:transform .2s,border-color .2s,box-shadow .2s;overflow:hidden;break-inside:avoid;margin-bottom:16px;}
 .q-fcard-bg{position:absolute;right:-18px;bottom:-18px;width:150px;height:150px;z-index:0;color:var(--q-mid);opacity:0.13;pointer-events:none;
   -webkit-mask-image:radial-gradient(ellipse 130% 130% at 100% 100%,#000 32%,transparent 80%);
           mask-image:radial-gradient(ellipse 130% 130% at 100% 100%,#000 32%,transparent 80%);}
@@ -263,8 +261,8 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 .q-fcard p{color:var(--text-dim);font-weight:300;font-size:0.9rem;line-height:1.6;}
 /* subtle keyword emphasis — tinted color + faint underline, not bold */
 .q-kw{color:var(--q-light);font-weight:400;border-bottom:1px solid rgba(127,214,164,0.28);padding-bottom:0.5px;}
-@media(max-width:860px){.q-feature-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:560px){.q-feature-grid{grid-template-columns:1fr;}}
+@media(max-width:860px){.q-feature-grid{columns:2;}}
+@media(max-width:560px){.q-feature-grid{columns:1;}}
 /* real app banner */
 .q-realapp{display:flex;gap:20px;align-items:center;background:linear-gradient(150deg,rgba(26,77,58,0.3),rgba(20,24,32,0.4));border:1px solid rgba(82,183,136,0.28);border-radius:18px;padding:28px 30px;}
 .q-realapp-ic{flex-shrink:0;width:52px;height:52px;border-radius:13px;background:var(--q-dim);border:1px solid rgba(82,183,136,0.3);display:flex;align-items:center;justify-content:center;color:var(--q-mid);}
