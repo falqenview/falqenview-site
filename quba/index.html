@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Quba — Free Prayer Companion &amp; Sourced Islamic Reference</title>
-<meta name="description" content="Learn to pray step by step, then keep it for reference. Prayer times, Qibla compass, guided prayers, wudu, surahs, adhkar, du'ās, the 99 Names, 42 Hadith, Prophets, madhhab differences, Zakat and ingredients — every claim carrying its source. No ads. No accounts. No cost.">
-<meta name="keywords" content="prayer guide, learn salah, how to pray, wudu steps, Qibla compass, prayer times, mosque finder, du'a, adhkar, morning and evening adhkar, 99 Names, 42 Hadith Nawawi, prophets stories, women in Islam, madhhab differences, halal haram ingredients, E number checker, zakat calculator, islamic reference app, new Muslim, beginner prayer app, free Islamic app, salah for beginners, English Arabic Bengali Turkish Urdu prayer app, Quba">
+<meta name="description" content="Learn to pray step by step, then keep it for reference. Prayer times, Qibla compass, guided prayers, wudu, the full Qur'an, adhkar, du'ās, the 99 Names, 42 Hadith, Prophets, madhhab differences, Zakat and ingredients — every claim carrying its source. No ads. No accounts. No cost.">
+<meta name="keywords" content="prayer guide, learn salah, how to pray, wudu steps, Qibla compass, prayer times, mosque finder, full Quran app, Quran recitation, Quran translation, du'a, adhkar, morning and evening adhkar, 99 Names, 42 Hadith Nawawi, prophets stories, women in Islam, madhhab differences, halal haram ingredients, E number checker, zakat calculator, islamic reference app, new Muslim, beginner prayer app, free Islamic app, salah for beginners, English Arabic Bengali Turkish Urdu prayer app, Quba">
 <meta name="author" content="FalqenView">
 <meta name="theme-color" content="#1a4d3a">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -15,12 +15,12 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://falqenview.com/quba/">
 <meta property="og:title" content="Quba — Free Prayer Companion & Sourced Islamic Reference">
-<meta property="og:description" content="Start with your first prayer, or look something up. Prayer times, Qibla, guided prayers, and a reference library that shows its sources. Free, with no ads or accounts.">
+<meta property="og:description" content="Start with your first prayer, or look something up. Prayer times, Qibla, guided prayers, the full Qur'an, and a reference library that shows its sources. Free, with no ads or accounts.">
 <meta property="og:image" content="https://falqenview.com/assets/quba.png">
 <meta property="og:site_name" content="FalqenView">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Quba — Free Prayer Companion & Sourced Islamic Reference">
-<meta name="twitter:description" content="Start with your first prayer, or look something up. Prayer times, Qibla, guided prayers, and a reference library that shows its sources. Free, with no ads or accounts.">
+<meta name="twitter:description" content="Start with your first prayer, or look something up. Prayer times, Qibla, guided prayers, the full Qur'an, and a reference library that shows its sources. Free, with no ads or accounts.">
 <meta name="twitter:image" content="https://falqenview.com/assets/quba.png">
 
 <script type="application/ld+json">
@@ -29,7 +29,7 @@
   "@type": "WebApplication",
   "name": "Quba",
   "url": "https://quba.falqenview.com/",
-  "description": "A free companion for daily prayer and a sourced Islamic reference. Prayer times, a live Qibla compass, guided prayers, wudu, a nearby mosque finder, prayer tracker and tasbih, plus a reference library covering short surahs with audio, post-prayer and morning and evening adhkar, du'ās, the 99 Names, the 42 Hadith of an-Nawawi, the Prophets, women in Islam, and madhhab differences, alongside a Zakat calculator and an ingredients reference with barcode lookup. Claims carry their sources. Available in English, Arabic, Bengali, Turkish and Urdu.",
+  "description": "A free companion for daily prayer and a sourced Islamic reference. Prayer times, a live Qibla compass, guided prayers, wudu, a nearby mosque finder, prayer tracker and tasbih, plus the full Qur'an with audio recitation and translation, post-prayer and morning and evening adhkar, du'ās, the 99 Names, the 42 Hadith of an-Nawawi, the Prophets, women in Islam, and madhhab differences, alongside a Zakat calculator and an ingredients reference with barcode lookup. Claims carry their sources. Available in English, Arabic, Bengali, Turkish and Urdu.",
   "applicationCategory": "LifestyleApplication",
   "operatingSystem": "Any",
   "browserRequirements": "Requires a modern web browser",
@@ -70,6 +70,8 @@ window.addEventListener('error', function(e) {
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=optional" rel="stylesheet"></noscript>
 
+<link rel="stylesheet" href="/assets/fvmain.css">
+
 <style>
 :root {
   --bg:#141820; --bg-deep:#0e1118; --surface:#1c2230; --surface2:#232b3e;
@@ -89,26 +91,6 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflo
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.5;}
 section{position:relative;z-index:1;}
 a{color:inherit;}
-
-/* NAV (identical across site) */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 32px;background:rgba(20,24,32,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-logo img{height:32px;width:32px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(26,115,232,0.4));}
-.nav-logo-text{font-family:var(--font-display);font-weight:800;font-size:1.1rem;letter-spacing:-0.02em;color:var(--text);}
-.nav-logo-text em{font-style:normal;color:var(--cyan);}
-.nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
-.nav-links a{font-size:0.78rem;font-weight:500;letter-spacing:0.06em;color:var(--muted);text-decoration:none;text-transform:uppercase;transition:color 0.2s;position:relative;}
-.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--cyan);transform:scaleX(0);transform-origin:left;transition:transform 0.25s ease;}
-.nav-links a:hover{color:var(--text);}
-.nav-links a:hover::after{transform:scaleX(1);}
-.nav-links a.active{color:var(--text);}
-.nav-links a.active::after{transform:scaleX(1);}
-.menu-toggle{display:none;background:none;border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:1.1rem;cursor:pointer;}
-.mobile-menu{position:fixed;top:var(--nav-h);left:0;right:0;z-index:99;background:rgba(20,24,32,0.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 18px;display:none;}
-.mobile-menu.shown{display:flex;flex-direction:column;gap:4px;}
-.mobile-menu a{color:var(--text);text-decoration:none;padding:12px 14px;border-radius:8px;font-size:0.95rem;font-weight:500;}
-.mobile-menu a:hover,.mobile-menu a:focus{background:var(--surface);}
-@media (max-width:860px){.nav-links{display:none;}.menu-toggle{display:inline-flex;align-items:center;justify-content:center;}}
 
 .wrap{max-width:760px;margin:0 auto;padding:0 24px;}
 
@@ -199,34 +181,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .q-cta:hover{transform:translateY(-2px);filter:brightness(1.06);box-shadow:0 12px 38px rgba(82,183,136,0.42);}
 .q-pass{text-align:center;margin-top:20px;color:var(--muted);font-weight:300;font-size:0.96rem;font-style:italic;}
 
-/* FOOTER */
-footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-index:1;margin-top:72px;}
-.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
-.footer-brand{display:flex;flex-direction:column;gap:8px;}
-.footer-lockup{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.footer-lockup img{height:30px;width:30px;object-fit:contain;}
-.footer-lockup-text{font-family:var(--font-display);font-weight:800;font-size:1rem;color:var(--text);}
-.footer-lockup-text em{font-style:normal;color:var(--cyan);}
-.footer-motto{font-size:0.66rem;color:var(--muted);letter-spacing:0.14em;text-transform:uppercase;padding-left:40px;}
-.footer-links{display:flex;gap:22px;flex-wrap:wrap;}
-.footer-links a{font-size:0.78rem;color:var(--muted);text-decoration:none;transition:color 0.2s;}
-.footer-links a:hover{color:var(--text);}
-.footer-bottom{max-width:1100px;margin:24px auto 0;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.footer-legal{font-size:0.7rem;color:var(--muted);opacity:0.7;}
-.footer-contact a{font-size:0.74rem;color:var(--cyan);text-decoration:none;}
-.footer-contact a:hover{text-decoration:underline;}
-.footer-contact .dot{color:var(--muted);margin:0 4px;}
-
 .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.7s ease,transform 0.7s ease;}
 .reveal.visible{opacity:1;transform:none;}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
 
 @media (max-width:760px){
-  nav{padding:0 18px;}
   .q-note{padding:30px 24px;}
-  .footer-inner{flex-direction:column;align-items:flex-start;gap:18px;}
-  .footer-motto{padding-left:0;}
-  .footer-bottom{flex-direction:column;align-items:flex-start;}
 }
 
 /* hero feature pills */
@@ -275,30 +235,7 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 <body>
 
 <!-- ============ NAV ============ -->
-<nav>
-  <a href="/" class="nav-logo" aria-label="FalqenView home">
-    <picture>
-      <source srcset="/assets/fvIcon-32.webp" type="image/webp">
-      <img src="/assets/fvIcon.png" alt="FalqenView" width="32" height="32">
-    </picture>
-    <span class="nav-logo-text">Falqen<em>V</em>iew</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/products/">Products</a></li>
-    <li><a href="/videos.html">Videos</a></li>
-    <li><a href="/about.html">About</a></li>
-    <li><a href="/support.html">Support</a></li>
-  </ul>
-  <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">≡</button>
-</nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="/">Home</a>
-  <a href="/products/">Products</a>
-  <a href="/videos.html">Videos</a>
-  <a href="/about.html">About</a>
-  <a href="/support.html">Support</a>
-</div>
+<div id="fv-nav"></div>
 
 <!-- ============ HERO ============ -->
 <section class="q-hero">
@@ -374,10 +311,16 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
         <p data-i18n="c_times_p">The five prayers for today, calculated from your current location, with a gentle <span class='q-kw'>countdown</span> to the next — Fajr through Isha, in your local time.</p>
       </div>
       <div class="q-fcard">
+        <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+        <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+        <h4 data-i18n="c_quran_h">The full Qur'an, read or recited</h4>
+        <p data-i18n="c_quran_p">All 114 <span class='q-kw'>sūrahs</span>, every ayah, with a choice of <span class='q-kw'>10 reciters</span> and <span class='q-kw'>10 translation editions</span> across nine languages. Download it for offline reading and listening, set a sleep timer, and pick up lock-screen playback right where you left off.</p>
+      </div>
+      <div class="q-fcard">
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2z"/><path d="M8 8h8M8 12h6"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2z"/><path d="M8 8h8M8 12h6"/></svg></div>
         <h4 data-i18n="c_lib_h">A reference library, not a starter pack</h4>
-        <p data-i18n="c_lib_p">Twenty short <span class='q-kw'>surahs</span> with Arabic, transliteration, translation and a tap to listen — plus <span class='q-kw'>du'ās</span> for salah and daily life, <span class='q-kw'>Post-Prayer Adhkar</span>, and a morning-and-evening set. Then the parts you keep coming back to: the <span class='q-kw'>99 Names</span>, the <span class='q-kw'>42 Hadith</span> of an-Nawawi, the stories of the <span class='q-kw'>Prophets</span>, <span class='q-kw'>women in Islam</span>, and sixteen topics of <span class='q-kw'>madhhab difference</span> shown side by side.</p>
+        <p data-i18n="c_lib_p">A curated <span class='q-kw'>Short Sūrahs</span> shortcut opens straight into the full Qur'an reader, alongside <span class='q-kw'>du'ās</span> for salah and daily life, <span class='q-kw'>Post-Prayer Adhkar</span>, and a morning-and-evening set. Then the parts you keep coming back to: the <span class='q-kw'>99 Names</span>, the <span class='q-kw'>42 Hadith</span> of an-Nawawi, the stories of the <span class='q-kw'>Prophets</span>, <span class='q-kw'>women in Islam</span>, and sixteen topics of <span class='q-kw'>madhhab difference</span> shown side by side.</p>
       </div>
       <div class="q-fcard">
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 9-14 9V3z"/></svg></div>
@@ -461,46 +404,10 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
 </section>
 
 <!-- ============ FOOTER ============ -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <a href="/" class="footer-lockup" aria-label="FalqenView">
-        <picture>
-          <source srcset="/assets/fvIcon-32.webp" type="image/webp">
-          <img src="/assets/fvIcon.png" alt="FalqenView" width="30" height="30">
-        </picture>
-        <span class="footer-lockup-text">Falqen<em>V</em>iew</span>
-      </a>
-      <div class="footer-motto">See further. Act smarter.</div>
-    </div>
-    <div class="footer-links">
-      <a href="/">Home</a>
-      <a href="/products/">Products</a>
-      <a href="/videos.html">Videos</a>
-      <a href="/about.html">About</a>
-      <a href="/support.html">Support</a>
-      <a href="/changelog.html">Changelog</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-legal">© 2026 FalqenView · <a href="/terms.html">Terms of Use</a> · <a href="/privacy.html">Privacy Policy</a> · For informational purposes only. Not financial advice.</div>
-    <div class="footer-contact"><a href="https://falqenview.gumroad.com/l/mqookv">Get VuePoint →</a> <span class="dot">·</span> <a href="https://falqenview.gumroad.com/l/bwvbl">Get Talon →</a></div>
-  </div>
-</footer>
+<div id="fv-footer"></div>
+<script src="/assets/components.js"></script>
 
 <script>
-  var mt = document.getElementById('menuToggle');
-  var mm = document.getElementById('mobileMenu');
-  if (mt && mm) {
-    mt.addEventListener('click', function () {
-      var open = mm.classList.toggle('shown');
-      mt.setAttribute('aria-expanded', open);
-      mt.textContent = open ? '✕' : '≡';
-    });
-    mm.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () { mm.classList.remove('shown'); mt.textContent = '≡'; mt.setAttribute('aria-expanded', false); });
-    });
-  }
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e, i) { if (e.isIntersecting) { setTimeout(function () { e.target.classList.add('visible'); }, i * 60); io.unobserve(e.target); } });
   }, { threshold: 0.06 });
@@ -535,12 +442,14 @@ footer{border-top:1px solid var(--border);padding:44px 32px;position:relative;z-
       c_times_p: "The five prayers for today, calculated from your current location, with a gentle <span class='q-kw'>countdown</span> to the next — Fajr through Isha, in your local time.",
       c_how_h: "How to pray, prayer by prayer",
       c_how_p: "Each of the five daily prayers shown exactly as it's performed — rak'ahs, what to say, and when to say it. No prior knowledge assumed.",
+      c_quran_h: "The full Qur'an, read or recited",
+      c_quran_p: "All 114 <span class='q-kw'>sūrahs</span>, every ayah, with a choice of <span class='q-kw'>10 reciters</span> and <span class='q-kw'>10 translation editions</span> across nine languages. Download it for offline reading and listening, set a sleep timer, and pick up lock-screen playback right where you left off.",
       c_guided_h: "Pray along, step by step",
       c_guided_p: "A full-screen <span class='q-kw'>guided mode</span> walks you through a whole prayer one move at a time, so the first time you stand to pray, you're never guessing what comes next.",
       c_wudu_h: "Wudu &amp; prayer tracking",
       c_wudu_p: "Every step of <span class='q-kw'>ablution</span> in order, with a progress tracker showing what's fard and what's sunnah. Then <span class='q-kw'>log each prayer</span> as you complete it, and tap back to any day in the past week to record missed prayers.",
       c_lib_h: "A reference library, not a starter pack",
-      c_lib_p: "Twenty short <span class='q-kw'>surahs</span> with Arabic, transliteration, translation and a tap to listen — plus <span class='q-kw'>du'ās</span> for salah and daily life, <span class='q-kw'>Post-Prayer Adhkar</span>, and a morning-and-evening set. Then the parts you keep coming back to: the <span class='q-kw'>99 Names</span>, the <span class='q-kw'>42 Hadith</span> of an-Nawawi, the stories of the <span class='q-kw'>Prophets</span>, <span class='q-kw'>women in Islam</span>, and sixteen topics of <span class='q-kw'>madhhab difference</span> shown side by side.",
+      c_lib_p: "A curated <span class='q-kw'>Short Sūrahs</span> shortcut opens straight into the full Qur'an reader, alongside <span class='q-kw'>du'ās</span> for salah and daily life, <span class='q-kw'>Post-Prayer Adhkar</span>, and a morning-and-evening set. Then the parts you keep coming back to: the <span class='q-kw'>99 Names</span>, the <span class='q-kw'>42 Hadith</span> of an-Nawawi, the stories of the <span class='q-kw'>Prophets</span>, <span class='q-kw'>women in Islam</span>, and sixteen topics of <span class='q-kw'>madhhab difference</span> shown side by side.",
       c_qibla_h: "Live Qibla compass",
       c_qibla_p: "A real-time <span class='q-kw'>compass</span> that points to the Kaaba from wherever you stand — calibrated to your device heading and current location.",
       c_mosques_h: "Nearest mosques",
