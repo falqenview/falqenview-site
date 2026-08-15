@@ -100,9 +100,10 @@ a{color:inherit;}
 /* arabesque geometric pattern backdrop */
 .q-hero-pattern{position:absolute;inset:0;z-index:0;opacity:0.06;background-image:url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2352b788' stroke-width='1'%3E%3Cpath d='M60 0 L75 45 L120 60 L75 75 L60 120 L45 75 L0 60 L45 45 Z'/%3E%3Crect x='30' y='30' width='60' height='60' transform='rotate(45 60 60)'/%3E%3Ccircle cx='60' cy='60' r='30'/%3E%3C/g%3E%3C/svg%3E");background-size:118px 118px;mask-image:radial-gradient(ellipse 80% 80% at 50% 35%,black 25%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 35%,black 25%,transparent 80%);}
 .q-hero-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;}
-.q-crest{width:78px;height:78px;margin:0 auto 26px;display:flex;align-items:center;justify-content:center;}
-.q-crest svg{width:78px;height:78px;filter:drop-shadow(0 0 18px rgba(82,183,136,0.45));}
-.q-crest img{filter:drop-shadow(0 0 14px rgba(230,185,80,0.65)) drop-shadow(0 0 36px rgba(200,155,50,0.35));}
+.q-crest{width:84px;height:84px;margin:0 auto 26px;display:flex;align-items:center;justify-content:center;position:relative;}
+.q-crest::before{content:'';position:absolute;inset:-30px;z-index:0;background:radial-gradient(circle,rgba(201,162,39,0.24) 0%,rgba(82,183,136,0.10) 45%,transparent 72%);filter:blur(6px);pointer-events:none;}
+.q-crest svg{width:84px;height:84px;filter:drop-shadow(0 0 18px rgba(82,183,136,0.45));position:relative;z-index:1;}
+.q-crest img{position:relative;z-index:1;filter:drop-shadow(0 0 8px rgba(230,185,80,0.4)) drop-shadow(0 0 22px rgba(200,155,50,0.2));}
 .q-eyebrow-wrap{display:flex;align-items:center;justify-content:center;gap:8px;}
 .q-eyebrow{display:inline-block;font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--q-mid);}
 .q-star-seal{display:inline-flex;width:13px;height:13px;color:var(--q-gold);opacity:0.85;flex-shrink:0;}
@@ -317,19 +318,21 @@ a{color:inherit;}
 /* ============ FEATURE RAIN ============ */
 #quba-rain{
   position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;
-  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,0.6) 12%,rgba(0,0,0,0.85) 45%,transparent 92%);
-  mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,0.6) 12%,rgba(0,0,0,0.85) 45%,transparent 92%);
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,0.55) 14%,rgba(0,0,0,0.8) 42%,transparent 86%);
+  mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,0.55) 14%,rgba(0,0,0,0.8) 42%,transparent 86%);
 }
 .qr-drop{
   position:absolute;top:-3em;
-  font-family:var(--font-body);font-size:0.82rem;font-weight:600;
-  letter-spacing:0.06em;white-space:nowrap;
+  font-family:var(--font-body);font-size:0.78rem;font-weight:600;
+  letter-spacing:0.05em;white-space:normal;max-width:158px;line-height:1.3;
   color:var(--q-mid);
   will-change:transform,opacity;
   animation-name:qr-fall;
   animation-timing-function:linear;
   animation-iteration-count:infinite;
 }
+.qr-drop--left{text-align:left;}
+.qr-drop--right{text-align:right;}
 @keyframes qr-fall{
   0%  {transform:translateY(0);   opacity:0;}
   6%  {opacity:1;}
@@ -377,7 +380,7 @@ a{color:inherit;}
   <div class="q-hero-pattern"></div>
   <div class="q-hero-inner">
     <div class="q-crest">
-      <img src="/assets/quba.png" alt="Quba" width="78" height="78" style="object-fit:contain;border-radius:18px;">
+      <img src="/assets/quba.png" alt="Quba" width="84" height="84" style="object-fit:contain;border-radius:18px;">
     </div>
     <div class="q-eyebrow-wrap">
       <span class="q-star-seal" aria-hidden="true"><svg viewBox="0 0 80 80" fill="currentColor"><path d="M40 4 L50 30 L76 40 L50 50 L40 76 L30 50 L4 40 L30 30 Z"/></svg></span>
@@ -932,12 +935,8 @@ a{color:inherit;}
   if(!container)return;
   if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
 
-  var cols=Math.max(3,Math.floor(container.offsetWidth/220));
-  var ambientActive=[];
-
   function rand(a,b){return a+Math.random()*(b-a);}
   function hex(opacity){return 'rgba(82,183,136,'+opacity.toFixed(2)+')';}
-
   function shuffle(arr){
     var a=arr.slice();
     for(var i=a.length-1;i>0;i--){
@@ -947,20 +946,63 @@ a{color:inherit;}
     return a;
   }
 
+  // ---------- Flank geometry: keep the entire hero text column clear ----------
+  // The hero's readable content (.q-hero-inner) is capped at 680px and centered.
+  // Rain is only allowed to fall in the open space beside it, so it frames the
+  // headline instead of sitting behind it. On narrow viewports there is no safe
+  // room beside the text at all, so the effect quietly disables itself.
+  var HERO_TEXT_WIDTH=680;
+  var EDGE_MARGIN=18;      // keep clear of the viewport edge (avoids clipping)
+  var TEXT_SAFETY_PAD=28;  // extra breathing room around the text column
+
+  function computeFlanks(){
+    var w=container.offsetWidth;
+    var half=Math.min(HERO_TEXT_WIDTH,w*0.92)/2;
+    var textStart=w/2-half-TEXT_SAFETY_PAD;
+    var textEnd=w/2+half+TEXT_SAFETY_PAD;
+    var leftW=textStart-EDGE_MARGIN;
+    var rightW=w-textEnd-EDGE_MARGIN;
+    return {
+      w:w,
+      left:{from:EDGE_MARGIN,width:leftW},
+      right:{from:textEnd,width:rightW}
+    };
+  }
+
+  var flanks=computeFlanks();
+  var MIN_FLANK=90; // below this, there's no safe room — disable rain entirely
+  if(flanks.left.width<MIN_FLANK || flanks.right.width<MIN_FLANK)return;
+
+  // Two sub-lanes per flank so drops within a side don't all stack on one line.
+  function flankPositionCSS(side){
+    var f=flanks[side];
+    var lane=Math.floor(Math.random()*2);
+    var laneWidth=f.width/2;
+    var laneStart=f.from+lane*laneWidth;
+    var pxFromLeft=laneStart+rand(laneWidth*0.15,laneWidth*0.85);
+    if(side==='left'){
+      var pct=(pxFromLeft/flanks.w)*100;
+      return 'left:'+pct.toFixed(2)+'%';
+    }else{
+      var pctFromRight=((flanks.w-pxFromLeft)/flanks.w)*100;
+      return 'right:'+pctFromRight.toFixed(2)+'%';
+    }
+  }
+
   // ---------- Ambient background rain: plain, no flash, full pool ----------
+  var ambientActive=[];
   function spawnAmbient(){
     var el=document.createElement('span');
-    el.className='qr-drop';
+    var side=Math.random()<0.5?'left':'right';
+    el.className='qr-drop qr-drop--'+side;
     var feat=FEATURES[Math.floor(Math.random()*FEATURES.length)];
     el.textContent=feat;
-    var col=Math.floor(Math.random()*cols);
-    var x=col*(100/cols)+rand(-0.8,0.8);
-    var dur=rand(7,18);
+    var dur=rand(9,19);
     var delay=rand(0,dur*0.9);
     var dist=rand(88,110);
-    var opacity=rand(0.35,0.68);
+    var opacity=rand(0.22,0.46);
     el.style.cssText=[
-      'left:'+x+'%',
+      flankPositionCSS(side),
       '--fall-dist:'+dist+'vh',
       'animation-duration:'+dur.toFixed(1)+'s',
       'animation-delay:'+(-delay).toFixed(1)+'s',
@@ -968,8 +1010,8 @@ a{color:inherit;}
     ].join(';');
     container.appendChild(el);
     ambientActive.push(el);
-    if(ambientActive.length>55){
-      var old=ambientActive.splice(0,15);
+    if(ambientActive.length>26){
+      var old=ambientActive.splice(0,8);
       old.forEach(function(e){if(e.parentNode)e.parentNode.removeChild(e);});
     }
   }
@@ -980,22 +1022,21 @@ a{color:inherit;}
   var activeProminentCount=0;
 
   function nextProminentFeature(){
-    if(prominentQueue.length===0) prominentQueue=shuffle(PROMINENT);
+    if(prominentQueue.length===0)prominentQueue=shuffle(PROMINENT);
     return prominentQueue.shift();
   }
 
   function trySpawnProminent(){
     if(activeProminentCount>=MAX_CONCURRENT_PROMINENT)return;
     var feat=nextProminentFeature();
+    var side=Math.random()<0.5?'left':'right';
     var el=document.createElement('span');
-    el.className='qr-drop qr-drop--prominent';
+    el.className='qr-drop qr-drop--prominent qr-drop--'+side;
     el.textContent=feat;
-    var col=Math.floor(Math.random()*cols);
-    var x=col*(100/cols)+rand(-0.8,0.8);
-    var dur=rand(9,15);
+    var dur=rand(10,16);
     var dist=rand(88,110);
     el.style.cssText=[
-      'left:'+x+'%',
+      flankPositionCSS(side),
       '--fall-dist:'+dist+'vh',
       'animation-duration:'+dur.toFixed(1)+'s',
       'animation-delay:0s',
@@ -1013,16 +1054,17 @@ a{color:inherit;}
     setTimeout(cleanup,(dur+2)*1000); // safety net if animationend never fires
   }
 
-  // seed ambient rain immediately so the hero isn't bare on load
-  var seed=Math.min(cols*2,16);
-  for(var i=0;i<seed;i++)spawnAmbient();
-  setInterval(spawnAmbient,640);
+  // seed ambient rain lightly so the hero isn't bare on load, but stays calm
+  for(var i=0;i<7;i++)spawnAmbient();
+  setInterval(spawnAmbient,980);
 
-  // stagger prominent turns: attempted every ~2.2s, gated by the concurrency
+  // stagger prominent turns: attempted periodically, gated by the concurrency
   // cap and the fair rotation queue above
-  setTimeout(trySpawnProminent,900);
-  setTimeout(trySpawnProminent,1800);
-  setInterval(trySpawnProminent,2200);
+  setTimeout(trySpawnProminent,1000);
+  setTimeout(trySpawnProminent,2200);
+  setInterval(trySpawnProminent,2600);
+
+  window.addEventListener('resize',function(){flanks=computeFlanks();});
 })();</script>
 </body>
 </html>
