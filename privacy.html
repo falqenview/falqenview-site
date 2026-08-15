@@ -68,7 +68,7 @@ a:hover{text-decoration:underline;}
   <div class="page-eyebrow">Legal</div>
   <h1 class="page-title">Privacy Policy</h1>
   <div class="page-meta">
-    Effective date: May 25, 2026 &nbsp;·&nbsp; Last revised: July 14, 2026 &nbsp;·&nbsp;
+    Effective date: May 25, 2026 &nbsp;·&nbsp; Last revised: August 15, 2026 &nbsp;·&nbsp;
     <strong>This policy may be updated at any time without prior notice. Continued use of the site or product constitutes acceptance of the current policy.</strong>
   </div>
 
@@ -89,9 +89,17 @@ a:hover{text-decoration:underline;}
     <div class="section-title">3. Your Data</div>
     <div class="highlight-box"><strong>We never see your data.</strong> All information you enter into a FalqenView product — portfolio positions, bill amounts, account names, balances, or any other financial detail — lives exclusively where you put it: your own Google account. There is no FalqenView server receiving it, no database storing it, and no one with access to it. Not now, not ever.</div>
     <p>FalqenView's free browser tools — including all utilities hosted at tools.falqenview.com — run entirely within your browser. Nothing you type or paste into them is transmitted to FalqenView or any third party. No account is required, and no data persists beyond your current session.</p>
-    <p>Quba, FalqenView's free Islamic prayer app, stores your preferences and prayer tracking locally on your device using your browser's built-in storage. That information never leaves your device and is never transmitted to or stored by FalqenView. When you use the mosque finder feature, your approximate location is sent through FalqenView's servers to Google's Places API solely to return nearby mosque results. FalqenView does not log or store your location. That query is governed by Google's privacy policy.</p>
     <p>FalqenView holds no copies of your financial or personal data. There is no FalqenView database to compromise. Any security exposure related to your data would exist entirely within systems you already own and control — your Google account or your device.</p>
     <div class="highlight-box"><strong>No mothership. No back door. No exceptions.</strong></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">3a. Quba — Islamic Prayer Companion</div>
+    <p>Quba is a free Islamic prayer companion offered at quba.falqenview.com. It was built to serve anyone learning to pray, returning to their prayer after time away, or seeking to understand their faith more deeply — with no barriers, no cost, and no conditions attached.</p>
+    <div class="highlight-box"><strong>Quba does not collect, transmit, or store your personal data.</strong> Your preferences, prayer logs, tasbih counts, favorites, Qur'an reading position, reciter and translation choices, madhhab setting, and any other in-app state are stored locally on your device. None of it is ever sent to FalqenView.</div>
+    <p>Some features require a network connection to function — the mosque finder uses your approximate location to return nearby results, and Qur'an audio and translations are fetched on demand and stored on your device for later offline use. In all cases, FalqenView does not log, retain, or have access to your location or any content you access through these features. When you share a du'a card through the Send Comfort feature, the image is composed entirely on your device and shared directly from it — nothing passes through FalqenView.</p>
+    <p>Quba collects no personal information and requires no account or login of any kind. Your data lives on your device. There is no FalqenView account to recover it from, because none was ever created.</p>
+    <p>Quba uses privacy-preserving, cookieless analytics solely to count anonymous visits — no personal data, no behavioral tracking, no individual identification of any kind.</p>
   </div>
 
   <div class="section">
@@ -132,13 +140,13 @@ a:hover{text-decoration:underline;}
   </div>
 
   <div class="section">
-    <div class="section-title">3a. Third-Party Services &amp; Infrastructure</div>
+    <div class="section-title">3e. Third-Party Services &amp; Infrastructure</div>
     <p>FalqenView uses a small number of third-party services to operate this site and its products. None of these services receive your financial data, portfolio information, or personal files. FalqenView does not use advertising networks, behavioral tracking platforms, or analytics services of any kind.</p>
     <ul>
-      <li><strong>Cloudflare</strong> — FalqenView's website and tools are served through Cloudflare's infrastructure. Cloudflare may process standard request metadata, including IP addresses, as part of its network operations. If you subscribe to Swoop Recall Cloud, your end-to-end encrypted archive backups are stored on Cloudflare R2; FalqenView cannot read their contents. This is governed by Cloudflare's privacy policy.</li>
-      <li><strong>Google Fonts</strong> — Typography on this site is loaded from Google's font servers. Google may log font request metadata including IP addresses. This is governed by Google's privacy policy.</li>
-      <li><strong>Gumroad</strong> — All purchases are processed by Gumroad. See §2 above for details. Swoop Pro and Swoop Recall (Pro and Cloud) license key verification is proxied through FalqenView's infrastructure to Gumroad's license API; no personal data beyond the license key is transmitted.</li>
-      <li><strong>Google Places API</strong> — Used by Quba's mosque finder to return location-based results. See §3 above for details.</li>
+      <li><strong>Cloudflare</strong> — FalqenView's website and tools are served through Cloudflare's infrastructure. Cloudflare may process standard request metadata, including IP addresses, as part of its network operations. If you subscribe to Swoop Recall Cloud, your end-to-end encrypted archive backups are stored on Cloudflare's infrastructure; FalqenView cannot read their contents. This is governed by Cloudflare's privacy policy.</li>
+      <li><strong>Google</strong> — Typography on this site and in the Quba app is loaded from Google's font servers. Quba's mosque finder routes location queries through a third-party mapping service to return nearby results; FalqenView does not retain this data. These interactions are governed by Google's privacy policy.</li>
+      <li><strong>Gumroad</strong> — All purchases are processed by Gumroad. See §2 above for details. License key verification for paid products is proxied through FalqenView's infrastructure to Gumroad's license service; no personal data beyond the license key is transmitted.</li>
+      <li><strong>Qur'an content providers</strong> — Quba fetches Qur'an audio and translation text from reputable third-party Islamic content services on demand. FalqenView does not receive or retain the content of these requests. See §3a above for how this data is handled.</li>
       <li><strong>YouTube</strong> — FalqenView's videos page references content hosted on YouTube. Any interaction with YouTube content is subject to YouTube's privacy policy.</li>
     </ul>
     <p>If FalqenView adds a new third-party service that materially changes how data is handled, this section will be updated to reflect it.</p>
@@ -148,6 +156,7 @@ a:hover{text-decoration:underline;}
     <div class="section-title">4. Why This Matters</div>
     <p>Most software is designed to learn about you. FalqenView is designed to work for you. The distinction is intentional.</p>
     <p>We chose to build products where the only person with access to your financial and personal data is you. Not because privacy is good marketing. Because handing someone else visibility into your accounts — even passively, even "anonymized" — is a trade you should never have to make just to use a decent tool.</p>
+    <p>The same principle applies to Quba. A prayer app has no business tracking who you are, how often you pray, or where you do it. Your relationship with your faith belongs to you. Quba's job is to serve that relationship, quietly, and then get out of the way.</p>
     <p>FalqenView keeps its focus on the work. No founder profile. No personal brand attached to the products. The tools stand on their own.</p>
   </div>
 

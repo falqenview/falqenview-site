@@ -230,7 +230,57 @@ a{color:inherit;}
 .q-realapp h4{font-family:var(--font-display);font-weight:700;font-size:1.1rem;margin-bottom:7px;letter-spacing:-0.01em;color:var(--text);}
 .q-realapp p{color:var(--text-dim);font-weight:300;font-size:0.98rem;line-height:1.65;}
 @media(max-width:560px){.q-realapp{flex-direction:column;text-align:center;align-items:center;}}
-</style>
+
+/* ============ FEATURE RAIN ============ */
+#quba-rain{
+  position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,0.6) 12%,rgba(0,0,0,0.85) 45%,transparent 92%);
+  mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,0.6) 12%,rgba(0,0,0,0.85) 45%,transparent 92%);
+}
+.qr-drop{
+  position:absolute;top:-3em;
+  font-family:var(--font-body);font-size:0.82rem;font-weight:600;
+  letter-spacing:0.06em;white-space:nowrap;
+  color:var(--q-mid);
+  will-change:transform,opacity;
+  animation-name:qr-fall;
+  animation-timing-function:linear;
+  animation-iteration-count:infinite;
+}
+@keyframes qr-fall{
+  0%  {transform:translateY(0);   opacity:0;}
+  6%  {opacity:1;}
+  88% {opacity:0.55;}
+  100%{transform:translateY(var(--fall-dist,110vh)); opacity:0;}
+}
+/* PROMINENT drops: same fall path, but flash gold + scale up once mid-fall,
+   like the word catches a beam of light on the way down. */
+.qr-drop--prominent{
+  font-weight:800;
+  color:var(--q-mid);
+  animation-name:qr-fall-prominent;
+  animation-timing-function:linear;
+  animation-iteration-count:infinite;
+  z-index:1;
+}
+@keyframes qr-fall-prominent{
+  0%   {transform:translateY(0) scale(1);
+        opacity:0; color:var(--q-mid);
+        text-shadow:0 0 0 rgba(201,162,39,0);}
+  6%   {opacity:0.9;}
+  36%  {transform:translateY(calc(var(--fall-dist,110vh) * 0.36)) scale(1);
+        opacity:0.9; color:var(--q-mid);
+        text-shadow:0 0 0 rgba(201,162,39,0);}
+  46%  {transform:translateY(calc(var(--fall-dist,110vh) * 0.46)) scale(1.26);
+        opacity:1; color:var(--q-gold);
+        text-shadow:0 0 10px rgba(201,162,39,0.9),0 0 26px rgba(201,162,39,0.5);}
+  58%  {transform:translateY(calc(var(--fall-dist,110vh) * 0.58)) scale(1);
+        opacity:0.9; color:var(--q-mid);
+        text-shadow:0 0 0 rgba(201,162,39,0);}
+  90%  {opacity:0.6;}
+  100% {transform:translateY(var(--fall-dist,110vh)) scale(1); opacity:0;}
+}
+@media(prefers-reduced-motion:reduce){#quba-rain{display:none;}}</style>
 </head>
 <body>
 
@@ -239,6 +289,7 @@ a{color:inherit;}
 
 <!-- ============ HERO ============ -->
 <section class="q-hero">
+  <div id="quba-rain" aria-hidden="true"></div>
   <div class="q-hero-glow"></div>
   <div class="q-hero-pattern"></div>
   <div class="q-hero-inner">
@@ -256,7 +307,7 @@ a{color:inherit;}
       <button class="q-lang-btn" data-lang="ar" lang="ar">عربي<span class="q-audio-icon" data-audio="ar" role="button" aria-label="استمع بالعربية" title="استمع بالعربية"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><polygon points="3,2 13,8 3,14"/><path class="q-arc" d="M13.5 4.5 a5 5 0 0 1 0 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></button>
     </div>
     <h1 data-i18n="hero_h1">The first step is the hardest.<br><em>We made it easier.</em></h1>
-    <p class="tagline" data-i18n="hero_tag">Simple enough to pray with today, deep enough to keep. A guided walkthrough of the five daily prayers, a live compass to the Kaaba, and a reference library that shows you where every answer comes from.</p>
+    <p class="tagline" data-i18n="hero_tag">Simple enough to start with today. Deep enough to stay. A guided walkthrough of all five daily prayers, a live compass to the Kaaba, and a reference library that shows its sources.</p>
     <p class="arabic">السلام عليكم</p>
     <div class="q-pills">
       <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-i18n="pill_times">Prayer times &amp; tracker</span></span>
@@ -279,7 +330,7 @@ a{color:inherit;}
       <svg viewBox="0 0 1024 1024" fill="currentColor"><path fill="currentColor" d="M507.706 151.234C612.468 148.545 699.631 231.176 702.536 335.933C705.44 440.689 622.989 528.022 518.239 531.142C413.183 534.271 325.54 451.527 322.627 346.465C319.714 241.404 402.639 153.931 507.706 151.234ZM521.196 524.339C622.196 519.457 700.161 433.699 695.426 332.692C690.691 231.685 605.046 153.596 504.032 158.184C402.811 162.782 324.526 248.641 329.271 349.856C334.016 451.071 419.989 529.23 521.196 524.339Z"/><path fill="currentColor" d="M512.15 264.096C527.77 251.279 544.205 242.835 564.746 242.903C630.106 243.118 669.903 321.428 621.421 369.877C615.258 376.035 608.954 382.367 602.794 388.512L555.75 434.962L532.53 458.158C528.683 462.001 518.713 473.04 513.651 473.427C507.748 473.878 498.304 462.909 493.861 458.648C485.36 450.495 477.003 441.608 468.424 433.32C451.739 417.478 435.169 401.514 418.718 385.43C412.388 379.19 401.109 368.672 396.443 362.009C389.043 351.298 384.422 338.915 382.997 325.974C381.266 310.602 384.766 296.641 391.876 283.013C403.839 260.086 427.883 246.031 453.193 243.184C472.529 240.714 498.585 250.22 512.15 264.096ZM474.426 411.175L499.529 435.516C503.036 438.902 509.387 445.364 512.937 448.173C518.606 443.913 527.079 434.874 532.27 429.731L565.039 397.305L595.588 367.226C606.789 356.004 619.524 344.947 621.311 328.26C622.775 314.6 620.243 297.425 611.523 286.361C599.337 270.899 583.437 263.891 564.098 263.728C546.275 264.362 535.768 270.394 523.035 282.454C517.1 288.074 512.564 290.464 505.272 285.193C498.543 280.33 492.585 273.956 485.177 270.008C462.182 258.414 434.814 263.468 417.359 282.328C407.392 293.097 403.258 308.008 403.882 322.213C404.251 331.566 407.096 340.654 412.128 348.547C416.254 355.045 429.494 367.322 435.665 373.316C448.742 385.774 461.664 398.394 474.426 411.175Z"/><path fill="currentColor" d="M205.802 290.696C232.24 288.852 251.719 310.142 251.68 335.86C251.645 359.228 251.292 382.609 251.285 405.977L251.422 434.639C251.453 440.127 252.659 455.639 247.557 458.783C236.925 465.333 228.633 456.75 230.413 445.247C230.7 443.39 230.495 435.22 230.484 432.693L230.43 364.94C230.434 353.342 230.94 340.896 229.7 329.393C227.352 307.597 194.521 305.942 187.153 325.442C186.183 328.01 186.342 332.419 186.069 335.184C185.92 352.58 186.011 369.99 186.027 387.388L185.976 480.921L185.994 539.366C185.995 550.165 185.68 563.201 186.555 573.844C187.377 583.84 192.207 597.788 197.039 606.5C203.021 617.285 211.922 624.383 220.479 632.839C224.906 637.214 229.644 642.532 233.957 647.169L329.825 750.03C338.64 759.684 348.07 768.825 356.695 778.683C360.976 783.576 363.907 786.641 363.973 793.667C364.238 821.76 363.826 849.865 364.181 877.958C364.239 882.479 362.525 887.763 358.094 889.733C355.49 890.891 352.519 890.903 349.905 889.768C347.217 888.608 345.19 886.307 344.379 883.495C343.007 878.785 343.512 861.11 343.523 855.155L343.59 814.395C343.596 808.946 343.906 802.219 343.055 796.883C342.759 795.024 339.849 791.155 338.47 789.636C322.862 772.439 306.967 755.284 291.079 738.362L219.882 661.998C208.93 650.228 197.075 638.843 186.156 627.139C180.474 619.807 175.501 610.376 172.138 601.89C162.482 577.527 164.932 549.94 164.894 524.266L164.727 447.012L164.883 373.318C164.884 360.206 164.84 347.12 164.988 334.008C165.257 310.251 182.327 292.751 205.802 290.696Z"/><path fill="currentColor" d="M811.29 291.17C835.6 287.398 858.787 306.693 859.912 331.073C860.203 337.376 860.106 343.652 860.088 349.959L860.025 381.892L859.993 481.938L860.051 535.767C860.1 561.314 861.797 580.368 851.67 604.666C842.639 626.334 832.238 635.607 816.67 651.921L789.934 680.211L734.325 739.183C717.583 756.805 697.14 777.595 681.485 795.927L681.436 854.894C681.374 863.559 681.919 872.858 680.843 881.45C680.59 883.463 680.067 885.429 678.71 886.995C676.959 889.016 674.127 890.026 671.511 890.138C668.477 890.268 665.358 889.353 663.179 887.167C660.222 884.2 660.538 879.208 660.451 875.274C660.198 863.798 659.431 792.169 661.598 787.832C665.439 780.148 684.515 761.93 691.53 754.609C703.532 741.042 717.414 727.032 729.953 713.841L787.974 652.365C799.631 639.974 819.051 622.027 826.763 608.558C833.014 597.845 837.006 585.967 838.495 573.653C839.841 562.127 839.452 547.717 839.467 535.889L839.501 479.506L839.369 390.302C839.406 372.347 839.4 354.306 839.472 336.27C840.233 316.089 819.713 304.663 803.029 315.985C797.426 319.788 795.747 324.585 795.15 331.067C794.304 340.272 794.602 349.983 794.611 359.211L794.707 418.999C794.732 429.224 794.916 439.531 794.678 449.751C794.559 454.892 792.812 459.382 787.397 460.79C784.463 461.552 781.345 461.037 778.813 459.372C776.942 458.12 774.748 455.505 774.545 453.233C773.948 446.53 774.05 439.33 774.038 432.607L774.053 394.466L774.021 353.753C773.995 344.944 773.442 334.748 774.726 326.117C777.568 307.022 792.391 293.728 811.29 291.17Z"/><path fill="currentColor" d="M748.472 476.676C749.682 476.533 750.496 476.477 751.725 476.449C763.202 476.08 774.32 480.475 782.443 488.59C797.42 503.39 799.507 529.304 783.974 544.719C778.727 549.926 772.567 554.788 767.024 559.761L723.393 598.804C713.309 608.021 703.178 617.186 692.999 626.298C687.081 631.65 681.133 637.309 674.81 642.03C670.387 645.332 664.685 643.725 661.363 639.853C658.874 636.952 658.217 630.665 660.589 627.826C667.623 619.408 677.112 612.814 685.267 605.482C694.79 597.033 703.645 588.608 713.037 580.189C723.89 569.945 736.441 560.752 746.919 550.115C754.86 542.055 773.125 531.109 774.211 519.777C775.4 507.381 766.297 496.853 753.869 496.572C749.952 496.483 745.872 497.29 742.713 499.778C734.627 505.805 727.615 513.249 720.258 520.157L685.965 552.164L626.32 608.038C615.261 618.268 603.633 628.561 592.753 638.923C576.083 655.323 563.619 679.739 558.762 702.512C554.455 722.709 555.656 748.122 555.615 769.208C555.504 797.746 555.543 826.286 555.732 854.824C555.755 858.772 555.338 866.468 555.812 871.077C557.429 882.296 552.113 894.853 538.997 888.451C533.183 885.613 534.596 864.762 534.577 858.883L534.569 820.827L534.667 756.224C534.716 739.825 534.259 720.744 537.143 704.707C541.204 682.128 549.826 661.119 563.219 642.48C571.684 630.698 580.834 622.423 591.248 612.435C602.121 602.056 613.087 591.774 624.143 581.591L698.529 512.513C709.247 502.719 719.842 491.342 731.185 482.407C735.458 479.04 743.146 477.519 748.472 476.676Z"/><path fill="currentColor" d="M268.689 476.688C269.929 476.56 270.669 476.517 271.929 476.528C279.614 476.576 287.108 478.937 293.433 483.303C300.307 488.051 314.495 502.263 321.167 508.445L370.461 553.545L419.222 598.036C429.546 607.287 441.706 617.514 451.349 627.398C473.445 650.046 486.555 683.285 489.96 714.5C490.962 723.68 490.705 737.081 490.707 746.485L490.825 788.879L490.838 850.76C490.831 859.496 490.942 868.268 490.981 877.008C491.017 885.211 485.284 894.235 476.294 889.545C474.035 888.382 471.226 886.117 470.832 883.441C470.134 878.699 470.345 873.9 470.32 869.112C470.28 861.213 470.292 853.307 470.295 845.406L470.319 771.973C470.415 722.502 473.493 684.999 438.716 644.01C435.264 640.344 431.416 636.625 427.652 633.289C403.659 612.018 380.095 590.333 356.543 568.576L305.75 522.167C297.761 514.799 288.561 505.402 280.014 498.967C276.937 496.65 271.222 495.899 267.446 496.994C260.767 498.932 257.522 501.454 253.881 506.983C250.479 512.151 249.875 522.688 253.231 527.36C256.616 532.071 266.985 540.107 271.95 544.53C289.638 560.285 307.226 575.714 324.763 591.645C337.225 602.525 350.122 613.215 361.881 624.841C366.062 628.975 367.481 633.557 364.137 638.631C359.966 644.957 353.493 644.359 348.16 639.884C341.834 634.576 335.938 628.886 329.841 623.396L293.409 590.883L257.556 559.291C245.203 548.483 232.402 540.761 230.625 523.103C228.052 497.523 243.549 479.584 268.689 476.688Z"/></svg>
     </div>
     <h2 data-i18n="free_h">Free, always.</h2>
-    <p data-i18n="free_p">A gentle, beginner-friendly prayer guide — built as a small gift and offered freely. No ads, no accounts, no tracking. Clean, modern, and effortless to navigate — and whether you use it in a browser or add it to your home screen, Quba is always current. No app store and no waiting on updates.</p>
+    <p data-i18n="free_p">Built as a gift for anyone learning to pray, returning after time away, or seeking to understand their faith more deeply. No ads, no accounts, no tracking, no cost. Clean and effortless to navigate, whether you use it in a browser or add it to your home screen. No app store. No waiting on updates.</p>
   </div>
 </div>
 
@@ -288,15 +339,17 @@ a{color:inherit;}
 
   <div class="q-block reveal">
     <h3 data-i18n="why_h">Why this exists</h3>
-    <p data-i18n="why_p1">Most prayer apps are built for people who already know what they're doing. Long menus, dense rulings, assumed knowledge. That leaves new Muslims, younger learners, and anyone coming back to their prayers after time away without a clear, gentle first step.</p>
+    <p data-i18n="why_p0">Quba started the way most things worth building start: scribbled out on the back of a napkin. A single page. Today's prayer times and the short surahs to recite before you stood to pray. No account. No cost. No noise. Just what you needed.</p>
+    <p data-i18n="why_p1">Most prayer apps are built for people who already know what they're doing. Long menus, dense rulings, lots of assumed knowledge. That leaves new Muslims, younger learners, and anyone coming back after time away without a clear place to start.</p>
     <p data-i18n="why_p2">It starts there. It doesn't stop there.</p>
-    <p data-i18n="why_p3">It walks you through each of the five daily prayers — what to say, when to say it, how many rak'ahs, and what every word means in plain language. No prior knowledge assumed.</p>
-    <p data-i18n="why_p4">And if you've prayed your whole life, it's still for you. What began as a walkthrough grew into a reference — the surahs, the adhkar, the du'ās, the 99 Names, the 42 Hadith, the Prophets, the differences between the schools — because every time an answer proved hard to find with a source attached, that became the next thing to build. Beginners find their footing here. Everyone else finds a reference they can actually check.</p>
+    <p data-i18n="why_p3">It walks you through each of the five daily prayers: what to say, when to say it, how many rak'ahs, and what every word means in plain language. No prior knowledge needed.</p>
+    <p data-i18n="why_p4">And if you have prayed your whole life, it is still for you. What started as a walkthrough grew into a full reference. The adhkar, the du'as, the 99 Names, the 42 Hadith of an-Nawawi, the Prophets, the Seerah, fasting, purification, Zakat, the differences between the schools. It grew because every time an answer proved hard to find with a source attached, that became the next thing to build. Every claim carries its citation. Every ruling names its source. Beginners find their footing here. Everyone else finds a reference they can actually trust.</p>
+    <p data-i18n="why_p5">Quba was built for the Ummah and for everyone finding their way toward it. For the person taking their first prayer. For the person returning after time away, looking for mercy and a way back. For the person asking honest questions and wanting honest answers. No cost. No account. No condition on any of it. If it helps you even once, even one prayer, that is why it exists.</p>
   </div>
 
   <div class="q-block reveal">
     <h3 data-i18n="name_h">About the name</h3>
-    <p data-i18n="name_p1">In 622 CE, Prophet Muhammad ﷺ arrived in a small settlement called Quba during the Hijra — the migration from Mecca to Medina. Before continuing into the city, he laid the foundation of the first mosque in Islam. The companions built alongside him, stone by stone.</p>
+    <p data-i18n="name_p1">In 622 CE, during the Hijra from Mecca to Medina, Prophet Muhammad ﷺ arrived at a small settlement called Quba. Before continuing into the city, he laid the foundation of the first mosque in Islam. The companions built alongside him, stone by stone.</p>
     <p data-i18n="name_p2">After settling in Medina, the Prophet ﷺ returned to Masjid Quba every Saturday to pray. He said that whoever comes to it in a state of purity and prays there receives a reward equal to that of Umrah. Masjid Quba still stands in Medina today.</p>
     <p data-i18n="name_p3">This app carries that name simply out of love for what that place represents. Nothing more.</p>
   </div>
@@ -308,19 +361,19 @@ a{color:inherit;}
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
         <h4 data-i18n="c_times_h">Today's prayer times</h4>
-        <p data-i18n="c_times_p">The five prayers for today, calculated from your current location, with a gentle <span class='q-kw'>countdown</span> to the next — Fajr through Isha, in your local time.</p>
+        <p data-i18n="c_times_p">The five prayers for today, calculated from your current location, with a gentle <span class='q-kw'>countdown</span> to the next. Fajr through Isha, in your local time.</p>
       </div>
       <div class="q-fcard">
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
         <h4 data-i18n="c_quran_h">The full Qur'an, read or recited</h4>
-        <p data-i18n="c_quran_p">All 114 <span class='q-kw'>sūrahs</span>, every ayah, with a choice of <span class='q-kw'>10 reciters</span> and <span class='q-kw'>10 translation editions</span> across nine languages. Download it for offline reading and listening, set a sleep timer, and pick up lock-screen playback right where you left off.</p>
+        <p data-i18n="c_quran_p">All 114 <span class='q-kw'>surahs</span>, every ayah, with your choice of <span class='q-kw'>10 reciters</span> and <span class='q-kw'>10 translation editions</span> across nine languages. Download for offline reading and listening, set a sleep timer, and pick up lock-screen playback right where you left off.</p>
       </div>
       <div class="q-fcard">
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2z"/><path d="M8 8h8M8 12h6"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2z"/><path d="M8 8h8M8 12h6"/></svg></div>
         <h4 data-i18n="c_lib_h">A reference library, not a starter pack</h4>
-        <p data-i18n="c_lib_p">A curated <span class='q-kw'>Short Sūrahs</span> shortcut opens straight into the full Qur'an reader, alongside <span class='q-kw'>du'ās</span> for salah and daily life, <span class='q-kw'>Post-Prayer Adhkar</span>, and a morning-and-evening set. Then the parts you keep coming back to: the <span class='q-kw'>99 Names</span>, the <span class='q-kw'>42 Hadith</span> of an-Nawawi, the <span class='q-kw'>Prophets</span> and a <span class='q-kw'>Seerah timeline</span>, <span class='q-kw'>women in Islam</span>, and 36 topics of <span class='q-kw'>madhhab difference</span> shown side by side. Newer additions round it out: <span class='q-kw'>tajwīd</span> basics, a <span class='q-kw'>purification</span> guide, a <span class='q-kw'>fasting</span> guide, and answers for what salah doesn't cover in one line — travel, illness, missed prayers.</p>
+        <p data-i18n="c_lib_p">A curated <span class='q-kw'>Short Surahs</span> shortcut opens straight into the full Qur'an reader, alongside <span class='q-kw'>du'as</span> for salah and daily life, <span class='q-kw'>Post-Prayer Adhkar</span>, and a morning-and-evening set. Then the parts you keep coming back to: the <span class='q-kw'>99 Names</span>, the <span class='q-kw'>42 Hadith</span> of an-Nawawi, the <span class='q-kw'>Prophets</span> and a <span class='q-kw'>Seerah timeline</span>, <span class='q-kw'>women in Islam</span>, and 36 topics of <span class='q-kw'>madhhab difference</span> shown side by side. Newer additions round it out: <span class='q-kw'>tajwid</span> basics, a <span class='q-kw'>purification</span> guide, a <span class='q-kw'>fasting</span> guide, and answers for the situations salah doesn't cover in a single line. Travel, illness, missed prayers.</p>
       </div>
       <div class="q-fcard">
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 9-14 9V3z"/></svg></div>
@@ -338,19 +391,19 @@ a{color:inherit;}
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
         <h4 data-i18n="c_how_h">How to pray, prayer by prayer</h4>
-        <p data-i18n="c_how_p">Each of the five daily prayers shown exactly as it's performed — rak'ahs, what to say, and when to say it. No prior knowledge assumed.</p>
+        <p data-i18n="c_how_p">Each of the five daily prayers shown exactly as it's performed: rak'ahs, what to say, and when to say it. No prior knowledge assumed.</p>
       </div>
       <div class="q-fcard">
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7c-2-2-5-3-8-3v13c3 0 6 1 8 3V7z"/><path d="M12 7c2-2 5-3 8-3v13c-3 0-6 1-8 3V7z"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7c-2-2-5-3-8-3v13c3 0 6 1 8 3V7z"/><path d="M12 7c2-2 5-3 8-3v13c-3 0-6 1-8 3V7z"/></svg></div>
         <h4 data-i18n="c_arabic_h">Learn to read the script itself</h4>
-        <p data-i18n="c_arabic_p">All 28 <span class='q-kw'>Arabic letters</span> with their joined forms, the short and long vowel marks, and three words built letter by letter — for reading the Qur'an's own script, not just hearing it recited.</p>
+        <p data-i18n="c_arabic_p">All 28 <span class='q-kw'>Arabic letters</span> with their joined forms, the short and long vowel marks, and three words built letter by letter. For reading the Qur'an's own script, not just hearing it recited.</p>
       </div>
       <div class="q-fcard">
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></div>
         <h4 data-i18n="c_qibla_h">Live Qibla compass</h4>
-        <p data-i18n="c_qibla_p">A real-time <span class='q-kw'>compass</span> that points to the Kaaba from wherever you stand — calibrated to your device heading and current location.</p>
+        <p data-i18n="c_qibla_p">A real-time <span class='q-kw'>compass</span> that points to the Kaaba from wherever you stand, calibrated to your device heading and current location.</p>
       </div>
       <div class="q-fcard">
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
@@ -362,19 +415,19 @@ a{color:inherit;}
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="8" cy="6" r="2" fill="currentColor"/><circle cx="16" cy="12" r="2" fill="currentColor"/><circle cx="8" cy="18" r="2" fill="currentColor"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="8" cy="6" r="2" fill="currentColor"/><circle cx="16" cy="12" r="2" fill="currentColor"/><circle cx="8" cy="18" r="2" fill="currentColor"/></svg></div>
         <h4 data-i18n="c_madhab_h">Your madhab, your settings</h4>
-        <p data-i18n="c_madhab_p">Choose <span class='q-kw'>Hanafi, Shafi'i, Maliki, or Hanbali</span>, and your prayer times, Sunnah toggles, and Post-Prayer Adhkar all follow — set per prayer or all at once, with beginner-first notes for common conditions and rulings. The app prays the way you pray.</p>
+        <p data-i18n="c_madhab_p">Choose <span class='q-kw'>Hanafi, Shafi'i, Maliki, or Hanbali</span> and your prayer times, Sunnah toggles, and Post-Prayer Adhkar all follow. Set it per prayer or all at once, with beginner-friendly notes for common conditions and rulings. The app prays the way you pray.</p>
       </div>
       <div class="q-fcard">
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 6 3.8 9S14.5 18.3 12 21M12 3C9.5 5.7 8.2 9 8.2 12S9.5 18.3 12 21"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 6 3.8 9S14.5 18.3 12 21M12 3C9.5 5.7 8.2 9 8.2 12S9.5 18.3 12 21"/></svg></div>
         <h4 data-i18n="c_lang_h">Read it in your language</h4>
-        <p data-i18n="c_lang_p">Use Quba in <span class='q-kw'>English, Arabic, Bengali, Turkish, or Urdu</span> — five of the most widely spoken languages across the Muslim world — with full right-to-left support.</p>
+        <p data-i18n="c_lang_p">Use Quba in <span class='q-kw'>English, Arabic, Bengali, Turkish, or Urdu</span>. Five of the most widely spoken languages across the Muslim world, with full right-to-left support.</p>
       </div>
       <div class="q-fcard">
         <div class="q-fcard-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></div>
         <div class="q-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></div>
         <h4 data-i18n="c_zakat_h">Zakat, ingredients &amp; learn to pray</h4>
-        <p data-i18n="c_zakat_p">A simple <span class='q-kw'>Zakat calculator</span> for when it's time to give, an <span class='q-kw'>ingredients reference</span> explaining common additives and E-numbers with a <span class='q-kw'>barcode scan</span> to pull up a product's list, and a four-step <span class='q-kw'>Learn to Pray</span> track for absolute beginners. Same as everything else — no accounts, no sign-up, just open and use.</p>
+        <p data-i18n="c_zakat_p">A simple <span class='q-kw'>Zakat calculator</span> for when it is time to give, an <span class='q-kw'>ingredients reference</span> that explains common additives and E-numbers with a <span class='q-kw'>barcode scan</span> to pull up a product's list, and a four-step <span class='q-kw'>Learn to Pray</span> track for complete beginners. Same as everything else: no accounts, no sign-up, just open and use.</p>
       </div>
     </div>
   </div>
@@ -382,13 +435,13 @@ a{color:inherit;}
   <!-- SOURCES -->
   <div class="q-block reveal">
     <h3 data-i18n="src_h">Where the answers come from</h3>
-    <p data-i18n="src_intro">Religious content is easy to get wrong and hard to check. These are the rules Quba holds itself to, and they are the reason it took as long to build as it did.</p>
+    <p data-i18n="src_intro">Religious content is easy to get wrong and hard to check. These are the standards Quba holds itself to. They are part of why it took as long to build as it did.</p>
     <p data-i18n="src_1"><strong>Claims are traceable.</strong> Anything presented as Qur'an or hadith carries its reference, so you can verify it yourself rather than take our word for it.</p>
     <p data-i18n="src_2"><strong>Disagreement is shown, not hidden.</strong> Where a narration's grading is disputed, it says so. Where a position is a minority one, it is labelled as one.</p>
     <p data-i18n="src_3"><strong>No school is smuggled in as "the" answer.</strong> Where the madhhabs differ, they are presented side by side and left that way.</p>
     <p data-i18n="src_4"><strong>Culture is not dressed up as ruling.</strong> Common practice and established ruling are two different things, and Quba does not blur them.</p>
     <p data-i18n="src_5"><strong>It will not give a verdict it has no right to give.</strong> The barcode scanner will never tell you a product is halal or haram. It shows you what is in it and what those ingredients are. The ruling is not an app's to issue.</p>
-    <p data-i18n="src_close">Quba is a reference, not a mufti. For anything consequential, ask someone qualified.</p>
+    <p data-i18n="src_close">Quba is a reference, not a mufti. For anything that matters, ask someone qualified.</p>
   </div>
 
   <!-- REAL APP -->
@@ -397,7 +450,7 @@ a{color:inherit;}
       <div class="q-realapp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M11 18h2"/></svg></div>
       <div>
         <h4 data-i18n="real_h">One app, on every device</h4>
-        <p data-i18n="real_p">Add Quba to your phone or computer and it opens like any other app. There's never an app store to wait on, and never an update to chase. Prefer not to install? Just visit <strong>quba.falqenview.com</strong> in any browser. Adding it to your device is the best way to keep your settings exactly how you like them.</p>
+        <p data-i18n="real_p">Add Quba to your phone or computer and it opens like any other app. No app store. No updates to chase. Prefer not to install? Just open <strong>quba.falqenview.com</strong> in any browser. Adding it to your device is the best way to keep your settings exactly how you like them.</p>
       </div>
     </div>
   </div>
@@ -423,7 +476,7 @@ a{color:inherit;}
   var I18N = {
     en: {
       hero_h1: "The first step is the hardest.<br><em>We made it easier.</em>",
-      hero_tag: "Simple enough to pray with today, deep enough to keep. A guided walkthrough of the five daily prayers, a live compass to the Kaaba, and a reference library that shows you where every answer comes from.",
+      hero_tag: "Simple enough to start with today. Deep enough to stay. A guided walkthrough of all five daily prayers, a live compass to the Kaaba, and a reference library that shows its sources.",
       pill_times: "Prayer times &amp; tracker",
       pill_mosques: "Nearest mosques &amp; compass",
       pill_qibla: "Qibla compass",
@@ -433,52 +486,54 @@ a{color:inherit;}
       pill_all: "Accessibility-first",
       pill_all_t: "Built to WCAG 2.1 AA",
       free_h: "Free, always.",
-      free_p: "A personal gift, offered freely to anyone learning or returning to the basics of prayer. No ads, no accounts, no tracking, no cost. If it's useful to you, that is more than enough.",
+      free_p: "Built as a gift for anyone learning to pray, returning after time away, or seeking to understand their faith more deeply. No ads, no accounts, no tracking, no cost. Clean and effortless to navigate, whether you use it in a browser or add it to your home screen. No app store. No waiting on updates.",
       why_h: "Why this exists",
-      why_p1: "Most prayer apps are built for people who already know what they're doing. Long menus, dense rulings, assumed knowledge. That leaves new Muslims, younger learners, and anyone coming back to their prayers after time away without a clear, gentle first step.",
+      why_p0: "Quba started the way most things worth building start: scribbled out on the back of a napkin. A single page. Today's prayer times and the short surahs to recite before you stood to pray. No account. No cost. No noise. Just what you needed.",
+      why_p1: "Most prayer apps are built for people who already know what they're doing. Long menus, dense rulings, lots of assumed knowledge. That leaves new Muslims, younger learners, and anyone coming back after time away without a clear place to start.",
       why_p2: "It starts there. It doesn't stop there.",
-      why_p3: "It walks you through each of the five daily prayers — what to say, when to say it, how many rak'ahs, and what every word means in plain language. No prior knowledge assumed.",
-      why_p4: "And if you've prayed your whole life, it's still for you. What began as a walkthrough grew into a reference — the surahs, the adhkar, the du'ās, the 99 Names, the 42 Hadith, the Prophets, the differences between the schools — because every time an answer proved hard to find with a source attached, that became the next thing to build. Beginners find their footing here. Everyone else finds a reference they can actually check.",
+      why_p3: "It walks you through each of the five daily prayers: what to say, when to say it, how many rak'ahs, and what every word means in plain language. No prior knowledge needed.",
+      why_p4: "And if you have prayed your whole life, it is still for you. What started as a walkthrough grew into a full reference. The adhkar, the du'as, the 99 Names, the 42 Hadith of an-Nawawi, the Prophets, the Seerah, fasting, purification, Zakat, the differences between the schools. It grew because every time an answer proved hard to find with a source attached, that became the next thing to build. Every claim carries its citation. Every ruling names its source. Beginners find their footing here. Everyone else finds a reference they can actually trust.",
+      why_p5: "Quba was built for the Ummah and for everyone finding their way toward it. For the person taking their first prayer. For the person returning after time away, looking for mercy and a way back. For the person asking honest questions and wanting honest answers. No cost. No account. No condition on any of it. If it helps you even once, even one prayer, that is why it exists.",
       name_h: "About the name",
-      name_p1: "In 622 CE, Prophet Muhammad ﷺ arrived in a small settlement called Quba during the Hijra — the migration from Mecca to Medina. Before continuing into the city, he laid the foundation of the first mosque in Islam. The companions built alongside him, stone by stone.",
+      name_p1: "In 622 CE, during the Hijra from Mecca to Medina, Prophet Muhammad ﷺ arrived at a small settlement called Quba. Before continuing into the city, he laid the foundation of the first mosque in Islam. The companions built alongside him, stone by stone.",
       name_p2: "After settling in Medina, the Prophet ﷺ returned to Masjid Quba every Saturday to pray. He said that whoever comes to it in a state of purity and prays there receives a reward equal to that of Umrah. Masjid Quba still stands in Medina today.",
       name_p3: "This app carries that name simply out of love for what that place represents. Nothing more.",
       inside_h: "Everything inside",
       c_times_h: "Today's prayer times",
-      c_times_p: "The five prayers for today, calculated from your current location, with a gentle <span class='q-kw'>countdown</span> to the next — Fajr through Isha, in your local time.",
+      c_times_p: "The five prayers for today, calculated from your current location, with a gentle <span class='q-kw'>countdown</span> to the next. Fajr through Isha, in your local time.",
       c_how_h: "How to pray, prayer by prayer",
-      c_how_p: "Each of the five daily prayers shown exactly as it's performed — rak'ahs, what to say, and when to say it. No prior knowledge assumed.",
+      c_how_p: "Each of the five daily prayers shown exactly as it's performed: rak'ahs, what to say, and when to say it. No prior knowledge assumed.",
       c_quran_h: "The full Qur'an, read or recited",
-      c_quran_p: "All 114 <span class='q-kw'>sūrahs</span>, every ayah, with a choice of <span class='q-kw'>10 reciters</span> and <span class='q-kw'>10 translation editions</span> across nine languages. Download it for offline reading and listening, set a sleep timer, and pick up lock-screen playback right where you left off.",
+      c_quran_p: "All 114 <span class='q-kw'>surahs</span>, every ayah, with your choice of <span class='q-kw'>10 reciters</span> and <span class='q-kw'>10 translation editions</span> across nine languages. Download for offline reading and listening, set a sleep timer, and pick up lock-screen playback right where you left off.",
       c_guided_h: "Pray along, step by step",
       c_guided_p: "A full-screen <span class='q-kw'>guided mode</span> walks you through a whole prayer one move at a time, so the first time you stand to pray, you're never guessing what comes next.",
       c_wudu_h: "Wudu &amp; prayer tracking",
       c_wudu_p: "Every step of <span class='q-kw'>ablution</span> in order, with a progress tracker showing what's fard and what's sunnah. Then <span class='q-kw'>log each prayer</span> as you complete it, and tap back to any day in the past week to record missed prayers.",
       c_lib_h: "A reference library, not a starter pack",
-      c_lib_p: "A curated <span class='q-kw'>Short Sūrahs</span> shortcut opens straight into the full Qur'an reader, alongside <span class='q-kw'>du'ās</span> for salah and daily life, <span class='q-kw'>Post-Prayer Adhkar</span>, and a morning-and-evening set. Then the parts you keep coming back to: the <span class='q-kw'>99 Names</span>, the <span class='q-kw'>42 Hadith</span> of an-Nawawi, the <span class='q-kw'>Prophets</span> and a <span class='q-kw'>Seerah timeline</span>, <span class='q-kw'>women in Islam</span>, and 36 topics of <span class='q-kw'>madhhab difference</span> shown side by side. Newer additions round it out: <span class='q-kw'>tajwīd</span> basics, a <span class='q-kw'>purification</span> guide, a <span class='q-kw'>fasting</span> guide, and answers for what salah doesn't cover in one line — travel, illness, missed prayers.",
+      c_lib_p: "A curated <span class='q-kw'>Short Surahs</span> shortcut opens straight into the full Qur'an reader, alongside <span class='q-kw'>du'as</span> for salah and daily life, <span class='q-kw'>Post-Prayer Adhkar</span>, and a morning-and-evening set. Then the parts you keep coming back to: the <span class='q-kw'>99 Names</span>, the <span class='q-kw'>42 Hadith</span> of an-Nawawi, the <span class='q-kw'>Prophets</span> and a <span class='q-kw'>Seerah timeline</span>, <span class='q-kw'>women in Islam</span>, and 36 topics of <span class='q-kw'>madhhab difference</span> shown side by side. Newer additions round it out: <span class='q-kw'>tajwid</span> basics, a <span class='q-kw'>purification</span> guide, a <span class='q-kw'>fasting</span> guide, and answers for the situations salah doesn't cover in a single line. Travel, illness, missed prayers.",
       c_arabic_h: "Learn to read the script itself",
-      c_arabic_p: "All 28 <span class='q-kw'>Arabic letters</span> with their joined forms, the short and long vowel marks, and three words built letter by letter — for reading the Qur'an's own script, not just hearing it recited.",
+      c_arabic_p: "All 28 <span class='q-kw'>Arabic letters</span> with their joined forms, the short and long vowel marks, and three words built letter by letter. For reading the Qur'an's own script, not just hearing it recited.",
       c_qibla_h: "Live Qibla compass",
-      c_qibla_p: "A real-time <span class='q-kw'>compass</span> that points to the Kaaba from wherever you stand — calibrated to your device heading and current location.",
+      c_qibla_p: "A real-time <span class='q-kw'>compass</span> that points to the Kaaba from wherever you stand, calibrated to your device heading and current location.",
       c_mosques_h: "Nearest mosques",
       c_mosques_p: "Nearby <span class='q-kw'>masjids</span> within a search radius you control, sorted by distance. Tap any one to open directions straight in Google Maps.",
       c_madhab_h: "Your madhab, your settings",
-      c_madhab_p: "Choose <span class='q-kw'>Hanafi, Shafi'i, Maliki, or Hanbali</span>, and your prayer times, Sunnah toggles, and Post-Prayer Adhkar all follow — set per prayer or all at once, with beginner-first notes for common conditions and rulings. The app prays the way you pray.",
+      c_madhab_p: "Choose <span class='q-kw'>Hanafi, Shafi'i, Maliki, or Hanbali</span> and your prayer times, Sunnah toggles, and Post-Prayer Adhkar all follow. Set it per prayer or all at once, with beginner-friendly notes for common conditions and rulings. The app prays the way you pray.",
       c_lang_h: "Read it in your language",
-      c_lang_p: "Use Quba in <span class='q-kw'>English, Arabic, Bengali, Turkish, or Urdu</span> — five of the most widely spoken languages across the Muslim world — with full right-to-left support.",
+      c_lang_p: "Use Quba in <span class='q-kw'>English, Arabic, Bengali, Turkish, or Urdu</span>. Five of the most widely spoken languages across the Muslim world, with full right-to-left support.",
       c_zakat_h: "Zakat, ingredients &amp; learn to pray",
-      c_zakat_p: "A simple <span class='q-kw'>Zakat calculator</span> for when it's time to give, an <span class='q-kw'>ingredients reference</span> explaining common additives and E-numbers with a <span class='q-kw'>barcode scan</span> to pull up a product's list, and a four-step <span class='q-kw'>Learn to Pray</span> track for absolute beginners. Same as everything else — no accounts, no sign-up, just open and use.",
+      c_zakat_p: "A simple <span class='q-kw'>Zakat calculator</span> for when it is time to give, an <span class='q-kw'>ingredients reference</span> that explains common additives and E-numbers with a <span class='q-kw'>barcode scan</span> to pull up a product's list, and a four-step <span class='q-kw'>Learn to Pray</span> track for complete beginners. Same as everything else: no accounts, no sign-up, just open and use.",
       pill_library: "Sourced reference library",
       src_h: "Where the answers come from",
-      src_intro: "Religious content is easy to get wrong and hard to check. These are the rules Quba holds itself to, and they are the reason it took as long to build as it did.",
+      src_intro: "Religious content is easy to get wrong and hard to check. These are the standards Quba holds itself to. They are part of why it took as long to build as it did.",
       src_1: "<strong>Claims are traceable.</strong> Anything presented as Qur'an or hadith carries its reference, so you can verify it yourself rather than take our word for it.",
       src_2: "<strong>Disagreement is shown, not hidden.</strong> Where a narration's grading is disputed, it says so. Where a position is a minority one, it is labelled as one.",
       src_3: "<strong>No school is smuggled in as &quot;the&quot; answer.</strong> Where the madhhabs differ, they are presented side by side and left that way.",
       src_4: "<strong>Culture is not dressed up as ruling.</strong> Common practice and established ruling are two different things, and Quba does not blur them.",
       src_5: "<strong>It will not give a verdict it has no right to give.</strong> The barcode scanner will never tell you a product is halal or haram. It shows you what is in it and what those ingredients are. The ruling is not an app\'s to issue.",
-      src_close: "Quba is a reference, not a mufti. For anything consequential, ask someone qualified.",
+      src_close: "Quba is a reference, not a mufti. For anything that matters, ask someone qualified.",
       real_h: "One app, on every device",
-      real_p: "Add Quba to your phone or computer and it opens like any other app. There's never an app store to wait on, and never an update to chase. Prefer not to install? Just visit <strong>quba.falqenview.com</strong> in any browser. Adding it to your device is the best way to keep your settings exactly how you like them.",
+      real_p: "Add Quba to your phone or computer and it opens like any other app. No app store. No updates to chase. Prefer not to install? Just open <strong>quba.falqenview.com</strong> in any browser. Adding it to your device is the best way to keep your settings exactly how you like them.",
       cta: "Open Quba"
     },
     bn: {
@@ -685,5 +740,136 @@ a{color:inherit;}
     });
   })();
 </script>
+<script>
+/* ============ FEATURE RAIN ============ */
+(function(){
+  // Full pool — every label that falls as ambient background rain.
+  var FEATURES=[
+    "Prayer Times","Full Qur\u02bcān","Qibla Compass","Guided Prayer","Wudu Guide",
+    "Prayer Tracker with Qad\u0101","Tasbih (Auto + Tap)","Mosque Finder","99 Names","42 Hadith",
+    "Seerah Timeline","The Prophets","Madhhab Compare","Tajwīd Basics","Du\u02bcā Book",
+    "Morning Adhkar","Evening Adhkar","Post-Prayer Adhkar","Fasting Guide","Purification Guide",
+    "Zakat Calculator","Learn to Pray","Halal/Haram Foods + Barcode Scanner","Learn the Arabic Letters","Glossary",
+    "Women in Islam","Offline Mode","Lock-Screen Audio","10 Reciters","10 Translations",
+    "Send a Du\u02bcā","Guided Paths for Prayer & Wudu","Ramadan Prep","New Muslim Guide",
+    "Tag your favorites","Recently viewed items","5 Languages",
+    "No Ads","No Account","No Tracking","Quiz Yourself","Revelations"
+  ];
+
+  // Prominent subset — these take fair rotating turns getting the gold
+  // flash-and-scale moment. Every item in this list gets a turn before
+  // any item repeats, so no single word can hog the spotlight.
+  var PROMINENT=[
+    "Full Qur\u02bcān",
+    "Halal/Haram Foods + Barcode Scanner",
+    "Send a Du\u02bcā",
+    "Prayer Tracker with Qad\u0101",
+    "Tasbih (Auto + Tap)",
+    "Quiz Yourself",
+    "Mosque Finder",
+    "99 Names",
+    "Offline Mode",
+    "Learn to Pray",
+    "Seerah Timeline",
+    "The Prophets",
+    "Revelations"
+  ];
+
+  var container=document.getElementById('quba-rain');
+  if(!container)return;
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+
+  var cols=Math.max(3,Math.floor(container.offsetWidth/220));
+  var ambientActive=[];
+
+  function rand(a,b){return a+Math.random()*(b-a);}
+  function hex(opacity){return 'rgba(82,183,136,'+opacity.toFixed(2)+')';}
+
+  function shuffle(arr){
+    var a=arr.slice();
+    for(var i=a.length-1;i>0;i--){
+      var j=Math.floor(Math.random()*(i+1));
+      var t=a[i]; a[i]=a[j]; a[j]=t;
+    }
+    return a;
+  }
+
+  // ---------- Ambient background rain: plain, no flash, full pool ----------
+  function spawnAmbient(){
+    var el=document.createElement('span');
+    el.className='qr-drop';
+    var feat=FEATURES[Math.floor(Math.random()*FEATURES.length)];
+    el.textContent=feat;
+    var col=Math.floor(Math.random()*cols);
+    var x=col*(100/cols)+rand(-0.8,0.8);
+    var dur=rand(7,18);
+    var delay=rand(0,dur*0.9);
+    var dist=rand(88,110);
+    var opacity=rand(0.35,0.68);
+    el.style.cssText=[
+      'left:'+x+'%',
+      '--fall-dist:'+dist+'vh',
+      'animation-duration:'+dur.toFixed(1)+'s',
+      'animation-delay:'+(-delay).toFixed(1)+'s',
+      'color:'+hex(opacity)
+    ].join(';');
+    container.appendChild(el);
+    ambientActive.push(el);
+    if(ambientActive.length>55){
+      var old=ambientActive.splice(0,15);
+      old.forEach(function(e){if(e.parentNode)e.parentNode.removeChild(e);});
+    }
+  }
+
+  // ---------- Prominent rotation: fair turns, capped concurrency ----------
+  var MAX_CONCURRENT_PROMINENT=3; // hard cap, within the requested 2-4 range
+  var prominentQueue=shuffle(PROMINENT);
+  var activeProminentCount=0;
+
+  function nextProminentFeature(){
+    if(prominentQueue.length===0) prominentQueue=shuffle(PROMINENT);
+    return prominentQueue.shift();
+  }
+
+  function trySpawnProminent(){
+    if(activeProminentCount>=MAX_CONCURRENT_PROMINENT)return;
+    var feat=nextProminentFeature();
+    var el=document.createElement('span');
+    el.className='qr-drop qr-drop--prominent';
+    el.textContent=feat;
+    var col=Math.floor(Math.random()*cols);
+    var x=col*(100/cols)+rand(-0.8,0.8);
+    var dur=rand(9,15);
+    var dist=rand(88,110);
+    el.style.cssText=[
+      'left:'+x+'%',
+      '--fall-dist:'+dist+'vh',
+      'animation-duration:'+dur.toFixed(1)+'s',
+      'animation-delay:0s',
+      'animation-iteration-count:1'
+    ].join(';');
+    container.appendChild(el);
+    activeProminentCount++;
+    var done=false;
+    function cleanup(){
+      if(done)return; done=true;
+      activeProminentCount=Math.max(0,activeProminentCount-1);
+      if(el.parentNode)el.parentNode.removeChild(el);
+    }
+    el.addEventListener('animationend',cleanup,{once:true});
+    setTimeout(cleanup,(dur+2)*1000); // safety net if animationend never fires
+  }
+
+  // seed ambient rain immediately so the hero isn't bare on load
+  var seed=Math.min(cols*2,16);
+  for(var i=0;i<seed;i++)spawnAmbient();
+  setInterval(spawnAmbient,640);
+
+  // stagger prominent turns: attempted every ~2.2s, gated by the concurrency
+  // cap and the fair rotation queue above
+  setTimeout(trySpawnProminent,900);
+  setTimeout(trySpawnProminent,1800);
+  setInterval(trySpawnProminent,2200);
+})();</script>
 </body>
 </html>

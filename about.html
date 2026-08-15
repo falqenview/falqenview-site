@@ -42,7 +42,7 @@ window.addEventListener('error', function(e) {
   "@type": "AboutPage",
   "name": "About FalqenView",
   "url": "https://falqenview.com/about.html",
-  "description": "FalqenView builds tools that put you back in control. VuePoint for portfolio tracking and Talon for bills and cash management, both in Google Sheets you own; Quba, a free ad-free Islamic prayer app; and a set of free browser utilities. No account linking. No third-party data exposure. Your data stays with you.",
+  "description": "FalqenView builds tools that put you back in control. VuePoint for portfolio tracking and Talon for bills and cash management, both in Google Sheets you own; Quba, a free ad-free Islamic prayer companion and reference; and a set of free browser utilities. No account linking. No third-party data exposure. Your data stays with you.",
   "publisher": {
     "@type": "Organization",
     "name": "FalqenView",
@@ -65,6 +65,7 @@ window.addEventListener('error', function(e) {
   --border:rgba(255,255,255,0.07);--border-2:rgba(255,255,255,0.12);
   --blue:#1A73E8;--blue-2:#1557b0;--blue-dim:rgba(26,115,232,0.12);
   --cyan:#38bdf8;--amber:#f59e0b;--green:#22c55e;--green-2:#4ade80;
+  --quba-gold:#c9a227;--quba-teal:#4ecdc4;
   --text:#e8ecf4;--text-dim:rgba(232,236,244,0.78);--muted:#7a8499;--nav-h:64px;
   --font-display:'Montserrat',sans-serif;--font-body:'Lexend',sans-serif;
   --font-mono:'JetBrains Mono',ui-monospace,monospace;
@@ -90,8 +91,18 @@ main{padding-top:var(--nav-h);}
 .story-body p:last-child{margin-bottom:0;}
 .story-body strong{color:var(--text);font-weight:500;}
 .story-body .pull{font-size:1.12rem;font-weight:500;color:var(--text);line-height:1.5;border-left:2px solid var(--cyan);padding-left:20px;margin:28px 0;}
+.story-body .pull-quba{font-size:1.12rem;font-weight:500;color:var(--text);line-height:1.5;border-left:2px solid var(--quba-gold);padding-left:20px;margin:28px 0;}
 .story-creed{margin-top:34px;padding-top:26px;border-top:1px solid var(--border);font-family:var(--font-display);font-size:1.02rem;font-weight:700;letter-spacing:-0.01em;color:var(--text);line-height:1.4;}
 .story-creed span{color:var(--cyan);}
+
+/* Quba section */
+.quba-section{margin-top:48px;padding-top:40px;border-top:1px solid var(--border);}
+.quba-eyebrow{font-family:var(--font-mono);font-size:0.68rem;color:var(--quba-gold);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;display:block;}
+.quba-heading{font-family:var(--font-display);font-size:1.55rem;font-weight:800;letter-spacing:-0.02em;line-height:1.15;color:var(--text);margin-bottom:18px;}
+.quba-heading .q-accent{color:var(--quba-gold);}
+.quba-star{display:inline-block;width:14px;height:14px;margin-right:6px;vertical-align:middle;opacity:0.85;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpath fill='%23c9a227' d='M40 4 L50 30 L76 40 L50 50 L40 76 L30 50 L4 40 L30 30 Z'/%3E%3C/svg%3E");background-size:contain;background-repeat:no-repeat;background-position:center;}
+.quba-cta{display:inline-flex;align-items:center;gap:7px;margin-top:22px;background:rgba(201,162,39,0.12);color:var(--quba-gold);text-decoration:none;font-size:0.85rem;font-weight:600;padding:11px 22px;border-radius:10px;border:1px solid rgba(201,162,39,0.35);transition:background .2s,border-color .2s;}
+.quba-cta:hover{background:rgba(201,162,39,0.2);border-color:var(--quba-gold);text-decoration:none;}
 
 /* right: sticky brand + pillars */
 .about-aside{position:sticky;top:calc(var(--nav-h) + 32px);display:flex;flex-direction:column;gap:16px;}
@@ -117,6 +128,11 @@ main{padding-top:var(--nav-h);}
 .pillar-name.vp{color:var(--cyan);}
 .pillar-name.tl{color:var(--green);}
 .pillar-desc{font-size:0.82rem;color:var(--text-dim);line-height:1.7;font-weight:300;}
+
+/* Quba pillar — elevated */
+.pillar.pillar-quba{border-color:rgba(201,162,39,0.22);background:linear-gradient(160deg,rgba(201,162,39,0.05) 0%,var(--surface) 60%);}
+.pillar.pillar-quba:hover{border-color:rgba(201,162,39,0.45);}
+.pillar-name.qb{color:var(--quba-gold);}
 
 @media(max-width:860px){
   .about-grid{grid-template-columns:1fr;gap:24px;}
@@ -147,7 +163,32 @@ main{padding-top:var(--nav-h);}
       <p>Somewhere along the way, software stopped being simple. Everything wants an account, then another account just to connect to the first one. The free thing is buried in ads. The useful thing nags you to upgrade. The simple thing begs for a donation every time you open it. And most of it quietly ships your data off to a server you'll never see.</p>
       <p>I hit it hardest with my own money. Portfolio apps, budgeting dashboards, account aggregators. The pitch never changes: link your accounts, get the full picture. Except the links break, half your accounts aren't supported, and you never really know who's looking at your balances. So I stopped linking and started building.</p>
       <p class="pull">The rule was simple. Your data stays in your hands, not mine.</p>
-      <p>VuePoint tracks what you invest. Talon tracks what you owe. Both live inside a Google Sheet you own, with no FalqenView server in the middle and nothing for anyone to breach. Quba came from the same place: most prayer apps are slow, cluttered, plastered with ads, and forever asking for something. Quba stays clean, free, and ad-free, with a UI worth looking at and the features you actually need. The same goes for the free web tools at tools.falqenview.com. Sold or given away, the principle holds: <strong>build something genuinely useful, hand people full control, take nothing they didn't choose to give, then get out of the way.</strong></p>
+      <p>VuePoint tracks what you invest. Talon tracks what you owe. Both live inside a Google Sheet you own, with no FalqenView server in the middle and nothing for anyone to breach. The same goes for the free web tools at tools.falqenview.com. Sold or given away, the principle holds: <strong>build something genuinely useful, hand people full control, take nothing they didn't choose to give, then get out of the way.</strong></p>
+
+      <!-- QUBA SECTION -->
+      <div class="quba-section">
+        <span class="quba-eyebrow"><span class="quba-star"></span>Quba — A Different Kind of Build</span>
+        <h2 class="quba-heading">It started as a single page.<br><span class="q-accent">It became something I'm proud of.</span></h2>
+
+        <p>Quba didn't start as a product. It started as a problem I kept running into: prayer apps that assumed you already knew everything, cluttered with ads, slow to load, and forever asking for your account or your money just to find out what time Fajr was.</p>
+
+        <p>So I built one page. Today's prayer times, the short surahs to recite. That was it. Clean, fast, no account, no catch.</p>
+
+        <p class="pull-quba">But every time an answer proved hard to find with a source attached, that became the next thing to build.</p>
+
+        <p>Wudu steps. The guided prayer walkthrough. The Qibla compass. Du'as for salah. The 99 Names. The 42 Hadith of an-Nawawi, each one traced back to its source on sunnah.com. Madhhab differences laid out honestly, school by school, without collapsing four distinct traditions into a single vague answer. The full Qur'an — all 114 surahs, 6,236 ayahs — with ten reciters, ten translation editions across nine languages, offline download, sleep timer, and lock-screen playback controls. A morning and evening adhkar set. Du'a cards you can share. A mosque finder. A Zakat calculator that shows its math. A purification guide. A fasting guide. A Seerah timeline. Stories of the Prophets.</p>
+
+        <p>Every feature was built because I wanted it to exist in a form I could trust — not just convenient, but correct. Every claim carries its citation. Disputed gradings are stated plainly. Minority positions are labeled. If it's in Quba, there's a source behind it.</p>
+
+        <p>Quba is free. It will always be free. There are no ads, no subscriptions, no accounts, no tracking. Your prayer logs, your preferences, your Qur'an position — they live on your device and nowhere else. No one at FalqenView sees them.</p>
+
+        <p>I built it for anyone learning to pray for the first time. For anyone returning after time away, looking for mercy and a gentle way back. For anyone who wants to understand their faith more deeply without paying for the privilege or handing their data to someone along the way. I built it because that person deserves something good, and the tools that existed weren't good enough.</p>
+
+        <p>If Quba helps you — even once, even one prayer — that is more than enough. That is why it exists.</p>
+
+        <a href="https://quba.falqenview.com" target="_blank" rel="noopener" class="quba-cta">Open Quba →</a>
+      </div>
+
       <div class="story-creed"><span>See clearly. Hold tight. Own it completely.</span><br>One philosophy, whatever the tool: your data, your device, your call.</div>
     </div>
 
@@ -201,16 +242,15 @@ main{padding-top:var(--nav-h);}
         <p class="pillar-desc">Bills and cash-flow manager. Due-date reminders, autopay coverage, category breakdowns, and a bills health score, in the same Google Sheets format. No connecting to your bank.</p>
       </div>
 
-      <div class="pillar">
+      <div class="pillar pillar-quba">
         <div class="pillar-icon">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M16 3 C13 7 9 9 9 9 L9 27 L23 27 L23 9 C23 9 19 7 16 3 Z" stroke="#52b788" stroke-width="1.5" stroke-linejoin="round" fill="rgba(82,183,136,0.06)"/>
-            <path d="M16 27 L16 19 C16 17 14.5 16 13 16 C13 16 13 27 13 27" stroke="#52b788" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="0.75"/>
-            <circle cx="16" cy="11" r="1.2" fill="#52b788"/>
+            <path d="M16 3 L18.5 10.5 L26.5 10.5 L20 15.5 L22.5 23 L16 18 L9.5 23 L12 15.5 L5.5 10.5 L13.5 10.5 Z" stroke="#c9a227" stroke-width="1.4" stroke-linejoin="round" fill="rgba(201,162,39,0.08)"/>
+            <circle cx="16" cy="16" r="5.5" stroke="rgba(201,162,39,0.25)" stroke-width="1" fill="none"/>
           </svg>
         </div>
-        <div class="pillar-name" style="color:#52b788">Quba</div>
-        <p class="pillar-desc">A free Islamic prayer companion. Prayer times, qibla compass, mosque finder, and prayer tracking, in a clean ad-free app with no nags. Free, always.</p>
+        <div class="pillar-name qb">Quba</div>
+        <p class="pillar-desc">A free Islamic prayer companion and reference. Prayer times, guided prayers, the full Qur'an, a sourced reference library, Qibla compass, mosque finder, and more. No ads, no accounts, no cost. Built as a gift — for anyone finding their way, or finding their way back.</p>
       </div>
     </aside>
 
