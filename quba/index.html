@@ -231,6 +231,89 @@ a{color:inherit;}
 .q-realapp p{color:var(--text-dim);font-weight:300;font-size:0.98rem;line-height:1.65;}
 @media(max-width:560px){.q-realapp{flex-direction:column;text-align:center;align-items:center;}}
 
+/* ============ SECTION DIVIDER (recurring gold seal motif) ============ */
+.q-divider{display:flex;align-items:center;gap:14px;margin:56px 0 0;}
+.q-divider-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,39,0.4),transparent);}
+.q-divider-star{flex-shrink:0;width:12px;height:12px;color:var(--q-gold);opacity:0.75;}
+.q-divider-star svg{width:100%;height:100%;}
+
+/* ============ TASBIH THREAD (Why this exists) ============ */
+.q-thread{position:relative;margin-top:8px;}
+.q-bead{position:relative;display:flex;gap:18px;align-items:flex-start;padding-bottom:26px;}
+.q-bead:last-child{padding-bottom:0;}
+.q-bead:not(:last-child)::before{
+  content:'';position:absolute;left:6px;top:20px;bottom:0;width:2px;
+  background:linear-gradient(to bottom,rgba(82,183,136,0.42),rgba(82,183,136,0.12));
+  z-index:1;
+}
+.q-bead-dot{
+  flex-shrink:0;width:14px;height:14px;border-radius:50%;margin-top:6px;
+  background:var(--q-mid);box-shadow:0 0 0 3px var(--bg),0 0 0 4px rgba(82,183,136,0.3);
+  position:relative;z-index:2;
+}
+.q-bead-dot--gold{
+  background:var(--q-gold);
+  box-shadow:0 0 0 3px var(--bg),0 0 0 4px rgba(201,162,39,0.4),0 0 16px rgba(201,162,39,0.5);
+}
+.q-bead-dot--large{width:20px;height:20px;margin-top:2px;}
+.q-bead p{margin:0;color:var(--text-dim);font-weight:300;font-size:1.02rem;line-height:1.7;}
+.q-bead .pull{margin:0;padding:0;border:none;font-size:1.14rem;font-weight:500;color:var(--text);}
+.q-bead--seal p{
+  font-size:1.06rem;font-weight:400;color:var(--text);line-height:1.75;
+  background:linear-gradient(160deg,rgba(26,77,58,0.28),rgba(20,24,32,0.2));
+  border:1px solid rgba(201,162,39,0.28);border-radius:14px;padding:20px 22px;
+}
+[dir="rtl"] .q-bead{flex-direction:row-reverse;}
+[dir="rtl"] .q-bead:not(:last-child)::before{left:auto;right:6px;}
+
+/* feature chips inside the "grew into a reference" beat */
+.q-chip{
+  display:inline-block;background:rgba(82,183,136,0.11);border:1px solid rgba(82,183,136,0.32);
+  color:var(--q-light);font-size:0.85em;font-weight:500;padding:2px 11px;border-radius:100px;
+  margin:2px 3px;white-space:nowrap;line-height:1.9;
+}
+
+/* ============ HIJRA ROUTE (About the name) ============ */
+.q-hijra-route{margin:6px 0 26px;padding:8px 0;}
+.q-hijra-svg{width:100%;height:auto;max-width:420px;display:block;margin:0 auto;overflow:visible;}
+.q-hijra-label{font-family:var(--font-body);font-size:9px;font-weight:500;fill:var(--muted);}
+.q-hijra-label--gold{fill:var(--q-gold);font-weight:700;}
+.q-hijra-path{
+  stroke-dasharray:340;stroke-dashoffset:340;
+  transition:stroke-dashoffset 1.6s cubic-bezier(.4,0,.2,1);
+}
+.q-hijra-route.visible .q-hijra-path{stroke-dashoffset:0;}
+.q-hijra-quba{transform-origin:200px 30px;transform-box:fill-box;}
+.q-hijra-route.visible .q-hijra-quba{animation:q-hijra-pulse 1.4s ease-out 1.3s 1;}
+@keyframes q-hijra-pulse{
+  0%{transform:scale(1);}
+  35%{transform:scale(1.7);filter:drop-shadow(0 0 6px rgba(201,162,39,0.9));}
+  100%{transform:scale(1);}
+}
+@media(prefers-reduced-motion:reduce){
+  .q-hijra-path{transition:none;stroke-dashoffset:0;}
+  .q-hijra-route.visible .q-hijra-quba{animation:none;}
+}
+
+/* ============ PRINCIPLE CARDS (Where the answers come from) ============ */
+.q-principles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0 24px;}
+.q-principle-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:20px 20px 18px;transition:border-color .2s,transform .2s;
+}
+.q-principle-card:hover{border-color:rgba(82,183,136,0.35);transform:translateY(-2px);}
+.q-principle-ic{
+  width:34px;height:34px;border-radius:9px;background:var(--q-dim);
+  border:1px solid rgba(82,183,136,0.28);display:flex;align-items:center;justify-content:center;
+  color:var(--q-mid);margin-bottom:12px;
+}
+.q-principle-ic svg{width:18px;height:18px;}
+.q-principle-card p{margin:0;font-size:0.92rem;line-height:1.65;color:var(--text-dim);font-weight:300;}
+.q-principle-card p strong{color:var(--text);font-weight:600;display:block;margin-bottom:4px;font-size:0.96rem;}
+.q-source-close{margin-top:6px;color:var(--text-dim);font-style:italic;font-size:0.98rem;}
+@media(max-width:760px){.q-principles-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:520px){.q-principles-grid{grid-template-columns:1fr;}}
+
 /* ============ FEATURE RAIN ============ */
 #quba-rain{
   position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;
@@ -339,19 +422,63 @@ a{color:inherit;}
 
   <div class="q-block reveal">
     <h3 data-i18n="why_h">Why this exists</h3>
-    <p data-i18n="why_p0">Quba started the way most things worth building start: scribbled out on the back of a napkin. A single page. Today's prayer times and the short surahs to recite before you stood to pray. No account. No cost. No noise. Just what you needed.</p>
-    <p data-i18n="why_p1">Most prayer apps are built for people who already know what they're doing. Long menus, dense rulings, lots of assumed knowledge. That leaves new Muslims, younger learners, and anyone coming back after time away without a clear place to start.</p>
-    <p data-i18n="why_p2">It starts there. It doesn't stop there.</p>
-    <p data-i18n="why_p3">It walks you through each of the five daily prayers: what to say, when to say it, how many rak'ahs, and what every word means in plain language. No prior knowledge needed.</p>
-    <p data-i18n="why_p4">And if you have prayed your whole life, it is still for you. What started as a walkthrough grew into a full reference. The adhkar, the du'as, the 99 Names, the 42 Hadith of an-Nawawi, the Prophets, the Seerah, fasting, purification, Zakat, the differences between the schools. It grew because every time an answer proved hard to find with a source attached, that became the next thing to build. Every claim carries its citation. Every ruling names its source. Beginners find their footing here. Everyone else finds a reference they can actually trust.</p>
-    <p data-i18n="why_p5">Quba was built for the Ummah and for everyone finding their way toward it. For the person taking their first prayer. For the person returning after time away, looking for mercy and a way back. For the person asking honest questions and wanting honest answers. No cost. No account. No condition on any of it. If it helps you even once, even one prayer, that is why it exists.</p>
+    <div class="q-thread">
+      <div class="q-bead">
+        <span class="q-bead-dot" aria-hidden="true"></span>
+        <p data-i18n="why_p0">Quba started the way most things worth building start: scribbled out on the back of a napkin. A single page. Today's prayer times and the short surahs to recite before you stood to pray. No account. No cost. No noise. Just what you needed.</p>
+      </div>
+      <div class="q-bead">
+        <span class="q-bead-dot" aria-hidden="true"></span>
+        <p data-i18n="why_p1">Most prayer apps are built for people who already know what they're doing. Long menus, dense rulings, lots of assumed knowledge. That leaves new Muslims, younger learners, and anyone coming back after time away without a clear place to start.</p>
+      </div>
+      <div class="q-bead">
+        <span class="q-bead-dot q-bead-dot--gold" aria-hidden="true"></span>
+        <p class="pull" data-i18n="why_p2">It starts there. It doesn't stop there.</p>
+      </div>
+      <div class="q-bead">
+        <span class="q-bead-dot" aria-hidden="true"></span>
+        <p data-i18n="why_p3">It walks you through each of the five daily prayers: what to say, when to say it, how many rak'ahs, and what every word means in plain language. No prior knowledge needed.</p>
+      </div>
+      <div class="q-bead">
+        <span class="q-bead-dot" aria-hidden="true"></span>
+        <p data-i18n="why_p4">And if you have prayed your whole life, it is still for you. What started as a walkthrough grew into a full reference: <span class="q-chip">Adhkar</span><span class="q-chip">Du'as</span><span class="q-chip">99 Names</span><span class="q-chip">42 Hadith</span><span class="q-chip">The Prophets</span><span class="q-chip">Seerah</span><span class="q-chip">Fasting</span><span class="q-chip">Purification</span><span class="q-chip">Zakat</span><span class="q-chip">Madhhab Differences</span>. It grew because every time an answer proved hard to find with a source attached, that became the next thing to build. Every claim carries its citation. Every ruling names its source.</p>
+      </div>
+      <div class="q-bead q-bead--seal">
+        <span class="q-bead-dot q-bead-dot--gold q-bead-dot--large" aria-hidden="true"></span>
+        <p data-i18n="why_p5">Quba was built for the Ummah and for everyone finding their way toward it. For the person taking their first prayer. For the person returning after time away, looking for mercy and a way back. For the person asking honest questions and wanting honest answers. No cost. No account. No condition on any of it. If it helps you even once, even one prayer, that is why it exists.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-divider" aria-hidden="true">
+    <span class="q-divider-line"></span>
+    <span class="q-divider-star"><svg viewBox="0 0 80 80" fill="currentColor"><path d="M40 4 L50 30 L76 40 L50 50 L40 76 L30 50 L4 40 L30 30 Z"/></svg></span>
+    <span class="q-divider-line"></span>
   </div>
 
   <div class="q-block reveal">
     <h3 data-i18n="name_h">About the name</h3>
+    <div class="q-hijra-route reveal" aria-hidden="true">
+      <svg class="q-hijra-svg" viewBox="0 0 400 60">
+        <path class="q-hijra-path" d="M30 30 L200 30" stroke="rgba(82,183,136,0.4)" stroke-width="2" fill="none"/>
+        <path class="q-hijra-path" d="M200 30 L370 30" stroke="rgba(82,183,136,0.4)" stroke-width="2" fill="none"/>
+        <circle cx="30" cy="30" r="6" fill="var(--q-mid)"/>
+        <text x="30" y="52" text-anchor="middle" class="q-hijra-label">Makkah</text>
+        <circle class="q-hijra-quba" cx="200" cy="30" r="9" fill="var(--q-gold)"/>
+        <text x="200" y="52" text-anchor="middle" class="q-hijra-label q-hijra-label--gold">Quba</text>
+        <circle cx="370" cy="30" r="6" fill="var(--q-mid)"/>
+        <text x="370" y="52" text-anchor="middle" class="q-hijra-label">Madinah</text>
+      </svg>
+    </div>
     <p data-i18n="name_p1">In 622 CE, during the Hijra from Mecca to Medina, Prophet Muhammad ﷺ arrived at a small settlement called Quba. Before continuing into the city, he laid the foundation of the first mosque in Islam. The companions built alongside him, stone by stone.</p>
     <p data-i18n="name_p2">After settling in Medina, the Prophet ﷺ returned to Masjid Quba every Saturday to pray. He said that whoever comes to it in a state of purity and prays there receives a reward equal to that of Umrah. Masjid Quba still stands in Medina today.</p>
     <p data-i18n="name_p3">This app carries that name simply out of love for what that place represents. Nothing more.</p>
+  </div>
+
+  <div class="q-divider" aria-hidden="true">
+    <span class="q-divider-line"></span>
+    <span class="q-divider-star"><svg viewBox="0 0 80 80" fill="currentColor"><path d="M40 4 L50 30 L76 40 L50 50 L40 76 L30 50 L4 40 L30 30 Z"/></svg></span>
+    <span class="q-divider-line"></span>
   </div>
 
   <div class="q-block reveal">
@@ -436,12 +563,35 @@ a{color:inherit;}
   <div class="q-block reveal">
     <h3 data-i18n="src_h">Where the answers come from</h3>
     <p data-i18n="src_intro">Religious content is easy to get wrong and hard to check. These are the standards Quba holds itself to. They are part of why it took as long to build as it did.</p>
-    <p data-i18n="src_1"><strong>Claims are traceable.</strong> Anything presented as Qur'an or hadith carries its reference, so you can verify it yourself rather than take our word for it.</p>
-    <p data-i18n="src_2"><strong>Disagreement is shown, not hidden.</strong> Where a narration's grading is disputed, it says so. Where a position is a minority one, it is labelled as one.</p>
-    <p data-i18n="src_3"><strong>No school is smuggled in as "the" answer.</strong> Where the madhhabs differ, they are presented side by side and left that way.</p>
-    <p data-i18n="src_4"><strong>Culture is not dressed up as ruling.</strong> Common practice and established ruling are two different things, and Quba does not blur them.</p>
-    <p data-i18n="src_5"><strong>It will not give a verdict it has no right to give.</strong> The barcode scanner will never tell you a product is halal or haram. It shows you what is in it and what those ingredients are. The ruling is not an app's to issue.</p>
-    <p data-i18n="src_close">Quba is a reference, not a mufti. For anything that matters, ask someone qualified.</p>
+    <div class="q-principles-grid">
+      <div class="q-principle-card">
+        <div class="q-principle-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <p data-i18n="src_1"><strong>Claims are traceable.</strong> Anything presented as Qur'an or hadith carries its reference, so you can verify it yourself rather than take our word for it.</p>
+      </div>
+      <div class="q-principle-card">
+        <div class="q-principle-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h5l2-7 4 14 2-7h5"/></svg></div>
+        <p data-i18n="src_2"><strong>Disagreement is shown, not hidden.</strong> Where a narration's grading is disputed, it says so. Where a position is a minority one, it is labelled as one.</p>
+      </div>
+      <div class="q-principle-card">
+        <div class="q-principle-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="6" cy="18" r="2.4"/><circle cx="18" cy="18" r="2.4"/></svg></div>
+        <p data-i18n="src_3"><strong>No school is smuggled in as "the" answer.</strong> Where the madhhabs differ, they are presented side by side and left that way.</p>
+      </div>
+      <div class="q-principle-card">
+        <div class="q-principle-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8c2-2 5-2 7 0s5 2 7 0"/></svg></div>
+        <p data-i18n="src_4"><strong>Culture is not dressed up as ruling.</strong> Common practice and established ruling are two different things, and Quba does not blur them.</p>
+      </div>
+      <div class="q-principle-card">
+        <div class="q-principle-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9.5 12l1.7 1.7L15 10"/></svg></div>
+        <p data-i18n="src_5"><strong>It will not give a verdict it has no right to give.</strong> The barcode scanner will never tell you a product is halal or haram. It shows you what is in it and what those ingredients are. The ruling is not an app's to issue.</p>
+      </div>
+    </div>
+    <p class="q-source-close" data-i18n="src_close">Quba is a reference, not a mufti. For anything that matters, ask someone qualified.</p>
+  </div>
+
+  <div class="q-divider" aria-hidden="true">
+    <span class="q-divider-line"></span>
+    <span class="q-divider-star"><svg viewBox="0 0 80 80" fill="currentColor"><path d="M40 4 L50 30 L76 40 L50 50 L40 76 L30 50 L4 40 L30 30 Z"/></svg></span>
+    <span class="q-divider-line"></span>
   </div>
 
   <!-- REAL APP -->
@@ -492,7 +642,7 @@ a{color:inherit;}
       why_p1: "Most prayer apps are built for people who already know what they're doing. Long menus, dense rulings, lots of assumed knowledge. That leaves new Muslims, younger learners, and anyone coming back after time away without a clear place to start.",
       why_p2: "It starts there. It doesn't stop there.",
       why_p3: "It walks you through each of the five daily prayers: what to say, when to say it, how many rak'ahs, and what every word means in plain language. No prior knowledge needed.",
-      why_p4: "And if you have prayed your whole life, it is still for you. What started as a walkthrough grew into a full reference. The adhkar, the du'as, the 99 Names, the 42 Hadith of an-Nawawi, the Prophets, the Seerah, fasting, purification, Zakat, the differences between the schools. It grew because every time an answer proved hard to find with a source attached, that became the next thing to build. Every claim carries its citation. Every ruling names its source. Beginners find their footing here. Everyone else finds a reference they can actually trust.",
+      why_p4: "And if you have prayed your whole life, it is still for you. What started as a walkthrough grew into a full reference: <span class=\'q-chip\'>Adhkar</span><span class=\'q-chip\'>Du\u02bcas</span><span class=\'q-chip\'>99 Names</span><span class=\'q-chip\'>42 Hadith</span><span class=\'q-chip\'>The Prophets</span><span class=\'q-chip\'>Seerah</span><span class=\'q-chip\'>Fasting</span><span class=\'q-chip\'>Purification</span><span class=\'q-chip\'>Zakat</span><span class=\'q-chip\'>Madhhab Differences</span>. It grew because every time an answer proved hard to find with a source attached, that became the next thing to build. Every claim carries its citation. Every ruling names its source.",
       why_p5: "Quba was built for the Ummah and for everyone finding their way toward it. For the person taking their first prayer. For the person returning after time away, looking for mercy and a way back. For the person asking honest questions and wanting honest answers. No cost. No account. No condition on any of it. If it helps you even once, even one prayer, that is why it exists.",
       name_h: "About the name",
       name_p1: "In 622 CE, during the Hijra from Mecca to Medina, Prophet Muhammad ﷺ arrived at a small settlement called Quba. Before continuing into the city, he laid the foundation of the first mosque in Islam. The companions built alongside him, stone by stone.",
@@ -746,10 +896,10 @@ a{color:inherit;}
   // Full pool — every label that falls as ambient background rain.
   var FEATURES=[
     "Prayer Times","Full Qur\u02bcān","Qibla Compass","Guided Prayer","Wudu Guide",
-    "Prayer Tracker with Qad\u0101","Tasbih (Auto + Tap)","Mosque Finder","99 Names","42 Hadith",
-    "Seerah Timeline","The Prophets","Madhhab Compare","Tajwīd Basics","Du\u02bcā Book",
+    "Prayer Tracker with Qad\u0101","Tasbih (Auto + Tap)","Mosque Finder","99 Names + Memorize Mode","42 Hadith, All Sourced",
+    "Seerah Timeline","The Prophets, Their Stories","4 Madhabs, Compared","Tajwīd Basics","Du\u02bcā Book",
     "Morning Adhkar","Evening Adhkar","Post-Prayer Adhkar","Fasting Guide","Purification Guide",
-    "Zakat Calculator","Learn to Pray","Halal/Haram Foods + Barcode Scanner","Learn the Arabic Letters","Glossary",
+    "Calculate Your Zakat","Learn to Pray","Halal/Haram Foods + Barcode Scanner","Learn the Arabic Letters","Glossary",
     "Women in Islam","Offline Mode","Lock-Screen Audio","10 Reciters","10 Translations",
     "Send a Du\u02bcā","Guided Paths for Prayer & Wudu","Ramadan Prep","New Muslim Guide",
     "Tag your favorites","Recently viewed items","5 Languages",
@@ -767,12 +917,15 @@ a{color:inherit;}
     "Tasbih (Auto + Tap)",
     "Quiz Yourself",
     "Mosque Finder",
-    "99 Names",
+    "99 Names + Memorize Mode",
     "Offline Mode",
     "Learn to Pray",
     "Seerah Timeline",
-    "The Prophets",
-    "Revelations"
+    "The Prophets, Their Stories",
+    "Revelations",
+    "Calculate Your Zakat",
+    "42 Hadith, All Sourced",
+    "4 Madhabs, Compared"
   ];
 
   var container=document.getElementById('quba-rain');
