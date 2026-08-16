@@ -488,6 +488,8 @@ a{color:inherit;}
 
 /* --- closing "door is open" block --- */
 .q-door{margin:74px 0 0;position:relative;overflow:hidden;background-image:url('/assets/quba-door-bg.webp');background-size:cover;background-position:center 30%;border:1px solid rgba(82,183,136,0.28);border-radius:22px;padding:46px 34px 42px;text-align:center;}
+.q-door::before{content:'';position:absolute;inset:0;background:rgba(6,12,10,0.72);border-radius:22px;pointer-events:none;z-index:0;}
+.q-door>*{position:relative;z-index:1;}
 .q-door-bg-img{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;z-index:0;background-image:url('/assets/quba-door-bg.webp');background-size:cover;background-position:center 30%;opacity:0.85;pointer-events:none;border-radius:22px;}
 .q-door-veil{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,18,12,0.20) 0%,rgba(10,18,12,0.05) 28%,rgba(10,18,12,0.30) 60%,rgba(10,18,12,0.78) 100%);border-radius:22px;pointer-events:none;}
 .q-door-pattern{display:none;}
