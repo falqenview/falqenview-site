@@ -456,49 +456,55 @@
     const contextLine = context ? `\n\nAdditional context from the author: ${context}` : '';
 
     const prompt =
-`You are ghostwriting a weekly technology digest post for LinkedIn. The author is a Director of Systems Engineering who supports US federal government IT engineering and works closely with CISA and DHS leadership. Post date: ${formatted}.
+`You are ghostwriting a weekly tech digest LinkedIn post. The author is a Director of Systems Engineering supporting US federal government IT — works closely with CISA and DHS. Post date: ${formatted}.
 
 Audience: ${toneMap[tone]}
 
-Scan the web and select the most relevant and genuinely interesting technology stories from the past seven days. Do not limit yourself to cybersecurity. If the biggest story this week is an AI model release, a cloud provider outage, a federal IT directive, a chip embargo, or a major breach — lead with it. The bar for inclusion is: would a sharp, experienced federal technology leader stop scrolling for this? If not, cut it.
-
-${countLine}${excludeLine}
-
-Topic areas to pull from: ${topicLine}
-
-Trusted sources to prioritize: ${sourceLine}${contextLine}
+Search the web. Find the ${maxItems === 'dynamic' ? '4 to 6 most genuinely interesting' : maxItems + ' most genuinely interesting'} technology stories from the past seven days. Not just security. AI, cloud, federal IT, big outages, hardware, policy — whatever a sharp federal tech leader would actually want to read. If it wouldn't make someone stop scrolling, cut it.
+${excludeLine}
+Topic areas: ${topicLine}
+Sources to draw from: ${sourceLine}${contextLine}
 
 ---
-WRITING STANDARDS
+FORMAT — follow this exactly
 
-The post must read as if a human wrote it on a Sunday afternoon after spending the week paying attention. It should not read like a newsletter template, a press release summary, or output from a language model.
+Open with one short line that frames the week. Punchy. Not a summary of what's below, just a quick "here's what caught my attention" type of opener. No em dash. No "This week in tech:" label. Just a line.
 
-Specifically:
+Then one blank line.
 
-Voice: Direct and confident without being arrogant. The author shares what they found worth reading, not what they think readers should be impressed by. Write in first person where it fits naturally — "This one caught my attention" is fine; "I am pleased to share" is not.
+Then the items. Each item follows this exact structure:
 
-Sentences: Short to medium. Vary the rhythm. One short punchy sentence followed by a fuller one lands better than five sentences of equal length. Cut adverbs. Cut throat-clearing openers. Every sentence either moves the story forward or it is gone.
+[one relevant emoji that matches the topic] [topic name or story title in plain text — no bold, no quotes]
 
-No AI tells:
-- No em dashes anywhere in the post
-- No bold text anywhere in the post
-- No bullet points or numbered lists
-- No emoji markers or icon labels before items
-- No headers or section labels
-- No "Key takeaway:" or "Bottom line:" or "TL;DR:" labels
-- No phrases: "in today's landscape", "in an era of", "it is worth noting", "it bears mentioning", "one cannot overstate", "at the end of the day", "the fact of the matter", "needless to say", "as we navigate"
-- No significance-padding tail phrases ("...highlighting the importance of X", "...underscoring the need for Y")
-- No vague attributions: "experts say", "observers note", "many believe"
-- No promotional language, superlatives, or hype
-- No rule-of-three constructions
+Two to three sentences max. First sentence: what happened, stated plainly. Second sentence: why it matters to a federal tech or engineering audience, or what changes because of it. Optional third sentence only if there is a genuinely useful action or detail — never a filler sentence. No em dashes. No "it is worth noting." No padding.
 
-Format: Running prose only. Items flow as paragraphs separated by a single blank line. No separators, no dividers, no structural decoration. The post opens with one or two sentences that set the week's context, then moves directly into the items. It closes with a short, plain line — a single sentence observation if the week's items share a common thread, or nothing at all.
+[Publication Name](URL)
 
-Sources: At the end of each item, place the source as a plain hyperlink on its own line in markdown format: [Publication Name](URL). Only include an item if you found a verifiable primary source URL. If you cannot confirm a URL, cut the item rather than guess.
+[blank line between each item]
 
-Hashtags: 3 to 5 at the very end. Only tags that map to something actually in the post. No vanity tags.
+After the last item, one blank line, then close with either:
+- A single plain sentence observation if two or more items share a real thread
+- Nothing at all if they don't
 
-The result should be copy-paste ready for LinkedIn with no editing needed beyond the author's personal review.`;
+Then hashtags on the last line. 3 to 5. Only tags tied to something actually in the post.
+
+---
+HARD RULES — no exceptions
+
+No em dashes anywhere.
+No bold or italic text anywhere.
+No bullet points. No numbered lists. No headers. No section labels.
+No "Key takeaway:", "Bottom line:", "TL;DR:", "Worth noting:", "Quick hits:"
+No significance-padding: "...highlighting the need for", "...underscoring the importance of"
+No throat-clearing openers: "In today's landscape", "As we navigate", "It is no secret that"
+No vague attribution: "experts say", "observers note", "many believe"
+No hype, superlatives, or promotional tone.
+No rule-of-three constructions.
+No closing call to action like "What do you think?" or "Drop a comment below."
+No more than 3 sentences per item — if you need more, the item is not sharp enough.
+Only include an item if you have a verified source URL. No URL, no item.
+
+The post should feel like a well-read colleague sent it on a Sunday. Scannable. Specific. Worth the 90 seconds it takes to read.`;
 
     document.getElementById('outputText').textContent = prompt;
     document.getElementById('outputWrap').style.display = 'block';
