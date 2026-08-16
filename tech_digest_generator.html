@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Digest — Post Generator</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;600;700&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #181c26;
+    --surface2: #1e2330;
+    --surface3: #252b3b;
+    --border: #2a3045;
+    --border2: #3a4460;
+    --text: #e8ecf4;
+    --text2: #8a93a8;
+    --text3: #4a5268;
+    --accent: #4f8ef7;
+    --accent2: #7c5cfc;
+    --accent-glow: rgba(79,142,247,0.12);
+    --green: #3de0a0;
+    --red: #f75f5f;
+    --red-bg: rgba(247,95,95,0.13);
+    --red-border: rgba(247,95,95,0.4);
+    --amber: #f5a623;
+    --amber-bg: rgba(245,166,35,0.08);
+    --radius: 6px;
+    --radius-lg: 10px;
+    --shadow: 0 2px 12px rgba(0,0,0,0.4);
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 2.5rem 1.5rem;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .shell { max-width: 780px; margin: 0 auto; }
+
+  .masthead {
+    margin-bottom: 2.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .masthead-icon {
+    width: 40px; height: 40px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0; margin-top: 2px;
+  }
+
+  .masthead h1 {
+    font-family: var(--sans);
+    font-size: 20px; font-weight: 700;
+    color: var(--text); letter-spacing: -0.02em;
+    line-height: 1.2; margin-bottom: 3px;
+  }
+
+  .masthead-sub {
+    font-size: 12px; color: var(--text3);
+    font-family: var(--mono); letter-spacing: 0.04em;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 10px;
+  }
+
+  .card-label {
+    font-family: var(--mono);
+    font-size: 10px; font-weight: 700;
+    color: var(--text3); letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+
+  .card-label span {
+    color: var(--text2); font-weight: 400;
+    font-size: 10px; margin-left: 6px;
+    letter-spacing: 0.03em; text-transform: none;
+  }
+
+  .grid-2 {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 10px; margin-bottom: 10px;
+  }
+
+  .grid-3 {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px; margin-bottom: 10px;
+  }
+
+  .field-label {
+    font-family: var(--mono);
+    font-size: 10px; font-weight: 700;
+    color: var(--text3); letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 7px;
+  }
+
+  select, input[type="date"], textarea {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 13px;
+    padding: 8px 10px;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    appearance: none; -webkit-appearance: none;
+  }
+
+  select:focus, input[type="date"]:focus, textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+    background: var(--surface3);
+  }
+
+  select option { background: #1e2330; color: var(--text); }
+
+  textarea {
+    resize: vertical; min-height: 60px;
+    line-height: 1.65; font-family: var(--sans);
+  }
+  textarea::placeholder { color: var(--text3); }
+
+  /* ── Topic tags with three states ── */
+  .toggle-group { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .tag {
+    font-size: 12px; font-weight: 400;
+    font-family: var(--sans);
+    padding: 4px 11px; border-radius: 20px;
+    border: 1px solid var(--border2);
+    color: var(--text2); background: var(--surface2);
+    cursor: pointer;
+    transition: all 0.12s ease;
+    user-select: none; line-height: 1.4;
+  }
+
+  /* state: INCLUDE (blue) */
+  .tag.include {
+    background: rgba(79,142,247,0.15);
+    border-color: var(--accent);
+    color: #a0c4ff; font-weight: 600;
+  }
+
+  /* state: EXCLUDE (red) */
+  .tag.exclude {
+    background: var(--red-bg);
+    border-color: var(--red-border);
+    color: var(--red); font-weight: 600;
+    text-decoration: line-through;
+    text-decoration-color: rgba(247,95,95,0.5);
+  }
+
+  .tag:hover { border-color: var(--accent); color: var(--accent); }
+  .tag.exclude:hover { border-color: var(--red); color: var(--red); }
+
+  /* ── Legend ── */
+  .legend {
+    display: flex; gap: 16px;
+    margin-bottom: 10px; align-items: center;
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 5px;
+    font-family: var(--mono); font-size: 10px; color: var(--text3);
+    letter-spacing: 0.05em;
+  }
+  .legend-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
+  .legend-dot.blue { background: var(--accent); }
+  .legend-dot.red  { background: var(--red); }
+  .legend-dot.grey { background: var(--border2); }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 1.25rem 0; }
+
+  .btn-generate {
+    width: 100%; padding: 13px;
+    font-size: 14px; font-weight: 700;
+    font-family: var(--mono); letter-spacing: 0.05em;
+    color: #fff;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border: none; border-radius: var(--radius);
+    cursor: pointer; transition: all 0.15s;
+    text-transform: uppercase;
+  }
+  .btn-generate:hover { opacity: 0.88; box-shadow: 0 0 20px rgba(79,142,247,0.3); }
+  .btn-generate:active { transform: scale(0.99); }
+
+  .output-wrap { display: none; margin-top: 1.25rem; }
+
+  .output-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 8px;
+  }
+
+  .output-title {
+    font-family: var(--mono); font-size: 10px; font-weight: 700;
+    color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+
+  .btn-copy {
+    font-size: 12px; font-weight: 700;
+    font-family: var(--mono); padding: 5px 14px;
+    border: 1px solid var(--accent); border-radius: 20px;
+    background: transparent; color: var(--accent);
+    cursor: pointer; transition: all 0.12s; letter-spacing: 0.04em;
+  }
+  .btn-copy:hover { background: var(--accent-glow); }
+
+  .output-text {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+    font-size: 12.5px; font-family: var(--mono);
+    line-height: 1.85; white-space: pre-wrap;
+    color: var(--text2);
+    max-height: 520px; overflow-y: auto;
+    box-shadow: var(--shadow);
+  }
+  .output-text::-webkit-scrollbar { width: 4px; }
+  .output-text::-webkit-scrollbar-track { background: transparent; }
+  .output-text::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+  .status-bar {
+    display: flex; align-items: center;
+    gap: 8px; margin-top: 10px; min-height: 20px;
+  }
+  .status-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--green); display: none;
+    flex-shrink: 0; box-shadow: 0 0 6px var(--green);
+  }
+  .status-text { font-size: 11px; font-family: var(--mono); color: var(--text3); letter-spacing: 0.04em; }
+
+  .note-box {
+    margin-top: 1.5rem; padding: 1rem 1.25rem;
+    background: var(--amber-bg);
+    border-left: 3px solid var(--amber);
+    border-radius: var(--radius);
+  }
+  .note-box p { font-size: 12px; font-family: var(--mono); color: #b07a30; line-height: 1.75; margin-bottom: 0.4rem; }
+  .note-box p:last-child { margin-bottom: 0; }
+  .note-box strong { font-weight: 700; color: var(--amber); }
+
+  @media (max-width: 580px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .masthead h1 { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <div class="masthead">
+    <div class="masthead-icon">⚡</div>
+    <div>
+      <h1>Tech Digest — Post Generator</h1>
+      <div class="masthead-sub">// weekly LinkedIn digest · director of systems engineering · federal IT</div>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="field-label">post date</div>
+      <input type="date" id="postDate" />
+    </div>
+    <div class="card">
+      <div class="field-label">audience tone</div>
+      <select id="tone">
+        <option value="mixed">mixed — tech + exec</option>
+        <option value="technical">technical practitioners</option>
+        <option value="executive">executive / non-technical</option>
+      </select>
+    </div>
+    <div class="card">
+      <div class="field-label">number of topics</div>
+      <select id="maxItems">
+        <option value="4">4 topics</option>
+        <option value="5" selected>5 topics</option>
+        <option value="6">6 topics</option>
+        <option value="7">7 topics</option>
+        <option value="dynamic">dynamic — what matters</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-label">
+      topics
+      <span>click once to include &nbsp;·&nbsp; click again to exclude &nbsp;·&nbsp; click again to clear</span>
+    </div>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot blue"></div>included</div>
+      <div class="legend-item"><div class="legend-dot red"></div>excluded</div>
+      <div class="legend-item"><div class="legend-dot grey"></div>not selected</div>
+    </div>
+    <div class="toggle-group" id="contentTypes">
+      <span class="tag include" data-val="AI and machine learning — model releases, controversies, capability jumps, policy debates">AI / ML</span>
+      <span class="tag include" data-val="critical CVEs, zero-days, and active exploitation">CVEs / zero-days</span>
+      <span class="tag include" data-val="major cybersecurity incidents and breaches">incidents &amp; breaches</span>
+      <span class="tag include" data-val="federal IT policy, government technology directives, and CISA/DHS priorities">federal IT &amp; policy</span>
+      <span class="tag include" data-val="cloud platform news, major outages, and infrastructure changes (AWS, Azure, GCP)">cloud &amp; outages</span>
+      <span class="tag include" data-val="active threat actor campaigns and nation-state cyber activity">threat campaigns</span>
+      <span class="tag include" data-val="emerging technology worth tracking — what is gaining traction and why">emerging tech</span>
+      <span class="tag"         data-val="software engineering, DevSecOps, and developer tooling trends">DevSecOps</span>
+      <span class="tag"         data-val="ransomware incidents and extortion developments">ransomware</span>
+      <span class="tag"         data-val="CISA KEV additions and BOD 22-01 patch deadlines">CISA KEV</span>
+      <span class="tag"         data-val="hardware, semiconductors, and technology supply chain">hardware / chips</span>
+      <span class="tag"         data-val="big tech company moves, product launches, or controversies worth noting">big tech</span>
+      <span class="tag"         data-val="systems engineering and enterprise architecture trends and lessons">systems engineering</span>
+      <span class="tag"         data-val="identity, access management, and zero trust architecture developments">identity / ZT</span>
+      <span class="tag"         data-val="open source software news, major releases, and ecosystem shifts">open source</span>
+      <span class="tag"         data-val="quantum computing progress and post-quantum cryptography migration">quantum</span>
+      <span class="tag"         data-val="data privacy regulation, compliance enforcement, and policy shifts">privacy / compliance</span>
+      <span class="tag"         data-val="cybersecurity practitioner tips, hardening techniques, and operational guidance">security tips</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-label">sources — toggle on to include</div>
+    <div class="toggle-group" id="sources">
+      <span class="tag include" data-val="CISA">CISA</span>
+      <span class="tag include" data-val="The Hacker News">The Hacker News</span>
+      <span class="tag include" data-val="Ars Technica">Ars Technica</span>
+      <span class="tag include" data-val="Wired">Wired</span>
+      <span class="tag include" data-val="MIT Technology Review">MIT Tech Review</span>
+      <span class="tag include" data-val="Krebs on Security">Krebs on Security</span>
+      <span class="tag include" data-val="FedScoop">FedScoop</span>
+      <span class="tag include" data-val="Nextgov / FCW">Nextgov / FCW</span>
+      <span class="tag"         data-val="Microsoft MSRC">Microsoft MSRC</span>
+      <span class="tag"         data-val="CrowdStrike">CrowdStrike</span>
+      <span class="tag"         data-val="Mandiant">Mandiant</span>
+      <span class="tag"         data-val="BleepingComputer">BleepingComputer</span>
+      <span class="tag"         data-val="SecurityWeek">SecurityWeek</span>
+      <span class="tag"         data-val="The Register">The Register</span>
+      <span class="tag"         data-val="IEEE Spectrum">IEEE Spectrum</span>
+      <span class="tag"         data-val="SANS Internet Storm Center">SANS ISC</span>
+      <span class="tag"         data-val="Dark Reading">Dark Reading</span>
+      <span class="tag"         data-val="TechCrunch">TechCrunch</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="field-label">additional context or specific inclusions (optional)</div>
+    <textarea id="context" placeholder="e.g. include the CrowdStrike Senate hearing, anything tied to CISA priorities this week, or leave blank for an open sweep"></textarea>
+  </div>
+
+  <hr class="divider" />
+
+  <button class="btn-generate" onclick="generatePrompt()">// generate prompt →</button>
+
+  <div class="status-bar">
+    <div class="status-dot" id="statusDot"></div>
+    <div class="status-text" id="statusText"></div>
+  </div>
+
+  <div class="output-wrap" id="outputWrap">
+    <div class="output-header">
+      <div class="output-title">// generated prompt — paste into Claude, ChatGPT, or Gemini with web search on</div>
+      <button class="btn-copy" onclick="copyPrompt()">[ copy ]</button>
+    </div>
+    <div class="output-text" id="outputText"></div>
+  </div>
+
+  <div class="note-box">
+    <p><strong>How to use:</strong> Configure above, generate, copy the prompt, paste into Claude (web search on), ChatGPT, or Gemini.</p>
+    <p><strong>Accuracy gate:</strong> The prompt instructs the model to exclude anything without a verifiable source URL. Review before publishing.</p>
+    <p><strong>Tip:</strong> Save this file locally. It works fully offline — only the model needs web access when you paste the prompt.</p>
+  </div>
+
+</div>
+
+<script>
+  document.getElementById('postDate').valueAsDate = new Date();
+
+  // Three-state cycle: neutral → include → exclude → neutral
+  document.querySelectorAll('#contentTypes .tag').forEach(t => {
+    t.addEventListener('click', () => {
+      if (t.classList.contains('include')) {
+        t.classList.remove('include');
+        t.classList.add('exclude');
+      } else if (t.classList.contains('exclude')) {
+        t.classList.remove('exclude');
+      } else {
+        t.classList.add('include');
+      }
+    });
+  });
+
+  // Sources remain two-state (on/off using include)
+  document.querySelectorAll('#sources .tag').forEach(t => {
+    t.addEventListener('click', () => t.classList.toggle('include'));
+  });
+
+  function getByState(groupId, state) {
+    return [...document.querySelectorAll(`#${groupId} .tag.${state}`)].map(t => t.dataset.val);
+  }
+
+  function generatePrompt() {
+    const dateVal   = document.getElementById('postDate').value;
+    const tone      = document.getElementById('tone').value;
+    const maxItems  = document.getElementById('maxItems').value;
+    const included  = getByState('contentTypes', 'include');
+    const excluded  = getByState('contentTypes', 'exclude');
+    const sources   = getByState('sources', 'include');
+    const context   = document.getElementById('context').value.trim();
+
+    if (!dateVal) { setStatus('set a post date first'); return; }
+
+    const formatted = new Date(dateVal + 'T12:00:00').toLocaleDateString('en-US', {
+      month: 'long', day: 'numeric', year: 'numeric'
+    });
+
+    const sourceLine = sources.length
+      ? sources.join(', ')
+      : 'CISA, Ars Technica, Wired, The Hacker News, Krebs on Security, FedScoop';
+
+    const topicLine = included.length
+      ? included.join('; ')
+      : 'AI/ML, cybersecurity incidents, federal IT policy, cloud news, emerging tech';
+
+    const excludeLine = excluded.length
+      ? `\nDo not include any items from these topic areas, even if they are newsworthy this week: ${excluded.join('; ')}.`
+      : '';
+
+    const countLine = maxItems === 'dynamic'
+      ? 'Cover however many items genuinely earned a spot this week — quality over count. Cut anything where the reader takeaway is thin. A tight post of 4 strong items beats 7 padded ones.'
+      : `Cover exactly ${maxItems} items. If strong candidates in the included topic areas exceed ${maxItems}, pick the ones with the clearest reader value. Do not pad to hit the number if fewer earned it.`;
+
+    const toneMap = {
+      mixed:     'a mixed audience of technical practitioners and executive leadership. Spell out acronyms on first use only when a non-technical reader would otherwise be lost. Do not over-explain to the technical readers.',
+      technical: 'technical practitioners and systems engineers. Assume fluency with CVEs, CVSS, cloud architecture, and standard tooling. No hand-holding on acronyms or concepts.',
+      executive: 'executive and non-technical leadership. Keep technical specifics minimal. Translate risk into mission or business terms. Make the action clear without requiring technical background.'
+    };
+
+    const contextLine = context ? `\n\nAdditional context from the author: ${context}` : '';
+
+    const prompt =
+`You are ghostwriting a weekly technology digest post for LinkedIn. The author is a Director of Systems Engineering who supports US federal government IT engineering and works closely with CISA and DHS leadership. Post date: ${formatted}.
+
+Audience: ${toneMap[tone]}
+
+Scan the web and select the most relevant and genuinely interesting technology stories from the past seven days. Do not limit yourself to cybersecurity. If the biggest story this week is an AI model release, a cloud provider outage, a federal IT directive, a chip embargo, or a major breach — lead with it. The bar for inclusion is: would a sharp, experienced federal technology leader stop scrolling for this? If not, cut it.
+
+${countLine}${excludeLine}
+
+Topic areas to pull from: ${topicLine}
+
+Trusted sources to prioritize: ${sourceLine}${contextLine}
+
+---
+WRITING STANDARDS
+
+The post must read as if a human wrote it on a Sunday afternoon after spending the week paying attention. It should not read like a newsletter template, a press release summary, or output from a language model.
+
+Specifically:
+
+Voice: Direct and confident without being arrogant. The author shares what they found worth reading, not what they think readers should be impressed by. Write in first person where it fits naturally — "This one caught my attention" is fine; "I am pleased to share" is not.
+
+Sentences: Short to medium. Vary the rhythm. One short punchy sentence followed by a fuller one lands better than five sentences of equal length. Cut adverbs. Cut throat-clearing openers. Every sentence either moves the story forward or it is gone.
+
+No AI tells:
+- No em dashes anywhere in the post
+- No bold text anywhere in the post
+- No bullet points or numbered lists
+- No emoji markers or icon labels before items
+- No headers or section labels
+- No "Key takeaway:" or "Bottom line:" or "TL;DR:" labels
+- No phrases: "in today's landscape", "in an era of", "it is worth noting", "it bears mentioning", "one cannot overstate", "at the end of the day", "the fact of the matter", "needless to say", "as we navigate"
+- No significance-padding tail phrases ("...highlighting the importance of X", "...underscoring the need for Y")
+- No vague attributions: "experts say", "observers note", "many believe"
+- No promotional language, superlatives, or hype
+- No rule-of-three constructions
+
+Format: Running prose only. Items flow as paragraphs separated by a single blank line. No separators, no dividers, no structural decoration. The post opens with one or two sentences that set the week's context, then moves directly into the items. It closes with a short, plain line — a single sentence observation if the week's items share a common thread, or nothing at all.
+
+Sources: At the end of each item, place the source as a plain hyperlink on its own line in markdown format: [Publication Name](URL). Only include an item if you found a verifiable primary source URL. If you cannot confirm a URL, cut the item rather than guess.
+
+Hashtags: 3 to 5 at the very end. Only tags that map to something actually in the post. No vanity tags.
+
+The result should be copy-paste ready for LinkedIn with no editing needed beyond the author's personal review.`;
+
+    document.getElementById('outputText').textContent = prompt;
+    document.getElementById('outputWrap').style.display = 'block';
+    document.getElementById('statusDot').style.display = 'block';
+    setStatus('prompt ready — copy and paste into your model of choice');
+    setTimeout(() => {
+      document.getElementById('outputWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+
+  function copyPrompt() {
+    const text = document.getElementById('outputText').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      setStatus('copied to clipboard');
+      setTimeout(() => setStatus('prompt ready — copy and paste into your model of choice'), 3000);
+    }).catch(() => {
+      setStatus('select all text above and copy manually (Ctrl+A, Ctrl+C)');
+    });
+  }
+
+  function setStatus(msg) {
+    document.getElementById('statusText').textContent = msg;
+  }
+</script>
+</body>
+</html>
