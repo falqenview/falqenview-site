@@ -401,17 +401,22 @@ a{color:inherit;}
 @keyframes q-cue-bob{0%,100%{transform:translateY(0);opacity:0.55;}50%{transform:translateY(5px);opacity:1;}}
 
 /* --- sticky section rail --- */
-.q-rail{position:sticky;top:var(--nav-h);z-index:40;background:rgba(14,17,24,0.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid rgba(82,183,136,0.14);border-bottom:1px solid rgba(82,183,136,0.14);}
-.q-rail-inner{max-width:900px;margin:0 auto;display:flex;gap:8px;align-items:center;overflow-x:auto;padding:9px 20px 9px 20px;scrollbar-width:none;-ms-overflow-style:none;}
-.q-rail-inner::-webkit-scrollbar{display:none;}
+.q-rail{position:sticky;top:var(--nav-h);z-index:40;background:rgba(14,17,24,0.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid rgba(82,183,136,0.14);border-bottom:1px solid rgba(82,183,136,0.14);display:flex;align-items:center;max-width:900px;margin:0 auto;padding-right:10px;}
+[dir="rtl"] .q-rail{padding-right:0;padding-left:10px;}
+/* Scrolling region: the six section links only. This can overflow and clip on
+   narrow viewports without consequence — it is just navigation shortcuts. */
+.q-rail-scroll{flex:1 1 auto;min-width:0;display:flex;gap:8px;align-items:center;overflow-x:auto;padding:9px 12px 9px 20px;scrollbar-width:none;-ms-overflow-style:none;}
+.q-rail-scroll::-webkit-scrollbar{display:none;}
+[dir="rtl"] .q-rail-scroll{padding:9px 20px 9px 12px;}
 .q-rail-link{flex:0 0 auto;text-decoration:none;color:var(--text-dim);font-size:0.78rem;font-weight:500;padding:7px 15px;border-radius:100px;border:1px solid transparent;white-space:nowrap;transition:color .18s,background .18s,border-color .18s;}
 .q-rail-link:hover{color:var(--q-light);background:rgba(82,183,136,0.09);}
 .q-rail-link.current{color:var(--q-light);background:rgba(82,183,136,0.14);border-color:rgba(82,183,136,0.34);}
-.q-rail-link.q-rail-open{color:#08130d;background:var(--q-mid);font-weight:700;margin-left:auto;flex-shrink:0;margin-right:4px;}
-.q-rail-link.q-rail-open:hover{filter:brightness(1.07);background:var(--q-mid);color:#08130d;}
-[dir="rtl"] .q-rail-link.q-rail-open{margin-left:0;margin-right:auto;}
+/* CTA: lives OUTSIDE the scrolling region, on its own, so no combination of
+   viewport width and link-row width can ever clip or hide it. */
+.q-rail-cta{flex:0 0 auto;text-decoration:none;color:#08130d;background:var(--q-mid);font-weight:700;font-size:0.78rem;padding:7px 15px;border-radius:100px;white-space:nowrap;transition:filter .18s;}
+.q-rail-cta:hover{filter:brightness(1.07);}
 [id]{scroll-margin-top:calc(var(--nav-h) + var(--q-rail-h) + 18px);}
-@media(max-width:560px){.q-rail-inner{padding:8px 14px;}.q-rail-link{font-size:0.74rem;padding:6px 12px;}}
+@media(max-width:560px){.q-rail-scroll{padding:8px 8px 8px 14px;}.q-rail-link{font-size:0.74rem;padding:6px 12px;}.q-rail-cta{font-size:0.74rem;padding:6px 12px;}}
 
 /* --- trust card (sourcing integrity, paired with free card) --- */
 .q-trust{margin-top:16px;}
@@ -570,15 +575,15 @@ a{color:inherit;}
 
 <!-- ============ SECTION RAIL ============ -->
 <nav class="q-rail" id="q-rail" aria-label="Sections of this page">
-  <div class="q-rail-inner">
+  <div class="q-rail-scroll">
     <a class="q-rail-link" href="#see" data-rail="see" data-i18n="rail_see">See it</a>
     <a class="q-rail-link" href="#free" data-rail="free" data-i18n="free_h_short">Free, always</a>
     <a class="q-rail-link" href="#why" data-rail="why" data-i18n="why_h">Why this exists</a>
     <a class="q-rail-link" href="#name" data-rail="name" data-i18n="name_h">About the name</a>
     <a class="q-rail-link" href="#inside" data-rail="inside" data-i18n="inside_h">Everything inside</a>
     <a class="q-rail-link" href="#sources" data-rail="sources" data-i18n="src_h">Where the answers come from</a>
-    <a class="q-rail-link q-rail-open" href="https://quba.falqenview.com/">Open Quba</a>
   </div>
+  <a class="q-rail-cta" href="https://quba.falqenview.com/">Open Quba</a>
 </nav>
 
 <!-- ============ SEE IT ============ -->
