@@ -402,12 +402,12 @@ a{color:inherit;}
 
 /* --- sticky section rail --- */
 .q-rail{position:sticky;top:var(--nav-h);z-index:40;background:rgba(14,17,24,0.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid rgba(82,183,136,0.14);border-bottom:1px solid rgba(82,183,136,0.14);}
-.q-rail-inner{max-width:900px;margin:0 auto;display:flex;gap:8px;align-items:center;overflow-x:auto;padding:9px 20px;scrollbar-width:none;-ms-overflow-style:none;}
+.q-rail-inner{max-width:900px;margin:0 auto;display:flex;gap:8px;align-items:center;overflow-x:auto;padding:9px 20px 9px 20px;scrollbar-width:none;-ms-overflow-style:none;}
 .q-rail-inner::-webkit-scrollbar{display:none;}
 .q-rail-link{flex:0 0 auto;text-decoration:none;color:var(--text-dim);font-size:0.78rem;font-weight:500;padding:7px 15px;border-radius:100px;border:1px solid transparent;white-space:nowrap;transition:color .18s,background .18s,border-color .18s;}
 .q-rail-link:hover{color:var(--q-light);background:rgba(82,183,136,0.09);}
 .q-rail-link.current{color:var(--q-light);background:rgba(82,183,136,0.14);border-color:rgba(82,183,136,0.34);}
-.q-rail-link.q-rail-open{color:#08130d;background:var(--q-mid);font-weight:700;margin-left:auto;}
+.q-rail-link.q-rail-open{color:#08130d;background:var(--q-mid);font-weight:700;margin-left:auto;flex-shrink:0;margin-right:4px;}
 .q-rail-link.q-rail-open:hover{filter:brightness(1.07);background:var(--q-mid);color:#08130d;}
 [dir="rtl"] .q-rail-link.q-rail-open{margin-left:0;margin-right:auto;}
 [id]{scroll-margin-top:calc(var(--nav-h) + var(--q-rail-h) + 18px);}
@@ -494,6 +494,8 @@ a{color:inherit;}
 .q-door-veil{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,18,12,0.20) 0%,rgba(10,18,12,0.05) 28%,rgba(10,18,12,0.30) 60%,rgba(10,18,12,0.78) 100%);border-radius:22px;pointer-events:none;}
 .q-door-pattern{display:none;}
 .q-door>*{position:relative;z-index:2;}
+.q-door-fadein{opacity:0;transform:translateY(18px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.q-door-fadein.q-door-visible{opacity:1;transform:none;}
 .q-door h3{font-family:var(--font-display);font-weight:800;font-size:clamp(1.5rem,3.4vw,2rem);letter-spacing:-0.02em;color:var(--q-light);}
 .q-door-sub{margin-top:12px;color:var(--text-dim);font-weight:300;line-height:1.75;font-size:1.02rem;max-width:520px;margin-left:auto;margin-right:auto;}
 .q-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:32px auto 0;max-width:640px;text-align:left;}
@@ -575,7 +577,7 @@ a{color:inherit;}
     <a class="q-rail-link" href="#name" data-rail="name" data-i18n="name_h">About the name</a>
     <a class="q-rail-link" href="#inside" data-rail="inside" data-i18n="inside_h">Everything inside</a>
     <a class="q-rail-link" href="#sources" data-rail="sources" data-i18n="src_h">Where the answers come from</a>
-    <a class="q-rail-link q-rail-open" href="https://quba.falqenview.com/" data-i18n="cta">Open Quba &mdash; it's free</a>
+    <a class="q-rail-link q-rail-open" href="https://quba.falqenview.com/">Open Quba</a>
   </div>
 </nav>
 
@@ -814,7 +816,7 @@ a{color:inherit;}
   </div>
 
   <!-- CLOSING -->
-  <div class="q-door reveal" id="door">
+  <div class="q-door q-door-fadein" id="door">
     <div class="q-door-bg-img" aria-hidden="true"></div>
     <div class="q-door-veil" aria-hidden="true"></div>
     <h3>The door is open</h3>
@@ -1569,6 +1571,18 @@ a{color:inherit;}
       });
     });
   })();
+  /* ---------- 6. Door fade-in (independent of .reveal observer) ---------- */
+  (function () {
+    var door = document.getElementById('door');
+    if (!door) return;
+    var io2 = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { door.classList.add('q-door-visible'); io2.disconnect(); }
+      });
+    }, { threshold: 0.08 });
+    io2.observe(door);
+  })();
+
 })();
 </script>
 </body>
