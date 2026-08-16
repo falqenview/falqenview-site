@@ -1464,14 +1464,26 @@ a{color:inherit;}
     var caps = Array.prototype.slice.call(document.querySelectorAll('.q-cap'));
     if (!tabs.length || !slides.length) return;
 
-    // Real captures are dropped in later at /assets/quba-shot-<name>.webp. Until they
-    // exist the request 404s, so the abstract mock underneath is what shows. Adding
-    // the files is the whole swap; no markup change is needed.
+    // Each slide has an <img> and a .q-mock fallback underneath.
+    // When the image loads: show img, hide mock.
+    // When the image errors (404 / offline): hide img, show mock.
     slides.forEach(function (sl) {
-      var img = sl.querySelector('img[data-mockfallback]');
+      var img  = sl.querySelector('img[data-mockfallback]');
+      var mock = sl.querySelector('.q-mock');
       if (!img) return;
-      img.addEventListener('error', function () { img.style.display = 'none'; });
-      if (img.complete && img.naturalWidth === 0) img.style.display = 'none';
+
+      function imgLoaded()  { img.style.display = ''; if (mock) mock.style.display = 'none'; }
+      function imgFailed()  { img.style.display = 'none'; if (mock) mock.style.display = ''; }
+
+      // Already decoded (cache hit) — decide immediately
+      if (img.complete) {
+        if (img.naturalWidth > 0) imgLoaded(); else imgFailed();
+      } else {
+        img.addEventListener('load',  imgLoaded, { once: true });
+        img.addEventListener('error', imgFailed, { once: true });
+        // Until we know: hide the mock so images don't compete visually
+        if (mock) mock.style.display = 'none';
+      }
     });
 
     var cur = 0, auto = null;
