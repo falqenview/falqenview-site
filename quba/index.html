@@ -342,7 +342,7 @@ a{color:inherit;}
   background:var(--surface);border:1px solid var(--border);border-radius:14px;
   padding:18px 20px;margin-bottom:18px;
 }
-.q-counts ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px 22px;}
+.q-counts ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
 .q-counts li{font-size:0.9rem;line-height:1.6;color:var(--text-dim);font-weight:300;}
 .q-counts li b{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums;}
 .q-stats-sub{font-family:var(--font-display);font-weight:700;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--q-mid);margin:20px 0 10px;}
@@ -364,8 +364,8 @@ a{color:inherit;}
 .q-feature-ic{font-size:1.7rem;line-height:1;}
 .q-feature-tx strong{display:block;font-family:var(--font-display);font-weight:700;font-size:0.98rem;color:var(--q-light);margin-bottom:4px;}
 .q-feature-tx span{font-size:0.88rem;line-height:1.55;color:var(--text-dim);font-weight:300;}
-@media(max-width:760px){.q-stats-grid{grid-template-columns:1fr 1fr;}.q-counts ul{grid-template-columns:1fr 1fr;}.q-feature-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:520px){.q-counts ul{grid-template-columns:1fr;}.q-feature-grid{grid-template-columns:1fr;}}
+@media(max-width:760px){.q-stats-grid{grid-template-columns:1fr 1fr;}.q-feature-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:520px){.q-feature-grid{grid-template-columns:1fr;}}
 
 /* ============ FEATURE RAIN ============ */
 #quba-rain{
@@ -905,54 +905,37 @@ a{color:inherit;}
       </div>
     </div>
 
-    <h4 class="q-stats-sub" data-i18n="num_s1">The Qur'an</h4>
-    <div class="q-counts">
-      <ul>
-        <li data-i18n="num_q2"><b>6,236</b> ayahs in the Uthmani script</li>
-        <li data-i18n="num_q1"><b>114</b> sūrahs, bundled for offline reading (<b>10</b> reciters)</li>
-        <li data-i18n="num_q6"><b>62</b> tajwīd rules with what to listen for</li>
-      </ul>
-      <p class="q-more-line" data-i18n="num_q_more">+3 more, including a reading plan across all 30 ajzāʾ</p>
-    </div>
-
     <h4 class="q-stats-sub" data-i18n="num_s2">The Sunnah</h4>
     <div class="q-counts">
       <ul>
-        <li data-i18n="num_h1"><b>42</b> hadith of an-Nawawī with hadith sciences</li>
-        <li data-i18n="num_h4"><b>25</b> prophets named in the Qur'an & <b>30</b> of his companions</li>
-        <li data-i18n="num_h6"><b>33</b> entries on women in Islam</li>
+        <li data-i18n="num_h1"><b>42</b> hadith of an-Nawawī, each with its source named</li>
+        <li data-i18n="num_h4"><b>25</b> prophets named in the Qur'an &amp; <b>30</b> of his companions who carried it after</li>
       </ul>
-      <p class="q-more-line" data-i18n="num_h_more">+3 more, including 29 events from the life of the Prophet ﷺ</p>
     </div>
 
     <h4 class="q-stats-sub" data-i18n="num_s3">Worship and practice</h4>
     <div class="q-counts">
       <ul>
-        <li data-i18n="num_w9"><b>99</b> names of Allah, with a memorisation mode</li>
-        <li data-i18n="num_w7"><b>47</b> du'as from the sunnah with the capability to send them to someone in need on beautiful cards</li>
+        <li data-i18n="num_w7"><b>47</b> du'as from the sunnah, with the option to send one to someone in need on a <span class="q-kw">beautiful card</span></li>
         <li data-i18n="num_w4"><b>14</b> stages of hajj, start to finish</li>
       </ul>
-      <p class="q-more-line" data-i18n="num_w_more">+6 more, on fasting, purification, and prayer troubleshooting</p>
     </div>
 
     <h4 class="q-stats-sub" data-i18n="num_s4">Living it</h4>
     <div class="q-counts">
       <ul>
-        <li data-i18n="num_l2"><b>216</b> school positions set out side by side</li>
-        <li data-i18n="num_l3"><b>112</b> questions answered plainly</li>
-        <li data-i18n="num_l4"><b>60</b> halal & haram with food <b>barcode scanner</b> for ingredients</li>
+        <li data-i18n="num_l2"><b>216</b> school positions across <b>54</b> topics of madhhab difference</li>
+        <li data-i18n="num_l5"><b>60</b> ingredients marked halal, haram or mushbooh, checked instantly with a <span class="q-kw">barcode scanner</span></li>
       </ul>
-      <p class="q-more-line" data-i18n="num_l_more">+6 more, on marriage, money, and living as a minority</p>
     </div>
 
     <h4 class="q-stats-sub" data-i18n="num_s5">The shape of it</h4>
     <div class="q-counts">
       <ul>
         <li data-i18n="num_x1"><b>35</b> library cards across <b>7</b> sections</li>
-        <li data-i18n="num_x8"><b>0</b> bytes of your data sent anywhere</li>
-        <li data-i18n="num_x9"><b>0</b> plans to ever charge for any of it</li>
+        <li data-i18n="num_x8"><b>0</b> bytes of your data sent anywhere &amp; <b>0</b> plans to ever charge for any of it</li>
       </ul>
-      <p class="q-more-line" data-i18n="num_x_more">+6 more, and much more inside</p>
+      <p class="q-more-line" data-i18n="num_more_all">...and dozens more, on marriage, money, grief, minority life and everything in between.</p>
     </div>
 
     <p class="q-stats-note" data-i18n="num_close">The numbers that matter most: zero bytes of your data ever leave your device, and zero plans to ever charge for any of it. Everything else is just how long it took.</p>
