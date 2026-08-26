@@ -322,6 +322,33 @@ a{color:inherit;}
 @media(max-width:760px){.q-principles-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:520px){.q-principles-grid{grid-template-columns:1fr;}}
 
+/* By the numbers. Two tiers: a headline stat row, then a denser list of
+ * content counts. Numbers are pulled from the source at build time by hand
+ * rather than computed live, they change slowly and a wrong live count is
+ * worse than a stale honest one. Update them when they move. */
+.q-stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:22px 0 18px;}
+.q-stat{
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:20px 18px;text-align:center;transition:border-color .2s,transform .2s;
+}
+.q-stat:hover{border-color:rgba(82,183,136,0.35);transform:translateY(-2px);}
+.q-stat-n{
+  font-family:var(--font-display);font-weight:800;letter-spacing:-0.02em;
+  font-size:clamp(1.5rem,3vw,1.9rem);color:var(--q-light);line-height:1.1;
+}
+.q-stat-l{margin-top:6px;font-size:0.84rem;line-height:1.5;color:var(--text-dim);font-weight:300;}
+.q-stat.gold .q-stat-n{color:var(--gold);}
+.q-counts{
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:18px 20px;margin-bottom:18px;
+}
+.q-counts ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px 22px;}
+.q-counts li{font-size:0.9rem;line-height:1.6;color:var(--text-dim);font-weight:300;}
+.q-counts li b{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums;}
+.q-stats-note{margin-top:2px;color:var(--text-dim);font-style:italic;font-size:0.98rem;}
+@media(max-width:760px){.q-stats-grid{grid-template-columns:1fr 1fr;}.q-counts ul{grid-template-columns:1fr 1fr;}}
+@media(max-width:520px){.q-counts ul{grid-template-columns:1fr;}}
+
 /* ============ FEATURE RAIN ============ */
 #quba-rain{
   position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;
@@ -579,6 +606,7 @@ a{color:inherit;}
     <a class="q-rail-link" href="#name" data-rail="name" data-i18n="name_h">About the name</a>
     <a class="q-rail-link" href="#inside" data-rail="inside" data-i18n="inside_h">Everything inside</a>
     <a class="q-rail-link" href="#sources" data-rail="sources" data-i18n="src_h">Sources</a>
+    <a class="q-rail-link" href="#numbers" data-rail="numbers" data-i18n="num_h">By the numbers</a>
   </div>
 </nav>
 
@@ -787,6 +815,46 @@ a{color:inherit;}
       </div>
     </div>
     <p class="q-source-close" data-i18n="src_close">Quba is a reference, not a mufti. For anything that matters, ask someone qualified.</p>
+  </div>
+
+  <div class="q-block reveal" id="numbers">
+    <h3 data-i18n="num_h">By the numbers</h3>
+    <p data-i18n="num_intro">One person, evenings and weekends, no funding and no team. Here is what that added up to.</p>
+
+    <div class="q-stats-grid">
+      <div class="q-stat gold">
+        <div class="q-stat-n">118,902</div>
+        <div class="q-stat-l" data-i18n="num_loc">lines of code</div>
+      </div>
+      <div class="q-stat gold">
+        <div class="q-stat-n">803</div>
+        <div class="q-stat-l" data-i18n="num_commits">commits</div>
+      </div>
+      <div class="q-stat">
+        <div class="q-stat-n">$0</div>
+        <div class="q-stat-l" data-i18n="num_price">to download, now and later</div>
+      </div>
+      <div class="q-stat">
+        <div class="q-stat-n">0</div>
+        <div class="q-stat-l" data-i18n="num_zero">accounts, ads, trackers or analytics</div>
+      </div>
+    </div>
+
+    <div class="q-counts">
+      <ul>
+        <li data-i18n="num_c1"><b>114</b> sūrahs, <b>6,236</b> ayahs, bundled for offline reading</li>
+        <li data-i18n="num_c2"><b>54</b> topics of madhhab difference, <b>216</b> positions set out side by side</li>
+        <li data-i18n="num_c3"><b>62</b> tajwīd rules with what to listen for</li>
+        <li data-i18n="num_c4"><b>42</b> hadith of an-Nawawī, each with its chain named</li>
+        <li data-i18n="num_c5"><b>34</b> occasions of revelation, graded and labelled</li>
+        <li data-i18n="num_c6"><b>25</b> prophets and <b>30</b> companions</li>
+        <li data-i18n="num_c7"><b>99</b> names of Allah, with a memorisation mode</li>
+        <li data-i18n="num_c8"><b>5</b> ways to silence the adhan, because one is never enough</li>
+        <li data-i18n="num_c9"><b>0</b> bytes of your data sent anywhere</li>
+      </ul>
+    </div>
+
+    <p class="q-stats-note" data-i18n="num_close">The one number that matters is the last one. Everything else is just how long it took.</p>
   </div>
 
   <div class="q-divider" aria-hidden="true">
