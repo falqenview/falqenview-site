@@ -345,6 +345,7 @@ a{color:inherit;}
 .q-counts ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px 22px;}
 .q-counts li{font-size:0.9rem;line-height:1.6;color:var(--text-dim);font-weight:300;}
 .q-counts li b{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums;}
+.q-stats-sub{font-family:var(--font-display);font-weight:700;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--q-mid);margin:20px 0 10px;}
 .q-stats-note{margin-top:2px;color:var(--text-dim);font-style:italic;font-size:0.98rem;}
 @media(max-width:760px){.q-stats-grid{grid-template-columns:1fr 1fr;}.q-counts ul{grid-template-columns:1fr 1fr;}}
 @media(max-width:520px){.q-counts ul{grid-template-columns:1fr;}}
@@ -819,7 +820,7 @@ a{color:inherit;}
 
   <div class="q-block reveal" id="numbers">
     <h3 data-i18n="num_h">By the numbers</h3>
-    <p data-i18n="num_intro">One person, evenings and weekends, no funding and no team. Here is what that added up to.</p>
+    <p data-i18n="num_intro">Built in evenings and weekends, with no funding, no team and no deadline. Here is what that added up to.</p>
 
     <div class="q-stats-grid">
       <div class="q-stat gold">
@@ -840,21 +841,76 @@ a{color:inherit;}
       </div>
     </div>
 
+    <h4 class="q-stats-sub" data-i18n="num_s1">The Qur'an</h4>
     <div class="q-counts">
       <ul>
-        <li data-i18n="num_c1"><b>114</b> sūrahs, <b>6,236</b> ayahs, bundled for offline reading</li>
-        <li data-i18n="num_c2"><b>54</b> topics of madhhab difference, <b>216</b> positions set out side by side</li>
-        <li data-i18n="num_c3"><b>62</b> tajwīd rules with what to listen for</li>
-        <li data-i18n="num_c4"><b>42</b> hadith of an-Nawawī, each with its chain named</li>
-        <li data-i18n="num_c5"><b>34</b> occasions of revelation, graded and labelled</li>
-        <li data-i18n="num_c6"><b>25</b> prophets and <b>30</b> companions</li>
-        <li data-i18n="num_c7"><b>99</b> names of Allah, with a memorisation mode</li>
-        <li data-i18n="num_c8"><b>5</b> ways to silence the adhan, because one is never enough</li>
-        <li data-i18n="num_c9"><b>0</b> bytes of your data sent anywhere</li>
+        <li data-i18n="num_q1"><b>114</b> sūrahs, bundled for offline reading</li>
+        <li data-i18n="num_q2"><b>6,236</b> ayahs in the Uthmani script</li>
+        <li data-i18n="num_q3"><b>30</b> ajzāʾ, with a reading plan built on them</li>
+        <li data-i18n="num_q4"><b>15</b> topics on how the Qur'an came down and was kept</li>
+        <li data-i18n="num_q5"><b>34</b> occasions of revelation, each graded</li>
+        <li data-i18n="num_q6"><b>62</b> tajwīd rules with what to listen for</li>
       </ul>
     </div>
 
-    <p class="q-stats-note" data-i18n="num_close">The one number that matters is the last one. Everything else is just how long it took.</p>
+    <h4 class="q-stats-sub" data-i18n="num_s2">The Sunnah</h4>
+    <div class="q-counts">
+      <ul>
+        <li data-i18n="num_h1"><b>42</b> hadith of an-Nawawī, each with its source named</li>
+        <li data-i18n="num_h2"><b>16</b> topics on how hadith are authenticated</li>
+        <li data-i18n="num_h3"><b>29</b> events from the life of the Prophet ﷺ</li>
+        <li data-i18n="num_h4"><b>25</b> prophets named in the Qur'an</li>
+        <li data-i18n="num_h5"><b>30</b> companions who carried it after</li>
+        <li data-i18n="num_h6"><b>33</b> entries on women in Islam</li>
+      </ul>
+    </div>
+
+    <h4 class="q-stats-sub" data-i18n="num_s3">Worship and practice</h4>
+    <div class="q-counts">
+      <ul>
+        <li data-i18n="num_w1"><b>33</b> topics across the five pillars</li>
+        <li data-i18n="num_w2"><b>15</b> prayers beyond the five</li>
+        <li data-i18n="num_w3"><b>12</b> answers for when prayer goes wrong</li>
+        <li data-i18n="num_w4"><b>14</b> stages of hajj, start to finish</li>
+        <li data-i18n="num_w5"><b>13</b> topics on purification</li>
+        <li data-i18n="num_w6"><b>13</b> topics on fasting</li>
+        <li data-i18n="num_w7"><b>47</b> du'as from the sunnah</li>
+        <li data-i18n="num_w8"><b>15</b> adhkar for morning and evening</li>
+        <li data-i18n="num_w9"><b>99</b> names of Allah, with a memorisation mode</li>
+      </ul>
+    </div>
+
+    <h4 class="q-stats-sub" data-i18n="num_s4">Living it</h4>
+    <div class="q-counts">
+      <ul>
+        <li data-i18n="num_l1"><b>54</b> topics of madhhab difference</li>
+        <li data-i18n="num_l2"><b>216</b> school positions set out side by side</li>
+        <li data-i18n="num_l3"><b>112</b> questions answered plainly</li>
+        <li data-i18n="num_l4"><b>64</b> terms in the glossary</li>
+        <li data-i18n="num_l5"><b>48</b> ingredients explained, plus 12 beyond food</li>
+        <li data-i18n="num_l6"><b>24</b> topics on marriage and family</li>
+        <li data-i18n="num_l7"><b>15</b> topics on living as a minority</li>
+        <li data-i18n="num_l8"><b>12</b> topics on money and work</li>
+        <li data-i18n="num_l9"><b>14</b> stages of death and janāzah</li>
+      </ul>
+    </div>
+
+    <h4 class="q-stats-sub" data-i18n="num_s5">The shape of it</h4>
+    <div class="q-counts">
+      <ul>
+        <li data-i18n="num_x1"><b>35</b> library cards across <b>7</b> sections</li>
+        <li data-i18n="num_x2"><b>19</b> dates in the Islamic calendar</li>
+        <li data-i18n="num_x3"><b>28</b> Arabic letters, taught from zero</li>
+        <li data-i18n="num_x4"><b>5</b> learning paths for wherever you are starting</li>
+        <li data-i18n="num_x5"><b>5</b> ways to silence the adhan, because one is never enough</li>
+        <li data-i18n="num_x6"><b>1</b> tap to send a du'a to someone who needs it</li>
+        <li data-i18n="num_x7"><b>0</b> app stores required</li>
+        <li data-i18n="num_x8"><b>0</b> bytes of your data sent anywhere</li>
+        <li data-i18n="num_x9"><b>0</b> plans to ever charge for any of it</li>
+      </ul>
+    </div>
+
+    <p class="q-stats-note" data-i18n="num_close">The one number that matters is the second to last. Everything else is just how long it took.</p>
   </div>
 
   <div class="q-divider" aria-hidden="true">
