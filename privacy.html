@@ -68,7 +68,7 @@ a:hover{text-decoration:underline;}
   <div class="page-eyebrow">Legal</div>
   <h1 class="page-title">Privacy Policy</h1>
   <div class="page-meta">
-    Effective date: May 25, 2026 &nbsp;·&nbsp; Last revised: August 15, 2026 &nbsp;·&nbsp;
+    Effective date: May 25, 2026 &nbsp;·&nbsp; Last revised: October 6, 2026 &nbsp;·&nbsp;
     <strong>This policy may be updated at any time without prior notice. Continued use of the site or product constitutes acceptance of the current policy.</strong>
   </div>
 
@@ -107,12 +107,15 @@ a:hover{text-decoration:underline;}
     <p>Swoop is a browser extension that exports AI chat conversations from supported platforms (ChatGPT, Gemini, Microsoft Copilot, Claude, and Grok) to JSON or Markdown files on your device.</p>
     <div class="highlight-box"><strong>Swoop does not collect, transmit, or store your conversation content.</strong> All export processing happens locally in your browser. Nothing you export is sent to FalqenView or any third party.</div>
     <ul>
-      <li>Swoop only activates on the following domains: chat.openai.com, gemini.google.com, copilot.microsoft.com, claude.ai, and grok.com. It does not run on any other website.</li>
+      <li>Swoop only activates on the following domains: chatgpt.com, chat.openai.com, gemini.google.com, copilot.microsoft.com, copilot.com, www.copilot.com, claude.ai, and grok.com. It does not run on any other website.</li>
+      <li>Swoop reads the conversation in your open tab only when you ask it to export. On Claude, so that long conversations export in full, Swoop requests your conversation directly from claude.ai using the session you are already signed in with. That request goes only to claude.ai, and the conversation stays in your browser.</li>
       <li>Exported files are saved directly to your device via your browser's download mechanism. FalqenView never receives or sees these files.</li>
-      <li>No browsing history, page content, or user activity is collected or transmitted by Swoop at any time.</li>
+      <li>When you choose Send to Chat Refresh or Send to Swoop Recall, Swoop opens that FalqenView tool with the conversation carried in the page address after the "#" sign. Browsers never send that part of an address to any server, so the conversation goes from your browser to the tool on your own device and is never transmitted to FalqenView.</li>
+      <li>No browsing history or user activity is collected or transmitted by Swoop at any time.</li>
     </ul>
-    <p><strong>Swoop Pro license verification.</strong> If you activate Swoop Pro, the license key you enter is transmitted to FalqenView's license verification service solely to confirm its validity against Gumroad's records. The key is then cached locally on your device. FalqenView's verification service does not log or retain your license key beyond the duration of the verification request. No personal information is transmitted as part of this process.</p>
-    <p>Your Swoop preferences (export format, settings) are stored locally in your browser's extension storage and never leave your device.</p>
+    <p><strong>Swoop Pro license verification.</strong> If you activate Swoop Pro, the license key you enter is transmitted to FalqenView's license verification service solely to confirm its validity against Gumroad's records. FalqenView's verification service does not log or retain your license key beyond the duration of the verification request. No personal information is transmitted as part of this process.</p>
+    <p><strong>Where your license key is kept.</strong> After verification, Swoop keeps your license key in your browser's own extension storage. If you are signed in to your browser (for example Chrome, Edge, or Firefox) with sync turned on, your browser also syncs the key to your other signed-in copies of that browser, so Swoop Pro restores itself after a reinstall, a cleared profile, or on a new computer. That sync is handled entirely by your browser provider under your browser account; FalqenView never receives, stores, or has access to it. Choosing Remove key in Swoop's settings deletes the key from both places.</p>
+    <p>Your Swoop preferences (export format, settings) are kept in the same browser extension storage and may sync through your browser account in the same way. They are never sent to FalqenView.</p>
   </div>
 
   <div class="section">
