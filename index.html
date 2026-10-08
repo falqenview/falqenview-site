@@ -793,6 +793,29 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
   color: var(--quba-mid);
 }
 .quba-card-icon img { width: 40px; height: 40px; object-fit: contain; display: block; }
+/* "Now on Google Play" ribbon (Oct 8 2026). Text only: the whole card is
+   already a link to /quba/, where the Play badge and QR live. */
+.quba-play-chip {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: 9px; margin: 0 auto 22px;
+  font-family: var(--font-display); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.01em;
+  color: var(--text); padding: 6px 15px 6px 6px; border-radius: 100px;
+  background: linear-gradient(135deg, rgba(201,162,39,0.16), rgba(82,183,136,0.14));
+  border: 1px solid rgba(232,197,71,0.55);
+  box-shadow: 0 0 22px -4px rgba(201,162,39,0.55);
+  animation: quba-play-glow 3.2s ease-in-out infinite;
+}
+.quba-play-new {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+  color: #1a1405; background: linear-gradient(135deg, #f1d36b, #c9a227);
+  padding: 4px 9px; border-radius: 100px;
+}
+.quba-play-new i { width: 5px; height: 5px; border-radius: 50%; background: #1a1405; animation: quba-play-dot 1.6s ease-in-out infinite; }
+.quba-play-chip em { font-style: normal; background: linear-gradient(135deg, #7fd6a4, #e8c547); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+@keyframes quba-play-glow { 0%,100% { box-shadow: 0 0 18px -6px rgba(201,162,39,0.45); } 50% { box-shadow: 0 0 28px -2px rgba(201,162,39,0.7); } }
+@keyframes quba-play-dot { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .35; transform: scale(.6); } }
+@media (prefers-reduced-motion: reduce) { .quba-play-chip, .quba-play-new i { animation: none; } }
 .quba-card-name {
   position: relative; z-index: 1;
   font-family: var(--font-display); font-weight: 800; font-size: 1.5rem;
@@ -1312,11 +1335,12 @@ footer { border-top: 1px solid var(--border); padding: 44px 32px; position: rela
           </g>
         </svg>
       </div>
+      <span class="quba-play-chip"><span class="quba-play-new"><i aria-hidden="true"></i>New</span>Now on <em>Google Play</em></span>
       <div class="quba-card-icon">
         <img src="https://quba.falqenview.com/quba-logo.webp" alt="" width="40" height="40" loading="lazy" decoding="async">
       </div>
       <div class="quba-card-name">Quba<span class="quba-dot">.</span></div>
-      <p class="quba-card-desc">An Islamic prayer guide with accurate times, a Qibla compass, and prayer tracking. No ads, no nags, no account — just the essentials, wherever you are.</p>
+      <p class="quba-card-desc">An Islamic prayer guide with accurate times, a Qibla compass, and prayer tracking. No ads, no nags, no account. Just the essentials, wherever you are.</p>
       <div class="quba-card-chips">
         <span class="quba-chip">Prayer times</span>
         <span class="quba-chip">Qibla compass</span>
