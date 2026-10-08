@@ -27,6 +27,7 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
+  "sameAs": ["https://play.google.com/store/apps/details?id=com.falqenview.quba"],
   "name": "Quba",
   "url": "https://quba.falqenview.com/",
   "description": "A free companion for daily prayer and a sourced Islamic reference. Prayer times, a live Qibla compass, guided prayers, wudu, a nearby mosque finder, prayer tracker and tasbih, plus the full Qur'an with audio recitation and translation, a Read Arabic primer, tajwīd basics, post-prayer and morning and evening adhkar, du'ās, the 99 Names, the 42 Hadith of an-Nawawi, the Prophets, a Seerah timeline, women in Islam, purification, fasting, and madhhab differences, alongside a Zakat calculator and an ingredients reference with barcode lookup. Claims carry their sources. Available in English, Arabic, Bengali, Turkish and Urdu.",
@@ -45,6 +46,21 @@
     "name": "FalqenView",
     "url": "https://falqenview.com/"
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Quba",
+  "operatingSystem": "Android",
+  "applicationCategory": "LifestyleApplication",
+  "installUrl": "https://play.google.com/store/apps/details?id=com.falqenview.quba",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.falqenview.quba",
+  "url": "https://play.google.com/store/apps/details?id=com.falqenview.quba",
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "FalqenView", "url": "https://falqenview.com/" }
 }
 </script>
 
@@ -211,12 +227,6 @@ a{color:inherit;}
 .q-badge-sub{font-size:0.64rem;font-weight:400;letter-spacing:0.02em;color:rgba(122,132,153,0.7);text-transform:none;padding-left:8px;border-left:1px solid rgba(122,132,153,0.3);}
 .q-hero[dir="rtl"] .q-badge-sub{padding-left:0;padding-right:8px;border-left:none;border-right:1px solid rgba(122,132,153,0.3);}
 
-.q-android-pill{display:inline-flex;align-items:center;gap:12px;background:rgba(66,133,244,0.10);border:1px solid rgba(66,133,244,0.32);border-radius:14px;padding:10px 20px;margin:18px auto 0;}
-.q-android-pill svg{width:28px;height:28px;flex-shrink:0;}
-.q-android-pill-tx{display:flex;flex-direction:column;align-items:flex-start;line-height:1.25;text-align:left;}
-.q-hero[dir="rtl"] .q-android-pill-tx{align-items:flex-end;text-align:right;}
-.q-android-pill-h{font-family:var(--font-display);font-size:0.95rem;font-weight:700;color:var(--text);}
-.q-android-pill-t{font-size:0.76rem;font-weight:400;color:var(--text-dim);}
 /* feature cards grid */
 .q-feature-grid{columns:3;column-gap:16px;margin-top:8px;}
 .q-fcard{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 22px;transition:transform .2s,border-color .2s,box-shadow .2s;overflow:hidden;break-inside:avoid;margin-bottom:16px;}
@@ -564,6 +574,49 @@ a{color:inherit;}
 @media(max-width:640px){.q-steps{grid-template-columns:1fr;}.q-door{padding:38px 22px 36px;}}
 
 @media(prefers-reduced-motion:reduce){.q-cue svg{animation:none;}.q-slide{transition:none;}.q-fcard-clip{transition:none;}}
+
+/* ── NOW ON GOOGLE PLAY (Oct 8 2026) ─────────────────────────────
+   Hero spotlight card. Animated gradient border (mask trick), soft
+   gold/green glow, one-time rise on load, pulsing "New" chip. The QR
+   only shows on wider screens: on a phone the badge tap is the action. */
+.q-play{position:relative;display:flex;align-items:center;justify-content:center;gap:26px;max-width:560px;margin:26px auto 0;padding:22px 26px;border-radius:20px;
+  background:linear-gradient(150deg,rgba(26,77,58,0.62),rgba(16,36,27,0.82));
+  box-shadow:0 18px 50px -18px rgba(82,183,136,0.55),0 0 0 1px rgba(201,162,39,0.08),0 0 60px -20px rgba(201,162,39,0.45);
+  animation:q-play-rise .8s cubic-bezier(.2,.8,.2,1) .35s both;}
+.q-play::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;pointer-events:none;
+  background:linear-gradient(110deg,rgba(201,162,39,0.35) 0%,rgba(127,214,164,0.55) 30%,#e8c547 46%,#fff6cf 50%,#e8c547 54%,rgba(127,214,164,0.55) 70%,rgba(201,162,39,0.35) 100%);
+  background-size:260% 100%;animation:q-play-sweep 5.5s linear infinite;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);}
+.q-play-main{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:left;min-width:0;}
+.q-play-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.q-play-new{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-display);font-size:0.66rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:#1a1405;background:linear-gradient(135deg,#f1d36b,var(--q-gold));padding:4px 10px;border-radius:100px;box-shadow:0 0 18px rgba(201,162,39,0.45);}
+.q-play-new i{width:6px;height:6px;border-radius:50%;background:#1a1405;animation:q-play-dot 1.6s ease-in-out infinite;}
+.q-play-k{font-family:var(--font-display);font-weight:800;font-size:clamp(1.15rem,2.6vw,1.4rem);letter-spacing:-0.015em;color:var(--text);}
+.q-play-k em{font-style:normal;background:linear-gradient(135deg,var(--q-light),var(--q-gold));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.q-play-sub{font-size:0.88rem;font-weight:300;color:var(--text-dim);line-height:1.5;}
+.q-gp{display:inline-flex;margin:4px 0 0 -9px;border-radius:12px;transition:transform .18s,filter .2s;}
+.q-gp img{display:block;height:66px;width:auto;}
+.q-gp:hover{transform:translateY(-2px);filter:drop-shadow(0 8px 18px rgba(82,183,136,0.35));}
+.q-gp:focus-visible{outline:2px solid var(--q-gold);outline-offset:3px;}
+.q-play-qr{flex-shrink:0;display:none;flex-direction:column;align-items:center;gap:8px;}
+.q-play-qr img{display:block;width:118px;height:118px;border-radius:12px;background:#fff;padding:6px;box-shadow:0 8px 24px rgba(0,0,0,0.35);}
+.q-play-qr span{font-size:0.7rem;color:var(--text-dim);letter-spacing:0.02em;}
+@media(min-width:700px){.q-play-qr{display:flex;}.q-play{padding:22px 28px 22px 30px;}}
+@media(max-width:699px){.q-play{flex-direction:column;text-align:center;padding:20px 18px;}.q-play-main{align-items:center;text-align:center;}.q-play-top{justify-content:center;}.q-gp{margin:4px 0 0;}}
+.q-hero[dir="rtl"] .q-play-main,.q-play-main[dir="rtl"]{align-items:flex-end;text-align:right;}
+@media(max-width:699px){.q-hero[dir="rtl"] .q-play-main{align-items:center;text-align:center;}}
+@keyframes q-play-sweep{0%{background-position:100% 0}100%{background-position:-160% 0}}
+@keyframes q-play-rise{0%{opacity:0;transform:translateY(16px) scale(.97)}100%{opacity:1;transform:none}}
+@keyframes q-play-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.6)}}
+@media(prefers-reduced-motion:reduce){.q-play,.q-play::before,.q-play-new i{animation:none;}.q-gp{transition:none;}}
+/* secondary Play badges (real-app block, closing CTA) */
+.q-realapp-gp{margin-top:14px;}
+.q-realapp-gp .q-gp{margin-left:-9px;}
+.q-realapp-gp .q-gp img{height:56px;}
+@media(max-width:560px){.q-realapp-gp .q-gp{margin-left:0;}}
+.q-door .q-cta-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 14px;}
+.q-door .q-cta-row .q-gp{margin:0;}
+.q-door .q-cta-row .q-gp img{height:62px;}
 </style>
 </head>
 <body>
@@ -606,9 +659,19 @@ a{color:inherit;}
       <a href="https://quba.falqenview.com/" class="q-btn-primary">Open Quba<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       <a href="#see" class="q-btn-ghost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>See it first</a>
     </div>
-    <div class="q-android-pill">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="3,3 3,12 15,12 17,9" fill="#4285F4"/><polygon points="15,12 17,9 21,12" fill="#EA4335"/><polygon points="15,12 21,12 17,15" fill="#FBBC05"/><polygon points="3,12 3,21 17,15 15,12" fill="#34A853"/></svg>
-      <span class="q-android-pill-tx"><span class="q-android-pill-h" data-i18n="android_badge">Android app</span><span class="q-android-pill-t" data-i18n="android_badge_t">Coming soon to Google Play</span></span>
+    <div class="q-play" role="region" aria-label="Quba on Google Play">
+      <div class="q-play-main">
+        <div class="q-play-top">
+          <span class="q-play-new"><i aria-hidden="true"></i><span data-i18n="play_new">New</span></span>
+          <span class="q-play-k" data-i18n="play_k">Now on <em>Google Play</em></span>
+        </div>
+        <p class="q-play-sub" data-i18n="play_sub">Free for Android, available worldwide.</p>
+        <a class="q-gp" href="https://play.google.com/store/apps/details?id=com.falqenview.quba" target="_blank" rel="noopener noreferrer" aria-label="Get Quba on Google Play"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" width="646" height="250" loading="eager" decoding="async"></a>
+      </div>
+      <div class="q-play-qr">
+        <img src="/assets/quba-play-qr.png" alt="QR code linking to Quba on Google Play" width="320" height="320" loading="eager" decoding="async">
+        <span data-i18n="play_scan">Scan with your phone</span>
+      </div>
     </div>
     <div class="q-pills">
       <span class="q-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-i18n="pill_times">Prayer times &amp; tracker</span></span>
@@ -969,8 +1032,9 @@ a{color:inherit;}
     <div class="q-realapp">
       <div class="q-realapp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M11 18h2"/></svg></div>
       <div>
-        <h4 data-i18n="real_h">Works wherever you are</h4>
-        <p data-i18n="real_p">Add it to your home screen and it opens like any other app, no app store involved. Or just open <strong>quba.falqenview.com</strong> in any browser. Either way it is the same thing: up to date, fully working, with your settings saved. It goes with you.</p>
+        <h4 data-i18n="real_h">On Google Play, or in any browser</h4>
+        <p data-i18n="real_p">On Android, install Quba from Google Play and it lives on your phone like any other app. On iPhone or a computer, open <strong>quba.falqenview.com</strong> in any browser, or add it to your home screen. It is the same Quba everywhere: always up to date, with your settings saved.</p>
+        <div class="q-realapp-gp"><a class="q-gp" href="https://play.google.com/store/apps/details?id=com.falqenview.quba" target="_blank" rel="noopener noreferrer" aria-label="Get Quba on Google Play"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" width="646" height="250" loading="lazy" decoding="async"></a></div>
       </div>
     </div>
   </div>
@@ -1000,7 +1064,8 @@ a{color:inherit;}
       </div>
     </div>
     <div class="q-cta-row">
-      <a href="https://quba.falqenview.com/" class="q-cta"><span data-i18n="cta">Open Quba — it's free</span> <span aria-hidden="true">→</span></a>
+      <a href="https://quba.falqenview.com/" class="q-cta"><span data-i18n="cta">Open Quba, it's free</span> <span aria-hidden="true">→</span></a>
+      <a class="q-gp" href="https://play.google.com/store/apps/details?id=com.falqenview.quba" target="_blank" rel="noopener noreferrer" aria-label="Get Quba on Google Play"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" width="646" height="250" loading="lazy" decoding="async"></a>
     </div>
     <p class="q-door-salaam">وعليكم السلام</p>
     <p class="q-door-close">Whenever you are ready. It will still be here.</p>
@@ -1033,8 +1098,10 @@ a{color:inherit;}
       pill_faq: "Beginner FAQ",
       pill_all: "Accessibility-first",
       pill_all_t: "Built to WCAG 2.1 AA",
-      android_badge: "Android app",
-      android_badge_t: "Coming soon to Google Play",
+      play_new: "New",
+      play_k: "Now on <em>Google Play</em>",
+      play_sub: "Free for Android, available worldwide.",
+      play_scan: "Scan with your phone",
       free_h: "Yours, without asking anything back.",
       free_p: "Quba was built as a gift and it will stay that way. No ads, no account, no tracking, nothing asked of you. Whether you open it in a browser or add it to your home screen, it is the same app, always up to date, always there. If it helps you, that is the whole point.",
       why_h: "Why this exists",
@@ -1084,8 +1151,8 @@ a{color:inherit;}
       src_4: "<strong>Culture is not dressed up as ruling.</strong> Common practice and established ruling are two different things, and Quba does not blur them.",
       src_5: "<strong>It will not give a verdict it has no right to give.</strong> The barcode scanner will never tell you a product is halal or haram. It shows you what is in it and what those ingredients are. The ruling is not an app\'s to issue.",
       src_close: "Quba is a reference, not a mufti. For anything that matters, ask someone qualified.",
-      real_h: "Works wherever you are",
-      real_p: "Add it to your home screen and it opens like any other app, no app store involved. Or just open <strong>quba.falqenview.com</strong> in any browser. Either way it is the same thing: up to date, fully working, with your settings saved. It goes with you.",
+      real_h: "On Google Play, or in any browser",
+      real_p: "On Android, install Quba from Google Play and it lives on your phone like any other app. On iPhone or a computer, open <strong>quba.falqenview.com</strong> in any browser, or add it to your home screen. It is the same Quba everywhere: always up to date, with your settings saved.",
       cta: "Open Quba"
     },
     bn: {
@@ -1133,8 +1200,12 @@ a{color:inherit;}
       c_lang_p: "কুবা ব্যবহার করুন ইংরেজি, আরবি, বাংলা, তুর্কি বা উর্দুতে — মুসলিম বিশ্বে সবচেয়ে বেশি বলা ভাষাগুলোর মধ্যে পাঁচটি — পূর্ণ ডান-থেকে-বাম সমর্থনসহ।",
       c_zakat_h: "যাকাত, শব্দকোষ ও নামাজ শেখা",
       c_zakat_p: "দান করার সময় হলে একটি সহজ যাকাত ক্যালকুলেটর, অপরিচিত শব্দের জন্য সহজ ভাষায় একটি শব্দকোষ, আর একদম নতুনদের জন্য চার ধাপের নামাজ শেখার একটি ট্র্যাক। বাকি সবকিছুর মতোই — কোনো অ্যাকাউন্ট নেই, সাইন-আপ নেই, শুধু খুলুন আর ব্যবহার করুন।",
-      real_h: "একটি অ্যাপ, প্রতিটি ডিভাইসে",
-      real_p: "কুবা আপনার ফোন বা কম্পিউটারে যোগ করুন, এটি অন্য যেকোনো অ্যাপের মতোই খুলবে। কখনো কোনো অ্যাপ স্টোরের অপেক্ষা নেই, কোনো আপডেটের ঝামেলা নেই। ইনস্টল করতে চান না? যেকোনো ব্রাউজারে শুধু <strong><bdi dir='ltr'>quba.falqenview.com</bdi></strong> খুলুন। তবে আপনার সেটিংস ঠিক যেমন চান তেমন রাখার সবচেয়ে ভালো উপায় হলো এটি আপনার ডিভাইসে যোগ করা।",
+      play_new: "নতুন",
+      play_k: "এখন <em><bdi dir='ltr'>Google Play</bdi></em>-তে",
+      play_sub: "অ্যান্ড্রয়েডের জন্য বিনামূল্যে, বিশ্বজুড়ে পাওয়া যাচ্ছে।",
+      play_scan: "ফোন দিয়ে স্ক্যান করুন",
+      real_h: "<bdi dir='ltr'>Google Play</bdi>-তে, অথবা যেকোনো ব্রাউজারে",
+      real_p: "অ্যান্ড্রয়েডে <bdi dir='ltr'>Google Play</bdi> থেকে কুবা ইনস্টল করুন, এটি অন্য যেকোনো অ্যাপের মতোই আপনার ফোনে থাকবে। আইফোন বা কম্পিউটারে যেকোনো ব্রাউজারে <strong><bdi dir='ltr'>quba.falqenview.com</bdi></strong> খুলুন, অথবা হোম স্ক্রিনে যোগ করুন। সব জায়গায় একই কুবা: সবসময় হালনাগাদ, আর আপনার সেটিংস সংরক্ষিত থাকে।",
       cta: "কুবা খুলুন"
     },
     ar: {
@@ -1182,8 +1253,12 @@ a{color:inherit;}
       c_lang_p: "استخدم قُباء بالإنجليزية أو العربية أو البنغالية أو التركية أو الأردية — خمسٌ من أكثر اللغات انتشارًا في العالم الإسلامي — مع دعمٍ كاملٍ للكتابة من اليمين إلى اليسار.",
       c_zakat_h: "الزكاة والمعجم وتعلّم الصلاة",
       c_zakat_p: "حاسبة زكاةٍ بسيطة عند حلول وقت العطاء، ومعجمٌ بلغةٍ واضحة للمصطلحات غير المألوفة، ومسارٌ من أربع خطواتٍ لتعلّم الصلاة للمبتدئين تمامًا. كبقية التطبيق — بلا حساباتٍ، وبلا تسجيل، فقط افتح واستخدم.",
-      real_h: "تطبيقٌ واحد، على كل جهاز",
-      real_p: "أضِف قُباء إلى هاتفك أو حاسوبك، فيُفتح كأي تطبيقٍ آخر. لا انتظار لمتجر تطبيقات، ولا تحديثٍ يلاحقك. لا تريد التثبيت؟ افتح <strong><bdi dir='ltr'>quba.falqenview.com</bdi></strong> في أي متصفّح. وأفضل طريقةٍ للحفاظ على إعداداتك تمامًا كما تريد هي إضافته إلى جهازك.",
+      play_new: "جديد",
+      play_k: "متوفّر الآن على <em><bdi dir='ltr'>Google Play</bdi></em>",
+      play_sub: "مجانيّ لأجهزة أندرويد، ومتاحٌ في أنحاء العالم.",
+      play_scan: "امسح الرمز بهاتفك",
+      real_h: "على <bdi dir='ltr'>Google Play</bdi>، أو في أي متصفّح",
+      real_p: "على أندرويد، ثبّت قُباء من <bdi dir='ltr'>Google Play</bdi> ليبقى على هاتفك كأي تطبيقٍ آخر. وعلى آيفون أو الحاسوب، افتح <strong><bdi dir='ltr'>quba.falqenview.com</bdi></strong> في أي متصفّح، أو أضِفه إلى شاشتك الرئيسية. قُباء واحدٌ في كل مكان: محدَّثٌ دائمًا، وإعداداتك محفوظة.",
       cta: "افتح قُباء"
     }
   };
